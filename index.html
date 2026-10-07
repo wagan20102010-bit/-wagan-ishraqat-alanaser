@@ -71,6 +71,7 @@ button{
     padding:30px;
     text-align:center;
     box-shadow:0 15px 40px rgba(112,86,168,.20);
+    transition:opacity .5s ease,transform .5s ease;
 }
 
 .intro h2{
@@ -80,6 +81,17 @@ button{
 
 .intro p{
     opacity:.92;
+}
+
+.intro.intro-hidden{
+    opacity:0;
+    transform:translateY(-15px);
+    pointer-events:none;
+    margin-bottom:0;
+    max-height:0;
+    padding-top:0;
+    padding-bottom:0;
+    overflow:hidden;
 }
 
 /* =========================
@@ -156,6 +168,13 @@ button{
     gap:6px;
     width:max-content;
     margin:auto;
+
+    /*
+       مهم:
+       نجعل اتجاه شبكة الجدول LTR حتى تكون
+       المجموعة 1 في اليسار والمجموعة 18 في اليمين.
+    */
+    direction:ltr;
 }
 
 .element{
@@ -170,6 +189,7 @@ button{
     box-shadow:0 4px 10px rgba(60,45,80,.08);
     transition:.22s;
     position:relative;
+    direction:rtl;
 }
 
 .element:hover{
@@ -989,24 +1009,16 @@ button{
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="header">
     <h1>الجدول الدوري للعناصر</h1>
     <p>استكشف العناصر واكتشف خصائصها واستخداماتها</p>
     <div class="creator">فكرة وتنفيذ: وجن منصور</div>
 </header>
 
-<section class="intro">
+<section id="intro" class="intro">
     <h2>إشراقة العناصر</h2>
     <p>رحلة تفاعلية لاكتشاف عالم العناصر الكيميائية</p>
 </section>
-
-<!-- =========================
-     SEARCH
-========================= -->
 
 <div class="search-box">
     <input
@@ -1016,10 +1028,6 @@ button{
         autocomplete="off"
     >
 </div>
-
-<!-- =========================
-     LEGEND
-========================= -->
 
 <div class="legend">
 
@@ -1075,10 +1083,6 @@ button{
 
 </div>
 
-<!-- =========================
-     PERIODIC TABLE
-========================= -->
-
 <div id="tableView">
 
     <div class="table-wrapper">
@@ -1086,10 +1090,6 @@ button{
     </div>
 
 </div>
-
-<!-- =========================
-     ELEMENT PAGE
-========================= -->
 
 <section id="elementPage" class="element-page">
 
@@ -1135,10 +1135,6 @@ button{
 
     </div>
 
-    <!-- =========================
-         ATOM SECTION
-    ========================= -->
-
     <div id="atomSection" class="element-section-content active">
 
         <div class="atom-layout">
@@ -1148,6 +1144,7 @@ button{
                 <h3>نموذج الذرة</h3>
 
                 <div id="atomVisual" class="atom">
+
                     <div class="nucleus">
 
                         <span class="nucleon proton">p⁺</span>
@@ -1156,6 +1153,7 @@ button{
                         <span class="nucleon neutron">n⁰</span>
 
                     </div>
+
                 </div>
 
             </div>
@@ -1229,10 +1227,6 @@ button{
 
     </div>
 
-    <!-- =========================
-         ELECTRON SECTION
-    ========================= -->
-
     <div id="electronSection" class="element-section-content">
 
         <div class="electron-layout">
@@ -1282,9 +1276,7 @@ button{
 
                     <h3>☁️ سحابة الإلكترونات</h3>
 
-                    <span id="cloudCount">
-                        —
-                    </span>
+                    <span id="cloudCount">—</span>
 
                 </div>
 
@@ -1351,10 +1343,6 @@ button{
 
     </div>
 
-    <!-- =========================
-         USES SECTION
-    ========================= -->
-
     <div id="usesSection" class="element-section-content">
 
         <div class="uses-layout">
@@ -1378,9 +1366,11 @@ button{
                     <h3>أبرز الاستخدامات</h3>
 
                     <ul id="usesList" class="uses-list">
+
                         <li class="uses-empty">
                             لم نضف استخدامات هذا العنصر بعد
                         </li>
+
                     </ul>
 
                 </div>
@@ -1401,10 +1391,6 @@ button{
 
     </div>
 
-    <!-- =========================
-         QUIZ SECTION
-    ========================= -->
-
     <div id="quizSection" class="element-section-content">
 
         <div class="quiz-empty">
@@ -1424,7 +1410,6 @@ button{
     </div>
 
 </section>
-
 
 <script>
 
@@ -1674,11 +1659,6 @@ function createPeriodicTable(){
 
     table.innerHTML = "";
 
-    /*
-        Layout using period + group.
-        Lanthanides and actinides are placed in separate rows.
-    */
-
     elements.forEach(element => {
 
         let row = element.p;
@@ -1700,8 +1680,6 @@ function createPeriodicTable(){
         table.appendChild(button);
     });
 
-    /* Lanthanide row */
-
     elements
         .filter(e => e.cat === "lanthanide")
         .forEach((element,index) => {
@@ -1714,8 +1692,6 @@ function createPeriodicTable(){
             table.appendChild(button);
 
         });
-
-    /* Actinide row */
 
     elements
         .filter(e => e.cat === "actinide")
@@ -1730,34 +1706,55 @@ function createPeriodicTable(){
 
         });
 
-    /* Series labels */
-
     const lanthanideLabel = document.createElement("div");
-    lanthanideLabel.className = "element series-label";
-    lanthanideLabel.textContent = "لانثانيدات";
-    lanthanideLabel.style.gridColumn = "1 / span 3";
-    lanthanideLabel.style.gridRow = "9";
+
+    lanthanideLabel.className =
+        "element series-label";
+
+    lanthanideLabel.textContent =
+        "لانثانيدات";
+
+    lanthanideLabel.style.gridColumn =
+        "1 / span 3";
+
+    lanthanideLabel.style.gridRow =
+        "9";
 
     table.appendChild(lanthanideLabel);
 
     const actinideLabel = document.createElement("div");
-    actinideLabel.className = "element series-label";
-    actinideLabel.textContent = "أكتينيدات";
-    actinideLabel.style.gridColumn = "1 / span 3";
-    actinideLabel.style.gridRow = "10";
+
+    actinideLabel.className =
+        "element series-label";
+
+    actinideLabel.textContent =
+        "أكتينيدات";
+
+    actinideLabel.style.gridColumn =
+        "1 / span 3";
+
+    actinideLabel.style.gridRow =
+        "10";
 
     table.appendChild(actinideLabel);
 }
 
 function createElementButton(element){
 
-    const button = document.createElement("button");
+    const button =
+        document.createElement("button");
 
-    button.className = `element ${categoryClass(element)}`;
+    button.className =
+        `element ${categoryClass(element)}`;
 
-    button.dataset.z = element.z;
-    button.dataset.name = element.ar;
-    button.dataset.symbol = element.s;
+    button.dataset.z =
+        element.z;
+
+    button.dataset.name =
+        element.ar;
+
+    button.dataset.symbol =
+        element.s;
 
     button.innerHTML = `
         <span class="number">${element.z}</span>
@@ -1776,32 +1773,44 @@ function createElementButton(element){
    SEARCH
 ========================================================= */
 
-document.getElementById("searchInput").addEventListener("input",function(){
+document
+    .getElementById("searchInput")
+    .addEventListener("input",function(){
 
-    const query = this.value.trim().toLowerCase();
+        const query =
+            this.value.trim().toLowerCase();
 
-    document.querySelectorAll(".element").forEach(item => {
+        document
+            .querySelectorAll(".element")
+            .forEach(item => {
 
-        if(item.classList.contains("series-label")){
-            return;
-        }
+                if(item.classList.contains("series-label")){
+                    return;
+                }
 
-        const match =
-            item.dataset.name.toLowerCase().includes(query) ||
-            item.dataset.symbol.toLowerCase().includes(query) ||
-            item.dataset.z.includes(query);
+                const match =
+                    item.dataset.name
+                        .toLowerCase()
+                        .includes(query) ||
+                    item.dataset.symbol
+                        .toLowerCase()
+                        .includes(query) ||
+                    item.dataset.z
+                        .includes(query);
 
-        item.style.opacity =
-            query === "" || match ? "1" : ".18";
+                item.style.opacity =
+                    query === "" || match
+                        ? "1"
+                        : ".18";
 
-        item.style.transform =
-            query !== "" && match
-                ? "translateY(-3px) scale(1.04)"
-                : "";
+                item.style.transform =
+                    query !== "" && match
+                        ? "translateY(-3px) scale(1.04)"
+                        : "";
+
+            });
 
     });
-
-});
 
 /* =========================================================
    OPEN ELEMENT
@@ -1813,12 +1822,20 @@ function openElement(element){
 
     currentElement = element;
 
-    document.getElementById("tableView").style.display = "none";
-    document.querySelector(".legend").style.display = "none";
-    document.querySelector(".search-box").style.display = "none";
-    document.querySelector(".intro").style.display = "none";
+    document.getElementById("tableView")
+        .style.display = "none";
 
-    const page = document.getElementById("elementPage");
+    document.querySelector(".legend")
+        .style.display = "none";
+
+    document.querySelector(".search-box")
+        .style.display = "none";
+
+    document.getElementById("intro")
+        .style.display = "none";
+
+    const page =
+        document.getElementById("elementPage");
 
     page.classList.add("show");
 
@@ -1832,12 +1849,26 @@ function openElement(element){
 
 function backToTable(){
 
-    document.getElementById("elementPage").classList.remove("show");
+    document
+        .getElementById("elementPage")
+        .classList.remove("show");
 
-    document.getElementById("tableView").style.display = "block";
-    document.querySelector(".legend").style.display = "flex";
-    document.querySelector(".search-box").style.display = "block";
-    document.querySelector(".intro").style.display = "block";
+    document.getElementById("tableView")
+        .style.display = "block";
+
+    document.querySelector(".legend")
+        .style.display = "flex";
+
+    document.querySelector(".search-box")
+        .style.display = "block";
+
+    /*
+       لا نعيد المقدمة بعد الرجوع؛
+       فهي تظهر في بداية الموقع فقط لمدة 3 ثوانٍ.
+    */
+
+    document.getElementById("intro")
+        .style.display = "none";
 
     window.scrollTo({
         top:0,
@@ -1851,7 +1882,8 @@ function backToTable(){
 
 function renderElementHeader(element){
 
-    const head = document.getElementById("elementHead");
+    const head =
+        document.getElementById("elementHead");
 
     head.innerHTML = `
 
@@ -1866,9 +1898,7 @@ function renderElementHeader(element){
 
             <h2>${element.ar}</h2>
 
-            <p>
-                ${element.name}
-            </p>
+            <p>${element.name}</p>
 
         </div>
 
@@ -1879,59 +1909,100 @@ function renderElementHeader(element){
    ATOM
 ========================================================= */
 
+function getMassNumber(element){
+
+    /*
+       يدعم:
+       55.845
+       208.980
+       [294]
+       [227]
+    */
+
+    const match =
+        String(element.m).match(/\d+(?:\.\d+)?/);
+
+    if(!match){
+        return null;
+    }
+
+    const value =
+        parseFloat(match[0]);
+
+    if(!Number.isFinite(value)){
+        return null;
+    }
+
+    return Math.round(value);
+}
+
 function renderAtom(element){
 
-    const approximateMass =
-        Math.round(parseFloat(element.m));
+    const massNumber =
+        getMassNumber(element);
 
     const approximateNeutrons =
-        isNaN(approximateMass)
+        massNumber === null
             ? "—"
-            : approximateMass - element.z;
+            : massNumber - element.z;
 
-    document.getElementById("atomicNumber").textContent =
+    document.getElementById("atomicNumber")
+        .textContent =
         element.z;
 
-    document.getElementById("atomicMass").textContent =
+    document.getElementById("atomicMass")
+        .textContent =
         element.m;
 
-    document.getElementById("protons").textContent =
+    document.getElementById("protons")
+        .textContent =
         element.z;
 
-    document.getElementById("neutrons").textContent =
+    document.getElementById("neutrons")
+        .textContent =
         approximateNeutrons;
 
-    document.getElementById("electrons").textContent =
+    document.getElementById("electrons")
+        .textContent =
         element.z;
 
-    document.getElementById("state").textContent =
+    document.getElementById("state")
+        .textContent =
         element.state;
 
-    document.getElementById("group").textContent =
+    document.getElementById("group")
+        .textContent =
         element.g;
 
-    document.getElementById("period").textContent =
+    document.getElementById("period")
+        .textContent =
         element.p;
 
-    document.getElementById("block").textContent =
+    document.getElementById("block")
+        .textContent =
         blockArabic(element.b);
 
-    document.getElementById("valence").textContent =
+    document.getElementById("valence")
+        .textContent =
         getValence(element);
 
-    document.getElementById("behavior").textContent =
+    document.getElementById("behavior")
+        .textContent =
         getBehavior(element);
 
-    const atom = document.getElementById("atomVisual");
+    const atom =
+        document.getElementById("atomVisual");
 
     atom.classList.toggle(
         "heavy-atom",
         element.z > 54
     );
 
-    atom.querySelectorAll(".orbit").forEach(o => o.remove());
+    atom.querySelectorAll(".orbit")
+        .forEach(o => o.remove());
 
-    const shellSizes = [75,110,145,180,215,250,285];
+    const shellSizes =
+        [75,110,145,180,215,250,285];
 
     const shellCount =
         Math.min(element.sh.length,7);
@@ -1941,7 +2012,8 @@ function renderAtom(element){
         const orbit =
             document.createElement("div");
 
-        orbit.className = "orbit";
+        orbit.className =
+            "orbit";
 
         orbit.style.setProperty(
             "--size",
@@ -1972,7 +2044,6 @@ function renderAtom(element){
                  translateY(${-shellSizes[i]/2}px)`;
 
             orbit.appendChild(electron);
-
         }
 
         atom.appendChild(orbit);
@@ -1984,6 +2055,7 @@ function renderAtom(element){
 ========================================================= */
 
 const orbitalOrder = [
+
     ["1s",2],
     ["2s",2],
     ["2p",6],
@@ -2003,9 +2075,11 @@ const orbitalOrder = [
     ["5f",14],
     ["6d",10],
     ["7p",6]
+
 ];
 
 const superscriptMap = {
+
     "0":"⁰",
     "1":"¹",
     "2":"²",
@@ -2016,13 +2090,16 @@ const superscriptMap = {
     "7":"⁷",
     "8":"⁸",
     "9":"⁹"
+
 };
 
 function toSuperscript(number){
 
     return String(number)
         .split("")
-        .map(char => superscriptMap[char] || char)
+        .map(char =>
+            superscriptMap[char] || char
+        )
         .join("");
 
 }
@@ -2030,6 +2107,7 @@ function toSuperscript(number){
 function getElectronConfiguration(z){
 
     let remaining = z;
+
     const result = [];
 
     for(const orbital of orbitalOrder){
@@ -2039,7 +2117,10 @@ function getElectronConfiguration(z){
         }
 
         const amount =
-            Math.min(remaining,orbital[1]);
+            Math.min(
+                remaining,
+                orbital[1]
+            );
 
         result.push({
             orbital:orbital[0],
@@ -2048,10 +2129,6 @@ function getElectronConfiguration(z){
 
         remaining -= amount;
     }
-
-    /*
-        Common ground-state exceptions.
-    */
 
     const exceptions = {
 
@@ -2148,6 +2225,7 @@ function configurationText(configuration){
             toSuperscript(item.electrons)
         )
         .join(" ");
+
 }
 
 /* =========================================================
@@ -2159,31 +2237,46 @@ function renderElectronSection(element){
     const configuration =
         getElectronConfiguration(element.z);
 
-    document.getElementById("electronConfiguration")
-        .textContent =
+    document.getElementById(
+        "electronConfiguration"
+    ).textContent =
         configurationText(configuration);
 
-    const lastLevel =
-        element.sh.length;
+    /*
+       المستوى الرئيسي الأعلى الذي يحتوي إلكترونات
+    */
 
-    document.getElementById("lastLevelValue")
-        .textContent =
-        `n = ${lastLevel}`;
+    const highestPrincipal =
+        Math.max(
+            ...configuration.map(item =>
+                parseInt(item.orbital.charAt(0))
+            )
+        );
 
-    document.getElementById("electronValenceValue")
-        .textContent =
+    document.getElementById(
+        "lastLevelValue"
+    ).textContent =
+        `n = ${highestPrincipal}`;
+
+    document.getElementById(
+        "electronValenceValue"
+    ).textContent =
         getValence(element);
 
-    document.getElementById("cloudCount")
-        .textContent =
+    document.getElementById(
+        "cloudCount"
+    ).textContent =
         `${element.z} إلكترون`;
 
-    document.getElementById("cloudCore")
-        .textContent =
+    document.getElementById(
+        "cloudCore"
+    ).textContent =
         element.s;
 
     renderLewis(element);
+
     renderOrbitalDiagram(configuration);
+
     renderFillingOrder();
 
     createCloudElectrons(element.z);
@@ -2196,10 +2289,14 @@ function renderElectronSection(element){
 function createCloudElectrons(count){
 
     const cloud =
-        document.getElementById("electronCloud");
+        document.getElementById(
+            "electronCloud"
+        );
 
     const core =
-        document.getElementById("cloudCore");
+        document.getElementById(
+            "cloudCore"
+        );
 
     cloud.innerHTML = "";
 
@@ -2213,13 +2310,9 @@ function createCloudElectrons(count){
         electron.className =
             "cloud-electron";
 
-        /*
-            Spread dots across the cloud while keeping
-            the central area visually readable.
-        */
-
         const angle =
-            (i / Math.max(count,1)) * Math.PI * 2;
+            (i / Math.max(count,1))
+            * Math.PI * 2;
 
         const radius =
             12 + Math.random() * 36;
@@ -2285,10 +2378,14 @@ function createCloudElectrons(count){
 function runCloudAnimation(){
 
     const cloud =
-        document.getElementById("electronCloud");
+        document.getElementById(
+            "electronCloud"
+        );
 
     const electrons =
-        cloud.querySelectorAll(".cloud-electron");
+        cloud.querySelectorAll(
+            ".cloud-electron"
+        );
 
     electrons.forEach(electron => {
 
@@ -2316,29 +2413,35 @@ function renderLewis(element){
         element.s;
 
     const dots = [
+
         document.querySelector(".lewis-top"),
         document.querySelector(".lewis-bottom"),
         document.querySelector(".lewis-right"),
         document.querySelector(".lewis-left")
+
     ];
 
     dots.forEach(dot => {
         dot.textContent = "";
     });
 
-    let count = parseInt(getValence(element));
+    let count =
+        parseInt(getValence(element));
 
     if(isNaN(count)){
-        count = element.sh[element.sh.length - 1] || 0;
+
+        count =
+            element.sh[
+                element.sh.length - 1
+            ] || 0;
+
     }
 
-    count = Math.min(count,8);
-
-    /*
-        One dot on each side first, then pair them.
-    */
+    count =
+        Math.min(count,8);
 
     const positions = [
+
         "top",
         "right",
         "bottom",
@@ -2347,13 +2450,16 @@ function renderLewis(element){
         "right",
         "bottom",
         "left"
+
     ];
 
     const sideCounters = {
+
         top:0,
         right:0,
         bottom:0,
         left:0
+
     };
 
     for(let i=0;i<count;i++){
@@ -2376,14 +2482,24 @@ function renderLewis(element){
     }
 
     const note =
-        document.getElementById("lewisNote");
+        document.getElementById(
+            "lewisNote"
+        );
 
-    if(element.g >= 1 && element.g <= 18){
+    if(
+        typeof element.g === "number" &&
+        element.g >= 1 &&
+        element.g <= 18
+    ){
+
         note.textContent =
             `عدد إلكترونات التكافؤ: ${getValence(element)}`;
+
     }else{
+
         note.textContent =
             "تمثيل تقريبي لإلكترونات المستوى الخارجي";
+
     }
 }
 
@@ -2394,27 +2510,36 @@ function renderLewis(element){
 function renderOrbitalDiagram(configuration){
 
     const container =
-        document.getElementById("orbitalDiagram");
+        document.getElementById(
+            "orbitalDiagram"
+        );
 
     container.innerHTML = "";
 
     configuration.forEach(item => {
 
         const match =
-            item.orbital.match(/^(\d)([spdf])$/);
+            item.orbital.match(
+                /^(\d)([spdf])$/
+            );
 
         if(!match){
             return;
         }
 
-        const n = match[1];
-        const type = match[2];
+        const n =
+            match[1];
+
+        const type =
+            match[2];
 
         const orbitalCount = {
+
             s:1,
             p:3,
             d:5,
             f:7
+
         }[type];
 
         const group =
@@ -2449,17 +2574,15 @@ function renderOrbitalDiagram(configuration){
             box.className =
                 "orbital-box";
 
-            /*
-                Hund's rule:
-                fill one electron in each orbital first,
-                then pair.
-            */
-
             if(electrons > i){
-                box.textContent = "↑";
+
+                box.textContent =
+                    "↑";
+
             }
 
-            if(electrons > orbitalCount + i){
+            if(electrons >
+                orbitalCount + i){
 
                 box.textContent =
                     "↑↓";
@@ -2470,6 +2593,7 @@ function renderOrbitalDiagram(configuration){
         }
 
         group.appendChild(label);
+
         group.appendChild(boxes);
 
         container.appendChild(group);
@@ -2484,7 +2608,9 @@ function renderOrbitalDiagram(configuration){
 function renderFillingOrder(){
 
     const container =
-        document.getElementById("fillingOrder");
+        document.getElementById(
+            "fillingOrder"
+        );
 
     container.innerHTML = "";
 
@@ -2501,7 +2627,8 @@ function renderFillingOrder(){
 
         container.appendChild(span);
 
-        if(index < orbitalOrder.length - 1){
+        if(index <
+            orbitalOrder.length - 1){
 
             const arrow =
                 document.createElement("span");
@@ -2513,6 +2640,7 @@ function renderFillingOrder(){
                 "→";
 
             container.appendChild(arrow);
+
         }
 
     });
@@ -2520,25 +2648,24 @@ function renderFillingOrder(){
 
 /* =========================================================
    USES & IMPORTANCE
-   CURRENTLY EMPTY
 ========================================================= */
 
 const usesData = {
 
     /*
-        سنبدأ تعبئة هذا القسم هنا لاحقًا.
+       يمكن إضافة بيانات الاستخدامات هنا لاحقًا
+       دون تغيير أي جزء من التصميم.
 
-        مثال الصيغة:
+       مثال:
 
-        H:{
-            uses:[
-                "استخدام...",
-                "استخدام...",
-                "استخدام..."
-            ],
-            importance:
-                "أهمية العنصر..."
-        }
+       H:{
+           uses:[
+               "استخدام في الوقود",
+               "استخدام في الصناعات الكيميائية"
+           ],
+           importance:
+               "للهيدروجين أهمية كبيرة في عدد من التطبيقات العلمية والصناعية."
+       }
     */
 
 };
@@ -2546,16 +2673,22 @@ const usesData = {
 function renderUses(element){
 
     const title =
-        document.getElementById("usesTitle");
+        document.getElementById(
+            "usesTitle"
+        );
 
     title.textContent =
         `🔧 استخدامات وأهمية ${element.ar}`;
 
     const list =
-        document.getElementById("usesList");
+        document.getElementById(
+            "usesList"
+        );
 
     const importance =
-        document.getElementById("importanceText");
+        document.getElementById(
+            "importanceText"
+        );
 
     const data =
         usesData[element.s];
@@ -2581,7 +2714,8 @@ function renderUses(element){
         const li =
             document.createElement("li");
 
-        li.textContent = use;
+        li.textContent =
+            use;
 
         list.appendChild(li);
 
@@ -2589,7 +2723,6 @@ function renderUses(element){
 
     importance.textContent =
         data.importance;
-
 }
 
 /* =========================================================
@@ -2599,26 +2732,40 @@ function renderUses(element){
 function showElementSection(sectionId){
 
     document
-        .querySelectorAll(".element-section-content")
+        .querySelectorAll(
+            ".element-section-content"
+        )
         .forEach(section => {
 
-            section.classList.remove("active");
+            section.classList.remove(
+                "active"
+            );
 
         });
 
     document
-        .querySelectorAll(".section-tab")
+        .querySelectorAll(
+            ".section-tab"
+        )
         .forEach(tab => {
 
-            tab.classList.remove("active");
+            tab.classList.remove(
+                "active"
+            );
 
         });
 
     const section =
-        document.getElementById(sectionId);
+        document.getElementById(
+            sectionId
+        );
 
     if(section){
-        section.classList.add("active");
+
+        section.classList.add(
+            "active"
+        );
+
     }
 
     const tab =
@@ -2627,17 +2774,55 @@ function showElementSection(sectionId){
         );
 
     if(tab){
-        tab.classList.add("active");
+
+        tab.classList.add(
+            "active"
+        );
+
     }
 
     if(sectionId === "electronSection"){
-        setTimeout(runCloudAnimation,80);
+
+        setTimeout(
+            runCloudAnimation,
+            80
+        );
+
     }
 
     window.scrollTo({
+
         top:0,
         behavior:"smooth"
+
     });
+}
+
+/* =========================================================
+   INTRO TIMER
+========================================================= */
+
+function startIntroTimer(){
+
+    const intro =
+        document.getElementById(
+            "intro"
+        );
+
+    setTimeout(() => {
+
+        intro.classList.add(
+            "intro-hidden"
+        );
+
+        setTimeout(() => {
+
+            intro.style.display =
+                "none";
+
+        },500);
+
+    },3000);
 }
 
 /* =========================================================
@@ -2645,6 +2830,8 @@ function showElementSection(sectionId){
 ========================================================= */
 
 createPeriodicTable();
+
+startIntroTimer();
 
 </script>
 
