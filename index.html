@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إشراقة العناصر</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #faf9f7;
+            font-family: Arial, sans-serif;
+        }
+
+        .intro {
+            position: fixed;
+            inset: 0;
+            background: #faf9f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1000;
+            animation: introFade 1.5s ease 3s forwards;
+        }
+
+        .glow {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: rgba(190, 170, 220, 0.18);
+            filter: blur(70px);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        .title {
+            position: relative;
+            color: #332d45;
+            font-size: 52px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: titleIn 1.8s ease forwards;
+        }
+
+        @keyframes titleIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+            to {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes introFade {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="intro">
+        <div class="glow"></div>
+        <div class="title">إشراقة العناصر</div>
+    </section>
+
+</body>
+</html>
