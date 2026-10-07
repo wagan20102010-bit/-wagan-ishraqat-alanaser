@@ -239,6 +239,11 @@ body{
     border:1px solid rgba(80,65,100,.08);
 }
 
+
+/* =========================
+   ATOM PAGE
+========================= */
+
 #atomPage{
     display:none;
     min-height:100vh;
@@ -289,6 +294,69 @@ body{
     color:#8a8297;
     margin-top:5px;
 }
+
+
+/* =========================
+   الأقسام الستة
+========================= */
+
+.element-sections{
+    width:min(1100px,100%);
+    margin:0 auto 25px;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:10px;
+}
+
+.section-tab{
+    border:1px solid rgba(100,80,130,.08);
+    background:white;
+    border-radius:18px;
+    padding:14px 8px;
+    color:#6f6779;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+    transition:.22s;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    font-family:inherit;
+}
+
+.section-tab span{
+    font-size:24px;
+}
+
+.section-tab strong{
+    font-size:12px;
+}
+
+.section-tab:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(90,70,120,.12);
+}
+
+.section-tab.active{
+    border:2px solid #b59bdd;
+    color:#7056a8;
+    background:linear-gradient(135deg,#fff,#f5efff);
+    box-shadow:0 10px 25px rgba(112,86,168,.12);
+}
+
+.element-section-content{
+    display:none;
+}
+
+.element-section-content.active{
+    display:block;
+}
+
+
+/* =========================
+   ATOM SECTION
+========================= */
 
 .atom-section{
     width:min(1100px,100%);
@@ -509,7 +577,13 @@ body{
     margin-top:7px;
 }
 
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width:850px){
+
     .atom-section{
         grid-template-columns:1fr;
     }
@@ -525,9 +599,14 @@ body{
     .atom.heavy-atom{
         transform:scale(.82);
     }
+
+    .element-sections{
+        grid-template-columns:repeat(3,1fr);
+    }
 }
 
 @media(max-width:520px){
+
     #mainPage{
         padding:25px 10px 40px;
     }
@@ -558,6 +637,18 @@ body{
 
     .info-grid{
         grid-template-columns:1fr;
+    }
+
+    .element-sections{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .section-tab{
+        padding:13px 6px;
+    }
+
+    .section-tab strong{
+        font-size:11px;
     }
 }
 </style>
@@ -650,6 +741,7 @@ body{
 
 </section>
 
+
 <section id="atomPage">
 
     <button class="back-button" id="backButton">
@@ -662,129 +754,256 @@ body{
         <p id="atomArabicName"></p>
     </div>
 
-    <div class="atom-section">
 
-        <div class="atom-visual">
+    <!-- =========================
+         الأيقونات الست
+    ========================== -->
 
-            <div class="atom" id="atomVisual">
+    <div class="element-sections">
 
-                <div class="orbit o1"></div>
-                <div class="orbit o2"></div>
-                <div class="orbit o3"></div>
-                <div class="orbit o4"></div>
-                <div class="orbit o5"></div>
-                <div class="orbit o6"></div>
-                <div class="orbit o7"></div>
+        <button
+            class="section-tab active"
+            data-section="atomSection"
+            onclick="showElementSection('atomSection')"
+        >
+            <span>⚛️</span>
+            <strong>الذرة</strong>
+        </button>
 
-                <div class="nucleus">
+        <button
+            class="section-tab"
+            data-section="electronSection"
+            onclick="showElementSection('electronSection')"
+        >
+            <span>⚡</span>
+            <strong>التوزيع الإلكتروني</strong>
+        </button>
 
-                    <div class="nucleus-particles">
+        <button
+            class="section-tab"
+            data-section="propertiesSection"
+            onclick="showElementSection('propertiesSection')"
+        >
+            <span>🧪</span>
+            <strong>الخواص</strong>
+        </button>
 
-                        <div class="nucleus-particle proton p1">p⁺</div>
-                        <div class="nucleus-particle proton p2">p⁺</div>
-                        <div class="nucleus-particle proton p3">p⁺</div>
-                        <div class="nucleus-particle proton p4">p⁺</div>
+        <button
+            class="section-tab"
+            data-section="discoverySection"
+            onclick="showElementSection('discoverySection')"
+        >
+            <span>📖</span>
+            <strong>قصة الاكتشاف</strong>
+        </button>
 
-                        <div class="nucleus-particle neutron n1">
-                            <span>+</span>
-                            <span>−</span>
-                        </div>
+        <button
+            class="section-tab"
+            data-section="usesSection"
+            onclick="showElementSection('usesSection')"
+        >
+            <span>🔧</span>
+            <strong>الاستخدامات</strong>
+        </button>
 
-                        <div class="nucleus-particle neutron n2">
-                            <span>+</span>
-                            <span>−</span>
-                        </div>
+        <button
+            class="section-tab"
+            data-section="factsSection"
+            onclick="showElementSection('factsSection')"
+        >
+            <span>💡</span>
+            <strong>هل تعلم؟</strong>
+        </button>
 
-                        <div class="nucleus-particle neutron n3">
-                            <span>+</span>
-                            <span>−</span>
-                        </div>
+    </div>
 
-                        <div class="nucleus-particle neutron n4">
-                            <span>+</span>
-                            <span>−</span>
+
+    <!-- =========================
+         الذرة
+         المحتوى الأصلي كما هو
+    ========================== -->
+
+    <div
+        id="atomSection"
+        class="element-section-content active"
+    >
+
+        <div class="atom-section">
+
+            <div class="atom-visual">
+
+                <div class="atom" id="atomVisual">
+
+                    <div class="orbit o1"></div>
+                    <div class="orbit o2"></div>
+                    <div class="orbit o3"></div>
+                    <div class="orbit o4"></div>
+                    <div class="orbit o5"></div>
+                    <div class="orbit o6"></div>
+                    <div class="orbit o7"></div>
+
+                    <div class="nucleus">
+
+                        <div class="nucleus-particles">
+
+                            <div class="nucleus-particle proton p1">
+                                p⁺
+                            </div>
+
+                            <div class="nucleus-particle proton p2">
+                                p⁺
+                            </div>
+
+                            <div class="nucleus-particle proton p3">
+                                p⁺
+                            </div>
+
+                            <div class="nucleus-particle proton p4">
+                                p⁺
+                            </div>
+
+                            <div class="nucleus-particle neutron n1">
+                                <span>+</span>
+                                <span>−</span>
+                            </div>
+
+                            <div class="nucleus-particle neutron n2">
+                                <span>+</span>
+                                <span>−</span>
+                            </div>
+
+                            <div class="nucleus-particle neutron n3">
+                                <span>+</span>
+                                <span>−</span>
+                            </div>
+
+                            <div class="nucleus-particle neutron n4">
+                                <span>+</span>
+                                <span>−</span>
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                    <div id="electrons"></div>
 
-                <div id="electrons"></div>
-
-            </div>
-
-        </div>
-
-        <div class="info-area">
-
-            <div class="info-grid">
-
-                <div class="info-card colorful">
-                    <h3>العدد الذري</h3>
-                    <div class="value" id="atomicNumber"></div>
-                </div>
-
-                <div class="info-card colorful">
-                    <h3>الكتلة الذرية</h3>
-                    <div class="value" id="atomicMass"></div>
-                </div>
-
-                <div class="info-card colorful">
-                    <h3>البروتونات</h3>
-                    <div class="value" id="protons"></div>
-                </div>
-
-                <div class="info-card colorful">
-                    <h3>النيترونات</h3>
-                    <div class="value" id="neutrons"></div>
-                </div>
-
-                <div class="info-card colorful">
-                    <h3>الإلكترونات</h3>
-                    <div class="value" id="electronCount"></div>
-                </div>
-
-                <div class="info-card colorful">
-                    <h3>حالة العنصر</h3>
-                    <div class="value" id="state"></div>
                 </div>
 
             </div>
 
-            <div class="info-grid">
 
-                <div class="info-card">
-                    <h3>المجموعة</h3>
-                    <div class="value" id="group"></div>
+            <div class="info-area">
+
+                <div class="info-grid">
+
+                    <div class="info-card colorful">
+                        <h3>العدد الذري</h3>
+                        <div class="value" id="atomicNumber"></div>
+                    </div>
+
+                    <div class="info-card colorful">
+                        <h3>الكتلة الذرية</h3>
+                        <div class="value" id="atomicMass"></div>
+                    </div>
+
+                    <div class="info-card colorful">
+                        <h3>البروتونات</h3>
+                        <div class="value" id="protons"></div>
+                    </div>
+
+                    <div class="info-card colorful">
+                        <h3>النيترونات</h3>
+                        <div class="value" id="neutrons"></div>
+                    </div>
+
+                    <div class="info-card colorful">
+                        <h3>الإلكترونات</h3>
+                        <div class="value" id="electronCount"></div>
+                    </div>
+
+                    <div class="info-card colorful">
+                        <h3>حالة العنصر</h3>
+                        <div class="value" id="state"></div>
+                    </div>
+
                 </div>
 
-                <div class="info-card">
-                    <h3>الدورة</h3>
-                    <div class="value" id="period"></div>
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+                        <h3>المجموعة</h3>
+                        <div class="value" id="group"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>الدورة</h3>
+                        <div class="value" id="period"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>الفئة</h3>
+                        <div class="value" id="block"></div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>إلكترونات التكافؤ</h3>
+                        <div class="value" id="valence"></div>
+                    </div>
+
                 </div>
 
-                <div class="info-card">
-                    <h3>الفئة</h3>
-                    <div class="value" id="block"></div>
+
+                <div class="info-card family-card">
+
+                    <h3>سلوك المجموعة</h3>
+
+                    <div
+                        class="family-description"
+                        id="groupBehavior"
+                    ></div>
+
                 </div>
 
-                <div class="info-card">
-                    <h3>إلكترونات التكافؤ</h3>
-                    <div class="value" id="valence"></div>
-                </div>
-
-            </div>
-
-            <div class="info-card family-card">
-                <h3>سلوك المجموعة</h3>
-                <div class="family-description" id="groupBehavior"></div>
             </div>
 
         </div>
 
     </div>
 
+
+    <!-- =========================
+         الأقسام الجديدة — فارغة
+    ========================== -->
+
+    <div
+        id="electronSection"
+        class="element-section-content"
+    ></div>
+
+    <div
+        id="propertiesSection"
+        class="element-section-content"
+    ></div>
+
+    <div
+        id="discoverySection"
+        class="element-section-content"
+    ></div>
+
+    <div
+        id="usesSection"
+        class="element-section-content"
+    ></div>
+
+    <div
+        id="factsSection"
+        class="element-section-content"
+    ></div>
+
 </section>
+
 
 <script>
 
@@ -1117,6 +1336,58 @@ const atomPage =
 const backButton =
     document.getElementById("backButton");
 
+
+/* =========================
+   تبديل الأيقونات
+========================= */
+
+function showElementSection(sectionId){
+
+    document
+        .querySelectorAll(".element-section-content")
+        .forEach(section => {
+
+            section.classList.remove("active");
+
+        });
+
+
+    document
+        .querySelectorAll(".section-tab")
+        .forEach(tab => {
+
+            tab.classList.remove("active");
+
+        });
+
+
+    const selectedSection =
+        document.getElementById(sectionId);
+
+    if(selectedSection){
+
+        selectedSection.classList.add("active");
+
+    }
+
+
+    const selectedTab =
+        document.querySelector(
+            `.section-tab[data-section="${sectionId}"]`
+        );
+
+    if(selectedTab){
+
+        selectedTab.classList.add("active");
+
+    }
+}
+
+
+/* =========================
+   فتح العنصر
+========================= */
+
 function openAtom(element){
 
     mainPage.style.display = "none";
@@ -1128,8 +1399,19 @@ function openAtom(element){
         behavior:"instant"
     });
 
+    /*
+       كل عنصر يفتح تلقائيًا على أيقونة الذرة
+    */
+
+    showElementSection("atomSection");
+
     renderAtom(element);
 }
+
+
+/* =========================
+   العودة للجدول
+========================= */
 
 backButton.addEventListener("click",() => {
 
@@ -1141,6 +1423,7 @@ backButton.addEventListener("click",() => {
         top:0,
         behavior:"instant"
     });
+
 });
 
 
@@ -1173,6 +1456,7 @@ function renderAtom(element){
        عدد النيوترونات هنا قيمة تقريبية محسوبة
        من الكتلة الذرية بعد تقريبها لأقرب عدد صحيح.
     */
+
     const approximateMass =
         Math.round(parseFloat(element.m));
 
@@ -1202,6 +1486,7 @@ function renderAtom(element){
 
     let valence;
     let behavior;
+
 
     if(element.z === 1){
 
@@ -1242,6 +1527,7 @@ function renderAtom(element){
 
     }
 
+
     document.getElementById("valence").textContent =
         valence;
 
@@ -1252,22 +1538,32 @@ function renderAtom(element){
     const atomVisual =
         document.getElementById("atomVisual");
 
+
     if(element.z >= 54){
+
         atomVisual.classList.add("heavy-atom");
+
     }else{
+
         atomVisual.classList.remove("heavy-atom");
+
     }
 
 
     const orbits =
         document.querySelectorAll(".orbit");
 
+
     orbits.forEach((orbit,index) => {
 
         if(index < element.sh.length){
+
             orbit.style.display = "block";
+
         }else{
+
             orbit.style.display = "none";
+
         }
 
     });
@@ -1319,11 +1615,13 @@ function renderAtom(element){
             electron.textContent =
                 "e⁻";
 
+
             const angle =
                 (360 / count) * i - 90;
 
             const rad =
                 angle * Math.PI / 180;
+
 
             const x =
                 Math.cos(rad) * radiusX;
@@ -1331,13 +1629,16 @@ function renderAtom(element){
             const y =
                 Math.sin(rad) * radiusY;
 
+
             electron.style.left =
                 `calc(50% + ${x}px)`;
 
             electron.style.top =
                 `calc(50% + ${y}px)`;
 
+
             atomVisual.appendChild(electron);
+
         }
 
     });
