@@ -23,10 +23,6 @@ body{
     min-height:100vh;
 }
 
-/* =========================
-   INTRO
-========================= */
-
 #intro{
     position:fixed;
     inset:0;
@@ -50,13 +46,8 @@ body{
     font-weight:800;
     color:#7056a8;
     letter-spacing:1px;
-    text-shadow:
-        0 5px 20px rgba(112,86,168,.18);
+    text-shadow:0 5px 20px rgba(112,86,168,.18);
 }
-
-/* =========================
-   MAIN
-========================= */
 
 #mainPage{
     width:100%;
@@ -78,10 +69,6 @@ body{
     color:#777084;
     font-size:16px;
 }
-
-/* =========================
-   SEARCH
-========================= */
 
 .search-box{
     width:min(650px,100%);
@@ -106,10 +93,6 @@ body{
     border-color:#9a7bd0;
     box-shadow:0 8px 28px rgba(112,86,168,.16);
 }
-
-/* =========================
-   PERIODIC TABLE
-========================= */
 
 .table-wrapper{
     width:100%;
@@ -171,65 +154,26 @@ body{
     text-align:center;
 }
 
-.alkali{
-    background:#ffd9df;
-}
+.alkali{background:#ffd9df}
+.alkaline{background:#ffe8b7}
+.transition{background:#d9e8ff}
+.post-transition{background:#dcefdc}
+.metalloid{background:#e9ddff}
+.nonmetal{background:#d9f4ef}
+.halogen{background:#d9e7ff}
+.noble{background:#f1dcff}
+.lanthanide{background:#ffe1ef}
+.actinide{background:#ffd9cb}
+.unknown{background:#e8e8ed}
 
-.alkaline{
-    background:#ffe8b7;
-}
-
-.transition{
-    background:#d9e8ff;
-}
-
-.post-transition{
-    background:#dcefdc;
-}
-
-.metalloid{
-    background:#e9ddff;
-}
-
-.nonmetal{
-    background:#d9f4ef;
-}
-
-.halogen{
-    background:#d9e7ff;
-}
-
-.noble{
-    background:#f1dcff;
-}
-
-.lanthanide{
-    background:#ffe1ef;
-}
-
-.actinide{
-    background:#ffd9cb;
-}
-
-.unknown{
-    background:#e8e8ed;
-}
-
-/* =========================
-   SEARCH HIGHLIGHT
-========================= */
-
-.element.search-match{
+.search-match{
     transform:translateY(-4px);
     z-index:20;
-
     border:2px solid #35d9d0;
-
     box-shadow:
         0 0 0 3px rgba(53,217,208,.22),
         0 0 18px rgba(53,217,208,.75),
         0 0 35px rgba(53,217,208,.45);
-
     animation:searchGlow 1.4s ease-in-out infinite alternate;
 }
 
@@ -239,7 +183,6 @@ body{
             0 0 0 3px rgba(53,217,208,.18),
             0 0 15px rgba(53,217,208,.55);
     }
-
     to{
         box-shadow:
             0 0 0 4px rgba(53,217,208,.28),
@@ -248,9 +191,48 @@ body{
     }
 }
 
-/* =========================
-   ATOM PAGE
-========================= */
+/* مفتاح الألوان */
+
+.color-key{
+    width:min(1100px,100%);
+    margin:8px auto 25px;
+    padding:18px;
+    background:white;
+    border:1px solid rgba(100,80,130,.08);
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+}
+
+.color-key-title{
+    color:#7056a8;
+    font-size:16px;
+    font-weight:800;
+    margin-bottom:12px;
+    text-align:center;
+}
+
+.color-key-items{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:9px;
+}
+
+.key-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#5f576b;
+    font-size:12px;
+    font-weight:600;
+}
+
+.key-color{
+    width:17px;
+    height:17px;
+    border-radius:5px;
+    border:1px solid rgba(80,65,100,.08);
+}
 
 #atomPage{
     display:none;
@@ -303,10 +285,6 @@ body{
     margin-top:5px;
 }
 
-/* =========================
-   ATOM VISUAL
-========================= */
-
 .atom-section{
     width:min(1100px,100%);
     margin:auto;
@@ -341,44 +319,13 @@ body{
     transform:translate(-50%,-50%);
 }
 
-.orbit.o1{
-    width:110px;
-    height:110px;
-}
-
-.orbit.o2{
-    width:165px;
-    height:165px;
-}
-
-.orbit.o3{
-    width:220px;
-    height:220px;
-}
-
-.orbit.o4{
-    width:275px;
-    height:275px;
-}
-
-.orbit.o5{
-    width:330px;
-    height:330px;
-}
-
-.orbit.o6{
-    width:385px;
-    height:385px;
-}
-
-.orbit.o7{
-    width:440px;
-    height:440px;
-}
-
-/* =========================
-   NUCLEUS
-========================= */
+.orbit.o1{width:110px;height:110px}
+.orbit.o2{width:165px;height:165px}
+.orbit.o3{width:220px;height:220px}
+.orbit.o4{width:275px;height:275px}
+.orbit.o5{width:330px;height:330px}
+.orbit.o6{width:385px;height:385px}
+.orbit.o7{width:440px;height:440px}
 
 .nucleus{
     position:absolute;
@@ -437,8 +384,6 @@ body{
     display:block;
 }
 
-/* fixed visual particles */
-
 .p1{left:21px;top:25px}
 .p2{left:50px;top:24px}
 .p3{left:30px;top:51px}
@@ -448,10 +393,6 @@ body{
 .n2{left:36px;top:58px}
 .n3{left:16px;top:39px}
 .n4{left:60px;top:39px}
-
-/* =========================
-   ELECTRONS
-========================= */
 
 .electron{
     position:absolute;
@@ -467,54 +408,22 @@ body{
     font-size:8px;
     font-weight:900;
     transform:translate(-50%,-50%);
-    box-shadow:
-        0 3px 8px rgba(49,139,211,.3);
+    box-shadow:0 3px 8px rgba(49,139,211,.3);
     z-index:20;
 }
-
-/* =========================
-   HEAVY ATOMS Xe+
-========================= */
 
 .atom.heavy-atom{
     width:500px;
     height:500px;
 }
 
-.atom.heavy-atom .orbit.o1{
-    width:90px;
-    height:90px;
-}
-
-.atom.heavy-atom .orbit.o2{
-    width:145px;
-    height:145px;
-}
-
-.atom.heavy-atom .orbit.o3{
-    width:200px;
-    height:200px;
-}
-
-.atom.heavy-atom .orbit.o4{
-    width:255px;
-    height:255px;
-}
-
-.atom.heavy-atom .orbit.o5{
-    width:315px;
-    height:315px;
-}
-
-.atom.heavy-atom .orbit.o6{
-    width:375px;
-    height:375px;
-}
-
-.atom.heavy-atom .orbit.o7{
-    width:435px;
-    height:435px;
-}
+.atom.heavy-atom .orbit.o1{width:90px;height:90px}
+.atom.heavy-atom .orbit.o2{width:145px;height:145px}
+.atom.heavy-atom .orbit.o3{width:200px;height:200px}
+.atom.heavy-atom .orbit.o4{width:255px;height:255px}
+.atom.heavy-atom .orbit.o5{width:315px;height:315px}
+.atom.heavy-atom .orbit.o6{width:375px;height:375px}
+.atom.heavy-atom .orbit.o7{width:435px;height:435px}
 
 .atom.heavy-atom .nucleus{
     width:68px;
@@ -544,10 +453,6 @@ body{
     font-size:5px;
     border-width:1.5px;
 }
-
-/* =========================
-   INFO
-========================= */
 
 .info-area{
     display:flex;
@@ -581,37 +486,15 @@ body{
     gap:12px;
 }
 
-.colorful:nth-child(1){
-    border-top:5px solid #a985e6;
-}
-
-.colorful:nth-child(2){
-    border-top:5px solid #55bfe5;
-}
-
-.colorful:nth-child(3){
-    border-top:5px solid #f3c34a;
-}
-
-.colorful:nth-child(4){
-    border-top:5px solid #e97691;
-}
-
-.colorful:nth-child(5){
-    border-top:5px solid #64c58a;
-}
-
-.colorful:nth-child(6){
-    border-top:5px solid #8c9ee8;
-}
-
-/* =========================
-   FAMILY
-========================= */
+.colorful:nth-child(1){border-top:5px solid #a985e6}
+.colorful:nth-child(2){border-top:5px solid #55bfe5}
+.colorful:nth-child(3){border-top:5px solid #f3c34a}
+.colorful:nth-child(4){border-top:5px solid #e97691}
+.colorful:nth-child(5){border-top:5px solid #64c58a}
+.colorful:nth-child(6){border-top:5px solid #8c9ee8}
 
 .family-card{
-    background:
-        linear-gradient(135deg,#fff,#f5efff);
+    background:linear-gradient(135deg,#fff,#f5efff);
 }
 
 .family-description{
@@ -621,12 +504,7 @@ body{
     margin-top:7px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
 @media(max-width:850px){
-
     .atom-section{
         grid-template-columns:1fr;
     }
@@ -645,7 +523,6 @@ body{
 }
 
 @media(max-width:520px){
-
     #mainPage{
         padding:25px 10px 40px;
     }
@@ -683,18 +560,9 @@ body{
 
 <body>
 
-<!-- =========================
-     INTRO
-========================= -->
-
 <div id="intro">
     <div class="intro-title">إشراقة العناصر</div>
 </div>
-
-
-<!-- =========================
-     PERIODIC TABLE PAGE
-========================= -->
 
 <section id="mainPage">
 
@@ -712,16 +580,69 @@ body{
         >
     </div>
 
+    <div class="color-key">
+        <div class="color-key-title">مفتاح الألوان</div>
+
+        <div class="color-key-items">
+
+            <div class="key-item">
+                <span class="key-color alkali"></span>
+                الفلزات القلوية
+            </div>
+
+            <div class="key-item">
+                <span class="key-color alkaline"></span>
+                الفلزات القلوية الترابية
+            </div>
+
+            <div class="key-item">
+                <span class="key-color transition"></span>
+                الفلزات الانتقالية
+            </div>
+
+            <div class="key-item">
+                <span class="key-color post-transition"></span>
+                الفلزات بعد الانتقالية
+            </div>
+
+            <div class="key-item">
+                <span class="key-color metalloid"></span>
+                أشباه الفلزات
+            </div>
+
+            <div class="key-item">
+                <span class="key-color nonmetal"></span>
+                اللافلزات
+            </div>
+
+            <div class="key-item">
+                <span class="key-color halogen"></span>
+                الهالوجينات
+            </div>
+
+            <div class="key-item">
+                <span class="key-color noble"></span>
+                الغازات النبيلة
+            </div>
+
+            <div class="key-item">
+                <span class="key-color lanthanide"></span>
+                اللانثانيدات
+            </div>
+
+            <div class="key-item">
+                <span class="key-color actinide"></span>
+                الأكتينيدات
+            </div>
+
+        </div>
+    </div>
+
     <div class="table-wrapper">
         <div class="periodic-table" id="periodicTable"></div>
     </div>
 
 </section>
-
-
-<!-- =========================
-     ATOM PAGE
-========================= -->
 
 <section id="atomPage">
 
@@ -750,26 +671,14 @@ body{
                 <div class="orbit o7"></div>
 
                 <div class="nucleus">
+
                     <div class="nucleus-particles">
 
-                        <!-- Proton -->
-                        <div class="nucleus-particle proton p1">
-                            p⁺
-                        </div>
+                        <div class="nucleus-particle proton p1">p⁺</div>
+                        <div class="nucleus-particle proton p2">p⁺</div>
+                        <div class="nucleus-particle proton p3">p⁺</div>
+                        <div class="nucleus-particle proton p4">p⁺</div>
 
-                        <div class="nucleus-particle proton p2">
-                            p⁺
-                        </div>
-
-                        <div class="nucleus-particle proton p3">
-                            p⁺
-                        </div>
-
-                        <div class="nucleus-particle proton p4">
-                            p⁺
-                        </div>
-
-                        <!-- Neutron -->
                         <div class="nucleus-particle neutron n1">
                             <span>+</span>
                             <span>−</span>
@@ -791,6 +700,7 @@ body{
                         </div>
 
                     </div>
+
                 </div>
 
                 <div id="electrons"></div>
@@ -799,9 +709,6 @@ body{
 
         </div>
 
-
-        <!-- INFORMATION -->
-
         <div class="info-area">
 
             <div class="info-grid">
@@ -809,6 +716,11 @@ body{
                 <div class="info-card colorful">
                     <h3>العدد الذري</h3>
                     <div class="value" id="atomicNumber"></div>
+                </div>
+
+                <div class="info-card colorful">
+                    <h3>العدد الكتلي</h3>
+                    <div class="value" id="massNumber"></div>
                 </div>
 
                 <div class="info-card colorful">
@@ -838,7 +750,6 @@ body{
 
             </div>
 
-
             <div class="info-grid">
 
                 <div class="info-card">
@@ -857,16 +768,15 @@ body{
                 </div>
 
                 <div class="info-card">
-                    <h3>عائلة العنصر</h3>
-                    <div class="value" id="family"></div>
+                    <h3>إلكترونات التكافؤ</h3>
+                    <div class="value" id="valence"></div>
                 </div>
 
             </div>
 
-
             <div class="info-card family-card">
-                <h3>خصائص العائلة</h3>
-                <div class="family-description" id="familyDescription"></div>
+                <h3>سلوك المجموعة</h3>
+                <div class="family-description" id="groupBehavior"></div>
             </div>
 
         </div>
@@ -875,671 +785,199 @@ body{
 
 </section>
 
-
 <script>
-
-/* =========================================================
-   ELEMENT DATA
-========================================================= */
 
 const elements = [
 
 /* 1–10 */
-{
-z:1,s:"H",name:"Hydrogen",ar:"الهيدروجين",period:1,group:1,block:"s",
-family:"الهيدروجين",mass:"1.008",state:"غاز",
-shells:[1],neutron:0
-},
-{
-z:2,s:"He",name:"Helium",ar:"الهيليوم",period:1,group:18,block:"s",
-family:"الغازات النبيلة",mass:"4.0026",state:"غاز",
-shells:[2],neutron:2
-},
-{
-z:3,s:"Li",name:"Lithium",ar:"الليثيوم",period:2,group:1,block:"s",
-family:"الفلزات القلوية",mass:"6.94",state:"صلب",
-shells:[2,1],neutron:4
-},
-{
-z:4,s:"Be",name:"Beryllium",ar:"البيريليوم",period:2,group:2,block:"s",
-family:"الفلزات القلوية الترابية",mass:"9.0122",state:"صلب",
-shells:[2,2],neutron:5
-},
-{
-z:5,s:"B",name:"Boron",ar:"البورون",period:2,group:13,block:"p",
-family:"عائلة البورون",mass:"10.81",state:"صلب",
-shells:[2,3],neutron:6
-},
-{
-z:6,s:"C",name:"Carbon",ar:"الكربون",period:2,group:14,block:"p",
-family:"عائلة الكربون",mass:"12.011",state:"صلب",
-shells:[2,4],neutron:6
-},
-{
-z:7,s:"N",name:"Nitrogen",ar:"النيتروجين",period:2,group:15,block:"p",
-family:"عائلة النيتروجين",mass:"14.007",state:"غاز",
-shells:[2,5],neutron:7
-},
-{
-z:8,s:"O",name:"Oxygen",ar:"الأكسجين",period:2,group:16,block:"p",
-family:"عائلة الأكسجين",mass:"15.999",state:"غاز",
-shells:[2,6],neutron:8
-},
-{
-z:9,s:"F",name:"Fluorine",ar:"الفلور",period:2,group:17,block:"p",
-family:"الهالوجينات",mass:"18.998",state:"غاز",
-shells:[2,7],neutron:10
-},
-{
-z:10,s:"Ne",name:"Neon",ar:"النيون",period:2,group:18,block:"p",
-family:"الغازات النبيلة",mass:"20.180",state:"غاز",
-shells:[2,8],neutron:10
-},
+{z:1,s:"H",name:"Hydrogen",ar:"الهيدروجين",p:1,g:1,b:"s",m:"1.008",a:1,state:"غاز",sh:[1],cat:"nonmetal"},
+{z:2,s:"He",name:"Helium",ar:"الهيليوم",p:1,g:18,b:"s",m:"4.0026",a:4,state:"غاز",sh:[2],cat:"noble"},
+{z:3,s:"Li",name:"Lithium",ar:"الليثيوم",p:2,g:1,b:"s",m:"6.94",a:7,state:"صلب",sh:[2,1],cat:"alkali"},
+{z:4,s:"Be",name:"Beryllium",ar:"البيريليوم",p:2,g:2,b:"s",m:"9.0122",a:9,state:"صلب",sh:[2,2],cat:"alkaline"},
+{z:5,s:"B",name:"Boron",ar:"البورون",p:2,g:13,b:"p",m:"10.81",a:11,state:"صلب",sh:[2,3],cat:"metalloid"},
+{z:6,s:"C",name:"Carbon",ar:"الكربون",p:2,g:14,b:"p",m:"12.011",a:12,state:"صلب",sh:[2,4],cat:"nonmetal"},
+{z:7,s:"N",name:"Nitrogen",ar:"النيتروجين",p:2,g:15,b:"p",m:"14.007",a:14,state:"غاز",sh:[2,5],cat:"nonmetal"},
+{z:8,s:"O",name:"Oxygen",ar:"الأكسجين",p:2,g:16,b:"p",m:"15.999",a:16,state:"غاز",sh:[2,6],cat:"nonmetal"},
+{z:9,s:"F",name:"Fluorine",ar:"الفلور",p:2,g:17,b:"p",m:"18.998",a:19,state:"غاز",sh:[2,7],cat:"halogen"},
+{z:10,s:"Ne",name:"Neon",ar:"النيون",p:2,g:18,b:"p",m:"20.180",a:20,state:"غاز",sh:[2,8],cat:"noble"},
 
 /* 11–20 */
-{
-z:11,s:"Na",name:"Sodium",ar:"الصوديوم",period:3,group:1,block:"s",
-family:"الفلزات القلوية",mass:"22.990",state:"صلب",
-shells:[2,8,1],neutron:12
-},
-{
-z:12,s:"Mg",name:"Magnesium",ar:"المغنيسيوم",period:3,group:2,block:"s",
-family:"الفلزات القلوية الترابية",mass:"24.305",state:"صلب",
-shells:[2,8,2],neutron:12
-},
-{
-z:13,s:"Al",name:"Aluminium",ar:"الألومنيوم",period:3,group:13,block:"p",
-family:"عائلة البورون",mass:"26.982",state:"صلب",
-shells:[2,8,3],neutron:14
-},
-{
-z:14,s:"Si",name:"Silicon",ar:"السيليكون",period:3,group:14,block:"p",
-family:"عائلة الكربون",mass:"28.085",state:"صلب",
-shells:[2,8,4],neutron:14
-},
-{
-z:15,s:"P",name:"Phosphorus",ar:"الفوسفور",period:3,group:15,block:"p",
-family:"عائلة النيتروجين",mass:"30.974",state:"صلب",
-shells:[2,8,5],neutron:16
-},
-{
-z:16,s:"S",name:"Sulfur",ar:"الكبريت",period:3,group:16,block:"p",
-family:"عائلة الأكسجين",mass:"32.06",state:"صلب",
-shells:[2,8,6],neutron:16
-},
-{
-z:17,s:"Cl",name:"Chlorine",ar:"الكلور",period:3,group:17,block:"p",
-family:"الهالوجينات",mass:"35.45",state:"غاز",
-shells:[2,8,7],neutron:18
-},
-{
-z:18,s:"Ar",name:"Argon",ar:"الأرجون",period:3,group:18,block:"p",
-family:"الغازات النبيلة",mass:"39.948",state:"غاز",
-shells:[2,8,8],neutron:22
-},
-{
-z:19,s:"K",name:"Potassium",ar:"البوتاسيوم",period:4,group:1,block:"s",
-family:"الفلزات القلوية",mass:"39.098",state:"صلب",
-shells:[2,8,8,1],neutron:20
-},
-{
-z:20,s:"Ca",name:"Calcium",ar:"الكالسيوم",period:4,group:2,block:"s",
-family:"الفلزات القلوية الترابية",mass:"40.078",state:"صلب",
-shells:[2,8,8,2],neutron:20
-},
+{z:11,s:"Na",name:"Sodium",ar:"الصوديوم",p:3,g:1,b:"s",m:"22.990",a:23,state:"صلب",sh:[2,8,1],cat:"alkali"},
+{z:12,s:"Mg",name:"Magnesium",ar:"المغنيسيوم",p:3,g:2,b:"s",m:"24.305",a:24,state:"صلب",sh:[2,8,2],cat:"alkaline"},
+{z:13,s:"Al",name:"Aluminium",ar:"الألومنيوم",p:3,g:13,b:"p",m:"26.982",a:27,state:"صلب",sh:[2,8,3],cat:"post-transition"},
+{z:14,s:"Si",name:"Silicon",ar:"السيليكون",p:3,g:14,b:"p",m:"28.085",a:28,state:"صلب",sh:[2,8,4],cat:"metalloid"},
+{z:15,s:"P",name:"Phosphorus",ar:"الفوسفور",p:3,g:15,b:"p",m:"30.974",a:31,state:"صلب",sh:[2,8,5],cat:"nonmetal"},
+{z:16,s:"S",name:"Sulfur",ar:"الكبريت",p:3,g:16,b:"p",m:"32.06",a:32,state:"صلب",sh:[2,8,6],cat:"nonmetal"},
+{z:17,s:"Cl",name:"Chlorine",ar:"الكلور",p:3,g:17,b:"p",m:"35.45",a:35,state:"غاز",sh:[2,8,7],cat:"halogen"},
+{z:18,s:"Ar",name:"Argon",ar:"الأرجون",p:3,g:18,b:"p",m:"39.948",a:40,state:"غاز",sh:[2,8,8],cat:"noble"},
+{z:19,s:"K",name:"Potassium",ar:"البوتاسيوم",p:4,g:1,b:"s",m:"39.098",a:39,state:"صلب",sh:[2,8,8,1],cat:"alkali"},
+{z:20,s:"Ca",name:"Calcium",ar:"الكالسيوم",p:4,g:2,b:"s",m:"40.078",a:40,state:"صلب",sh:[2,8,8,2],cat:"alkaline"},
 
 /* 21–36 */
-{
-z:21,s:"Sc",name:"Scandium",ar:"السكانديوم",period:4,group:3,block:"d",
-family:"الفلزات الانتقالية",mass:"44.956",state:"صلب",
-shells:[2,8,9,2],neutron:24
-},
-{
-z:22,s:"Ti",name:"Titanium",ar:"التيتانيوم",period:4,group:4,block:"d",
-family:"الفلزات الانتقالية",mass:"47.867",state:"صلب",
-shells:[2,8,10,2],neutron:26
-},
-{
-z:23,s:"V",name:"Vanadium",ar:"الفاناديوم",period:4,group:5,block:"d",
-family:"الفلزات الانتقالية",mass:"50.942",state:"صلب",
-shells:[2,8,11,2],neutron:28
-},
-{
-z:24,s:"Cr",name:"Chromium",ar:"الكروم",period:4,group:6,block:"d",
-family:"الفلزات الانتقالية",mass:"51.996",state:"صلب",
-shells:[2,8,13,1],neutron:28
-},
-{
-z:25,s:"Mn",name:"Manganese",ar:"المنغنيز",period:4,group:7,block:"d",
-family:"الفلزات الانتقالية",mass:"54.938",state:"صلب",
-shells:[2,8,13,2],neutron:30
-},
-{
-z:26,s:"Fe",name:"Iron",ar:"الحديد",period:4,group:8,block:"d",
-family:"الفلزات الانتقالية",mass:"55.845",state:"صلب",
-shells:[2,8,14,2],neutron:30
-},
-{
-z:27,s:"Co",name:"Cobalt",ar:"الكوبالت",period:4,group:9,block:"d",
-family:"الفلزات الانتقالية",mass:"58.933",state:"صلب",
-shells:[2,8,15,2],neutron:32
-},
-{
-z:28,s:"Ni",name:"Nickel",ar:"النيكل",period:4,group:10,block:"d",
-family:"الفلزات الانتقالية",mass:"58.693",state:"صلب",
-shells:[2,8,16,2],neutron:31
-},
-{
-z:29,s:"Cu",name:"Copper",ar:"النحاس",period:4,group:11,block:"d",
-family:"الفلزات الانتقالية",mass:"63.546",state:"صلب",
-shells:[2,8,18,1],neutron:34
-},
-{
-z:30,s:"Zn",name:"Zinc",ar:"الزنك",period:4,group:12,block:"d",
-family:"الفلزات الانتقالية",mass:"65.38",state:"صلب",
-shells:[2,8,18,2],neutron:36
-},
-{
-z:31,s:"Ga",name:"Gallium",ar:"الغاليوم",period:4,group:13,block:"p",
-family:"عائلة البورون",mass:"69.723",state:"صلب",
-shells:[2,8,18,3],neutron:39
-},
-{
-z:32,s:"Ge",name:"Germanium",ar:"الجرمانيوم",period:4,group:14,block:"p",
-family:"عائلة الكربون",mass:"72.630",state:"صلب",
-shells:[2,8,18,4],neutron:41
-},
-{
-z:33,s:"As",name:"Arsenic",ar:"الزرنيخ",period:4,group:15,block:"p",
-family:"عائلة النيتروجين",mass:"74.922",state:"صلب",
-shells:[2,8,18,5],neutron:42
-},
-{
-z:34,s:"Se",name:"Selenium",ar:"السيلينيوم",period:4,group:16,block:"p",
-family:"عائلة الأكسجين",mass:"78.971",state:"صلب",
-shells:[2,8,18,6],neutron:45
-},
-{
-z:35,s:"Br",name:"Bromine",ar:"البروم",period:4,group:17,block:"p",
-family:"الهالوجينات",mass:"79.904",state:"سائل",
-shells:[2,8,18,7],neutron:45
-},
-{
-z:36,s:"Kr",name:"Krypton",ar:"الكريبتون",period:4,group:18,block:"p",
-family:"الغازات النبيلة",mass:"83.798",state:"غاز",
-shells:[2,8,18,8],neutron:48
-},
+{z:21,s:"Sc",name:"Scandium",ar:"السكانديوم",p:4,g:3,b:"d",m:"44.956",a:45,state:"صلب",sh:[2,8,9,2],cat:"transition"},
+{z:22,s:"Ti",name:"Titanium",ar:"التيتانيوم",p:4,g:4,b:"d",m:"47.867",a:48,state:"صلب",sh:[2,8,10,2],cat:"transition"},
+{z:23,s:"V",name:"Vanadium",ar:"الفاناديوم",p:4,g:5,b:"d",m:"50.942",a:51,state:"صلب",sh:[2,8,11,2],cat:"transition"},
+{z:24,s:"Cr",name:"Chromium",ar:"الكروم",p:4,g:6,b:"d",m:"51.996",a:52,state:"صلب",sh:[2,8,13,1],cat:"transition"},
+{z:25,s:"Mn",name:"Manganese",ar:"المنغنيز",p:4,g:7,b:"d",m:"54.938",a:55,state:"صلب",sh:[2,8,13,2],cat:"transition"},
+{z:26,s:"Fe",name:"Iron",ar:"الحديد",p:4,g:8,b:"d",m:"55.845",a:56,state:"صلب",sh:[2,8,14,2],cat:"transition"},
+{z:27,s:"Co",name:"Cobalt",ar:"الكوبالت",p:4,g:9,b:"d",m:"58.933",a:59,state:"صلب",sh:[2,8,15,2],cat:"transition"},
+{z:28,s:"Ni",name:"Nickel",ar:"النيكل",p:4,g:10,b:"d",m:"58.693",a:58,state:"صلب",sh:[2,8,16,2],cat:"transition"},
+{z:29,s:"Cu",name:"Copper",ar:"النحاس",p:4,g:11,b:"d",m:"63.546",a:63,state:"صلب",sh:[2,8,18,1],cat:"transition"},
+{z:30,s:"Zn",name:"Zinc",ar:"الزنك",p:4,g:12,b:"d",m:"65.38",a:64,state:"صلب",sh:[2,8,18,2],cat:"transition"},
+{z:31,s:"Ga",name:"Gallium",ar:"الغاليوم",p:4,g:13,b:"p",m:"69.723",a:69,state:"صلب",sh:[2,8,18,3],cat:"post-transition"},
+{z:32,s:"Ge",name:"Germanium",ar:"الجرمانيوم",p:4,g:14,b:"p",m:"72.630",a:74,state:"صلب",sh:[2,8,18,4],cat:"metalloid"},
+{z:33,s:"As",name:"Arsenic",ar:"الزرنيخ",p:4,g:15,b:"p",m:"74.922",a:75,state:"صلب",sh:[2,8,18,5],cat:"metalloid"},
+{z:34,s:"Se",name:"Selenium",ar:"السيلينيوم",p:4,g:16,b:"p",m:"78.971",a:80,state:"صلب",sh:[2,8,18,6],cat:"nonmetal"},
+{z:35,s:"Br",name:"Bromine",ar:"البروم",p:4,g:17,b:"p",m:"79.904",a:79,state:"سائل",sh:[2,8,18,7],cat:"halogen"},
+{z:36,s:"Kr",name:"Krypton",ar:"الكريبتون",p:4,g:18,b:"p",m:"83.798",a:84,state:"غاز",sh:[2,8,18,8],cat:"noble"},
 
 /* 37–54 */
-{
-z:37,s:"Rb",name:"Rubidium",ar:"الروبيديوم",period:5,group:1,block:"s",
-family:"الفلزات القلوية",mass:"85.468",state:"صلب",
-shells:[2,8,18,8,1],neutron:48
-},
-{
-z:38,s:"Sr",name:"Strontium",ar:"السترونشيوم",period:5,group:2,block:"s",
-family:"الفلزات القلوية الترابية",mass:"87.62",state:"صلب",
-shells:[2,8,18,8,2],neutron:50
-},
-{
-z:39,s:"Y",name:"Yttrium",ar:"الإيتريوم",period:5,group:3,block:"d",
-family:"الفلزات الانتقالية",mass:"88.906",state:"صلب",
-shells:[2,8,18,9,2],neutron:50
-},
-{
-z:40,s:"Zr",name:"Zirconium",ar:"الزركونيوم",period:5,group:4,block:"d",
-family:"الفلزات الانتقالية",mass:"91.224",state:"صلب",
-shells:[2,8,18,10,2],neutron:51
-},
-{
-z:41,s:"Nb",name:"Niobium",ar:"النيوبيوم",period:5,group:5,block:"d",
-family:"الفلزات الانتقالية",mass:"92.906",state:"صلب",
-shells:[2,8,18,12,1],neutron:52
-},
-{
-z:42,s:"Mo",name:"Molybdenum",ar:"الموليبدينوم",period:5,group:6,block:"d",
-family:"الفلزات الانتقالية",mass:"95.95",state:"صلب",
-shells:[2,8,18,13,1],neutron:54
-},
-{
-z:43,s:"Tc",name:"Technetium",ar:"التكنيتيوم",period:5,group:7,block:"d",
-family:"الفلزات الانتقالية",mass:"[98]",state:"صلب",
-shells:[2,8,18,13,2],neutron:55
-},
-{
-z:44,s:"Ru",name:"Ruthenium",ar:"الروثينيوم",period:5,group:8,block:"d",
-family:"الفلزات الانتقالية",mass:"101.07",state:"صلب",
-shells:[2,8,18,15,1],neutron:57
-},
-{
-z:45,s:"Rh",name:"Rhodium",ar:"الروديوم",period:5,group:9,block:"d",
-family:"الفلزات الانتقالية",mass:"102.91",state:"صلب",
-shells:[2,8,18,16,1],neutron:58
-},
-{
-z:46,s:"Pd",name:"Palladium",ar:"البلاديوم",period:5,group:10,block:"d",
-family:"الفلزات الانتقالية",mass:"106.42",state:"صلب",
-shells:[2,8,18,18],neutron:60
-},
-{
-z:47,s:"Ag",name:"Silver",ar:"الفضة",period:5,group:11,block:"d",
-family:"الفلزات الانتقالية",mass:"107.87",state:"صلب",
-shells:[2,8,18,18,1],neutron:61
-},
-{
-z:48,s:"Cd",name:"Cadmium",ar:"الكادميوم",period:5,group:12,block:"d",
-family:"الفلزات الانتقالية",mass:"112.41",state:"صلب",
-shells:[2,8,18,18,2],neutron:64
-},
-{
-z:49,s:"In",name:"Indium",ar:"الإنديوم",period:5,group:13,block:"p",
-family:"عائلة البورون",mass:"114.82",state:"صلب",
-shells:[2,8,18,18,3],neutron:66
-},
-{
-z:50,s:"Sn",name:"Tin",ar:"القصدير",period:5,group:14,block:"p",
-family:"عائلة الكربون",mass:"118.71",state:"صلب",
-shells:[2,8,18,18,4],neutron:69
-},
-{
-z:51,s:"Sb",name:"Antimony",ar:"الأنتيمون",period:5,group:15,block:"p",
-family:"عائلة النيتروجين",mass:"121.76",state:"صلب",
-shells:[2,8,18,18,5],neutron:71
-},
-{
-z:52,s:"Te",name:"Tellurium",ar:"التيلوريوم",period:5,group:16,block:"p",
-family:"عائلة الأكسجين",mass:"127.60",state:"صلب",
-shells:[2,8,18,18,6],neutron:76
-},
-{
-z:53,s:"I",name:"Iodine",ar:"اليود",period:5,group:17,block:"p",
-family:"الهالوجينات",mass:"126.90",state:"صلب",
-shells:[2,8,18,18,7],neutron:74
-},
-{
-z:54,s:"Xe",name:"Xenon",ar:"الزينون",period:5,group:18,block:"p",
-family:"الغازات النبيلة",mass:"131.29",state:"غاز",
-shells:[2,8,18,18,8],neutron:77
-},
+{z:37,s:"Rb",name:"Rubidium",ar:"الروبيديوم",p:5,g:1,b:"s",m:"85.468",a:85,state:"صلب",sh:[2,8,18,8,1],cat:"alkali"},
+{z:38,s:"Sr",name:"Strontium",ar:"السترونشيوم",p:5,g:2,b:"s",m:"87.62",a:88,state:"صلب",sh:[2,8,18,8,2],cat:"alkaline"},
+{z:39,s:"Y",name:"Yttrium",ar:"الإيتريوم",p:5,g:3,b:"d",m:"88.906",a:89,state:"صلب",sh:[2,8,18,9,2],cat:"transition"},
+{z:40,s:"Zr",name:"Zirconium",ar:"الزركونيوم",p:5,g:4,b:"d",m:"91.224",a:90,state:"صلب",sh:[2,8,18,10,2],cat:"transition"},
+{z:41,s:"Nb",name:"Niobium",ar:"النيوبيوم",p:5,g:5,b:"d",m:"92.906",a:93,state:"صلب",sh:[2,8,18,12,1],cat:"transition"},
+{z:42,s:"Mo",name:"Molybdenum",ar:"الموليبدينوم",p:5,g:6,b:"d",m:"95.95",a:98,state:"صلب",sh:[2,8,18,13,1],cat:"transition"},
+{z:43,s:"Tc",name:"Technetium",ar:"التكنيتيوم",p:5,g:7,b:"d",m:"[98]",a:98,state:"صلب",sh:[2,8,18,13,2],cat:"transition"},
+{z:44,s:"Ru",name:"Ruthenium",ar:"الروثينيوم",p:5,g:8,b:"d",m:"101.07",a:102,state:"صلب",sh:[2,8,18,15,1],cat:"transition"},
+{z:45,s:"Rh",name:"Rhodium",ar:"الروديوم",p:5,g:9,b:"d",m:"102.91",a:103,state:"صلب",sh:[2,8,18,16,1],cat:"transition"},
+{z:46,s:"Pd",name:"Palladium",ar:"البلاديوم",p:5,g:10,b:"d",m:"106.42",a:106,state:"صلب",sh:[2,8,18,18],cat:"transition"},
+{z:47,s:"Ag",name:"Silver",ar:"الفضة",p:5,g:11,b:"d",m:"107.87",a:107,state:"صلب",sh:[2,8,18,18,1],cat:"transition"},
+{z:48,s:"Cd",name:"Cadmium",ar:"الكادميوم",p:5,g:12,b:"d",m:"112.41",a:114,state:"صلب",sh:[2,8,18,18,2],cat:"transition"},
+{z:49,s:"In",name:"Indium",ar:"الإنديوم",p:5,g:13,b:"p",m:"114.82",a:115,state:"صلب",sh:[2,8,18,18,3],cat:"post-transition"},
+{z:50,s:"Sn",name:"Tin",ar:"القصدير",p:5,g:14,b:"p",m:"118.71",a:120,state:"صلب",sh:[2,8,18,18,4],cat:"post-transition"},
+{z:51,s:"Sb",name:"Antimony",ar:"الأنتيمون",p:5,g:15,b:"p",m:"121.76",a:121,state:"صلب",sh:[2,8,18,18,5],cat:"metalloid"},
+{z:52,s:"Te",name:"Tellurium",ar:"التيلوريوم",p:5,g:16,b:"p",m:"127.60",a:130,state:"صلب",sh:[2,8,18,18,6],cat:"metalloid"},
+{z:53,s:"I",name:"Iodine",ar:"اليود",p:5,g:17,b:"p",m:"126.90",a:127,state:"صلب",sh:[2,8,18,18,7],cat:"halogen"},
+{z:54,s:"Xe",name:"Xenon",ar:"الزينون",p:5,g:18,b:"p",m:"131.29",a:132,state:"غاز",sh:[2,8,18,18,8],cat:"noble"},
 
 /* 55–71 */
-{
-z:55,s:"Cs",name:"Cesium",ar:"السيزيوم",period:6,group:1,block:"s",
-family:"الفلزات القلوية",mass:"132.91",state:"صلب",
-shells:[2,8,18,18,8,1],neutron:78
-},
-{
-z:56,s:"Ba",name:"Barium",ar:"الباريوم",period:6,group:2,block:"s",
-family:"الفلزات القلوية الترابية",mass:"137.33",state:"صلب",
-shells:[2,8,18,18,8,2],neutron:81
-},
-{
-z:57,s:"La",name:"Lanthanum",ar:"اللانثانوم",period:6,group:3,block:"f",
-family:"اللانثانيدات",mass:"138.91",state:"صلب",
-shells:[2,8,18,18,9,2],neutron:82
-},
-{
-z:58,s:"Ce",name:"Cerium",ar:"السيريوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"140.12",state:"صلب",
-shells:[2,8,18,19,9,2],neutron:82
-},
-{
-z:59,s:"Pr",name:"Praseodymium",ar:"البراسيوديميوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"140.91",state:"صلب",
-shells:[2,8,18,21,8,2],neutron:82
-},
-{
-z:60,s:"Nd",name:"Neodymium",ar:"النيوديميوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"144.24",state:"صلب",
-shells:[2,8,18,22,8,2],neutron:84
-},
-{
-z:61,s:"Pm",name:"Promethium",ar:"البروميثيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"[145]",state:"صلب",
-shells:[2,8,18,23,8,2],neutron:84
-},
-{
-z:62,s:"Sm",name:"Samarium",ar:"الساماريوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"150.36",state:"صلب",
-shells:[2,8,18,24,8,2],neutron:88
-},
-{
-z:63,s:"Eu",name:"Europium",ar:"اليوروبيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"151.96",state:"صلب",
-shells:[2,8,18,25,8,2],neutron:89
-},
-{
-z:64,s:"Gd",name:"Gadolinium",ar:"الغادولينيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"157.25",state:"صلب",
-shells:[2,8,18,25,9,2],neutron:93
-},
-{
-z:65,s:"Tb",name:"Terbium",ar:"التربيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"158.93",state:"صلب",
-shells:[2,8,18,27,8,2],neutron:94
-},
-{
-z:66,s:"Dy",name:"Dysprosium",ar:"الديسبروسيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"162.50",state:"صلب",
-shells:[2,8,18,28,8,2],neutron:97
-},
-{
-z:67,s:"Ho",name:"Holmium",ar:"الهولميوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"164.93",state:"صلب",
-shells:[2,8,18,29,8,2],neutron:98
-},
-{
-z:68,s:"Er",name:"Erbium",ar:"الإربيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"167.26",state:"صلب",
-shells:[2,8,18,30,8,2],neutron:99
-},
-{
-z:69,s:"Tm",name:"Thulium",ar:"الثوليوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"168.93",state:"صلب",
-shells:[2,8,18,31,8,2],neutron:100
-},
-{
-z:70,s:"Yb",name:"Ytterbium",ar:"الإيتربيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"173.05",state:"صلب",
-shells:[2,8,18,32,8,2],neutron:103
-},
-{
-z:71,s:"Lu",name:"Lutetium",ar:"اللوتيتيوم",period:6,group:"—",block:"f",
-family:"اللانثانيدات",mass:"174.97",state:"صلب",
-shells:[2,8,18,32,9,2],neutron:104
-},
+{z:55,s:"Cs",name:"Cesium",ar:"السيزيوم",p:6,g:1,b:"s",m:"132.91",a:133,state:"صلب",sh:[2,8,18,18,8,1],cat:"alkali"},
+{z:56,s:"Ba",name:"Barium",ar:"الباريوم",p:6,g:2,b:"s",m:"137.33",a:138,state:"صلب",sh:[2,8,18,18,8,2],cat:"alkaline"},
+{z:57,s:"La",name:"Lanthanum",ar:"اللانثانوم",p:6,g:3,b:"f",m:"138.905",a:139,state:"صلب",sh:[2,8,18,18,9,2],cat:"lanthanide"},
+{z:58,s:"Ce",name:"Cerium",ar:"السيريوم",p:6,g:"—",b:"f",m:"140.116",a:140,state:"صلب",sh:[2,8,18,19,8,2],cat:"lanthanide"},
+{z:59,s:"Pr",name:"Praseodymium",ar:"البراسيوديميوم",p:6,g:"—",b:"f",m:"140.908",a:141,state:"صلب",sh:[2,8,18,21,8,2],cat:"lanthanide"},
+{z:60,s:"Nd",name:"Neodymium",ar:"النيوديميوم",p:6,g:"—",b:"f",m:"144.242",a:144,state:"صلب",sh:[2,8,18,22,8,2],cat:"lanthanide"},
+{z:61,s:"Pm",name:"Promethium",ar:"البروميثيوم",p:6,g:"—",b:"f",m:"[145]",a:145,state:"صلب",sh:[2,8,18,23,8,2],cat:"lanthanide"},
+{z:62,s:"Sm",name:"Samarium",ar:"الساماريوم",p:6,g:"—",b:"f",m:"150.36",a:152,state:"صلب",sh:[2,8,18,24,8,2],cat:"lanthanide"},
+{z:63,s:"Eu",name:"Europium",ar:"اليوروبيوم",p:6,g:"—",b:"f",m:"151.964",a:153,state:"صلب",sh:[2,8,18,25,8,2],cat:"lanthanide"},
+{z:64,s:"Gd",name:"Gadolinium",ar:"الغادولينيوم",p:6,g:"—",b:"f",m:"157.25",a:158,state:"صلب",sh:[2,8,18,25,9,2],cat:"lanthanide"},
+{z:65,s:"Tb",name:"Terbium",ar:"التربيوم",p:6,g:"—",b:"f",m:"158.925",a:159,state:"صلب",sh:[2,8,18,27,8,2],cat:"lanthanide"},
+{z:66,s:"Dy",name:"Dysprosium",ar:"الديسبروسيوم",p:6,g:"—",b:"f",m:"162.500",a:163,state:"صلب",sh:[2,8,18,28,8,2],cat:"lanthanide"},
+{z:67,s:"Ho",name:"Holmium",ar:"الهولميوم",p:6,g:"—",b:"f",m:"164.930",a:165,state:"صلب",sh:[2,8,18,29,8,2],cat:"lanthanide"},
+{z:68,s:"Er",name:"Erbium",ar:"الإربيوم",p:6,g:"—",b:"f",m:"167.259",a:167,state:"صلب",sh:[2,8,18,30,8,2],cat:"lanthanide"},
+{z:69,s:"Tm",name:"Thulium",ar:"الثوليوم",p:6,g:"—",b:"f",m:"168.934",a:169,state:"صلب",sh:[2,8,18,31,8,2],cat:"lanthanide"},
+{z:70,s:"Yb",name:"Ytterbium",ar:"الإيتربيوم",p:6,g:"—",b:"f",m:"173.045",a:174,state:"صلب",sh:[2,8,18,32,8,2],cat:"lanthanide"},
+{z:71,s:"Lu",name:"Lutetium",ar:"اللوتيتيوم",p:6,g:"—",b:"f",m:"174.967",a:175,state:"صلب",sh:[2,8,18,32,9,2],cat:"lanthanide"},
 
 /* 72–86 */
-{
-z:72,s:"Hf",name:"Hafnium",ar:"الهافنيوم",period:6,group:4,block:"d",
-family:"الفلزات الانتقالية",mass:"178.49",state:"صلب",
-shells:[2,8,18,32,10,2],neutron:106
-},
-{
-z:73,s:"Ta",name:"Tantalum",ar:"التنتالوم",period:6,group:5,block:"d",
-family:"الفلزات الانتقالية",mass:"180.95",state:"صلب",
-shells:[2,8,18,32,11,2],neutron:108
-},
-{
-z:74,s:"W",name:"Tungsten",ar:"التنغستن",period:6,group:6,block:"d",
-family:"الفلزات الانتقالية",mass:"183.84",state:"صلب",
-shells:[2,8,18,32,12,2],neutron:110
-},
-{
-z:75,s:"Re",name:"Rhenium",ar:"الرينيوم",period:6,group:7,block:"d",
-family:"الفلزات الانتقالية",mass:"186.21",state:"صلب",
-shells:[2,8,18,32,13,2],neutron:111
-},
-{
-z:76,s:"Os",name:"Osmium",ar:"الأوزميوم",period:6,group:8,block:"d",
-family:"الفلزات الانتقالية",mass:"190.23",state:"صلب",
-shells:[2,8,18,32,14,2],neutron:114
-},
-{
-z:77,s:"Ir",name:"Iridium",ar:"الإيريديوم",period:6,group:9,block:"d",
-family:"الفلزات الانتقالية",mass:"192.22",state:"صلب",
-shells:[2,8,18,32,15,2],neutron:115
-},
-{
-z:78,s:"Pt",name:"Platinum",ar:"البلاتين",period:6,group:10,block:"d",
-family:"الفلزات الانتقالية",mass:"195.08",state:"صلب",
-shells:[2,8,18,32,17,1],neutron:117
-},
-{
-z:79,s:"Au",name:"Gold",ar:"الذهب",period:6,group:11,block:"d",
-family:"الفلزات الانتقالية",mass:"196.97",state:"صلب",
-shells:[2,8,18,32,18,1],neutron:118
-},
-{
-z:80,s:"Hg",name:"Mercury",ar:"الزئبق",period:6,group:12,block:"d",
-family:"الفلزات الانتقالية",mass:"200.59",state:"سائل",
-shells:[2,8,18,32,18,2],neutron:121
-},
-{
-z:81,s:"Tl",name:"Thallium",ar:"الثاليوم",period:6,group:13,block:"p",
-family:"عائلة البورون",mass:"204.38",state:"صلب",
-shells:[2,8,18,32,18,3],neutron:123
-},
-{
-z:82,s:"Pb",name:"Lead",ar:"الرصاص",period:6,group:14,block:"p",
-family:"عائلة الكربون",mass:"207.2",state:"صلب",
-shells:[2,8,18,32,18,4],neutron:125
-},
-{
-z:83,s:"Bi",name:"Bismuth",ar:"البزموت",period:6,group:15,block:"p",
-family:"عائلة النيتروجين",mass:"208.98",state:"صلب",
-shells:[2,8,18,32,18,5],neutron:126
-},
-{
-z:84,s:"Po",name:"Polonium",ar:"البولونيوم",period:6,group:16,block:"p",
-family:"عائلة الأكسجين",mass:"[209]",state:"صلب",
-shells:[2,8,18,32,18,6],neutron:125
-},
-{
-z:85,s:"At",name:"Astatine",ar:"الأستاتين",period:6,group:17,block:"p",
-family:"الهالوجينات",mass:"[210]",state:"صلب",
-shells:[2,8,18,32,18,7],neutron:125
-},
-{
-z:86,s:"Rn",name:"Radon",ar:"الرادون",period:6,group:18,block:"p",
-family:"الغازات النبيلة",mass:"[222]",state:"غاز",
-shells:[2,8,18,32,18,8],neutron:136
-},
+{z:72,s:"Hf",name:"Hafnium",ar:"الهافنيوم",p:6,g:4,b:"d",m:"178.49",a:178,state:"صلب",sh:[2,8,18,32,10,2],cat:"transition"},
+{z:73,s:"Ta",name:"Tantalum",ar:"التنتالوم",p:6,g:5,b:"d",m:"180.948",a:181,state:"صلب",sh:[2,8,18,32,11,2],cat:"transition"},
+{z:74,s:"W",name:"Tungsten",ar:"التنغستن",p:6,g:6,b:"d",m:"183.84",a:184,state:"صلب",sh:[2,8,18,32,12,2],cat:"transition"},
+{z:75,s:"Re",name:"Rhenium",ar:"الرينيوم",p:6,g:7,b:"d",m:"186.207",a:187,state:"صلب",sh:[2,8,18,32,13,2],cat:"transition"},
+{z:76,s:"Os",name:"Osmium",ar:"الأوزميوم",p:6,g:8,b:"d",m:"190.23",a:190,state:"صلب",sh:[2,8,18,32,14,2],cat:"transition"},
+{z:77,s:"Ir",name:"Iridium",ar:"الإيريديوم",p:6,g:9,b:"d",m:"192.217",a:193,state:"صلب",sh:[2,8,18,32,15,2],cat:"transition"},
+{z:78,s:"Pt",name:"Platinum",ar:"البلاتين",p:6,g:10,b:"d",m:"195.084",a:195,state:"صلب",sh:[2,8,18,32,17,1],cat:"transition"},
+{z:79,s:"Au",name:"Gold",ar:"الذهب",p:6,g:11,b:"d",m:"196.967",a:197,state:"صلب",sh:[2,8,18,32,18,1],cat:"transition"},
+{z:80,s:"Hg",name:"Mercury",ar:"الزئبق",p:6,g:12,b:"d",m:"200.592",a:202,state:"سائل",sh:[2,8,18,32,18,2],cat:"transition"},
+{z:81,s:"Tl",name:"Thallium",ar:"الثاليوم",p:6,g:13,b:"p",m:"204.38",a:205,state:"صلب",sh:[2,8,18,32,18,3],cat:"post-transition"},
+{z:82,s:"Pb",name:"Lead",ar:"الرصاص",p:6,g:14,b:"p",m:"207.2",a:208,state:"صلب",sh:[2,8,18,32,18,4],cat:"post-transition"},
+{z:83,s:"Bi",name:"Bismuth",ar:"البزموت",p:6,g:15,b:"p",m:"208.980",a:209,state:"صلب",sh:[2,8,18,32,18,5],cat:"post-transition"},
+{z:84,s:"Po",name:"Polonium",ar:"البولونيوم",p:6,g:16,b:"p",m:"[209]",a:209,state:"صلب",sh:[2,8,18,32,18,6],cat:"metalloid"},
+{z:85,s:"At",name:"Astatine",ar:"الأستاتين",p:6,g:17,b:"p",m:"[210]",a:210,state:"صلب",sh:[2,8,18,32,18,7],cat:"halogen"},
+{z:86,s:"Rn",name:"Radon",ar:"الرادون",p:6,g:18,b:"p",m:"[222]",a:222,state:"غاز",sh:[2,8,18,32,18,8],cat:"noble"},
 
 /* 87–103 */
-{
-z:87,s:"Fr",name:"Francium",ar:"الفرانسيوم",period:7,group:1,block:"s",
-family:"الفلزات القلوية",mass:"[223]",state:"صلب",
-shells:[2,8,18,32,18,8,1],neutron:136
-},
-{
-z:88,s:"Ra",name:"Radium",ar:"الراديوم",period:7,group:2,block:"s",
-family:"الفلزات القلوية الترابية",mass:"[226]",state:"صلب",
-shells:[2,8,18,32,18,8,2],neutron:138
-},
-{
-z:89,s:"Ac",name:"Actinium",ar:"الأكتينيوم",period:7,group:3,block:"f",
-family:"الأكتينيدات",mass:"[227]",state:"صلب",
-shells:[2,8,18,32,18,9,2],neutron:138
-},
-{
-z:90,s:"Th",name:"Thorium",ar:"الثوريوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"232.04",state:"صلب",
-shells:[2,8,18,32,18,10,2],neutron:142
-},
-{
-z:91,s:"Pa",name:"Protactinium",ar:"البروتكتينيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"231.04",state:"صلب",
-shells:[2,8,18,32,20,9,2],neutron:140
-},
-{
-z:92,s:"U",name:"Uranium",ar:"اليورانيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"238.03",state:"صلب",
-shells:[2,8,18,32,21,9,2],neutron:146
-},
-{
-z:93,s:"Np",name:"Neptunium",ar:"النبتونيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[237]",state:"صلب",
-shells:[2,8,18,32,22,9,2],neutron:144
-},
-{
-z:94,s:"Pu",name:"Plutonium",ar:"البلوتونيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[244]",state:"صلب",
-shells:[2,8,18,32,24,8,2],neutron:150
-},
-{
-z:95,s:"Am",name:"Americium",ar:"الأمريسيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[243]",state:"صلب",
-shells:[2,8,18,32,25,8,2],neutron:148
-},
-{
-z:96,s:"Cm",name:"Curium",ar:"الكوريوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[247]",state:"صلب",
-shells:[2,8,18,32,25,9,2],neutron:151
-},
-{
-z:97,s:"Bk",name:"Berkelium",ar:"البركيليوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[247]",state:"صلب",
-shells:[2,8,18,32,27,8,2],neutron:150
-},
-{
-z:98,s:"Cf",name:"Californium",ar:"الكاليفورنيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[251]",state:"صلب",
-shells:[2,8,18,32,28,8,2],neutron:153
-},
-{
-z:99,s:"Es",name:"Einsteinium",ar:"الأينشتاينيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[252]",state:"صلب",
-shells:[2,8,18,32,29,8,2],neutron:153
-},
-{
-z:100,s:"Fm",name:"Fermium",ar:"الفرميوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[257]",state:"صلب",
-shells:[2,8,18,32,30,8,2],neutron:157
-},
-{
-z:101,s:"Md",name:"Mendelevium",ar:"المندليفيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[258]",state:"صلب",
-shells:[2,8,18,32,31,8,2],neutron:157
-},
-{
-z:102,s:"No",name:"Nobelium",ar:"النوبليوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[259]",state:"صلب",
-shells:[2,8,18,32,32,8],neutron:157
-},
-{
-z:103,s:"Lr",name:"Lawrencium",ar:"اللورنسيوم",period:7,group:"—",block:"f",
-family:"الأكتينيدات",mass:"[262]",state:"صلب",
-shells:[2,8,18,32,32,8,3],neutron:159
-},
+{z:87,s:"Fr",name:"Francium",ar:"الفرانسيوم",p:7,g:1,b:"s",m:"[223]",a:223,state:"صلب",sh:[2,8,18,32,18,8,1],cat:"alkali"},
+{z:88,s:"Ra",name:"Radium",ar:"الراديوم",p:7,g:2,b:"s",m:"[226]",a:226,state:"صلب",sh:[2,8,18,32,18,8,2],cat:"alkaline"},
+{z:89,s:"Ac",name:"Actinium",ar:"الأكتينيوم",p:7,g:3,b:"f",m:"[227]",a:227,state:"صلب",sh:[2,8,18,32,18,9,2],cat:"actinide"},
+{z:90,s:"Th",name:"Thorium",ar:"الثوريوم",p:7,g:"—",b:"f",m:"232.038",a:232,state:"صلب",sh:[2,8,18,32,18,10,2],cat:"actinide"},
+{z:91,s:"Pa",name:"Protactinium",ar:"البروتكتينيوم",p:7,g:"—",b:"f",m:"231.036",a:231,state:"صلب",sh:[2,8,18,32,20,9,2],cat:"actinide"},
+{z:92,s:"U",name:"Uranium",ar:"اليورانيوم",p:7,g:"—",b:"f",m:"238.029",a:238,state:"صلب",sh:[2,8,18,32,21,9,2],cat:"actinide"},
+{z:93,s:"Np",name:"Neptunium",ar:"النبتونيوم",p:7,g:"—",b:"f",m:"[237]",a:237,state:"صلب",sh:[2,8,18,32,22,9,2],cat:"actinide"},
+{z:94,s:"Pu",name:"Plutonium",ar:"البلوتونيوم",p:7,g:"—",b:"f",m:"[244]",a:244,state:"صلب",sh:[2,8,18,32,24,8,2],cat:"actinide"},
+{z:95,s:"Am",name:"Americium",ar:"الأمريسيوم",p:7,g:"—",b:"f",m:"[243]",a:243,state:"صلب",sh:[2,8,18,32,25,8,2],cat:"actinide"},
+{z:96,s:"Cm",name:"Curium",ar:"الكوريوم",p:7,g:"—",b:"f",m:"[247]",a:247,state:"صلب",sh:[2,8,18,32,25,9,2],cat:"actinide"},
+{z:97,s:"Bk",name:"Berkelium",ar:"البركيليوم",p:7,g:"—",b:"f",m:"[247]",a:247,state:"صلب",sh:[2,8,18,32,27,8,2],cat:"actinide"},
+{z:98,s:"Cf",name:"Californium",ar:"الكاليفورنيوم",p:7,g:"—",b:"f",m:"[251]",a:251,state:"صلب",sh:[2,8,18,32,28,8,2],cat:"actinide"},
+{z:99,s:"Es",name:"Einsteinium",ar:"الأينشتاينيوم",p:7,g:"—",b:"f",m:"[252]",a:252,state:"صلب",sh:[2,8,18,32,29,8,2],cat:"actinide"},
+{z:100,s:"Fm",name:"Fermium",ar:"الفرميوم",p:7,g:"—",b:"f",m:"[257]",a:257,state:"صلب",sh:[2,8,18,32,30,8,2],cat:"actinide"},
+{z:101,s:"Md",name:"Mendelevium",ar:"المندليفيوم",p:7,g:"—",b:"f",m:"[258]",a:258,state:"صلب",sh:[2,8,18,32,31,8,2],cat:"actinide"},
+{z:102,s:"No",name:"Nobelium",ar:"النوبليوم",p:7,g:"—",b:"f",m:"[259]",a:259,state:"صلب",sh:[2,8,18,32,32,8,2],cat:"actinide"},
+{z:103,s:"Lr",name:"Lawrencium",ar:"اللورنسيوم",p:7,g:"—",b:"f",m:"[262]",a:262,state:"صلب",sh:[2,8,18,32,32,8,3],cat:"actinide"},
 
 /* 104–118 */
-{
-z:104,s:"Rf",name:"Rutherfordium",ar:"الرذرفورديوم",period:7,group:4,block:"d",
-family:"الفلزات الانتقالية",mass:"[267]",state:"غير معروف",
-shells:[2,8,18,32,32,10,2],neutron:163
-},
-{
-z:105,s:"Db",name:"Dubnium",ar:"الدوبنيوم",period:7,group:5,block:"d",
-family:"الفلزات الانتقالية",mass:"[268]",state:"غير معروف",
-shells:[2,8,18,32,32,11,2],neutron:163
-},
-{
-z:106,s:"Sg",name:"Seaborgium",ar:"السيبورغيوم",period:7,group:6,block:"d",
-family:"الفلزات الانتقالية",mass:"[269]",state:"غير معروف",
-shells:[2,8,18,32,32,12,2],neutron:163
-},
-{
-z:107,s:"Bh",name:"Bohrium",ar:"البوهريوم",period:7,group:7,block:"d",
-family:"الفلزات الانتقالية",mass:"[270]",state:"غير معروف",
-shells:[2,8,18,32,32,13,2],neutron:163
-},
-{
-z:108,s:"Hs",name:"Hassium",ar:"الهاسيوم",period:7,group:8,block:"d",
-family:"الفلزات الانتقالية",mass:"[277]",state:"غير معروف",
-shells:[2,8,18,32,32,14,2],neutron:169
-},
-{
-z:109,s:"Mt",name:"Meitnerium",ar:"الميتنريوم",period:7,group:9,block:"d",
-family:"الفلزات الانتقالية",mass:"[278]",state:"غير معروف",
-shells:[2,8,18,32,32,15,2],neutron:169
-},
-{
-z:110,s:"Ds",name:"Darmstadtium",ar:"الدارمشتاتيوم",period:7,group:10,block:"d",
-family:"الفلزات الانتقالية",mass:"[281]",state:"غير معروف",
-shells:[2,8,18,32,32,16,2],neutron:171
-},
-{
-z:111,s:"Rg",name:"Roentgenium",ar:"الرونتجينيوم",period:7,group:11,block:"d",
-family:"الفلزات الانتقالية",mass:"[282]",state:"غير معروف",
-shells:[2,8,18,32,32,17,2],neutron:171
-},
-{
-z:112,s:"Cn",name:"Copernicium",ar:"الكوبرنيسيوم",period:7,group:12,block:"d",
-family:"الفلزات الانتقالية",mass:"[285]",state:"غير معروف",
-shells:[2,8,18,32,32,18,2],neutron:173
-},
-{
-z:113,s:"Nh",name:"Nihonium",ar:"نيهونيوم",period:7,group:13,block:"p",
-family:"عائلة البورون",mass:"[286]",state:"غير معروف",
-shells:[2,8,18,32,32,18,3],neutron:173
-},
-{
-z:114,s:"Fl",name:"Flerovium",ar:"الفليروفيوم",period:7,group:14,block:"p",
-family:"عائلة الكربون",mass:"[289]",state:"غير معروف",
-shells:[2,8,18,32,32,18,4],neutron:175
-},
-{
-z:115,s:"Mc",name:"Moscovium",ar:"الموسكوفيوم",period:7,group:15,block:"p",
-family:"عائلة النيتروجين",mass:"[290]",state:"غير معروف",
-shells:[2,8,18,32,32,18,5],neutron:175
-},
-{
-z:116,s:"Lv",name:"Livermorium",ar:"الليفرموريوم",period:7,group:16,block:"p",
-family:"عائلة الأكسجين",mass:"[293]",state:"غير معروف",
-shells:[2,8,18,32,32,18,6],neutron:177
-},
-{
-z:117,s:"Ts",name:"Tennessine",ar:"التينيسين",period:7,group:17,block:"p",
-family:"الهالوجينات",mass:"[294]",state:"غير معروف",
-shells:[2,8,18,32,32,18,7],neutron:177
-},
-{
-z:118,s:"Og",name:"Oganesson",ar:"الأوغانيسون",period:7,group:18,block:"p",
-family:"الغازات النبيلة",mass:"[294]",state:"غير معروف",
-shells:[2,8,18,32,32,18,8],neutron:176
-}
+{z:104,s:"Rf",name:"Rutherfordium",ar:"الرذرفورديوم",p:7,g:4,b:"d",m:"[267]",a:267,state:"صلب",sh:[2,8,18,32,32,10,2],cat:"transition"},
+{z:105,s:"Db",name:"Dubnium",ar:"الدوبنيوم",p:7,g:5,b:"d",m:"[268]",a:268,state:"صلب",sh:[2,8,18,32,32,11,2],cat:"transition"},
+{z:106,s:"Sg",name:"Seaborgium",ar:"السيبورغيوم",p:7,g:6,b:"d",m:"[269]",a:269,state:"صلب",sh:[2,8,18,32,32,12,2],cat:"transition"},
+{z:107,s:"Bh",name:"Bohrium",ar:"البوهريوم",p:7,g:7,b:"d",m:"[270]",a:270,state:"صلب",sh:[2,8,18,32,32,13,2],cat:"transition"},
+{z:108,s:"Hs",name:"Hassium",ar:"الهاسيوم",p:7,g:8,b:"d",m:"[277]",a:277,state:"صلب",sh:[2,8,18,32,32,14,2],cat:"transition"},
+{z:109,s:"Mt",name:"Meitnerium",ar:"الميتنريوم",p:7,g:9,b:"d",m:"[278]",a:278,state:"صلب",sh:[2,8,18,32,32,15,2],cat:"transition"},
+{z:110,s:"Ds",name:"Darmstadtium",ar:"الدارمشتاتيوم",p:7,g:10,b:"d",m:"[281]",a:281,state:"صلب",sh:[2,8,18,32,32,16,2],cat:"transition"},
+{z:111,s:"Rg",name:"Roentgenium",ar:"الرونتجينيوم",p:7,g:11,b:"d",m:"[282]",a:282,state:"صلب",sh:[2,8,18,32,32,17,2],cat:"transition"},
+{z:112,s:"Cn",name:"Copernicium",ar:"الكوبرنيسيوم",p:7,g:12,b:"d",m:"[285]",a:285,state:"صلب",sh:[2,8,18,32,32,18,2],cat:"transition"},
+{z:113,s:"Nh",name:"Nihonium",ar:"النيهونيوم",p:7,g:13,b:"p",m:"[286]",a:286,state:"صلب",sh:[2,8,18,32,32,18,3],cat:"post-transition"},
+{z:114,s:"Fl",name:"Flerovium",ar:"الفليروفيوم",p:7,g:14,b:"p",m:"[289]",a:289,state:"صلب",sh:[2,8,18,32,32,18,4],cat:"post-transition"},
+{z:115,s:"Mc",name:"Moscovium",ar:"الموسكوفيوم",p:7,g:15,b:"p",m:"[290]",a:290,state:"صلب",sh:[2,8,18,32,32,18,5],cat:"post-transition"},
+{z:116,s:"Lv",name:"Livermorium",ar:"الليفرموريوم",p:7,g:16,b:"p",m:"[293]",a:293,state:"صلب",sh:[2,8,18,32,32,18,6],cat:"post-transition"},
+{z:117,s:"Ts",name:"Tennessine",ar:"التينيسين",p:7,g:17,b:"p",m:"[294]",a:294,state:"صلب",sh:[2,8,18,32,32,18,7],cat:"halogen"},
+{z:118,s:"Og",name:"Oganesson",ar:"الأوغانيسون",p:7,g:18,b:"p",m:"[294]",a:294,state:"صلب",sh:[2,8,18,32,32,18,8],cat:"noble"}
 
 ];
 
 
-/* =========================================================
-   FAMILY DESCRIPTIONS
-========================================================= */
+/* =========================
+   سلوك المجموعة
+========================= */
 
-const familyDescriptions = {
+const groupBehavior = {
 
-"الهيدروجين":
-"الهيدروجين عنصر فريد وخفيف جدًا، وهو أكثر العناصر وفرة في الكون. له إلكترون واحد ويختلف عن عناصر المجموعة الأولى في كثير من خواصه.",
+1:{
+    valence:"1",
+    behavior:"تميل لفقد إلكترون واحد لتكوين أيون موجب +1"
+},
 
-"الفلزات القلوية":
-"عناصر المجموعة الأولى، فلزات شديدة التفاعل ولها إلكترون تكافؤ واحد، وتزداد تفاعليتها عمومًا نزولًا في المجموعة.",
+2:{
+    valence:"2",
+    behavior:"تميل لفقد إلكترونين لتكوين أيون موجب +2"
+},
 
-"الفلزات القلوية الترابية":
-"عناصر المجموعة الثانية، فلزات نشطة تمتلك إلكتروني تكافؤ، وتكوّن غالبًا أيونات بشحنة +2.",
+13:{
+    valence:"3",
+    behavior:"تميل لفقد 3 إلكترونات لتكوين أيون موجب +3"
+},
 
-"عائلة البورون":
-"عناصر المجموعة 13، وتمتلك أربعة مستويات رئيسية من الإلكترونات الخارجية في تركيبها العام، وتضم فلزات وأشباه فلزات ولافلزًا.",
+14:{
+    valence:"4",
+    behavior:"تميل للمشاركة بالإلكترونات، وقد تفقد أو تكتسب إلكترونات حسب العنصر"
+},
 
-"عائلة الكربون":
-"عناصر المجموعة 14، وتمتلك أربعة إلكترونات تكافؤ، وتظهر فيها خواص متنوعة من اللافلزات إلى الفلزات.",
+15:{
+    valence:"5",
+    behavior:"تميل لاكتساب 3 إلكترونات لتكوين أيون سالب −3"
+},
 
-"عائلة النيتروجين":
-"عناصر المجموعة 15، تمتلك خمسة إلكترونات تكافؤ، وتتنوع بين اللافلزات وأشباه الفلزات والفلزات.",
+16:{
+    valence:"6",
+    behavior:"تميل لاكتساب إلكترونين لتكوين أيون سالب −2"
+},
 
-"عائلة الأكسجين":
-"عناصر المجموعة 16، تمتلك ستة إلكترونات تكافؤ، وتشمل الأكسجين والكبريت وعناصر أخرى ذات خواص كيميائية مهمة.",
+17:{
+    valence:"7",
+    behavior:"تميل لاكتساب إلكترون واحد لتكوين أيون سالب −1"
+},
 
-"الهالوجينات":
-"عناصر المجموعة 17، لافلزات شديدة التفاعل تمتلك سبعة إلكترونات تكافؤ وتميل إلى اكتساب إلكترون واحد.",
+18:{
+    valence:"8",
+    behavior:"غلاف التكافؤ مكتمل، لذلك تكون قليلة التفاعل"
+}
 
-"الغازات النبيلة":
-"عناصر المجموعة 18، تتميز باكتمال غلافها الخارجي وبضعف تفاعلها الكيميائي مقارنة بمعظم العناصر الأخرى.",
-
-"الفلزات الانتقالية":
-"تقع غالبًا في وسط الجدول الدوري ضمن الفئة d، وتمتاز بتنوع حالات التأكسد وتكوين مركبات ملونة وخواص فلزية مميزة.",
-
-"اللانثانيدات":
-"سلسلة من العناصر في الفئة f، تمتلك خواص فلزية متقاربة وتستخدم في المغناطيسات والإلكترونيات والعديد من التطبيقات التقنية.",
-
-"الأكتينيدات":
-"سلسلة من العناصر في الفئة f، جميعها مشعة، وتشمل عناصر مهمة في أبحاث الطاقة والفيزياء النووية."
 };
 
 
-/* =========================================================
-   PERIODIC TABLE POSITION
-========================================================= */
+/* =========================
+   POSITION
+========================= */
 
 function positionForElement(element){
 
@@ -1557,84 +995,60 @@ function positionForElement(element){
         };
     }
 
-    const row = element.period;
+    let col = element.g;
 
-    let col = element.group;
-
-    if(element.z === 57) col = 3;
-    if(element.z === 89) col = 3;
+    if(element.z === 57 || element.z === 89){
+        col = 3;
+    }
 
     return {
-        row,
-        col
+        row:element.p,
+        col:col
     };
 }
 
 
-/* =========================================================
-   CATEGORY CLASS
-========================================================= */
+/* =========================
+   CATEGORY
+========================= */
 
 function categoryClass(element){
-
-    if(element.family === "الفلزات القلوية")
-        return "alkali";
-
-    if(element.family === "الفلزات القلوية الترابية")
-        return "alkaline";
-
-    if(element.family === "الفلزات الانتقالية")
-        return "transition";
-
-    if(element.family === "اللانثانيدات")
-        return "lanthanide";
-
-    if(element.family === "الأكتينيدات")
-        return "actinide";
-
-    if(element.family === "الهالوجينات")
-        return "halogen";
-
-    if(element.family === "الغازات النبيلة")
-        return "noble";
-
-    if(element.family === "الهيدروجين")
-        return "nonmetal";
-
-    if(
-        element.family === "عائلة البورون" ||
-        element.family === "عائلة الكربون" ||
-        element.family === "عائلة النيتروجين" ||
-        element.family === "عائلة الأكسجين"
-    ){
-        return "post-transition";
-    }
-
-    return "unknown";
+    return element.cat;
 }
 
 
-/* =========================================================
-   CREATE PERIODIC TABLE
-========================================================= */
+/* =========================
+   PERIODIC TABLE
+========================= */
 
-const table = document.getElementById("periodicTable");
+const table =
+    document.getElementById("periodicTable");
 
 elements.forEach(element => {
 
-    const position = positionForElement(element);
+    const position =
+        positionForElement(element);
 
-    const card = document.createElement("div");
+    const card =
+        document.createElement("div");
 
     card.className =
         `element ${categoryClass(element)}`;
 
-    card.dataset.symbol = element.s.toLowerCase();
-    card.dataset.name = element.name.toLowerCase();
-    card.dataset.z = element.z;
+    card.dataset.symbol =
+        element.s.toLowerCase();
 
-    card.style.gridRow = position.row;
-    card.style.gridColumn = position.col;
+    card.dataset.name =
+        element.name.toLowerCase();
+
+    card.dataset.z =
+        element.z;
+
+    card.style.gridRow =
+        position.row;
+
+    card.style.gridColumn =
+        position.col;
 
     card.innerHTML = `
         <span class="number">${element.z}</span>
@@ -1642,7 +1056,7 @@ elements.forEach(element => {
         <span class="name">${element.ar}</span>
     `;
 
-    card.addEventListener("click", () => {
+    card.addEventListener("click",() => {
         openAtom(element);
     });
 
@@ -1650,13 +1064,14 @@ elements.forEach(element => {
 });
 
 
-/* =========================================================
+/* =========================
    SEARCH
-========================================================= */
+========================= */
 
-const searchInput = document.getElementById("searchInput");
+const searchInput =
+    document.getElementById("searchInput");
 
-searchInput.addEventListener("input", () => {
+searchInput.addEventListener("input",() => {
 
     const query =
         searchInput.value.trim().toLowerCase();
@@ -1669,10 +1084,11 @@ searchInput.addEventListener("input", () => {
 
     if(!query) return;
 
-    const found = elements.find(element =>
-        element.s.toLowerCase() === query ||
-        element.name.toLowerCase() === query
-    );
+    const found =
+        elements.find(element =>
+            element.s.toLowerCase() === query ||
+            element.name.toLowerCase() === query
+        );
 
     if(found){
 
@@ -1692,13 +1108,12 @@ searchInput.addEventListener("input", () => {
             });
         }
     }
-
 });
 
 
-/* =========================================================
+/* =========================
    PAGE SWITCHING
-========================================================= */
+========================= */
 
 const mainPage =
     document.getElementById("mainPage");
@@ -1709,10 +1124,10 @@ const atomPage =
 const backButton =
     document.getElementById("backButton");
 
-
 function openAtom(element){
 
     mainPage.style.display = "none";
+
     atomPage.classList.add("active");
 
     window.scrollTo({
@@ -1723,10 +1138,10 @@ function openAtom(element){
     renderAtom(element);
 }
 
-
-backButton.addEventListener("click", () => {
+backButton.addEventListener("click",() => {
 
     atomPage.classList.remove("active");
+
     mainPage.style.display = "block";
 
     window.scrollTo({
@@ -1736,9 +1151,9 @@ backButton.addEventListener("click", () => {
 });
 
 
-/* =========================================================
+/* =========================
    ATOM RENDER
-========================================================= */
+========================= */
 
 function renderAtom(element){
 
@@ -1754,14 +1169,17 @@ function renderAtom(element){
     document.getElementById("atomicNumber").textContent =
         element.z;
 
+    document.getElementById("massNumber").textContent =
+        element.a;
+
     document.getElementById("atomicMass").textContent =
-        element.mass;
+        element.m;
 
     document.getElementById("protons").textContent =
         element.z;
 
     document.getElementById("neutrons").textContent =
-        element.neutron;
+        element.a - element.z;
 
     document.getElementById("electronCount").textContent =
         element.z;
@@ -1770,33 +1188,62 @@ function renderAtom(element){
         element.state;
 
     document.getElementById("group").textContent =
-        element.group === "—"
+        element.g === "—"
             ? "سلسلة داخلية"
-            : element.group;
+            : element.g;
 
     document.getElementById("period").textContent =
-        element.period;
+        element.p;
 
     document.getElementById("block").textContent =
-        element.block;
+        element.b;
 
-    document.getElementById("family").textContent =
-        element.family;
 
-    document.getElementById("familyDescription").textContent =
-        familyDescriptions[element.family] || "";
+    let valence;
+    let behavior;
+
+    if(element.z === 1){
+
+        valence =
+            "1";
+
+        behavior =
+            "يمكنه فقد أو اكتساب إلكترون حسب التفاعل، لذلك يختلف عن الفلزات القلوية رغم وجوده في المجموعة الأولى.";
+
+    }else if(
+        typeof element.g === "number" &&
+        groupBehavior[element.g]
+    ){
+
+        valence =
+            groupBehavior[element.g].valence;
+
+        behavior =
+            groupBehavior[element.g].behavior;
+
+        if(element.g === 18 && element.z === 2){
+            valence = "2";
+        }
+
+    }else{
+
+        valence =
+            "تختلف حسب العنصر";
+
+        behavior =
+            "قد تفقد إلكترونات من المستويين الخارجي والفرعي d، وتتميز بتعدد حالات التأكسد.";
+
+    }
+
+    document.getElementById("valence").textContent =
+        valence;
+
+    document.getElementById("groupBehavior").textContent =
+        behavior;
 
 
     const atomVisual =
         document.getElementById("atomVisual");
-
-    /*
-       من الزينون 54 وما بعده:
-       - نواة أصغر
-       - جسيمات أصغر
-       - إلكترونات أصغر
-       - حتى 7 مستويات
-    */
 
     if(element.z >= 54){
         atomVisual.classList.add("heavy-atom");
@@ -1805,16 +1252,12 @@ function renderAtom(element){
     }
 
 
-    /*
-       إظهار عدد المستويات الحقيقي فقط
-    */
-
     const orbits =
         document.querySelectorAll(".orbit");
 
     orbits.forEach((orbit,index) => {
 
-        if(index < element.shells.length){
+        if(index < element.sh.length){
             orbit.style.display = "block";
         }else{
             orbit.style.display = "none";
@@ -1823,19 +1266,16 @@ function renderAtom(element){
     });
 
 
-    /*
-       الإلكترونات
-    */
-
     const electronsContainer =
         document.getElementById("electrons");
 
     electronsContainer.innerHTML = "";
 
 
-    element.shells.forEach((count,shellIndex) => {
+    element.sh.forEach((count,shellIndex) => {
 
-        const orbitNumber = shellIndex + 1;
+        const orbitNumber =
+            shellIndex + 1;
 
         const orbit =
             document.querySelector(
@@ -1844,12 +1284,6 @@ function renderAtom(element){
 
         if(!orbit) return;
 
-        const rect =
-            orbit.getBoundingClientRect();
-
-        /*
-           نعتمد نصف قطر CSS بدل حجم الشاشة
-        */
 
         const computed =
             getComputedStyle(orbit);
@@ -1872,13 +1306,11 @@ function renderAtom(element){
             const electron =
                 document.createElement("div");
 
-            electron.className = "electron";
+            electron.className =
+                "electron";
 
-            electron.textContent = "e⁻";
-
-            /*
-               توزيع متساوٍ حول المستوى
-            */
+            electron.textContent =
+                "e⁻";
 
             const angle =
                 (360 / count) * i - 90;
@@ -1892,16 +1324,13 @@ function renderAtom(element){
             const y =
                 Math.sin(rad) * radiusY;
 
-
             electron.style.left =
                 `calc(50% + ${x}px)`;
 
             electron.style.top =
                 `calc(50% + ${y}px)`;
 
-
             atomVisual.appendChild(electron);
-
         }
 
     });
@@ -1909,9 +1338,9 @@ function renderAtom(element){
 }
 
 
-/* =========================================================
+/* =========================
    INTRO
-========================================================= */
+========================= */
 
 setTimeout(() => {
 
