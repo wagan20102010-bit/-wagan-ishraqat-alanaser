@@ -241,7 +241,7 @@ body{
 
 
 /* =========================
-   ATOM PAGE
+   صفحة العنصر
 ========================= */
 
 #atomPage{
@@ -297,7 +297,7 @@ body{
 
 
 /* =========================
-   الأقسام الستة
+   تبويبات الأقسام
 ========================= */
 
 .element-sections{
@@ -355,7 +355,7 @@ body{
 
 
 /* =========================
-   ATOM SECTION
+   قسم الذرة
 ========================= */
 
 .atom-section{
@@ -579,7 +579,7 @@ body{
 
 
 /* =========================================================
-   ELECTRONIC DISTRIBUTION SECTION
+   التوزيع الإلكتروني
 ========================================================= */
 
 .electron-section{
@@ -636,7 +636,7 @@ body{
 .configuration{
     direction:ltr;
     text-align:center;
-    font-family:"Arial",sans-serif;
+    font-family:Arial,sans-serif;
     color:#4d455b;
     font-size:clamp(18px,3vw,25px);
     font-weight:800;
@@ -678,7 +678,7 @@ body{
 }
 
 
-/* السحابة */
+/* سحابة الإلكترونات */
 
 .cloud-card{
     background:
@@ -775,20 +775,12 @@ body{
     background:#4fa9ed;
     box-shadow:0 0 7px rgba(79,169,237,.55);
     z-index:4;
-    animation:
-        cloudFloat var(--dur) ease-in-out infinite alternate;
+    animation:cloudFloat var(--dur) ease-in-out infinite alternate;
     animation-delay:var(--delay);
 }
 
-.cloud-electron::after{
-    content:"";
-    position:absolute;
-    inset:-3px;
-    border-radius:50%;
-    background:rgba(79,169,237,.08);
-}
-
 @keyframes cloudFloat{
+
     0%{
         transform:
             translate3d(
@@ -854,16 +846,13 @@ body{
 }
 
 
-/* الجزء السفلي */
+/* لويس + المدارات */
 
 .electron-lower-grid{
     display:grid;
     grid-template-columns:minmax(260px,.8fr) minmax(0,1.8fr);
     gap:18px;
 }
-
-
-/* لويس */
 
 .lewis-card{
     background:white;
@@ -907,6 +896,7 @@ body{
     font-size:26px;
     font-weight:900;
     line-height:1;
+    white-space:pre;
 }
 
 .lewis-dot.top{
@@ -942,9 +932,6 @@ body{
     font-size:11px;
     line-height:1.6;
 }
-
-
-/* مخطط المدارات */
 
 .orbital-card{
     background:white;
@@ -1008,8 +995,7 @@ body{
 /* ترتيب الامتلاء */
 
 .filling-card{
-    background:
-        linear-gradient(135deg,#fff,#f8f3ff);
+    background:linear-gradient(135deg,#fff,#f8f3ff);
     border:1px solid rgba(100,80,130,.08);
     border-radius:22px;
     padding:20px;
@@ -1053,7 +1039,7 @@ body{
 
 
 /* =========================
-   RESPONSIVE
+   Responsive
 ========================= */
 
 @media(max-width:850px){
@@ -1178,32 +1164,61 @@ body{
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     شاشة البداية
+========================= -->
+
 <div id="intro">
-    <div class="intro-title">إشراقة العناصر</div>
+    <div class="intro-title">
+        إشراقة العناصر
+    </div>
 </div>
+
+
+<!-- =========================
+     الصفحة الرئيسية
+========================= -->
 
 <section id="mainPage">
 
     <div class="header">
-        <h1>الجدول الدوري للعناصر</h1>
-        <p>استكشف العناصر واكتشف خصائصها واستخداماتها</p>
-        <div class="creator">فكرة وتنفيذ: وجن منصور</div>
+
+        <h1>
+            الجدول الدوري للعناصر
+        </h1>
+
+        <p>
+            استكشف العناصر واكتشف خصائصها واستخداماتها
+        </p>
+
+        <div class="creator">
+            فكرة وتنفيذ: وجن منصور
+        </div>
+
     </div>
 
+
     <div class="search-box">
+
         <input
             id="searchInput"
             type="text"
             placeholder="ابحث عن رمز أو اسم العنصر بالإنجليزي..."
             autocomplete="off"
         >
+
     </div>
+
 
     <div class="color-key">
 
-        <div class="color-key-title">مفتاح الألوان</div>
+        <div class="color-key-title">
+            مفتاح الألوان
+        </div>
 
         <div class="color-key-items">
 
@@ -1258,27 +1273,52 @@ body{
             </div>
 
         </div>
+
     </div>
 
+
     <div class="table-wrapper">
-        <div class="periodic-table" id="periodicTable"></div>
+
+        <div
+            class="periodic-table"
+            id="periodicTable"
+        ></div>
+
     </div>
 
 </section>
 
 
+
+<!-- =========================
+     صفحة العنصر
+========================= -->
+
 <section id="atomPage">
 
-    <button class="back-button" id="backButton">
+    <button
+        class="back-button"
+        id="backButton"
+    >
         ← العودة إلى الجدول الدوري
     </button>
 
+
     <div class="atom-header">
-        <div class="symbol" id="atomSymbol"></div>
+
+        <div
+            class="symbol"
+            id="atomSymbol"
+        ></div>
+
         <h2 id="atomName"></h2>
+
         <p id="atomArabicName"></p>
+
     </div>
 
+
+    <!-- الأقسام -->
 
     <div class="element-sections">
 
@@ -1287,57 +1327,97 @@ body{
             data-section="atomSection"
             onclick="showElementSection('atomSection')"
         >
+
             <span>⚛️</span>
-            <strong>الذرة</strong>
+
+            <strong>
+                الذرة
+            </strong>
+
         </button>
+
 
         <button
             class="section-tab"
             data-section="electronSection"
             onclick="showElementSection('electronSection')"
         >
+
             <span>⚡</span>
-            <strong>التوزيع الإلكتروني</strong>
+
+            <strong>
+                التوزيع الإلكتروني
+            </strong>
+
         </button>
+
 
         <button
             class="section-tab"
             data-section="propertiesSection"
             onclick="showElementSection('propertiesSection')"
         >
+
             <span>🧪</span>
-            <strong>الخواص</strong>
+
+            <strong>
+                الخواص
+            </strong>
+
         </button>
+
 
         <button
             class="section-tab"
             data-section="discoverySection"
             onclick="showElementSection('discoverySection')"
         >
+
             <span>📖</span>
-            <strong>قصة الاكتشاف</strong>
+
+            <strong>
+                قصة الاكتشاف
+            </strong>
+
         </button>
+
 
         <button
             class="section-tab"
             data-section="usesSection"
             onclick="showElementSection('usesSection')"
         >
+
             <span>🔧</span>
-            <strong>الاستخدامات</strong>
+
+            <strong>
+                الاستخدامات
+            </strong>
+
         </button>
+
 
         <button
             class="section-tab"
             data-section="factsSection"
             onclick="showElementSection('factsSection')"
         >
+
             <span>💡</span>
-            <strong>هل تعلم؟</strong>
+
+            <strong>
+                هل تعلم؟
+            </strong>
+
         </button>
 
     </div>
 
+
+
+    <!-- =========================
+         قسم الذرة
+    ========================= -->
 
     <div
         id="atomSection"
@@ -1346,9 +1426,13 @@ body{
 
         <div class="atom-section">
 
+
             <div class="atom-visual">
 
-                <div class="atom" id="atomVisual">
+                <div
+                    class="atom"
+                    id="atomVisual"
+                >
 
                     <div class="orbit o1"></div>
                     <div class="orbit o2"></div>
@@ -1357,6 +1441,7 @@ body{
                     <div class="orbit o5"></div>
                     <div class="orbit o6"></div>
                     <div class="orbit o7"></div>
+
 
                     <div class="nucleus">
 
@@ -1402,6 +1487,7 @@ body{
 
                     </div>
 
+
                     <div id="electrons"></div>
 
                 </div>
@@ -1409,71 +1495,165 @@ body{
             </div>
 
 
+
             <div class="info-area">
 
+
                 <div class="info-grid">
 
                     <div class="info-card colorful">
-                        <h3>العدد الذري</h3>
-                        <div class="value" id="atomicNumber"></div>
+
+                        <h3>
+                            العدد الذري
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="atomicNumber"
+                        ></div>
+
                     </div>
 
-                    <div class="info-card colorful">
-                        <h3>الكتلة الذرية</h3>
-                        <div class="value" id="atomicMass"></div>
-                    </div>
 
                     <div class="info-card colorful">
-                        <h3>البروتونات</h3>
-                        <div class="value" id="protons"></div>
+
+                        <h3>
+                            الكتلة الذرية
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="atomicMass"
+                        ></div>
+
                     </div>
 
-                    <div class="info-card colorful">
-                        <h3>النيترونات</h3>
-                        <div class="value" id="neutrons"></div>
-                    </div>
 
                     <div class="info-card colorful">
-                        <h3>الإلكترونات</h3>
-                        <div class="value" id="electronCount"></div>
+
+                        <h3>
+                            البروتونات
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="protons"
+                        ></div>
+
                     </div>
 
+
                     <div class="info-card colorful">
-                        <h3>حالة العنصر</h3>
-                        <div class="value" id="state"></div>
+
+                        <h3>
+                            النيترونات
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="neutrons"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="info-card colorful">
+
+                        <h3>
+                            الإلكترونات
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="electronCount"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="info-card colorful">
+
+                        <h3>
+                            حالة العنصر
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="state"
+                        ></div>
+
                     </div>
 
                 </div>
 
 
+
                 <div class="info-grid">
 
                     <div class="info-card">
-                        <h3>المجموعة</h3>
-                        <div class="value" id="group"></div>
+
+                        <h3>
+                            المجموعة
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="group"
+                        ></div>
+
                     </div>
 
-                    <div class="info-card">
-                        <h3>الدورة</h3>
-                        <div class="value" id="period"></div>
-                    </div>
 
                     <div class="info-card">
-                        <h3>الفئة</h3>
-                        <div class="value" id="block"></div>
+
+                        <h3>
+                            الدورة
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="period"
+                        ></div>
+
                     </div>
 
+
                     <div class="info-card">
-                        <h3>إلكترونات التكافؤ</h3>
-                        <div class="value" id="valence"></div>
+
+                        <h3>
+                            الفئة
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="block"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>
+                            إلكترونات التكافؤ
+                        </h3>
+
+                        <div
+                            class="value"
+                            id="valence"
+                        ></div>
+
                     </div>
 
                 </div>
+
 
 
                 <div class="info-card family-card">
 
-                    <h3>سلوك المجموعة</h3>
+                    <h3>
+                        سلوك المجموعة
+                    </h3>
 
                     <div
                         class="family-description"
@@ -1489,7 +1669,10 @@ body{
     </div>
 
 
-    <!-- قسم التوزيع الإلكتروني -->
+
+    <!-- =========================
+         قسم التوزيع الإلكتروني
+    ========================= -->
 
     <div
         id="electronSection"
@@ -1497,20 +1680,25 @@ body{
     ></div>
 
 
+    <!-- الأقسام الأخرى تبقى فارغة حاليًا -->
+
     <div
         id="propertiesSection"
         class="element-section-content"
     ></div>
+
 
     <div
         id="discoverySection"
         class="element-section-content"
     ></div>
 
+
     <div
         id="usesSection"
         class="element-section-content"
     ></div>
+
 
     <div
         id="factsSection"
@@ -1520,7 +1708,13 @@ body{
 </section>
 
 
+
 <script>
+
+
+/* =========================================================
+   العناصر
+========================================================= */
 
 const elements = [
 
@@ -1653,9 +1847,9 @@ const elements = [
 ];
 
 
-/* =========================
-   سلوك المجموعة
-========================= */
+/* =========================================================
+   سلوك المجموعات
+========================================================= */
 
 const groupBehavior = {
 
@@ -1702,294 +1896,442 @@ const groupBehavior = {
 };
 
 
-/* =========================
-   POSITION
-========================= */
+/* =========================================================
+   ترتيب الجدول
+========================================================= */
 
 function positionForElement(element){
 
     if(element.z >= 58 && element.z <= 71){
+
         return {
             row:8,
             col:element.z - 54
         };
+
     }
 
+
     if(element.z >= 90 && element.z <= 103){
+
         return {
             row:9,
             col:element.z - 86
         };
+
     }
 
+
     let col = element.g;
+
 
     if(element.z === 57 || element.z === 89){
         col = 3;
     }
 
+
     return {
         row:element.p,
         col:col
     };
+
 }
 
 
-/* =========================
-   CATEGORY
-========================= */
-
-function categoryClass(element){
-    return element.cat;
-}
-
-
-/* =========================
-   PERIODIC TABLE
-========================= */
+/* =========================================================
+   بناء الجدول
+========================================================= */
 
 const table =
     document.getElementById("periodicTable");
+
 
 elements.forEach(element => {
 
     const position =
         positionForElement(element);
 
+
     const card =
         document.createElement("div");
 
+
     card.className =
-        `element ${categoryClass(element)}`;
+        `element ${element.cat}`;
+
 
     card.dataset.symbol =
         element.s.toLowerCase();
 
+
     card.dataset.name =
         element.name.toLowerCase();
+
 
     card.dataset.z =
         element.z;
 
+
     card.style.gridRow =
         position.row;
+
 
     card.style.gridColumn =
         position.col;
 
+
     card.innerHTML = `
-        <span class="number">${element.z}</span>
-        <span class="symbol">${element.s}</span>
-        <span class="name">${element.ar}</span>
+
+        <span class="number">
+            ${element.z}
+        </span>
+
+        <span class="symbol">
+            ${element.s}
+        </span>
+
+        <span class="name">
+            ${element.ar}
+        </span>
+
     `;
 
-    card.addEventListener("click",() => {
-        openAtom(element);
-    });
+
+    card.addEventListener(
+        "click",
+        () => openAtom(element)
+    );
+
 
     table.appendChild(card);
+
 });
 
 
-/* =========================
-   SEARCH
-========================= */
+/* =========================================================
+   البحث
+========================================================= */
 
 const searchInput =
     document.getElementById("searchInput");
 
-searchInput.addEventListener("input",() => {
 
-    const query =
-        searchInput.value.trim().toLowerCase();
+searchInput.addEventListener(
+    "input",
+    () => {
 
-    document
-        .querySelectorAll(".element")
-        .forEach(el => {
-            el.classList.remove("search-match");
-        });
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
 
-    if(!query) return;
 
-    const found =
-        elements.find(element =>
-            element.s.toLowerCase() === query ||
-            element.name.toLowerCase() === query
-        );
+        document
+            .querySelectorAll(".element")
+            .forEach(el => {
 
-    if(found){
+                el.classList.remove(
+                    "search-match"
+                );
 
-        const card =
-            document.querySelector(
-                `.element[data-z="${found.z}"]`
+            });
+
+
+        if(!query) return;
+
+
+        const found =
+            elements.find(element =>
+
+                element.s
+                    .toLowerCase() === query ||
+
+                element.name
+                    .toLowerCase() === query
+
             );
 
-        if(card){
 
-            card.classList.add("search-match");
+        if(found){
 
-            card.scrollIntoView({
-                behavior:"smooth",
-                block:"center",
-                inline:"center"
-            });
+            const card =
+                document.querySelector(
+                    `.element[data-z="${found.z}"]`
+                );
+
+
+            if(card){
+
+                card.classList.add(
+                    "search-match"
+                );
+
+
+                card.scrollIntoView({
+                    behavior:"smooth",
+                    block:"center",
+                    inline:"center"
+                });
+
+            }
+
         }
+
     }
-});
+);
 
 
-/* =========================
-   PAGE SWITCHING
-========================= */
+/* =========================================================
+   الصفحات
+========================================================= */
 
 const mainPage =
     document.getElementById("mainPage");
 
+
 const atomPage =
     document.getElementById("atomPage");
+
 
 const backButton =
     document.getElementById("backButton");
 
+
 let currentElement = null;
 
 
-/* =========================
-   تبديل الأقسام
-========================= */
+/* =========================================================
+   تغيير القسم
+========================================================= */
 
 function showElementSection(sectionId){
 
     document
-        .querySelectorAll(".element-section-content")
+        .querySelectorAll(
+            ".element-section-content"
+        )
         .forEach(section => {
-            section.classList.remove("active");
+
+            section.classList.remove(
+                "active"
+            );
+
         });
 
+
     document
-        .querySelectorAll(".section-tab")
+        .querySelectorAll(
+            ".section-tab"
+        )
         .forEach(tab => {
-            tab.classList.remove("active");
+
+            tab.classList.remove(
+                "active"
+            );
+
         });
+
 
     const selectedSection =
         document.getElementById(sectionId);
 
+
     if(selectedSection){
-        selectedSection.classList.add("active");
+
+        selectedSection.classList.add(
+            "active"
+        );
+
     }
+
 
     const selectedTab =
         document.querySelector(
             `.section-tab[data-section="${sectionId}"]`
         );
 
+
     if(selectedTab){
-        selectedTab.classList.add("active");
+
+        selectedTab.classList.add(
+            "active"
+        );
+
     }
+
 
     if(
         sectionId === "electronSection" &&
         currentElement
     ){
+
         runCloudAnimation();
+
     }
+
 }
 
 
-/* =========================
+/* =========================================================
    فتح العنصر
-========================= */
+========================================================= */
 
 function openAtom(element){
 
-    currentElement = element;
+    currentElement =
+        element;
 
-    mainPage.style.display = "none";
 
-    atomPage.classList.add("active");
+    mainPage.style.display =
+        "none";
 
-    window.scrollTo({
-        top:0,
-        behavior:"instant"
-    });
 
-    showElementSection("atomSection");
+    atomPage.classList.add(
+        "active"
+    );
 
-    renderAtom(element);
 
-    renderElectronSection(element);
+    window.scrollTo(
+        0,
+        0
+    );
+
+
+    showElementSection(
+        "atomSection"
+    );
+
+
+    renderAtom(
+        element
+    );
+
+
+    renderElectronSection(
+        element
+    );
+
 }
 
 
-/* =========================
-   العودة للجدول
-========================= */
+/* =========================================================
+   العودة
+========================================================= */
 
-backButton.addEventListener("click",() => {
+backButton.addEventListener(
+    "click",
+    () => {
 
-    atomPage.classList.remove("active");
-
-    mainPage.style.display = "block";
-
-    currentElement = null;
-
-    window.scrollTo({
-        top:0,
-        behavior:"instant"
-    });
-
-});
+        atomPage.classList.remove(
+            "active"
+        );
 
 
-/* =========================
-   ATOM RENDER
-========================= */
+        mainPage.style.display =
+            "block";
+
+
+        currentElement =
+            null;
+
+
+        window.scrollTo(
+            0,
+            0
+        );
+
+    }
+);
+
+
+/* =========================================================
+   عرض الذرة
+========================================================= */
 
 function renderAtom(element){
 
-    document.getElementById("atomSymbol").textContent =
+    document
+        .getElementById("atomSymbol")
+        .textContent =
         element.s;
 
-    document.getElementById("atomName").textContent =
+
+    document
+        .getElementById("atomName")
+        .textContent =
         element.name;
 
-    document.getElementById("atomArabicName").textContent =
+
+    document
+        .getElementById("atomArabicName")
+        .textContent =
         element.ar;
 
-    document.getElementById("atomicNumber").textContent =
+
+    document
+        .getElementById("atomicNumber")
+        .textContent =
         element.z;
 
-    document.getElementById("atomicMass").textContent =
+
+    document
+        .getElementById("atomicMass")
+        .textContent =
         element.m;
 
-    document.getElementById("protons").textContent =
+
+    document
+        .getElementById("protons")
+        .textContent =
         element.z;
+
 
     const approximateMass =
-        Math.round(parseFloat(element.m));
+        Math.round(
+            parseFloat(element.m)
+        );
+
 
     const approximateNeutrons =
-        approximateMass - element.z;
-
-    document.getElementById("neutrons").textContent =
-        approximateNeutrons;
-
-    document.getElementById("electronCount").textContent =
+        approximateMass -
         element.z;
 
-    document.getElementById("state").textContent =
+
+    document
+        .getElementById("neutrons")
+        .textContent =
+        approximateNeutrons;
+
+
+    document
+        .getElementById("electronCount")
+        .textContent =
+        element.z;
+
+
+    document
+        .getElementById("state")
+        .textContent =
         element.state;
 
-    document.getElementById("group").textContent =
+
+    document
+        .getElementById("group")
+        .textContent =
         element.g === "—"
             ? "سلسلة داخلية"
             : element.g;
 
-    document.getElementById("period").textContent =
+
+    document
+        .getElementById("period")
+        .textContent =
         element.p;
 
-    document.getElementById("block").textContent =
+
+    document
+        .getElementById("block")
+        .textContent =
         element.b;
 
 
@@ -2004,14 +2346,18 @@ function renderAtom(element){
         behavior =
             "يمكنه فقد أو اكتساب إلكترون حسب التفاعل، لذلك يختلف عن الفلزات القلوية رغم وجوده في المجموعة الأولى.";
 
-    }else if(element.z === 2){
+    }
+
+    else if(element.z === 2){
 
         valence = "2";
 
         behavior =
             "غلاف التكافؤ مكتمل، لذلك يكون قليل التفاعل.";
 
-    }else if(
+    }
+
+    else if(
         typeof element.g === "number" &&
         groupBehavior[element.g]
     ){
@@ -2022,7 +2368,9 @@ function renderAtom(element){
         behavior =
             groupBehavior[element.g].behavior;
 
-    }else{
+    }
+
+    else{
 
         valence =
             "تختلف حسب العنصر";
@@ -2033,133 +2381,189 @@ function renderAtom(element){
     }
 
 
-    document.getElementById("valence").textContent =
+    document
+        .getElementById("valence")
+        .textContent =
         valence;
 
-    document.getElementById("groupBehavior").textContent =
+
+    document
+        .getElementById("groupBehavior")
+        .textContent =
         behavior;
 
 
     const atomVisual =
-        document.getElementById("atomVisual");
+        document.getElementById(
+            "atomVisual"
+        );
 
 
     if(element.z >= 54){
 
-        atomVisual.classList.add("heavy-atom");
+        atomVisual.classList.add(
+            "heavy-atom"
+        );
 
-    }else{
+    }
 
-        atomVisual.classList.remove("heavy-atom");
+    else{
+
+        atomVisual.classList.remove(
+            "heavy-atom"
+        );
 
     }
 
 
     const orbits =
-        document.querySelectorAll(".orbit");
+        document.querySelectorAll(
+            ".orbit"
+        );
 
 
-    orbits.forEach((orbit,index) => {
+    orbits.forEach(
+        (orbit,index) => {
 
-        if(index < element.sh.length){
+            if(
+                index <
+                element.sh.length
+            ){
 
-            orbit.style.display = "block";
+                orbit.style.display =
+                    "block";
 
-        }else{
+            }
 
-            orbit.style.display = "none";
+            else{
+
+                orbit.style.display =
+                    "none";
+
+            }
 
         }
-
-    });
+    );
 
 
     const electronsContainer =
-        document.getElementById("electrons");
-
-    electronsContainer.innerHTML = "";
-
-
-    element.sh.forEach((count,shellIndex) => {
-
-        const orbitNumber =
-            shellIndex + 1;
-
-        const orbit =
-            document.querySelector(
-                `.orbit.o${orbitNumber}`
-            );
-
-        if(!orbit) return;
+        document.getElementById(
+            "electrons"
+        );
 
 
-        const computed =
-            getComputedStyle(orbit);
-
-        const width =
-            parseFloat(computed.width);
-
-        const height =
-            parseFloat(computed.height);
-
-        const radiusX =
-            width / 2;
-
-        const radiusY =
-            height / 2;
+    electronsContainer.innerHTML =
+        "";
 
 
-        for(let i=0;i<count;i++){
+    element.sh.forEach(
+        (count,shellIndex) => {
 
-            const electron =
-                document.createElement("div");
-
-            electron.className =
-                "electron";
-
-            electron.textContent =
-                "e⁻";
+            const orbitNumber =
+                shellIndex + 1;
 
 
-            const angle =
-                (360 / count) * i - 90;
-
-            const rad =
-                angle * Math.PI / 180;
-
-
-            const x =
-                Math.cos(rad) * radiusX;
-
-            const y =
-                Math.sin(rad) * radiusY;
+            const orbit =
+                document.querySelector(
+                    `.orbit.o${orbitNumber}`
+                );
 
 
-            electron.style.left =
-                `calc(50% + ${x}px)`;
-
-            electron.style.top =
-                `calc(50% + ${y}px)`;
+            if(!orbit) return;
 
 
-            atomVisual.appendChild(electron);
+            const computed =
+                getComputedStyle(
+                    orbit
+                );
+
+
+            const width =
+                parseFloat(
+                    computed.width
+                );
+
+
+            const height =
+                parseFloat(
+                    computed.height
+                );
+
+
+            const radiusX =
+                width / 2;
+
+
+            const radiusY =
+                height / 2;
+
+
+            for(
+                let i=0;
+                i<count;
+                i++
+            ){
+
+                const electron =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                electron.className =
+                    "electron";
+
+
+                electron.textContent =
+                    "e⁻";
+
+
+                const angle =
+                    (360 / count) * i - 90;
+
+
+                const rad =
+                    angle *
+                    Math.PI /
+                    180;
+
+
+                const x =
+                    Math.cos(rad) *
+                    radiusX;
+
+
+                const y =
+                    Math.sin(rad) *
+                    radiusY;
+
+
+                electron.style.left =
+                    `calc(50% + ${x}px)`;
+
+
+                electron.style.top =
+                    `calc(50% + ${y}px)`;
+
+
+                atomVisual.appendChild(
+                    electron
+                );
+
+            }
 
         }
+    );
 
-    });
+}
 
-}<script>
 
 /* =========================================================
-   ELECTRONIC DISTRIBUTION
+   التوزيع الإلكتروني
 ========================================================= */
 
-
-/*
-   ترتيب امتلاء المدارات حسب قاعدة أوفباو
-*/
-
 const orbitalOrder = [
+
     {n:1,type:"s",capacity:2},
     {n:2,type:"s",capacity:2},
     {n:2,type:"p",capacity:6},
@@ -2179,84 +2583,141 @@ const orbitalOrder = [
     {n:5,type:"f",capacity:14},
     {n:6,type:"d",capacity:10},
     {n:7,type:"p",capacity:6}
+
 ];
 
 
-/*
-   بعض الاستثناءات المعروفة في التوزيع الإلكتروني
-*/
+/* الاستثناءات */
 
 const configurationExceptions = {
 
     24:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",1],["3d",5]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",1],
+        ["3d",5]
     ],
 
     29:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",1],["3d",10]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",1],
+        ["3d",10]
     ],
 
     41:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",2],
-        ["3d",10],["4p",6],["5s",1],["4d",4]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",2],
+        ["3d",10],
+        ["4p",6],
+        ["5s",1],
+        ["4d",4]
     ],
 
     42:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",1],
-        ["3d",10],["4p",6],["5s",1],["4d",5]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",1],
+        ["3d",10],
+        ["4p",6],
+        ["5s",1],
+        ["4d",5]
     ],
 
     44:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",1],
-        ["3d",10],["4p",6],["5s",1],["4d",7]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",1],
+        ["3d",10],
+        ["4p",6],
+        ["5s",1],
+        ["4d",7]
     ],
 
     45:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",1],
-        ["3d",10],["4p",6],["5s",1],["4d",8]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",1],
+        ["3d",10],
+        ["4p",6],
+        ["5s",1],
+        ["4d",8]
     ],
 
     46:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",2],
-        ["3d",10],["4p",6],["4d",10]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",2],
+        ["3d",10],
+        ["4p",6],
+        ["4d",10]
     ],
 
     78:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",2],
-        ["3d",10],["4p",6],["5s",2],
-        ["4d",10],["5p",6],["6s",1],["4f",14],["5d",9]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",2],
+        ["3d",10],
+        ["4p",6],
+        ["5s",2],
+        ["4d",10],
+        ["5p",6],
+        ["6s",1],
+        ["4f",14],
+        ["5d",9]
     ],
 
     79:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",2],
-        ["3d",10],["4p",6],["5s",2],
-        ["4d",10],["5p",6],["6s",1],["4f",14],["5d",10]
-    ],
-
-    103:[
-        ["1s",2],["2s",2],["2p",6],
-        ["3s",2],["3p",6],["4s",2],
-        ["3d",10],["4p",6],["5s",2],
-        ["4d",10],["5p",6],["6s",2],
-        ["4f",14],["5d",10],["6p",6],
-        ["7s",2],["5f",14],["6d",1]
+        ["1s",2],
+        ["2s",2],
+        ["2p",6],
+        ["3s",2],
+        ["3p",6],
+        ["4s",2],
+        ["3d",10],
+        ["4p",6],
+        ["5s",2],
+        ["4d",10],
+        ["5p",6],
+        ["6s",1],
+        ["4f",14],
+        ["5d",10]
     ]
 
 };
 
 
-/* تحويل الرقم إلى أس */
+/* =========================================================
+   الرموز العلوية
+========================================================= */
 
 const superscriptMap = {
+
     "0":"⁰",
     "1":"¹",
     "2":"²",
@@ -2267,38 +2728,60 @@ const superscriptMap = {
     "7":"⁷",
     "8":"⁸",
     "9":"⁹"
+
 };
+
 
 function toSuperscript(number){
 
     return String(number)
         .split("")
-        .map(char => superscriptMap[char] || char)
+        .map(
+            char =>
+            superscriptMap[char] || char
+        )
         .join("");
 
 }
 
 
-/* إنشاء التوزيع الإلكتروني */
+/* =========================================================
+   حساب التوزيع
+========================================================= */
 
 function getElectronConfiguration(z){
 
-    if(configurationExceptions[z]){
-        return configurationExceptions[z].map(item => ({
-            orbital:item[0],
-            electrons:item[1]
-        }));
+    if(
+        configurationExceptions[z]
+    ){
+
+        return configurationExceptions[z]
+            .map(item => ({
+
+                orbital:item[0],
+                electrons:item[1]
+
+            }));
+
     }
 
 
-    let remaining = z;
+    let remaining =
+        z;
 
-    const configuration = [];
+
+    const configuration =
+        [];
 
 
-    for(const orbital of orbitalOrder){
+    for(
+        const orbital of orbitalOrder
+    ){
 
-        if(remaining <= 0) break;
+        if(
+            remaining <= 0
+        ) break;
+
 
         const electrons =
             Math.min(
@@ -2306,22 +2789,36 @@ function getElectronConfiguration(z){
                 orbital.capacity
             );
 
+
         configuration.push({
-            orbital:`${orbital.n}${orbital.type}`,
-            electrons
+
+            orbital:
+                `${orbital.n}${orbital.type}`,
+
+            electrons:
+                electrons
+
         });
 
-        remaining -= electrons;
+
+        remaining -=
+            electrons;
+
     }
 
 
     return configuration;
+
 }
 
 
-/* كتابة التوزيع الإلكتروني بشكل جميل */
+/* =========================================================
+   كتابة التوزيع
+========================================================= */
 
-function configurationToText(configuration){
+function configurationToText(
+    configuration
+){
 
     return configuration
         .map(item =>
@@ -2332,14 +2829,18 @@ function configurationToText(configuration){
 }
 
 
-/* المستوى الأخير */
+/* =========================================================
+   المستوى الأخير
+========================================================= */
 
 function getLastLevel(element){
 
-    const lastLevel =
+    const number =
         element.sh.length;
 
-    const arabicNumbers = [
+
+    const names = [
+
         "الأول",
         "الثاني",
         "الثالث",
@@ -2347,47 +2848,63 @@ function getLastLevel(element){
         "الخامس",
         "السادس",
         "السابع"
+
     ];
 
+
     return {
-        number:lastLevel,
-        text:`المستوى ${arabicNumbers[lastLevel - 1]}`
+
+        number:number,
+
+        text:
+            `المستوى ${names[number - 1]}`
+
     };
-}
-
-
-/* إلكترونات التكافؤ */
-
-function getValenceElectrons(element){
-
-    if(element.z === 1){
-        return 1;
-    }
-
-    if(element.z === 2){
-        return 2;
-    }
-
-    if(
-        typeof element.g === "number" &&
-        groupBehavior[element.g]
-    ){
-        return Number(groupBehavior[element.g].valence);
-    }
-
-    /*
-       في العناصر الانتقالية والسلاسل الداخلية
-       نعرض عدد إلكترونات المستوى الخارجي
-       كتمثيل مبسط مناسب للمشروع.
-    */
-
-    return element.sh[element.sh.length - 1];
 
 }
 
 
 /* =========================================================
-   LEWIS
+   إلكترونات التكافؤ
+========================================================= */
+
+function getValenceElectrons(element){
+
+    if(element.z === 1){
+
+        return 1;
+
+    }
+
+
+    if(element.z === 2){
+
+        return 2;
+
+    }
+
+
+    if(
+        typeof element.g === "number" &&
+        groupBehavior[element.g]
+    ){
+
+        return Number(
+            groupBehavior[element.g].valence
+        );
+
+    }
+
+
+    return element.sh[
+        element.sh.length - 1
+    ];
+
+}
+
+
+/* =========================================================
+   لويس
 ========================================================= */
 
 function createLewisDots(element){
@@ -2401,126 +2918,128 @@ function createLewisDots(element){
             )
         );
 
-    let dots = "";
-
-    const positions = [
-        "top",
-        "right",
-        "bottom",
-        "left"
-    ];
-
-    /*
-       نضع إلكترونًا أو إلكترونين في كل جانب
-       وفق التمثيل النقطي المبسط.
-    */
-
-    positions.forEach((position,index) => {
-
-        const count =
-            valence > 4
-                ? 2
-                : index < valence
-                    ? 1
-                    : 0;
-
-        for(let i=0;i<count;i++){
-
-            dots += `
-                <span class="lewis-dot ${position}">
-                    •
-                </span>
-            `;
-        }
-
-    });
-
-    /*
-       تعديل خاص عندما يكون عدد التكافؤ أكبر من 4:
-       الجوانب الأربعة تحتوي على زوج إلكتروني،
-       ثم نزيل الأزواج الزائدة حسب العدد الحقيقي.
-    */
 
     if(valence <= 4){
 
-        const allDots = [];
+        const positions = [
+            "top",
+            "right",
+            "bottom",
+            "left"
+        ];
 
-        for(let i=0;i<valence;i++){
 
-            allDots.push(
-                `<span class="lewis-dot ${positions[i]}">•</span>`
-            );
-
-        }
-
-        dots = allDots.join("");
-
-    }else{
-
-        const dotHTML = [];
-
-        positions.forEach(position => {
-
-            dotHTML.push(
-                `<span class="lewis-dot ${position}">••</span>`
-            );
-
-        });
-
-        dots = dotHTML.join("");
-
-        if(valence === 5){
-
-            dots = `
-                <span class="lewis-dot top">••</span>
-                <span class="lewis-dot right">•</span>
-                <span class="lewis-dot bottom">•</span>
-                <span class="lewis-dot left">•</span>
-            `;
-
-        }
-
-        if(valence === 6){
-
-            dots = `
-                <span class="lewis-dot top">••</span>
-                <span class="lewis-dot right">••</span>
-                <span class="lewis-dot bottom">•</span>
-                <span class="lewis-dot left">•</span>
-            `;
-
-        }
-
-        if(valence === 7){
-
-            dots = `
-                <span class="lewis-dot top">••</span>
-                <span class="lewis-dot right">••</span>
-                <span class="lewis-dot bottom">••</span>
-                <span class="lewis-dot left">•</span>
-            `;
-
-        }
-
-        if(valence === 8){
-
-            dots = `
-                <span class="lewis-dot top">••</span>
-                <span class="lewis-dot right">••</span>
-                <span class="lewis-dot bottom">••</span>
-                <span class="lewis-dot left">••</span>
-            `;
-
-        }
+        return positions
+            .slice(0,valence)
+            .map(
+                position =>
+                `<span class="lewis-dot ${position}">•</span>`
+            )
+            .join("");
 
     }
 
-    return dots;
+
+    if(valence === 5){
+
+        return `
+
+            <span class="lewis-dot top">
+                ••
+            </span>
+
+            <span class="lewis-dot right">
+                •
+            </span>
+
+            <span class="lewis-dot bottom">
+                •
+            </span>
+
+            <span class="lewis-dot left">
+                •
+            </span>
+
+        `;
+
+    }
+
+
+    if(valence === 6){
+
+        return `
+
+            <span class="lewis-dot top">
+                ••
+            </span>
+
+            <span class="lewis-dot right">
+                ••
+            </span>
+
+            <span class="lewis-dot bottom">
+                •
+            </span>
+
+            <span class="lewis-dot left">
+                •
+            </span>
+
+        `;
+
+    }
+
+
+    if(valence === 7){
+
+        return `
+
+            <span class="lewis-dot top">
+                ••
+            </span>
+
+            <span class="lewis-dot right">
+                ••
+            </span>
+
+            <span class="lewis-dot bottom">
+                ••
+            </span>
+
+            <span class="lewis-dot left">
+                •
+            </span>
+
+        `;
+
+    }
+
+
+    return `
+
+        <span class="lewis-dot top">
+            ••
+        </span>
+
+        <span class="lewis-dot right">
+            ••
+        </span>
+
+        <span class="lewis-dot bottom">
+            ••
+        </span>
+
+        <span class="lewis-dot left">
+            ••
+        </span>
+
+    `;
+
 }
 
 
 /* =========================================================
-   ORBITAL DIAGRAM
+   مخطط المدارات
 ========================================================= */
 
 function getOrbitalBoxCount(type){
@@ -2531,13 +3050,18 @@ function getOrbitalBoxCount(type){
     if(type === "f") return 7;
 
     return 1;
+
 }
 
 
-function getOrbitalArrows(type,electrons){
+function getOrbitalArrows(
+    type,
+    electrons
+){
 
     const boxCount =
         getOrbitalBoxCount(type);
+
 
     const boxes =
         Array.from(
@@ -2550,13 +3074,14 @@ function getOrbitalArrows(type,electrons){
         electrons;
 
 
-    /*
-       قاعدة هوند:
-       نملأ المدارات بإلكترون واحد أولًا
-       ثم نبدأ الاقتران.
-    */
+    /* قاعدة هوند */
 
-    for(let i=0;i<boxCount && remaining>0;i++){
+    for(
+        let i=0;
+        i<boxCount &&
+        remaining>0;
+        i++
+    ){
 
         boxes[i].push("↑");
 
@@ -2565,7 +3090,12 @@ function getOrbitalArrows(type,electrons){
     }
 
 
-    for(let i=0;i<boxCount && remaining>0;i++){
+    for(
+        let i=0;
+        i<boxCount &&
+        remaining>0;
+        i++
+    ){
 
         boxes[i].push("↓");
 
@@ -2575,24 +3105,34 @@ function getOrbitalArrows(type,electrons){
 
 
     return boxes;
+
 }
 
 
-function renderOrbitalDiagram(configuration){
+function renderOrbitalDiagram(
+    configuration
+){
 
     return configuration
         .map(item => {
 
             const match =
-                item.orbital.match(/^(\d)([spdf])$/);
+                item.orbital.match(
+                    /^(\d)([spdf])$/
+                );
 
-            if(!match) return "";
+
+            if(!match)
+                return "";
+
 
             const n =
                 match[1];
 
+
             const type =
                 match[2];
+
 
             const boxes =
                 getOrbitalArrows(
@@ -2600,84 +3140,113 @@ function renderOrbitalDiagram(configuration){
                     item.electrons
                 );
 
+
             return `
+
                 <div class="subshell">
 
                     <div class="subshell-title">
-                        ${n}${type}<sup>${item.electrons}</sup>
+
+                        ${n}${type}<sup>
+                            ${item.electrons}
+                        </sup>
+
                     </div>
+
 
                     <div class="orbital-boxes">
 
-                        ${boxes.map(box => `
-                            <div class="orbital-box">
-                                ${box.join("")}
-                            </div>
-                        `).join("")}
+                        ${boxes
+                            .map(
+                                box => `
+
+                                <div class="orbital-box">
+
+                                    ${box.join("")}
+
+                                </div>
+
+                            `
+                            )
+                            .join("")
+                        }
 
                     </div>
 
                 </div>
+
             `;
 
         })
         .join("");
+
 }
 
 
 /* =========================================================
-   ELECTRON CLOUD
+   سحابة الإلكترونات
 ========================================================= */
 
-function createElectronCloud(element){
+function createElectronCloud(
+    element
+){
 
     const cloud =
-        document.getElementById("electronCloud");
+        document.getElementById(
+            "electronCloud"
+        );
 
-    if(!cloud) return;
+
+    if(!cloud)
+        return;
+
 
     cloud.innerHTML = `
+
         <div class="cloud-core">
             ${element.s}
         </div>
+
     `;
 
 
-    const total =
-        element.z;
-
-
-    /*
-       ننشئ إلكترونًا مرئيًا لكل إلكترون.
-       العدد 118 ما زال مناسبًا لأن العناصر صغيرة جدًا.
-    */
-
-    for(let i=0;i<total;i++){
+    for(
+        let i=0;
+        i<element.z;
+        i++
+    ){
 
         const electron =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
+
 
         electron.className =
             "cloud-electron";
 
 
-        /*
-           توزيع عشوائي داخل السحابة
-           مع إبعاد الإلكترونات عن النواة.
-        */
-
         let x;
         let y;
+
 
         do{
 
             x =
-                8 + Math.random() * 84;
+                8 +
+                Math.random() *
+                84;
+
 
             y =
-                8 + Math.random() * 84;
+                8 +
+                Math.random() *
+                84;
 
-        }while(
+
+        }
+
+        while(
             Math.hypot(
                 x - 50,
                 y - 50
@@ -2687,43 +3256,60 @@ function createElectronCloud(element){
 
         const dx =
             Math.round(
-                -35 + Math.random() * 70
+                -35 +
+                Math.random() *
+                70
             );
+
 
         const dy =
             Math.round(
-                -35 + Math.random() * 70
+                -35 +
+                Math.random() *
+                70
             );
 
+
         const duration =
-            (1.05 + Math.random() * .75)
-            .toFixed(2);
+            (
+                1.05 +
+                Math.random() *
+                .75
+            ).toFixed(2);
+
 
         const delay =
-            (-Math.random() * 1.8)
-            .toFixed(2);
+            (
+                -Math.random() *
+                1.8
+            ).toFixed(2);
 
 
         electron.style.left =
             `${x}%`;
 
+
         electron.style.top =
             `${y}%`;
+
 
         electron.style.setProperty(
             "--dx",
             `${dx}px`
         );
 
+
         electron.style.setProperty(
             "--dy",
             `${dy}px`
         );
 
+
         electron.style.setProperty(
             "--dur",
             `${duration}s`
         );
+
 
         electron.style.setProperty(
             "--delay",
@@ -2731,50 +3317,78 @@ function createElectronCloud(element){
         );
 
 
-        cloud.appendChild(electron);
+        cloud.appendChild(
+            electron
+        );
 
     }
 
 }
 
 
-/* إعادة تشغيل الحركة */
+/* تشغيل السحابة */
 
 function runCloudAnimation(){
 
-    if(!currentElement) return;
+    if(!currentElement)
+        return;
 
-    createElectronCloud(currentElement);
+
+    createElectronCloud(
+        currentElement
+    );
 
 }
 
 
 /* =========================================================
-   RENDER ELECTRON SECTION
+   إنشاء قسم التوزيع الإلكتروني
 ========================================================= */
 
-function renderElectronSection(element){
+function renderElectronSection(
+    element
+){
 
     const section =
-        document.getElementById("electronSection");
+        document.getElementById(
+            "electronSection"
+        );
+
 
     const configuration =
-        getElectronConfiguration(element.z);
+        getElectronConfiguration(
+            element.z
+        );
+
 
     const configurationText =
-        configurationToText(configuration);
+        configurationToText(
+            configuration
+        );
+
 
     const lastLevel =
-        getLastLevel(element);
+        getLastLevel(
+            element
+        );
+
 
     const valence =
-        getValenceElectrons(element);
+        getValenceElectrons(
+            element
+        );
+
 
     const lewisDots =
-        createLewisDots(element);
+        createLewisDots(
+            element
+        );
+
 
     const orbitalDiagram =
-        renderOrbitalDiagram(configuration);
+        renderOrbitalDiagram(
+            configuration
+        );
 
 
     section.innerHTML = `
@@ -2784,14 +3398,18 @@ function renderElectronSection(element){
 
             <div class="electron-title">
 
-                <h3>⚡ التوزيع الإلكتروني</h3>
+                <h3>
+                    ⚡ التوزيع الإلكتروني
+                </h3>
 
                 <p>
                     تعرّف على كيفية ترتيب إلكترونات
-                    ${element.ar} داخل المدارات الذرية
+                    ${element.ar}
+                    داخل المدارات الذرية
                 </p>
 
             </div>
+
 
 
             <div class="electron-summary">
@@ -2799,40 +3417,58 @@ function renderElectronSection(element){
 
                 <div class="electron-card">
 
-                    <h4>التوزيع الإلكتروني</h4>
+                    <h4>
+                        التوزيع الإلكتروني
+                    </h4>
 
                     <div class="configuration">
+
                         ${configurationText}
+
                     </div>
 
                 </div>
+
 
 
                 <div class="electron-card last-level">
 
-                    <h4>تحديد المستوى الأخير</h4>
+                    <h4>
+                        تحديد المستوى الأخير
+                    </h4>
 
                     <div class="last-level-number">
+
                         ${lastLevel.number}
+
                     </div>
 
                     <div class="last-level-text">
+
                         ${lastLevel.text}
+
                     </div>
 
                 </div>
 
 
+
                 <div class="electron-card valence-big">
 
-                    <h4>عدد إلكترونات التكافؤ</h4>
+                    <h4>
+                        عدد إلكترونات التكافؤ
+                    </h4>
 
                     <div class="valence-number">
+
                         ${valence}
+
                     </div>
 
                     <div class="valence-note">
+
                         إلكترونات المستوى الخارجي
+
                     </div>
 
                 </div>
@@ -2841,11 +3477,15 @@ function renderElectronSection(element){
             </div>
 
 
+
             <div class="cloud-card">
+
 
                 <div class="cloud-heading">
 
-                    <h4>☁️ توزيع إلكترونات تفاعلي</h4>
+                    <h4>
+                        ☁️ توزيع إلكترونات تفاعلي
+                    </h4>
 
                     <span>
                         حركة سريعة داخل سحابة إلكترونية
@@ -2854,35 +3494,46 @@ function renderElectronSection(element){
                 </div>
 
 
+
                 <div
                     class="cloud-stage"
                     id="electronCloud"
                 >
 
                     <div class="cloud-core">
+
                         ${element.s}
+
                     </div>
 
                 </div>
+
 
 
                 <div class="cloud-controls">
 
                     <div class="cloud-count">
+
                         عدد الإلكترونات:
                         ${element.z}
+
                     </div>
+
 
                     <button
                         class="run-cloud"
                         onclick="runCloudAnimation()"
                     >
+
                         ⚡ تشغيل الحركة
+
                     </button>
 
                 </div>
 
+
             </div>
+
 
 
             <div class="electron-lower-grid">
@@ -2890,7 +3541,9 @@ function renderElectronSection(element){
 
                 <div class="lewis-card">
 
-                    <h4>تمثيل لويس النقطي</h4>
+                    <h4>
+                        تمثيل لويس النقطي
+                    </h4>
 
                     <p>
                         يوضح إلكترونات التكافؤ حول رمز العنصر.
@@ -2907,19 +3560,24 @@ function renderElectronSection(element){
 
 
                     <div class="lewis-note">
+
                         عدد النقاط يمثل إلكترونات التكافؤ
+
                     </div>
 
                 </div>
 
 
+
                 <div class="orbital-card">
 
-                    <h4>مخطط المدارات</h4>
+                    <h4>
+                        مخطط المدارات
+                    </h4>
 
                     <p>
                         توضح الأسهم الإلكترونات داخل
-                        المدارات الفرعية، وفق قاعدة هوند.
+                        المدارات الفرعية وفق قاعدة هوند.
                     </p>
 
 
@@ -2935,9 +3593,13 @@ function renderElectronSection(element){
             </div>
 
 
+
             <div class="filling-card">
 
-                <h4>قاعدة وترتيب الامتلاء الإلكتروني</h4>
+                <h4>
+                    قاعدة وترتيب الامتلاء الإلكتروني
+                </h4>
+
 
                 <div class="filling-order">
 
@@ -3001,8 +3663,10 @@ function renderElectronSection(element){
 
 
                 <div class="distribution-note">
+
                     يمتلئ المدار الأقل طاقة أولًا،
                     مع مراعاة مبدأ باولي وقاعدة هوند.
+
                 </div>
 
             </div>
@@ -3013,26 +3677,28 @@ function renderElectronSection(element){
     `;
 
 
-    /*
-       بعد إنشاء المحتوى نشغّل السحابة
-    */
-
-    createElectronCloud(element);
+    createElectronCloud(
+        element
+    );
 
 }
 
 
-/* =========================
-   INTRO
-========================= */
+/* =========================================================
+   شاشة البداية
+========================================================= */
 
-setTimeout(() => {
+setTimeout(
+    () => {
 
-    document
-        .getElementById("intro")
-        .classList.add("hide");
+        document
+            .getElementById("intro")
+            .classList.add("hide");
 
-},3000);
+    },
+    3000
+);
+
 
 </script>
 
