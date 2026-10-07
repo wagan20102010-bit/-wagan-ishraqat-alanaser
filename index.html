@@ -354,30 +354,29 @@ body {
     direction: rtl;
 }
 
-/* =========================
-   بطاقة معلومات العنصر
-========================= */
+/* ==================================================
+   صفحة الذرة
+================================================== */
 
-.element-info {
-    max-width: 1100px;
-    margin: 10px auto 70px;
-    background: rgba(255,255,255,0.92);
-    border: 1px solid #e4dfe7;
-    border-radius: 25px;
-    padding: 28px;
-    box-shadow: 0 15px 45px rgba(70,55,85,0.08);
+.atom-page {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 25px 70px;
+}
+
+.atom-page.show {
+    display: block;
+    animation: pageIn 0.45s ease;
+}
+
+.periodic-page.hide {
     display: none;
 }
 
-.element-info.show {
-    display: block;
-    animation: infoAppear 0.5s ease;
-}
-
-@keyframes infoAppear {
+@keyframes pageIn {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(12px);
     }
 
     to {
@@ -386,138 +385,151 @@ body {
     }
 }
 
-.info-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
+/* =========================
+   زر العودة
+========================= */
 
-.info-symbol {
-    width: 82px;
-    height: 82px;
-    margin: 0 auto 12px;
-    border-radius: 22px;
+.back-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 38px;
-    font-weight: 700;
-    background: #f2edf7;
-    color: #332d45;
-}
+    gap: 9px;
 
-.info-header h2 {
-    margin: 0;
-    font-size: 28px;
-}
+    width: fit-content;
+    margin: 0 auto 30px;
 
-.info-header p {
-    margin: 8px 0 0;
-    color: #77717f;
-}
+    border: 1px solid #d9cce4;
+    background: white;
+    color: #665375;
 
-/* =========================
-   أزرار الأقسام
-========================= */
+    border-radius: 14px;
+    padding: 12px 22px;
 
-.info-tabs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 25px;
-}
-
-.info-tab {
-    border: 1px solid #e2dce7;
-    background: #fbfafc;
-    border-radius: 17px;
-    padding: 16px 10px;
-    cursor: pointer;
-    color: #4d4558;
-    transition: 0.25s ease;
     font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 18px rgba(80,60,100,0.07);
+
+    transition: 0.25s ease;
 }
 
-.info-tab:hover {
+.back-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 18px rgba(70,55,85,0.08);
-}
-
-.info-tab.active {
-    background: #ece4f3;
-    border-color: #c8b6d8;
-}
-
-.info-tab .tab-icon {
-    display: block;
-    font-size: 24px;
-    margin-bottom: 7px;
-}
-
-.info-content {
-    min-height: 350px;
+    background: #f8f2fc;
+    box-shadow: 0 9px 22px rgba(80,60,100,0.11);
 }
 
 /* =========================
-   قسم الذرة
+   عنوان الذرة
 ========================= */
 
-.atom-layout {
+.atom-page-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.atom-page-symbol {
+    width: 86px;
+    height: 86px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 39px;
+    font-weight: 700;
+
+    background: linear-gradient(
+        145deg,
+        #e9dcf5,
+        #d9eef4
+    );
+
+    color: #453450;
+
+    border: 1px solid #d6c6e4;
+
+    box-shadow:
+        0 10px 28px rgba(100,75,120,0.12);
+}
+
+.atom-page-header h1 {
+    margin: 0;
+    font-size: 31px;
+    color: #40334d;
+}
+
+.atom-page-header p {
+    margin: 8px 0 0;
+    color: #7c7183;
+    font-size: 15px;
+}
+
+/* =========================
+   محتوى الذرة
+========================= */
+
+.atom-page-content {
+    max-width: 1150px;
+    margin: auto;
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
     align-items: center;
 }
 
-.atom-visual {
-    min-height: 340px;
+/* =========================
+   رسم الذرة
+========================= */
+
+.atom-visual-card {
+    background: white;
+    border: 1px solid #e5dfe9;
+    border-radius: 28px;
+    padding: 28px;
+
+    min-height: 520px;
+
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 18px 50px rgba(70,55,85,0.08);
 }
 
 .atom {
-    width: 290px;
-    height: 290px;
+    width: 420px;
+    height: 420px;
     position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.nucleus {
-    width: 92px;
-    height: 92px;
-    border-radius: 50%;
-    background: #eee5f4;
-    border: 3px solid #c9b5d8;
-    box-shadow:
-        0 0 25px rgba(190,170,220,0.35),
-        inset 0 0 20px rgba(255,255,255,0.7);
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.nucleus-symbol {
-    font-size: 27px;
-    font-weight: bold;
-}
-
-.nucleus-text {
-    font-size: 9px;
-    color: #706778;
-    margin-top: 3px;
-}
+/* =========================
+   المدارات
+========================= */
 
 .orbit {
     position: absolute;
-    border: 1px solid rgba(120,100,140,0.28);
-    border-radius: 50%;
+
     left: 50%;
     top: 50%;
+
     transform: translate(-50%, -50%);
+
+    border: 2px solid rgba(105, 93, 125, 0.20);
+
+    border-radius: 50%;
 }
 
 .orbit-1 {
@@ -526,189 +538,390 @@ body {
 }
 
 .orbit-2 {
-    width: 215px;
-    height: 215px;
+    width: 235px;
+    height: 235px;
 }
 
 .orbit-3 {
-    width: 275px;
-    height: 275px;
+    width: 325px;
+    height: 325px;
 }
+
+.orbit-4 {
+    width: 405px;
+    height: 405px;
+}
+
+/* =========================
+   النواة
+========================= */
+
+.nucleus {
+    position: absolute;
+
+    width: 155px;
+    height: 155px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff8d7 0%,
+            #f9e9bd 42%,
+            #f2d6a9 100%
+        );
+
+    border: 4px solid #e5bd76;
+
+    box-shadow:
+        0 0 0 8px rgba(244,207,145,0.14),
+        0 15px 35px rgba(180,135,70,0.18);
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.nucleus-particles {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    overflow: hidden;
+}
+
+/* =========================
+   جسيمات النواة
+========================= */
+
+.nucleus-particle {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 10px;
+
+    flex-shrink: 0;
+
+    border: 1.5px solid rgba(70,50,40,0.15);
+
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,0.55),
+        0 2px 5px rgba(80,50,30,0.12);
+}
+
+/* البروتون */
+.proton {
+    background: #f6cf4d;
+    color: #684c00;
+}
+
+/* النيوترون */
+.neutron {
+    background: #ef6f73;
+    color: white;
+
+    flex-direction: column;
+    gap: 0;
+
+    line-height: 8px;
+}
+
+.neutron .charge-plus,
+.neutron .charge-minus {
+    display: block;
+    height: 8px;
+    line-height: 8px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* =========================
+   الإلكترونات
+========================= */
 
 .electron {
     position: absolute;
-    width: 13px;
-    height: 13px;
+
+    width: 31px;
+    height: 31px;
+
     border-radius: 50%;
-    background: #35d9d0;
-    box-shadow: 0 0 12px rgba(53,217,208,0.75);
+
+    background: #4da8e8;
+
+    border: 2px solid #2d88c8;
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    box-shadow:
+        0 4px 12px rgba(45,136,200,0.28);
+
+    z-index: 15;
 }
 
-.atom-details {
+/* =========================
+   معلومات العنصر
+========================= */
+
+.atom-information {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.info-section-title {
+    margin: 0 0 5px;
+
+    font-size: 20px;
+    color: #544061;
+}
+
+.details-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 11px;
+    gap: 12px;
 }
 
 .detail-card {
-    padding: 14px;
-    border-radius: 15px;
-    background: #faf8fb;
-    border: 1px solid #ebe6ee;
+    padding: 17px;
+
+    border-radius: 17px;
+
+    background: white;
+
+    border: 1px solid #e8e1eb;
+
+    box-shadow: 0 6px 18px rgba(70,55,85,0.045);
+
+    transition: 0.2s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-2px);
 }
 
 .detail-card span {
     display: block;
-    color: #88808f;
+
     font-size: 11px;
-    margin-bottom: 5px;
+
+    margin-bottom: 6px;
+
+    color: #827688;
 }
 
 .detail-card strong {
-    font-size: 15px;
+    font-size: 16px;
     color: #40384b;
 }
 
-.family-box {
-    margin-top: 15px;
-    padding: 18px;
-    background: #f7f2fa;
-    border-radius: 17px;
-    border: 1px solid #e7ddec;
+/* ألوان مختلفة للمعلومات */
+
+.detail-card:nth-child(1) {
+    border-top: 3px solid #c7a5df;
 }
 
-.family-box h3 {
+.detail-card:nth-child(2) {
+    border-top: 3px solid #f0c95c;
+}
+
+.detail-card:nth-child(3) {
+    border-top: 3px solid #ef7777;
+}
+
+.detail-card:nth-child(4) {
+    border-top: 3px solid #58aee5;
+}
+
+.detail-card:nth-child(5) {
+    border-top: 3px solid #75c7a5;
+}
+
+.detail-card:nth-child(6) {
+    border-top: 3px solid #e9a86f;
+}
+
+.detail-card:nth-child(7) {
+    border-top: 3px solid #8fb8e8;
+}
+
+.detail-card:nth-child(8) {
+    border-top: 3px solid #d19bcf;
+}
+
+/* =========================
+   صندوق العائلة
+========================= */
+
+.family-box {
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8effb,
+            #eef9f7
+        );
+
+    border-radius: 20px;
+
+    border: 1px solid #e2d8e8;
+
+    box-shadow: 0 8px 25px rgba(80,65,90,0.05);
+}
+
+.family-box h2 {
     margin: 0 0 9px;
-    font-size: 16px;
+
+    font-size: 18px;
+
+    color: #61496d;
 }
 
 .family-box p {
     margin: 0;
+
     color: #625b68;
-    line-height: 1.8;
+
+    line-height: 1.9;
+
     font-size: 13px;
 }
 
 /* =========================
-   التوزيع الإلكتروني
+   شرح مكونات الذرة
 ========================= */
 
-.electron-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: center;
-}
+.particle-key {
+    margin-top: 5px;
 
-.configuration-box {
-    background: #faf8fb;
-    border: 1px solid #ebe5ef;
-    border-radius: 18px;
-    padding: 22px;
-}
-
-.configuration-box h3 {
-    margin-top: 0;
-    font-size: 17px;
-}
-
-.configuration {
-    direction: ltr;
-    text-align: left;
-    font-size: 18px;
-    line-height: 2;
-    color: #4b4255;
-    word-break: break-word;
-}
-
-.shell-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
 }
 
-.shells {
-    width: 310px;
-    height: 310px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.shell {
-    position: absolute;
-    border: 1px solid #cfc4d6;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.shell:nth-child(1) {
-    width: 75px;
-    height: 75px;
-}
-
-.shell:nth-child(2) {
-    width: 145px;
-    height: 145px;
-}
-
-.shell:nth-child(3) {
-    width: 215px;
-    height: 215px;
-}
-
-.shell:nth-child(4) {
-    width: 285px;
-    height: 285px;
-}
-
-.shell-nucleus {
-    width: 50px;
-    height: 50px;
-    background: #eee5f4;
-    border: 2px solid #c9b5d8;
-    border-radius: 50%;
-    z-index: 4;
+.key-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-weight: bold;
+
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    background: white;
+
+    border: 1px solid #e7e0ea;
+
+    border-radius: 12px;
+
+    font-size: 11px;
+
+    color: #62596b;
 }
 
-.animated-electron {
-    position: absolute;
-    width: 11px;
-    height: 11px;
+.key-dot {
+    width: 17px;
+    height: 17px;
+
     border-radius: 50%;
-    background: #35d9d0;
-    box-shadow: 0 0 12px rgba(53,217,208,0.8);
-    opacity: 0;
-    transform: scale(0.2);
-    animation: electronAppear 0.45s ease forwards;
 }
 
-@keyframes electronAppear {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.key-proton {
+    background: #f6cf4d;
 }
 
-.shell-labels {
-    margin-top: 18px;
-    text-align: center;
-    color: #77717f;
-    font-size: 13px;
+.key-neutron {
+    background: #ef6f73;
+}
+
+.key-electron {
+    background: #4da8e8;
 }
 
 /* =========================
    للجوال
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 850px) {
+
+    .atom-page-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .atom-visual-card {
+        min-height: 460px;
+    }
+
+    .atom {
+        width: 350px;
+        height: 350px;
+    }
+
+    .orbit-1 {
+        width: 120px;
+        height: 120px;
+    }
+
+    .orbit-2 {
+        width: 195px;
+        height: 195px;
+    }
+
+    .orbit-3 {
+        width: 270px;
+        height: 270px;
+    }
+
+    .orbit-4 {
+        width: 335px;
+        height: 335px;
+    }
+
+    .nucleus {
+        width: 130px;
+        height: 130px;
+    }
+
+    .nucleus-particles {
+        width: 100px;
+        height: 100px;
+    }
+
+    .nucleus-particle {
+        width: 23px;
+        height: 23px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 550px) {
 
     .main {
         padding: 40px 15px 60px;
@@ -747,25 +960,73 @@ body {
         padding-right: 15px;
     }
 
-    .element-info {
-        padding: 20px 15px;
+    .series {
+        min-width: 950px;
     }
 
-    .info-tabs {
-        grid-template-columns: repeat(2, 1fr);
+    .atom-page {
+        padding: 25px 14px 55px;
     }
 
-    .atom-layout,
-    .electron-layout {
-        grid-template-columns: 1fr;
+    .atom-page-header h1 {
+        font-size: 27px;
+    }
+
+    .atom-visual-card {
+        padding: 15px;
+        min-height: 390px;
+        overflow: hidden;
     }
 
     .atom {
-        width: 270px;
-        height: 270px;
+        width: 300px;
+        height: 300px;
     }
 
-    .atom-details {
+    .orbit-1 {
+        width: 105px;
+        height: 105px;
+    }
+
+    .orbit-2 {
+        width: 165px;
+        height: 165px;
+    }
+
+    .orbit-3 {
+        width: 225px;
+        height: 225px;
+    }
+
+    .orbit-4 {
+        width: 285px;
+        height: 285px;
+    }
+
+    .nucleus {
+        width: 115px;
+        height: 115px;
+    }
+
+    .nucleus-particles {
+        width: 90px;
+        height: 90px;
+        gap: 3px;
+    }
+
+    .nucleus-particle {
+        width: 20px;
+        height: 20px;
+        font-size: 8px;
+    }
+
+    .electron {
+        width: 27px;
+        height: 27px;
+        font-size: 9px;
+    }
+
+    .details-grid {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -774,84 +1035,257 @@ body {
 
 <body>
 
+<!-- =========================
+     المقدمة
+========================= -->
+
 <section class="intro">
     <div class="glow"></div>
     <div class="intro-title">إشراقة العناصر</div>
 </section>
 
-<main class="main">
-
-<div class="heading">
-    <h1>الجدول الدوري للعناصر</h1>
-    <p>استكشف العناصر واكتشف خصائصها واستخداماتها</p>
-</div>
-
-<div class="search-box">
-    <input
-        type="text"
-        placeholder="ابحث عن رمز أو اسم العنصر بالإنجليزي..."
-        id="searchInput"
-        autocomplete="off"
-    >
-</div>
-
-<section class="legend">
-    <div class="legend-title">مفتاح الألوان</div>
-
-    <div class="legend-items">
-
-        <div class="legend-item"><span class="legend-color alkali"></span><span>الفلزات القلوية</span></div>
-        <div class="legend-item"><span class="legend-color alkaline"></span><span>الفلزات القلوية الأرضية</span></div>
-        <div class="legend-item"><span class="legend-color transition"></span><span>الفلزات الانتقالية</span></div>
-        <div class="legend-item"><span class="legend-color post-transition"></span><span>الفلزات بعد الانتقالية</span></div>
-        <div class="legend-item"><span class="legend-color metalloid"></span><span>أشباه الفلزات</span></div>
-        <div class="legend-item"><span class="legend-color nonmetal"></span><span>اللافلزات</span></div>
-        <div class="legend-item"><span class="legend-color halogen"></span><span>الهالوجينات</span></div>
-        <div class="legend-item"><span class="legend-color noble"></span><span>الغازات النبيلة</span></div>
-        <div class="legend-item"><span class="legend-color lanthanide"></span><span>اللانثانيدات</span></div>
-        <div class="legend-item"><span class="legend-color actinide"></span><span>الأكتينيدات</span></div>
-
-    </div>
-</section>
-
-<div class="table-wrapper">
-    <div class="periodic-table" id="periodicTable"></div>
-</div>
-
-<div class="series" id="lanthanides"></div>
-<div class="series" id="actinides"></div>
 
 <!-- =========================
-     معلومات العنصر
+     صفحة الجدول الدوري
 ========================= -->
 
-<section class="element-info" id="elementInfo">
+<main class="main periodic-page" id="periodicPage">
 
-    <div class="info-header">
-        <div class="info-symbol" id="infoSymbol">Na</div>
-        <h2 id="infoName">Sodium</h2>
-        <p id="infoSubtitle">الصوديوم</p>
+    <div class="heading">
+        <h1>الجدول الدوري للعناصر</h1>
+        <p>استكشف العناصر واكتشف خصائصها واستخداماتها</p>
     </div>
 
-    <div class="info-tabs">
-
-        <button class="info-tab active" data-tab="atom">
-            <span class="tab-icon">⚛️</span>
-            الذرة
-        </button>
-
-        <button class="info-tab" data-tab="electron">
-            <span class="tab-icon">⚡</span>
-            التوزيع الإلكتروني
-        </button>
-
+    <div class="search-box">
+        <input
+            type="text"
+            placeholder="ابحث عن رمز أو اسم العنصر بالإنجليزي..."
+            id="searchInput"
+            autocomplete="off"
+        >
     </div>
 
-    <div class="info-content" id="infoContent"></div>
+    <section class="legend">
+
+        <div class="legend-title">مفتاح الألوان</div>
+
+        <div class="legend-items">
+
+            <div class="legend-item">
+                <span class="legend-color alkali"></span>
+                <span>الفلزات القلوية</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color alkaline"></span>
+                <span>الفلزات القلوية الأرضية</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color transition"></span>
+                <span>الفلزات الانتقالية</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color post-transition"></span>
+                <span>الفلزات بعد الانتقالية</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color metalloid"></span>
+                <span>أشباه الفلزات</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color nonmetal"></span>
+                <span>اللافلزات</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color halogen"></span>
+                <span>الهالوجينات</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color noble"></span>
+                <span>الغازات النبيلة</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color lanthanide"></span>
+                <span>اللانثانيدات</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="legend-color actinide"></span>
+                <span>الأكتينيدات</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="table-wrapper">
+        <div class="periodic-table" id="periodicTable"></div>
+    </div>
+
+    <div class="series" id="lanthanides"></div>
+    <div class="series" id="actinides"></div>
+
+</main>
+
+
+<!-- =========================
+     صفحة الذرة
+========================= -->
+
+<section class="atom-page" id="atomPage">
+
+    <button class="back-button" id="backButton">
+        <span>↩</span>
+        العودة للجدول الدوري
+    </button>
+
+    <header class="atom-page-header">
+
+        <div class="atom-page-symbol" id="atomPageSymbol">
+            Na
+        </div>
+
+        <h1 id="atomPageName">
+            Sodium
+        </h1>
+
+        <p id="atomPageArabic">
+            الصوديوم
+        </p>
+
+    </header>
+
+
+    <div class="atom-page-content">
+
+        <!-- =========================
+             الرسم
+        ========================= -->
+
+        <div class="atom-visual-card">
+
+            <div class="atom" id="atomVisual">
+
+                <div class="orbit orbit-1"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="orbit orbit-3"></div>
+                <div class="orbit orbit-4"></div>
+
+                <div class="nucleus">
+
+                    <div
+                        class="nucleus-particles"
+                        id="nucleusParticles"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             المعلومات
+        ========================= -->
+
+        <div class="atom-information">
+
+            <h2 class="info-section-title">
+                معلومات الذرة
+            </h2>
+
+            <div class="details-grid">
+
+                <div class="detail-card">
+                    <span>العدد الذري</span>
+                    <strong id="atomicNumber">11</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>البروتونات</span>
+                    <strong id="protonCount">11</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>النيوترونات</span>
+                    <strong id="neutronCount">12</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>الإلكترونات</span>
+                    <strong id="electronCount">11</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>المجموعة</span>
+                    <strong id="groupNumber">1</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>الدورة</span>
+                    <strong id="periodNumber">3</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>الفئة</span>
+                    <strong id="categoryName">s</strong>
+                </div>
+
+                <div class="detail-card">
+                    <span>العائلة</span>
+                    <strong id="familyName">الفلزات القلوية</strong>
+                </div>
+
+            </div>
+
+
+            <div class="family-box">
+
+                <h2>
+                    خواص العائلة
+                </h2>
+
+                <p id="familyProperties">
+                    فلزات شديدة التفاعل، تمتلك إلكترون تكافؤ واحدًا، وتقع في المجموعة 1.
+                    تميل إلى فقد إلكترون واحد وتكوين أيونات موجبة، وتتفاعل بشدة مع الماء.
+                </p>
+
+            </div>
+
+
+            <div class="particle-key">
+
+                <div class="key-item">
+                    <span class="key-dot key-proton"></span>
+                    بروتون موجب
+                </div>
+
+                <div class="key-item">
+                    <span class="key-dot key-neutron"></span>
+                    نيوترون متعادل
+                </div>
+
+                <div class="key-item">
+                    <span class="key-dot key-electron"></span>
+                    إلكترون سالب
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-</main>
 
 <script>
 
@@ -923,6 +1357,7 @@ const elementsData = [
 ["Og","Oganesson","noble"]
 ];
 
+
 /* =========================
    مواقع الجدول
 ========================= */
@@ -931,78 +1366,71 @@ const positions = {
 
 H:[1,1], He:[18,1],
 
-Li:[1,2], Be:[2,2], B:[13,2], C:[14,2], N:[15,2], O:[16,2], F:[17,2], Ne:[18,2],
+Li:[1,2], Be:[2,2], B:[13,2], C:[14,2], N:[15,2],
+O:[16,2], F:[17,2], Ne:[18,2],
 
-Na:[1,3], Mg:[2,3], Al:[13,3], Si:[14,3], P:[15,3], S:[16,3], Cl:[17,3], Ar:[18,3],
+Na:[1,3], Mg:[2,3], Al:[13,3], Si:[14,3], P:[15,3],
+S:[16,3], Cl:[17,3], Ar:[18,3],
 
-K:[1,4], Ca:[2,4], Sc:[3,4], Ti:[4,4], V:[5,4], Cr:[6,4], Mn:[7,4],
-Fe:[8,4], Co:[9,4], Ni:[10,4], Cu:[11,4], Zn:[12,4], Ga:[13,4], Ge:[14,4],
-As:[15,4], Se:[16,4], Br:[17,4], Kr:[18,4],
+K:[1,4], Ca:[2,4], Sc:[3,4], Ti:[4,4], V:[5,4],
+Cr:[6,4], Mn:[7,4], Fe:[8,4], Co:[9,4], Ni:[10,4],
+Cu:[11,4], Zn:[12,4], Ga:[13,4], Ge:[14,4], As:[15,4],
+Se:[16,4], Br:[17,4], Kr:[18,4],
 
-Rb:[1,5], Sr:[2,5], Y:[3,5], Zr:[4,5], Nb:[5,5], Mo:[6,5], Tc:[7,5],
-Ru:[8,5], Rh:[9,5], Pd:[10,5], Ag:[11,5], Cd:[12,5], In:[13,5], Sn:[14,5],
-Sb:[15,5], Te:[16,5], I:[17,5], Xe:[18,5],
+Rb:[1,5], Sr:[2,5], Y:[3,5], Zr:[4,5], Nb:[5,5],
+Mo:[6,5], Tc:[7,5], Ru:[8,5], Rh:[9,5], Pd:[10,5],
+Ag:[11,5], Cd:[12,5], In:[13,5], Sn:[14,5], Sb:[15,5],
+Te:[16,5], I:[17,5], Xe:[18,5],
 
-Cs:[1,6], Ba:[2,6], La:[3,6], Hf:[4,6], Ta:[5,6], W:[6,6], Re:[7,6],
-Os:[8,6], Ir:[9,6], Pt:[10,6], Au:[11,6], Hg:[12,6], Tl:[13,6], Pb:[14,6],
-Bi:[15,6], Po:[16,6], At:[17,6], Rn:[18,6],
+Cs:[1,6], Ba:[2,6], La:[3,6], Hf:[4,6], Ta:[5,6],
+W:[6,6], Re:[7,6], Os:[8,6], Ir:[9,6], Pt:[10,6],
+Au:[11,6], Hg:[12,6], Tl:[13,6], Pb:[14,6], Bi:[15,6],
+Po:[16,6], At:[17,6], Rn:[18,6],
 
-Fr:[1,7], Ra:[2,7], Ac:[3,7], Rf:[4,7], Db:[5,7], Sg:[6,7], Bh:[7,7],
-Hs:[8,7], Mt:[9,7], Ds:[10,7], Rg:[11,7], Cn:[12,7], Nh:[13,7], Fl:[14,7],
-Mc:[15,7], Lv:[16,7], Ts:[17,7], Og:[18,7]
+Fr:[1,7], Ra:[2,7], Ac:[3,7], Rf:[4,7], Db:[5,7],
+Sg:[6,7], Bh:[7,7], Hs:[8,7], Mt:[9,7], Ds:[10,7],
+Rg:[11,7], Cn:[12,7], Nh:[13,7], Fl:[14,7], Mc:[15,7],
+Lv:[16,7], Ts:[17,7], Og:[18,7]
 };
 
+
 /* =========================
-   إنشاء الجدول
+   أسماء عربية
 ========================= */
 
-const periodicTable = document.getElementById("periodicTable");
-const lanthanides = document.getElementById("lanthanides");
-const actinides = document.getElementById("actinides");
+const arabicNames = {
+H:"الهيدروجين",
+He:"الهيليوم",
+Li:"الليثيوم",
+Be:"البيريليوم",
+B:"البورون",
+C:"الكربون",
+N:"النيتروجين",
+O:"الأكسجين",
+F:"الفلور",
+Ne:"النيون",
+Na:"الصوديوم",
+Mg:"المغنيسيوم",
+Al:"الألومنيوم",
+Si:"السيليكون",
+P:"الفوسفور",
+S:"الكبريت",
+Cl:"الكلور",
+Ar:"الأرجون",
+K:"البوتاسيوم",
+Ca:"الكالسيوم",
+Fe:"الحديد",
+Cu:"النحاس",
+Zn:"الزنك",
+Ag:"الفضة",
+Au:"الذهب",
+Hg:"الزئبق"
+};
 
-elementsData.forEach((item,index) => {
+function getArabicName(symbol) {
+    return arabicNames[symbol] || "عنصر كيميائي";
+}
 
-    const [symbol,name,type] = item;
-    const atomicNumber = index + 1;
-
-    const element = document.createElement("div");
-
-    element.className = `element ${type}`;
-    element.dataset.symbol = symbol;
-    element.dataset.name = name;
-    element.dataset.atomicNumber = atomicNumber;
-
-    if (positions[symbol]) {
-        element.style.gridColumn = positions[symbol][0];
-        element.style.gridRow = positions[symbol][1];
-        periodicTable.appendChild(element);
-    }
-    else if (["Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu"].includes(symbol)) {
-        lanthanides.appendChild(element);
-    }
-    else if (["Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr"].includes(symbol)) {
-        actinides.appendChild(element);
-    }
-
-    element.innerHTML = `
-        <div class="symbol">${symbol}</div>
-        <div class="name">${name}</div>
-    `;
-
-    element.addEventListener("click", () => {
-        showElement(element);
-    });
-});
-
-document.getElementById("lanthanides").insertAdjacentHTML(
-    "afterbegin",
-    `<div class="series-title">اللانثانيدات</div>`
-);
-
-document.getElementById("actinides").insertAdjacentHTML(
-    "afterbegin",
-    `<div class="series-title">الأكتينيدات</div>`
-);
 
 /* =========================
    معلومات العائلات
@@ -1012,57 +1440,68 @@ const familyInfo = {
 
 alkali: {
     name: "الفلزات القلوية",
-    properties: "فلزات شديدة التفاعل، تمتلك إلكترون تكافؤ واحدًا، وتقع في المجموعة 1. تميل إلى فقد إلكترون واحد وتكوين أيونات موجبة، وتتفاعل بشدة مع الماء."
+    properties:
+    "فلزات شديدة التفاعل، تمتلك إلكترون تكافؤ واحدًا، وتقع في المجموعة 1. تميل إلى فقد إلكترون واحد وتكوين أيونات موجبة، وتتفاعل بشدة مع الماء."
 },
 
 alkaline: {
     name: "الفلزات القلوية الأرضية",
-    properties: "فلزات نشطة تمتلك إلكترونَي تكافؤ، وتقع في المجموعة 2. تميل إلى فقد إلكترونين وتكوين أيونات موجبة."
+    properties:
+    "فلزات نشطة تمتلك إلكترونَي تكافؤ، وتقع في المجموعة 2. تميل إلى فقد إلكترونين وتكوين أيونات موجبة."
 },
 
 transition: {
     name: "الفلزات الانتقالية",
-    properties: "فلزات تتميز بموصلية جيدة للحرارة والكهرباء، ولها حالات تأكسد متعددة، وكثير منها يدخل في تكوين السبائك والمركبات الملونة."
+    properties:
+    "فلزات تتميز بموصلية جيدة للحرارة والكهرباء، ولها حالات تأكسد متعددة، وكثير منها يدخل في تكوين السبائك والمركبات الملونة."
 },
 
 "post-transition": {
     name: "الفلزات بعد الانتقالية",
-    properties: "فلزات تتميز بكونها أقل صلابة من كثير من الفلزات الانتقالية، ولها استخدامات صناعية وتقنية متنوعة."
+    properties:
+    "فلزات تتميز بكونها أقل صلابة من كثير من الفلزات الانتقالية، ولها استخدامات صناعية وتقنية متنوعة."
 },
 
 metalloid: {
     name: "أشباه الفلزات",
-    properties: "تمتلك بعض خصائص الفلزات وبعض خصائص اللافلزات، وتتميز غالبًا بقدرتها على توصيل الكهرباء بدرجات متفاوتة."
+    properties:
+    "تمتلك بعض خصائص الفلزات وبعض خصائص اللافلزات، وتتميز غالبًا بقدرتها على توصيل الكهرباء بدرجات متفاوتة."
 },
 
 nonmetal: {
     name: "اللافلزات",
-    properties: "عناصر لا فلزية تختلف في خصائصها، وكثير منها ضعيف التوصيل للحرارة والكهرباء، وقد توجد كغازات أو مواد صلبة هشة."
+    properties:
+    "عناصر لا فلزية تختلف في خصائصها، وكثير منها ضعيف التوصيل للحرارة والكهرباء، وقد توجد كغازات أو مواد صلبة هشة."
 },
 
 halogen: {
     name: "الهالوجينات",
-    properties: "عناصر شديدة التفاعل تقع في المجموعة 17، وتميل إلى اكتساب إلكترون واحد للوصول إلى تركيب إلكتروني أكثر استقرارًا."
+    properties:
+    "عناصر شديدة التفاعل تقع في المجموعة 17، وتميل إلى اكتساب إلكترون واحد للوصول إلى تركيب إلكتروني أكثر استقرارًا."
 },
 
 noble: {
     name: "الغازات النبيلة",
-    properties: "غازات قليلة التفاعل بسبب استقرار غلاف التكافؤ، وتقع في المجموعة 18."
+    properties:
+    "غازات قليلة التفاعل بسبب استقرار غلاف التكافؤ، وتقع في المجموعة 18."
 },
 
 lanthanide: {
     name: "اللانثانيدات",
-    properties: "مجموعة من الفلزات الانتقالية الداخلية، تتميز بخصائص مغناطيسية وضوئية مهمة وتستخدم في تقنيات متعددة."
+    properties:
+    "مجموعة من الفلزات الانتقالية الداخلية، تتميز بخصائص مغناطيسية وضوئية مهمة وتستخدم في تقنيات متعددة."
 },
 
 actinide: {
     name: "الأكتينيدات",
-    properties: "مجموعة من الفلزات الانتقالية الداخلية، وجميعها مشعة، وتدخل بعض عناصرها في تطبيقات الطاقة والبحث العلمي."
+    properties:
+    "مجموعة من الفلزات الانتقالية الداخلية، وجميعها مشعة، وتدخل بعض عناصرها في تطبيقات الطاقة والبحث العلمي."
 }
 };
 
+
 /* =========================
-   المجموعة والدورة والبلوك
+   المجموعة والدورة والفئة
 ========================= */
 
 function getGroup(symbol) {
@@ -1076,7 +1515,8 @@ function getPeriod(symbol) {
 
     if (!positions[symbol]) {
 
-        const z = elementsData.findIndex(x => x[0] === symbol) + 1;
+        const z =
+            elementsData.findIndex(x => x[0] === symbol) + 1;
 
         if (z >= 58 && z <= 71) return 6;
         if (z >= 90 && z <= 103) return 7;
@@ -1087,17 +1527,26 @@ function getPeriod(symbol) {
     return positions[symbol][1];
 }
 
-function getBlock(type, group) {
+function getCategory(type, group) {
 
-    if (type === "lanthanide" || type === "actinide") return "f";
+    if (type === "lanthanide" || type === "actinide") {
+        return "f";
+    }
 
-    if (group <= 2) return "s";
-    if (group >= 13) return "p";
+    if (group <= 2) {
+        return "s";
+    }
+
+    if (group >= 13) {
+        return "p";
+    }
+
     return "d";
 }
 
+
 /* =========================
-   أعداد الإلكترونات في الأغلفة
+   أعداد الإلكترونات
 ========================= */
 
 const orbitalOrder = [
@@ -1128,6 +1577,7 @@ const orbitalOrder = [
 function getShells(atomicNumber) {
 
     const shells = [0,0,0,0,0,0,0];
+
     let remaining = atomicNumber;
 
     for (const orbital of orbitalOrder) {
@@ -1136,438 +1586,548 @@ function getShells(atomicNumber) {
 
         const shell = orbital[0];
         const capacity = orbital[2];
-        const amount = Math.min(remaining, capacity);
+
+        const amount =
+            Math.min(remaining, capacity);
 
         shells[shell - 1] += amount;
+
         remaining -= amount;
     }
 
     return shells.filter(x => x > 0);
 }
 
+
 /* =========================
-   التوزيع الإلكتروني المكتوب
+   الصفحة الرئيسية والذرة
 ========================= */
 
-function getConfiguration(atomicNumber) {
+const periodicPage =
+    document.getElementById("periodicPage");
 
-    const labels = [
-        "1s","2s","2p","3s","3p","4s","3d","4p",
-        "5s","4d","5p","6s","4f","5d","6p","7s",
-        "5f","6d","7p","6f","7d","7f"
-    ];
+const atomPage =
+    document.getElementById("atomPage");
 
-    let remaining = atomicNumber;
-    let result = [];
+const backButton =
+    document.getElementById("backButton");
 
-    for (let i = 0; i < orbitalOrder.length; i++) {
 
-        if (remaining <= 0) break;
+/* =========================
+   إنشاء الجدول
+========================= */
 
-        const capacity = orbitalOrder[i][2];
-        const amount = Math.min(remaining, capacity);
+const periodicTable =
+    document.getElementById("periodicTable");
 
-        result.push(`${labels[i]}<sup>${amount}</sup>`);
-        remaining -= amount;
+const lanthanides =
+    document.getElementById("lanthanides");
+
+const actinides =
+    document.getElementById("actinides");
+
+
+elementsData.forEach((item,index) => {
+
+    const [symbol,name,type] = item;
+
+    const atomicNumber = index + 1;
+
+    const element =
+        document.createElement("div");
+
+    element.className =
+        `element ${type}`;
+
+    element.dataset.symbol =
+        symbol;
+
+    element.dataset.name =
+        name;
+
+    element.dataset.atomicNumber =
+        atomicNumber;
+
+
+    if (positions[symbol]) {
+
+        element.style.gridColumn =
+            positions[symbol][0];
+
+        element.style.gridRow =
+            positions[symbol][1];
+
+        periodicTable.appendChild(element);
+
     }
 
-    return result.join(" ");
-}
-
-/* =========================
-   إظهار معلومات العنصر
-========================= */
-
-const infoBox = document.getElementById("elementInfo");
-const infoSymbol = document.getElementById("infoSymbol");
-const infoName = document.getElementById("infoName");
-const infoSubtitle = document.getElementById("infoSubtitle");
-const infoContent = document.getElementById("infoContent");
-
-let selectedElement = null;
-
-function showElement(element) {
-
-    document.querySelectorAll(".element").forEach(el => {
-        el.style.outline = "";
-    });
-
-    selectedElement = element;
-    element.style.outline = "3px solid rgba(53,217,208,0.55)";
-
-    const symbol = element.dataset.symbol;
-    const name = element.dataset.name;
-    const atomicNumber = Number(element.dataset.atomicNumber);
-    const type = elementsData[atomicNumber - 1][2];
-
-    infoSymbol.textContent = symbol;
-    infoName.textContent = name;
-    infoSubtitle.textContent = getArabicName(symbol);
-
-    infoBox.classList.add("show");
-
-    document.querySelectorAll(".info-tab").forEach(tab => {
-        tab.classList.remove("active");
-    });
-
-    document.querySelector('[data-tab="atom"]').classList.add("active");
-
-    renderAtom(symbol,name,atomicNumber,type);
-
-    setTimeout(() => {
-        infoBox.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    },100);
-}
-
-/* =========================
-   أسماء عربية مبدئية
-========================= */
-
-const arabicNames = {
-    H:"الهيدروجين",
-    He:"الهيليوم",
-    Li:"الليثيوم",
-    Be:"البيريليوم",
-    B:"البورون",
-    C:"الكربون",
-    N:"النيتروجين",
-    O:"الأكسجين",
-    F:"الفلور",
-    Ne:"النيون",
-    Na:"الصوديوم",
-    Mg:"المغنيسيوم",
-    Al:"الألومنيوم",
-    Si:"السيليكون",
-    P:"الفوسفور",
-    S:"الكبريت",
-    Cl:"الكلور",
-    Ar:"الأرجون",
-    K:"البوتاسيوم",
-    Ca:"الكالسيوم",
-    Fe:"الحديد",
-    Cu:"النحاس",
-    Zn:"الزنك",
-    Ag:"الفضة",
-    Au:"الذهب",
-    Hg:"الزئبق"
-};
-
-function getArabicName(symbol) {
-    return arabicNames[symbol] || "عنصر كيميائي";
-}
-
-/* =========================
-   قسم الذرة
-========================= */
-
-function renderAtom(symbol,name,atomicNumber,type) {
-
-    const shells = getShells(atomicNumber);
-    const group = getGroup(symbol);
-    const period = getPeriod(symbol);
-    const block = getBlock(type,group);
-    const family = familyInfo[type];
-
-    const neutronNumber =
-        symbol === "Na" ? 12 :
-        symbol === "H" ? 0 :
-        symbol === "He" ? 2 :
-        Math.round(atomicNumber * 1.2);
-
-    infoContent.innerHTML = `
-    
-    <div class="atom-layout">
-
-        <div class="atom-visual">
-
-            <div class="atom">
-
-                <div class="orbit orbit-1"></div>
-                <div class="orbit orbit-2"></div>
-                <div class="orbit orbit-3"></div>
-
-                <div class="nucleus">
-                    <div class="nucleus-symbol">${symbol}</div>
-                    <div class="nucleus-text">
-                        ${atomicNumber} بروتون
-                    </div>
-                </div>
-
-                ${createAtomElectrons(shells)}
-
-            </div>
-
-        </div>
-
-        <div>
-
-            <div class="atom-details">
-
-                <div class="detail-card">
-                    <span>العدد الذري</span>
-                    <strong>${atomicNumber}</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>البروتونات</span>
-                    <strong>${atomicNumber}</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>النيوترونات</span>
-                    <strong>${neutronNumber}</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>الإلكترونات</span>
-                    <strong>${atomicNumber}</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>المجموعة</span>
-                    <strong>${group}</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>الدورة</span>
-                    <strong>${period}</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>البلوك</span>
-                    <strong>${block}-block</strong>
-                </div>
-
-                <div class="detail-card">
-                    <span>العائلة</span>
-                    <strong>${family.name}</strong>
-                </div>
-
-            </div>
-
-            <div class="family-box">
-
-                <h3>خواص العائلة</h3>
-
-                <p>${family.properties}</p>
-
-            </div>
-
-        </div>
-
-    </div>
-    `;
-}
-
-/* =========================
-   إلكترونات الذرة الثابتة
-========================= */
-
-function createAtomElectrons(shells) {
-
-    let html = "";
-
-    shells.forEach((count,shellIndex) => {
-
-        const radius =
-            shellIndex === 0 ? 72 :
-            shellIndex === 1 ? 107 :
-            137;
-
-        for (let i = 0; i < count; i++) {
-
-            const angle = (360 / count) * i - 90;
-
-            const x =
-                50 + (Math.cos(angle * Math.PI / 180) * radius / 2.9);
-
-            const y =
-                50 + (Math.sin(angle * Math.PI / 180) * radius / 2.9);
-
-            html += `
-                <span
-                    class="electron"
-                    style="
-                        left:${x}%;
-                        top:${y}%;
-                        transform:translate(-50%,-50%);
-                    "
-                ></span>
-            `;
-        }
-    });
-
-    return html;
-}
-
-/* =========================
-   قسم التوزيع الإلكتروني
-========================= */
-
-function renderElectronDistribution(symbol,name,atomicNumber) {
-
-    const shells = getShells(atomicNumber);
-    const configuration = getConfiguration(atomicNumber);
-
-    infoContent.innerHTML = `
-
-    <div class="electron-layout">
-
-        <div class="configuration-box">
-
-            <h3>التوزيع الإلكتروني</h3>
-
-            <div class="configuration">
-                ${configuration}
-            </div>
-
-            <div class="shell-labels">
-                توزيع الإلكترونات على مستويات الطاقة:
-                ${shells.join(" - ")}
-            </div>
-
-        </div>
-
-        <div class="shell-box">
-
-            <div class="shells">
-
-                <div class="shell"></div>
-                <div class="shell"></div>
-                <div class="shell"></div>
-                <div class="shell"></div>
-
-                <div class="shell-nucleus">
-                    ${symbol}
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+    else if (
+        [
+            "Ce","Pr","Nd","Pm","Sm","Eu","Gd",
+            "Tb","Dy","Ho","Er","Tm","Yb","Lu"
+        ].includes(symbol)
+    ) {
+
+        lanthanides.appendChild(element);
+
+    }
+
+    else if (
+        [
+            "Th","Pa","U","Np","Pu","Am","Cm",
+            "Bk","Cf","Es","Fm","Md","No","Lr"
+        ].includes(symbol)
+    ) {
+
+        actinides.appendChild(element);
+    }
+
+
+    element.innerHTML = `
+        <div class="symbol">${symbol}</div>
+        <div class="name">${name}</div>
     `;
 
-    animateElectrons(shells);
-}
 
-/* =========================
-   حركة الإلكترونات
-========================= */
+    element.addEventListener("click", () => {
 
-function animateElectrons(shells) {
-
-    const container = document.querySelector(".shells");
-
-    if (!container) return;
-
-    let electronNumber = 0;
-
-    shells.forEach((count,shellIndex) => {
-
-        const shellSizes = [37.5,72.5,107.5,142.5];
-        const radius = shellSizes[shellIndex] || 142.5;
-
-        for (let i = 0; i < count; i++) {
-
-            const electron = document.createElement("span");
-
-            electron.className = "animated-electron";
-
-            const angle = (360 / count) * i - 90;
-
-            const x =
-                50 + Math.cos(angle * Math.PI / 180) * radius / 3.1;
-
-            const y =
-                50 + Math.sin(angle * Math.PI / 180) * radius / 3.1;
-
-            electron.style.left = `${x}%`;
-            electron.style.top = `${y}%`;
-            electron.style.transform = "translate(-50%,-50%)";
-
-            electron.style.animationDelay =
-                `${electronNumber * 0.07}s`;
-
-            container.appendChild(electron);
-
-            electronNumber++;
-        }
-    });
-}
-
-/* =========================
-   أزرار الأقسام
-========================= */
-
-document.querySelectorAll(".info-tab").forEach(tab => {
-
-    tab.addEventListener("click", () => {
-
-        if (!selectedElement) return;
-
-        document.querySelectorAll(".info-tab").forEach(t => {
-            t.classList.remove("active");
-        });
-
-        tab.classList.add("active");
-
-        const symbol = selectedElement.dataset.symbol;
-        const name = selectedElement.dataset.name;
-        const atomicNumber = Number(selectedElement.dataset.atomicNumber);
-        const type = elementsData[atomicNumber - 1][2];
-
-        if (tab.dataset.tab === "atom") {
-            renderAtom(symbol,name,atomicNumber,type);
-        }
-
-        if (tab.dataset.tab === "electron") {
-            renderElectronDistribution(symbol,name,atomicNumber);
-        }
+        showAtomPage(element);
 
     });
 
 });
 
+
+lanthanides.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="series-title">اللانثانيدات</div>`
+);
+
+actinides.insertAdjacentHTML(
+    "afterbegin",
+    `<div class="series-title">الأكتينيدات</div>`
+);
+
+
 /* =========================
-   البحث
+   إظهار صفحة الذرة
 ========================= */
 
-const searchInput = document.getElementById("searchInput");
+function showAtomPage(element) {
 
-searchInput.addEventListener("input", function () {
+    const symbol =
+        element.dataset.symbol;
 
-    const searchValue = this.value.trim().toLowerCase();
+    const name =
+        element.dataset.name;
 
-    document.querySelectorAll(".element").forEach(element => {
-        element.classList.remove("search-match");
+    const atomicNumber =
+        Number(element.dataset.atomicNumber);
+
+    const type =
+        elementsData[atomicNumber - 1][2];
+
+
+    periodicPage.classList.add("hide");
+
+    atomPage.classList.add("show");
+
+
+    renderAtomPage(
+        symbol,
+        name,
+        atomicNumber,
+        type
+    );
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   العودة للجدول
+========================= */
+
+backButton.addEventListener("click", () => {
+
+    atomPage.classList.remove("show");
+
+    periodicPage.classList.remove("hide");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 
-    if (!searchValue) return;
+});
 
-    let foundElement = null;
 
-    document.querySelectorAll(".element").forEach(element => {
+/* =========================
+   رسم صفحة الذرة
+========================= */
 
-        const symbol = element.dataset.symbol.toLowerCase();
-        const name = element.dataset.name.toLowerCase();
+function renderAtomPage(
+    symbol,
+    name,
+    atomicNumber,
+    type
+) {
 
-        if (
-            symbol === searchValue ||
-            name === searchValue
+    const group =
+        getGroup(symbol);
+
+    const period =
+        getPeriod(symbol);
+
+    const category =
+        getCategory(type,group);
+
+    const family =
+        familyInfo[type];
+
+
+    /*
+       عدد النيوترونات هنا يعتمد على
+       النظير المستخدم في العرض.
+       للصوديوم مثلًا: 23 - 11 = 12
+    */
+
+    const neutronNumber =
+        symbol === "H" ? 0 :
+        symbol === "He" ? 2 :
+        symbol === "Na" ? 12 :
+        Math.max(
+            0,
+            Math.round(
+                atomicNumber * 1.2
+            )
+        );
+
+
+    document.getElementById(
+        "atomPageSymbol"
+    ).textContent = symbol;
+
+
+    document.getElementById(
+        "atomPageName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "atomPageArabic"
+    ).textContent =
+        getArabicName(symbol);
+
+
+    document.getElementById(
+        "atomicNumber"
+    ).textContent =
+        atomicNumber;
+
+
+    document.getElementById(
+        "protonCount"
+    ).textContent =
+        atomicNumber;
+
+
+    document.getElementById(
+        "neutronCount"
+    ).textContent =
+        neutronNumber;
+
+
+    document.getElementById(
+        "electronCount"
+    ).textContent =
+        atomicNumber;
+
+
+    document.getElementById(
+        "groupNumber"
+    ).textContent =
+        group;
+
+
+    document.getElementById(
+        "periodNumber"
+    ).textContent =
+        period;
+
+
+    document.getElementById(
+        "categoryName"
+    ).textContent =
+        `${category}-block`;
+
+
+    document.getElementById(
+        "familyName"
+    ).textContent =
+        family.name;
+
+
+    document.getElementById(
+        "familyProperties"
+    ).textContent =
+        family.properties;
+
+
+    createAtom(
+        atomicNumber,
+        neutronNumber
+    );
+}
+
+
+/* =========================
+   إنشاء النواة والإلكترونات
+========================= */
+
+function createAtom(
+    atomicNumber,
+    neutronNumber
+) {
+
+    const atom =
+        document.getElementById(
+            "atomVisual"
+        );
+
+
+    /*
+       حذف الإلكترونات القديمة
+       والإبقاء على المدارات والنواة
+    */
+
+    atom.querySelectorAll(
+        ".electron"
+    ).forEach(e => e.remove());
+
+
+    const nucleusParticles =
+        document.getElementById(
+            "nucleusParticles"
+        );
+
+
+    nucleusParticles.innerHTML = "";
+
+
+    /* =========================
+       البروتونات
+    ========================= */
+
+    for (
+        let i = 0;
+        i < atomicNumber;
+        i++
+    ) {
+
+        const proton =
+            document.createElement("div");
+
+        proton.className =
+            "nucleus-particle proton";
+
+        proton.textContent =
+            "p⁺";
+
+        nucleusParticles.appendChild(
+            proton
+        );
+    }
+
+
+    /* =========================
+       النيوترونات
+    ========================= */
+
+    for (
+        let i = 0;
+        i < neutronNumber;
+        i++
+    ) {
+
+        const neutron =
+            document.createElement("div");
+
+        neutron.className =
+            "nucleus-particle neutron";
+
+        neutron.innerHTML = `
+            <span class="charge-plus">+</span>
+            <span class="charge-minus">−</span>
+        `;
+
+        nucleusParticles.appendChild(
+            neutron
+        );
+    }
+
+
+    /* =========================
+       الإلكترونات
+    ========================= */
+
+    const shells =
+        getShells(atomicNumber);
+
+
+    shells.forEach(
+        (count,shellIndex) => {
+
+        let radius;
+
+        if (shellIndex === 0) {
+            radius = 72;
+        }
+
+        else if (shellIndex === 1) {
+            radius = 117;
+        }
+
+        else if (shellIndex === 2) {
+            radius = 162;
+        }
+
+        else {
+            radius = 202;
+        }
+
+
+        for (
+            let i = 0;
+            i < count;
+            i++
         ) {
-            foundElement = element;
+
+            const electron =
+                document.createElement("div");
+
+
+            electron.className =
+                "electron";
+
+
+            electron.textContent =
+                "e⁻";
+
+
+            const angle =
+                (360 / count) * i - 90;
+
+
+            const x =
+                50 +
+                Math.cos(
+                    angle * Math.PI / 180
+                ) *
+                radius / 4.2;
+
+
+            const y =
+                50 +
+                Math.sin(
+                    angle * Math.PI / 180
+                ) *
+                radius / 4.2;
+
+
+            electron.style.left =
+                `${x}%`;
+
+            electron.style.top =
+                `${y}%`;
+
+            electron.style.transform =
+                "translate(-50%,-50%)";
+
+
+            atom.appendChild(
+                electron
+            );
         }
 
     });
 
+}
+
+
+/* =========================
+   البحث
+========================= */
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+
+searchInput.addEventListener(
+    "input",
+    function() {
+
+    const searchValue =
+        this.value
+        .trim()
+        .toLowerCase();
+
+
+    document
+        .querySelectorAll(".element")
+        .forEach(element => {
+
+            element.classList.remove(
+                "search-match"
+            );
+
+        });
+
+
+    if (!searchValue) return;
+
+
+    let foundElement = null;
+
+
+    document
+        .querySelectorAll(".element")
+        .forEach(element => {
+
+            const symbol =
+                element.dataset.symbol
+                .toLowerCase();
+
+            const name =
+                element.dataset.name
+                .toLowerCase();
+
+
+            if (
+                symbol === searchValue ||
+                name === searchValue
+            ) {
+
+                foundElement =
+                    element;
+
+            }
+
+        });
+
+
     if (foundElement) {
 
-        foundElement.classList.add("search-match");
+        foundElement.classList.add(
+            "search-match"
+        );
+
 
         foundElement.scrollIntoView({
             behavior: "smooth",
@@ -1575,9 +2135,15 @@ searchInput.addEventListener("input", function () {
             inline: "center"
         });
 
+
         setTimeout(() => {
-            showElement(foundElement);
+
+            showAtomPage(
+                foundElement
+            );
+
         },300);
+
     }
 
 });
