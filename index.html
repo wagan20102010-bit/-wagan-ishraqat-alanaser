@@ -16,6 +16,7 @@
             background: #faf9f7;
             color: #332d45;
             font-family: Arial, sans-serif;
+            overflow-x: hidden;
         }
 
         /* =========================
@@ -133,10 +134,12 @@
             outline: none;
             text-align: right;
             box-shadow: 0 5px 20px rgba(70, 55, 85, 0.05);
+            transition: 0.2s ease;
         }
 
         .search-box input:focus {
             border-color: #b9a6c9;
+            box-shadow: 0 7px 25px rgba(100, 75, 120, 0.10);
         }
 
         /* =========================
@@ -192,7 +195,7 @@
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
-            padding-bottom: 15px;
+            padding: 45px 25px 60px;
         }
 
         .periodic-table {
@@ -212,14 +215,19 @@
             border-radius: 10px;
             padding: 7px 5px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             cursor: pointer;
             border: 1px solid rgba(60, 50, 70, 0.08);
-            transition: 0.2s ease;
+            transition:
+                transform 0.35s cubic-bezier(.2,.8,.2,1),
+                box-shadow 0.35s ease,
+                z-index 0s;
             min-width: 0;
             direction: ltr;
+            position: relative;
         }
 
         .element:hover {
@@ -227,7 +235,9 @@
             box-shadow: 0 8px 18px rgba(60, 50, 70, 0.13);
         }
 
-        /* الرمز فقط */
+        /* =========================
+           الرمز
+        ========================= */
 
         .symbol {
             font-size: 28px;
@@ -236,11 +246,44 @@
             color: #332d45;
         }
 
-        /* إخفاء الاسم والحالة */
+        /* =========================
+           اسم العنصر بالإنجليزي
+        ========================= */
 
-        .name,
+        .name {
+            display: block;
+            margin-top: 7px;
+            font-size: 10px;
+            line-height: 1.1;
+            color: #4f4858;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
         .state {
             display: none;
+        }
+
+        /* =========================
+           العنصر المحدد بالبحث
+        ========================= */
+
+        .element.search-match {
+            transform: scale(5.2);
+            z-index: 999;
+            box-shadow:
+                0 0 0 4px rgba(255, 255, 255, 0.95),
+                0 0 35px rgba(100, 70, 130, 0.45),
+                0 15px 50px rgba(50, 40, 70, 0.35);
+            border: 2px solid #332d45;
+        }
+
+        .element.search-match .symbol {
+            font-size: 30px;
+        }
+
+        .element.search-match .name {
+            font-size: 9px;
         }
 
         /* =========================
@@ -288,7 +331,7 @@
         }
 
         /* =========================
-           مفتاح الألوان - نفس ألوان الجدول
+           مفتاح الألوان
         ========================= */
 
         .legend-color.alkali {
@@ -392,6 +435,11 @@
             .legend-item {
                 font-size: 11px;
             }
+
+            .table-wrapper {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
         }
     </style>
 </head>
@@ -421,8 +469,9 @@
         <div class="search-box">
             <input
                 type="text"
-                placeholder="ابحث عن رمز العنصر..."
+                placeholder="ابحث عن رمز أو اسم العنصر بالإنجليزي..."
                 id="searchInput"
+                autocomplete="off"
             >
         </div>
 
@@ -495,19 +544,16 @@
 
             <div class="periodic-table" id="periodicTable">
 
-
                 <!-- الدورة الأولى -->
 
                 <div class="element nonmetal" style="grid-column: 1; grid-row: 1;">
                     <div class="symbol">H</div>
-                    <div class="name">الهيدروجين</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Hydrogen</div>
                 </div>
 
                 <div class="element noble" style="grid-column: 18; grid-row: 1;">
                     <div class="symbol">He</div>
-                    <div class="name">الهيليوم</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Helium</div>
                 </div>
 
 
@@ -515,50 +561,42 @@
 
                 <div class="element alkali" style="grid-column: 1; grid-row: 2;">
                     <div class="symbol">Li</div>
-                    <div class="name">الليثيوم</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Lithium</div>
                 </div>
 
                 <div class="element alkaline" style="grid-column: 2; grid-row: 2;">
                     <div class="symbol">Be</div>
-                    <div class="name">البيريليوم</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Beryllium</div>
                 </div>
 
                 <div class="element metalloid" style="grid-column: 13; grid-row: 2;">
                     <div class="symbol">B</div>
-                    <div class="name">البورون</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Boron</div>
                 </div>
 
                 <div class="element nonmetal" style="grid-column: 14; grid-row: 2;">
                     <div class="symbol">C</div>
-                    <div class="name">الكربون</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Carbon</div>
                 </div>
 
                 <div class="element nonmetal" style="grid-column: 15; grid-row: 2;">
                     <div class="symbol">N</div>
-                    <div class="name">النيتروجين</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Nitrogen</div>
                 </div>
 
                 <div class="element nonmetal" style="grid-column: 16; grid-row: 2;">
                     <div class="symbol">O</div>
-                    <div class="name">الأكسجين</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Oxygen</div>
                 </div>
 
                 <div class="element halogen" style="grid-column: 17; grid-row: 2;">
                     <div class="symbol">F</div>
-                    <div class="name">الفلور</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Fluorine</div>
                 </div>
 
                 <div class="element noble" style="grid-column: 18; grid-row: 2;">
                     <div class="symbol">Ne</div>
-                    <div class="name">النيون</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Neon</div>
                 </div>
 
 
@@ -566,139 +604,131 @@
 
                 <div class="element alkali" style="grid-column: 1; grid-row: 3;">
                     <div class="symbol">Na</div>
-                    <div class="name">الصوديوم</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Sodium</div>
                 </div>
 
                 <div class="element alkaline" style="grid-column: 2; grid-row: 3;">
                     <div class="symbol">Mg</div>
-                    <div class="name">المغنيسيوم</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Magnesium</div>
                 </div>
 
                 <div class="element post-transition" style="grid-column: 13; grid-row: 3;">
                     <div class="symbol">Al</div>
-                    <div class="name">الألومنيوم</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Aluminium</div>
                 </div>
 
                 <div class="element metalloid" style="grid-column: 14; grid-row: 3;">
                     <div class="symbol">Si</div>
-                    <div class="name">السيليكون</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Silicon</div>
                 </div>
 
                 <div class="element nonmetal" style="grid-column: 15; grid-row: 3;">
                     <div class="symbol">P</div>
-                    <div class="name">الفوسفور</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Phosphorus</div>
                 </div>
 
                 <div class="element nonmetal" style="grid-column: 16; grid-row: 3;">
                     <div class="symbol">S</div>
-                    <div class="name">الكبريت</div>
-                    <div class="state">صلب</div>
+                    <div class="name">Sulfur</div>
                 </div>
 
                 <div class="element halogen" style="grid-column: 17; grid-row: 3;">
                     <div class="symbol">Cl</div>
-                    <div class="name">الكلور</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Chlorine</div>
                 </div>
 
                 <div class="element noble" style="grid-column: 18; grid-row: 3;">
                     <div class="symbol">Ar</div>
-                    <div class="name">الأرجون</div>
-                    <div class="state">غاز</div>
+                    <div class="name">Argon</div>
                 </div>
 
 
                 <!-- الدورة الرابعة -->
 
-                <div class="element alkali" style="grid-column: 1; grid-row: 4;"><div class="symbol">K</div><div class="name">البوتاسيوم</div><div class="state">صلب</div></div>
-                <div class="element alkaline" style="grid-column: 2; grid-row: 4;"><div class="symbol">Ca</div><div class="name">الكالسيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 3; grid-row: 4;"><div class="symbol">Sc</div><div class="name">السكانديوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 4; grid-row: 4;"><div class="symbol">Ti</div><div class="name">التيتانيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 5; grid-row: 4;"><div class="symbol">V</div><div class="name">الفاناديوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 6; grid-row: 4;"><div class="symbol">Cr</div><div class="name">الكروم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 7; grid-row: 4;"><div class="symbol">Mn</div><div class="name">المنغنيز</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 8; grid-row: 4;"><div class="symbol">Fe</div><div class="name">الحديد</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 9; grid-row: 4;"><div class="symbol">Co</div><div class="name">الكوبالت</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 10; grid-row: 4;"><div class="symbol">Ni</div><div class="name">النيكل</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 11; grid-row: 4;"><div class="symbol">Cu</div><div class="name">النحاس</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 12; grid-row: 4;"><div class="symbol">Zn</div><div class="name">الزنك</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 13; grid-row: 4;"><div class="symbol">Ga</div><div class="name">الغاليوم</div><div class="state">صلب</div></div>
-                <div class="element metalloid" style="grid-column: 14; grid-row: 4;"><div class="symbol">Ge</div><div class="name">الجرمانيوم</div><div class="state">صلب</div></div>
-                <div class="element metalloid" style="grid-column: 15; grid-row: 4;"><div class="symbol">As</div><div class="name">الزرنيخ</div><div class="state">صلب</div></div>
-                <div class="element nonmetal" style="grid-column: 16; grid-row: 4;"><div class="symbol">Se</div><div class="name">السيلينيوم</div><div class="state">صلب</div></div>
-                <div class="element halogen" style="grid-column: 17; grid-row: 4;"><div class="symbol">Br</div><div class="name">البروم</div><div class="state">سائل</div></div>
-                <div class="element noble" style="grid-column: 18; grid-row: 4;"><div class="symbol">Kr</div><div class="name">الكريبتون</div><div class="state">غاز</div></div>
+                <div class="element alkali" style="grid-column: 1; grid-row: 4;"><div class="symbol">K</div><div class="name">Potassium</div></div>
+                <div class="element alkaline" style="grid-column: 2; grid-row: 4;"><div class="symbol">Ca</div><div class="name">Calcium</div></div>
+                <div class="element transition" style="grid-column: 3; grid-row: 4;"><div class="symbol">Sc</div><div class="name">Scandium</div></div>
+                <div class="element transition" style="grid-column: 4; grid-row: 4;"><div class="symbol">Ti</div><div class="name">Titanium</div></div>
+                <div class="element transition" style="grid-column: 5; grid-row: 4;"><div class="symbol">V</div><div class="name">Vanadium</div></div>
+                <div class="element transition" style="grid-column: 6; grid-row: 4;"><div class="symbol">Cr</div><div class="name">Chromium</div></div>
+                <div class="element transition" style="grid-column: 7; grid-row: 4;"><div class="symbol">Mn</div><div class="name">Manganese</div></div>
+                <div class="element transition" style="grid-column: 8; grid-row: 4;"><div class="symbol">Fe</div><div class="name">Iron</div></div>
+                <div class="element transition" style="grid-column: 9; grid-row: 4;"><div class="symbol">Co</div><div class="name">Cobalt</div></div>
+                <div class="element transition" style="grid-column: 10; grid-row: 4;"><div class="symbol">Ni</div><div class="name">Nickel</div></div>
+                <div class="element transition" style="grid-column: 11; grid-row: 4;"><div class="symbol">Cu</div><div class="name">Copper</div></div>
+                <div class="element transition" style="grid-column: 12; grid-row: 4;"><div class="symbol">Zn</div><div class="name">Zinc</div></div>
+                <div class="element post-transition" style="grid-column: 13; grid-row: 4;"><div class="symbol">Ga</div><div class="name">Gallium</div></div>
+                <div class="element metalloid" style="grid-column: 14; grid-row: 4;"><div class="symbol">Ge</div><div class="name">Germanium</div></div>
+                <div class="element metalloid" style="grid-column: 15; grid-row: 4;"><div class="symbol">As</div><div class="name">Arsenic</div></div>
+                <div class="element nonmetal" style="grid-column: 16; grid-row: 4;"><div class="symbol">Se</div><div class="name">Selenium</div></div>
+                <div class="element halogen" style="grid-column: 17; grid-row: 4;"><div class="symbol">Br</div><div class="name">Bromine</div></div>
+                <div class="element noble" style="grid-column: 18; grid-row: 4;"><div class="symbol">Kr</div><div class="name">Krypton</div></div>
 
 
                 <!-- الدورة الخامسة -->
 
-                <div class="element alkali" style="grid-column: 1; grid-row: 5;"><div class="symbol">Rb</div><div class="name">الروبيديوم</div><div class="state">صلب</div></div>
-                <div class="element alkaline" style="grid-column: 2; grid-row: 5;"><div class="symbol">Sr</div><div class="name">السترونشيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 3; grid-row: 5;"><div class="symbol">Y</div><div class="name">الإيتريوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 4; grid-row: 5;"><div class="symbol">Zr</div><div class="name">الزركونيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 5; grid-row: 5;"><div class="symbol">Nb</div><div class="name">النيوبيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 6; grid-row: 5;"><div class="symbol">Mo</div><div class="name">الموليبدينوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 7; grid-row: 5;"><div class="symbol">Tc</div><div class="name">التكنيشيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 8; grid-row: 5;"><div class="symbol">Ru</div><div class="name">الروثينيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 9; grid-row: 5;"><div class="symbol">Rh</div><div class="name">الروديوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 10; grid-row: 5;"><div class="symbol">Pd</div><div class="name">البلاديوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 11; grid-row: 5;"><div class="symbol">Ag</div><div class="name">الفضة</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 12; grid-row: 5;"><div class="symbol">Cd</div><div class="name">الكادميوم</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 13; grid-row: 5;"><div class="symbol">In</div><div class="name">الإنديوم</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 14; grid-row: 5;"><div class="symbol">Sn</div><div class="name">القصدير</div><div class="state">صلب</div></div>
-                <div class="element metalloid" style="grid-column: 15; grid-row: 5;"><div class="symbol">Sb</div><div class="name">الأنتيمون</div><div class="state">صلب</div></div>
-                <div class="element metalloid" style="grid-column: 16; grid-row: 5;"><div class="symbol">Te</div><div class="name">التيلوريوم</div><div class="state">صلب</div></div>
-                <div class="element halogen" style="grid-column: 17; grid-row: 5;"><div class="symbol">I</div><div class="name">اليود</div><div class="state">صلب</div></div>
-                <div class="element noble" style="grid-column: 18; grid-row: 5;"><div class="symbol">Xe</div><div class="name">الزينون</div><div class="state">غاز</div></div>
+                <div class="element alkali" style="grid-column: 1; grid-row: 5;"><div class="symbol">Rb</div><div class="name">Rubidium</div></div>
+                <div class="element alkaline" style="grid-column: 2; grid-row: 5;"><div class="symbol">Sr</div><div class="name">Strontium</div></div>
+                <div class="element transition" style="grid-column: 3; grid-row: 5;"><div class="symbol">Y</div><div class="name">Yttrium</div></div>
+                <div class="element transition" style="grid-column: 4; grid-row: 5;"><div class="symbol">Zr</div><div class="name">Zirconium</div></div>
+                <div class="element transition" style="grid-column: 5; grid-row: 5;"><div class="symbol">Nb</div><div class="name">Niobium</div></div>
+                <div class="element transition" style="grid-column: 6; grid-row: 5;"><div class="symbol">Mo</div><div class="name">Molybdenum</div></div>
+                <div class="element transition" style="grid-column: 7; grid-row: 5;"><div class="symbol">Tc</div><div class="name">Technetium</div></div>
+                <div class="element transition" style="grid-column: 8; grid-row: 5;"><div class="symbol">Ru</div><div class="name">Ruthenium</div></div>
+                <div class="element transition" style="grid-column: 9; grid-row: 5;"><div class="symbol">Rh</div><div class="name">Rhodium</div></div>
+                <div class="element transition" style="grid-column: 10; grid-row: 5;"><div class="symbol">Pd</div><div class="name">Palladium</div></div>
+                <div class="element transition" style="grid-column: 11; grid-row: 5;"><div class="symbol">Ag</div><div class="name">Silver</div></div>
+                <div class="element transition" style="grid-column: 12; grid-row: 5;"><div class="symbol">Cd</div><div class="name">Cadmium</div></div>
+                <div class="element post-transition" style="grid-column: 13; grid-row: 5;"><div class="symbol">In</div><div class="name">Indium</div></div>
+                <div class="element post-transition" style="grid-column: 14; grid-row: 5;"><div class="symbol">Sn</div><div class="name">Tin</div></div>
+                <div class="element metalloid" style="grid-column: 15; grid-row: 5;"><div class="symbol">Sb</div><div class="name">Antimony</div></div>
+                <div class="element metalloid" style="grid-column: 16; grid-row: 5;"><div class="symbol">Te</div><div class="name">Tellurium</div></div>
+                <div class="element halogen" style="grid-column: 17; grid-row: 5;"><div class="symbol">I</div><div class="name">Iodine</div></div>
+                <div class="element noble" style="grid-column: 18; grid-row: 5;"><div class="symbol">Xe</div><div class="name">Xenon</div></div>
 
 
                 <!-- الدورة السادسة -->
 
-                <div class="element alkali" style="grid-column: 1; grid-row: 6;"><div class="symbol">Cs</div><div class="name">السيزيوم</div><div class="state">صلب</div></div>
-                <div class="element alkaline" style="grid-column: 2; grid-row: 6;"><div class="symbol">Ba</div><div class="name">الباريوم</div><div class="state">صلب</div></div>
-                <div class="element lanthanide" style="grid-column: 3; grid-row: 6;"><div class="symbol">La*</div><div class="name">اللانثانوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 4; grid-row: 6;"><div class="symbol">Hf</div><div class="name">الهافنيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 5; grid-row: 6;"><div class="symbol">Ta</div><div class="name">التنتالوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 6; grid-row: 6;"><div class="symbol">W</div><div class="name">التنغستن</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 7; grid-row: 6;"><div class="symbol">Re</div><div class="name">الرينيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 8; grid-row: 6;"><div class="symbol">Os</div><div class="name">الأوزميوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 9; grid-row: 6;"><div class="symbol">Ir</div><div class="name">الإيريديوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 10; grid-row: 6;"><div class="symbol">Pt</div><div class="name">البلاتين</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 11; grid-row: 6;"><div class="symbol">Au</div><div class="name">الذهب</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 12; grid-row: 6;"><div class="symbol">Hg</div><div class="name">الزئبق</div><div class="state">سائل</div></div>
-                <div class="element post-transition" style="grid-column: 13; grid-row: 6;"><div class="symbol">Tl</div><div class="name">الثاليوم</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 14; grid-row: 6;"><div class="symbol">Pb</div><div class="name">الرصاص</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 15; grid-row: 6;"><div class="symbol">Bi</div><div class="name">البزموت</div><div class="state">صلب</div></div>
-                <div class="element metalloid" style="grid-column: 16; grid-row: 6;"><div class="symbol">Po</div><div class="name">البولونيوم</div><div class="state">صلب</div></div>
-                <div class="element halogen" style="grid-column: 17; grid-row: 6;"><div class="symbol">At</div><div class="name">الأستاتين</div><div class="state">صلب</div></div>
-                <div class="element noble" style="grid-column: 18; grid-row: 6;"><div class="symbol">Rn</div><div class="name">الرادون</div><div class="state">غاز</div></div>
+                <div class="element alkali" style="grid-column: 1; grid-row: 6;"><div class="symbol">Cs</div><div class="name">Caesium</div></div>
+                <div class="element alkaline" style="grid-column: 2; grid-row: 6;"><div class="symbol">Ba</div><div class="name">Barium</div></div>
+                <div class="element lanthanide" style="grid-column: 3; grid-row: 6;"><div class="symbol">La</div><div class="name">Lanthanum</div></div>
+                <div class="element transition" style="grid-column: 4; grid-row: 6;"><div class="symbol">Hf</div><div class="name">Hafnium</div></div>
+                <div class="element transition" style="grid-column: 5; grid-row: 6;"><div class="symbol">Ta</div><div class="name">Tantalum</div></div>
+                <div class="element transition" style="grid-column: 6; grid-row: 6;"><div class="symbol">W</div><div class="name">Tungsten</div></div>
+                <div class="element transition" style="grid-column: 7; grid-row: 6;"><div class="symbol">Re</div><div class="name">Rhenium</div></div>
+                <div class="element transition" style="grid-column: 8; grid-row: 6;"><div class="symbol">Os</div><div class="name">Osmium</div></div>
+                <div class="element transition" style="grid-column: 9; grid-row: 6;"><div class="symbol">Ir</div><div class="name">Iridium</div></div>
+                <div class="element transition" style="grid-column: 10; grid-row: 6;"><div class="symbol">Pt</div><div class="name">Platinum</div></div>
+                <div class="element transition" style="grid-column: 11; grid-row: 6;"><div class="symbol">Au</div><div class="name">Gold</div></div>
+                <div class="element transition" style="grid-column: 12; grid-row: 6;"><div class="symbol">Hg</div><div class="name">Mercury</div></div>
+                <div class="element post-transition" style="grid-column: 13; grid-row: 6;"><div class="symbol">Tl</div><div class="name">Thallium</div></div>
+                <div class="element post-transition" style="grid-column: 14; grid-row: 6;"><div class="symbol">Pb</div><div class="name">Lead</div></div>
+                <div class="element post-transition" style="grid-column: 15; grid-row: 6;"><div class="symbol">Bi</div><div class="name">Bismuth</div></div>
+                <div class="element metalloid" style="grid-column: 16; grid-row: 6;"><div class="symbol">Po</div><div class="name">Polonium</div></div>
+                <div class="element halogen" style="grid-column: 17; grid-row: 6;"><div class="symbol">At</div><div class="name">Astatine</div></div>
+                <div class="element noble" style="grid-column: 18; grid-row: 6;"><div class="symbol">Rn</div><div class="name">Radon</div></div>
 
 
                 <!-- الدورة السابعة -->
 
-                <div class="element alkali" style="grid-column: 1; grid-row: 7;"><div class="symbol">Fr</div><div class="name">الفرانسيوم</div><div class="state">صلب</div></div>
-                <div class="element alkaline" style="grid-column: 2; grid-row: 7;"><div class="symbol">Ra</div><div class="name">الراديوم</div><div class="state">صلب</div></div>
-                <div class="element actinide" style="grid-column: 3; grid-row: 7;"><div class="symbol">Ac*</div><div class="name">الأكتينيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 4; grid-row: 7;"><div class="symbol">Rf</div><div class="name">الرذرفورديوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 5; grid-row: 7;"><div class="symbol">Db</div><div class="name">الدوبنيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 6; grid-row: 7;"><div class="symbol">Sg</div><div class="name">السيبورغيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 7; grid-row: 7;"><div class="symbol">Bh</div><div class="name">البوهريوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 8; grid-row: 7;"><div class="symbol">Hs</div><div class="name">الهاسيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 9; grid-row: 7;"><div class="symbol">Mt</div><div class="name">الميتنريوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 10; grid-row: 7;"><div class="symbol">Ds</div><div class="name">الدارمشتاتيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 11; grid-row: 7;"><div class="symbol">Rg</div><div class="name">الرونتجينيوم</div><div class="state">صلب</div></div>
-                <div class="element transition" style="grid-column: 12; grid-row: 7;"><div class="symbol">Cn</div><div class="name">الكوبرنيسيوم</div><div class="state">غاز</div></div>
-                <div class="element post-transition" style="grid-column: 13; grid-row: 7;"><div class="symbol">Nh</div><div class="name">النيهونيوم</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 14; grid-row: 7;"><div class="symbol">Fl</div><div class="name">الفليروفيوم</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 15; grid-row: 7;"><div class="symbol">Mc</div><div class="name">الموسكوفيوم</div><div class="state">صلب</div></div>
-                <div class="element post-transition" style="grid-column: 16; grid-row: 7;"><div class="symbol">Lv</div><div class="name">الليفرموريوم</div><div class="state">صلب</div></div>
-                <div class="element halogen" style="grid-column: 17; grid-row: 7;"><div class="symbol">Ts</div><div class="name">التينيسين</div><div class="state">صلب</div></div>
-                <div class="element noble" style="grid-column: 18; grid-row: 7;"><div class="symbol">Og</div><div class="name">الأوغانيسون</div><div class="state">صلب</div></div>
+                <div class="element alkali" style="grid-column: 1; grid-row: 7;"><div class="symbol">Fr</div><div class="name">Francium</div></div>
+                <div class="element alkaline" style="grid-column: 2; grid-row: 7;"><div class="symbol">Ra</div><div class="name">Radium</div></div>
+                <div class="element actinide" style="grid-column: 3; grid-row: 7;"><div class="symbol">Ac</div><div class="name">Actinium</div></div>
+                <div class="element transition" style="grid-column: 4; grid-row: 7;"><div class="symbol">Rf</div><div class="name">Rutherfordium</div></div>
+                <div class="element transition" style="grid-column: 5; grid-row: 7;"><div class="symbol">Db</div><div class="name">Dubnium</div></div>
+                <div class="element transition" style="grid-column: 6; grid-row: 7;"><div class="symbol">Sg</div><div class="name">Seaborgium</div></div>
+                <div class="element transition" style="grid-column: 7; grid-row: 7;"><div class="symbol">Bh</div><div class="name">Bohrium</div></div>
+                <div class="element transition" style="grid-column: 8; grid-row: 7;"><div class="symbol">Hs</div><div class="name">Hassium</div></div>
+                <div class="element transition" style="grid-column: 9; grid-row: 7;"><div class="symbol">Mt</div><div class="name">Meitnerium</div></div>
+                <div class="element transition" style="grid-column: 10; grid-row: 7;"><div class="symbol">Ds</div><div class="name">Darmstadtium</div></div>
+                <div class="element transition" style="grid-column: 11; grid-row: 7;"><div class="symbol">Rg</div><div class="name">Roentgenium</div></div>
+                <div class="element transition" style="grid-column: 12; grid-row: 7;"><div class="symbol">Cn</div><div class="name">Copernicium</div></div>
+                <div class="element post-transition" style="grid-column: 13; grid-row: 7;"><div class="symbol">Nh</div><div class="name">Nihonium</div></div>
+                <div class="element post-transition" style="grid-column: 14; grid-row: 7;"><div class="symbol">Fl</div><div class="name">Flerovium</div></div>
+                <div class="element post-transition" style="grid-column: 15; grid-row: 7;"><div class="symbol">Mc</div><div class="name">Moscovium</div></div>
+                <div class="element post-transition" style="grid-column: 16; grid-row: 7;"><div class="symbol">Lv</div><div class="name">Livermorium</div></div>
+                <div class="element halogen" style="grid-column: 17; grid-row: 7;"><div class="symbol">Ts</div><div class="name">Tennessine</div></div>
+                <div class="element noble" style="grid-column: 18; grid-row: 7;"><div class="symbol">Og</div><div class="name">Oganesson</div></div>
 
             </div>
         </div>
@@ -708,22 +738,22 @@
 
         <div class="series">
 
-            <div class="series-title">* اللانثانيدات</div>
+            <div class="series-title">اللانثانيدات</div>
 
-            <div class="element lanthanide"><div class="symbol">Ce</div></div>
-            <div class="element lanthanide"><div class="symbol">Pr</div></div>
-            <div class="element lanthanide"><div class="symbol">Nd</div></div>
-            <div class="element lanthanide"><div class="symbol">Pm</div></div>
-            <div class="element lanthanide"><div class="symbol">Sm</div></div>
-            <div class="element lanthanide"><div class="symbol">Eu</div></div>
-            <div class="element lanthanide"><div class="symbol">Gd</div></div>
-            <div class="element lanthanide"><div class="symbol">Tb</div></div>
-            <div class="element lanthanide"><div class="symbol">Dy</div></div>
-            <div class="element lanthanide"><div class="symbol">Ho</div></div>
-            <div class="element lanthanide"><div class="symbol">Er</div></div>
-            <div class="element lanthanide"><div class="symbol">Tm</div></div>
-            <div class="element lanthanide"><div class="symbol">Yb</div></div>
-            <div class="element lanthanide"><div class="symbol">Lu</div></div>
+            <div class="element lanthanide"><div class="symbol">Ce</div><div class="name">Cerium</div></div>
+            <div class="element lanthanide"><div class="symbol">Pr</div><div class="name">Praseodymium</div></div>
+            <div class="element lanthanide"><div class="symbol">Nd</div><div class="name">Neodymium</div></div>
+            <div class="element lanthanide"><div class="symbol">Pm</div><div class="name">Promethium</div></div>
+            <div class="element lanthanide"><div class="symbol">Sm</div><div class="name">Samarium</div></div>
+            <div class="element lanthanide"><div class="symbol">Eu</div><div class="name">Europium</div></div>
+            <div class="element lanthanide"><div class="symbol">Gd</div><div class="name">Gadolinium</div></div>
+            <div class="element lanthanide"><div class="symbol">Tb</div><div class="name">Terbium</div></div>
+            <div class="element lanthanide"><div class="symbol">Dy</div><div class="name">Dysprosium</div></div>
+            <div class="element lanthanide"><div class="symbol">Ho</div><div class="name">Holmium</div></div>
+            <div class="element lanthanide"><div class="symbol">Er</div><div class="name">Erbium</div></div>
+            <div class="element lanthanide"><div class="symbol">Tm</div><div class="name">Thulium</div></div>
+            <div class="element lanthanide"><div class="symbol">Yb</div><div class="name">Ytterbium</div></div>
+            <div class="element lanthanide"><div class="symbol">Lu</div><div class="name">Lutetium</div></div>
 
         </div>
 
@@ -732,26 +762,86 @@
 
         <div class="series">
 
-            <div class="series-title">* الأكتينيدات</div>
+            <div class="series-title">الأكتينيدات</div>
 
-            <div class="element actinide"><div class="symbol">Th</div></div>
-            <div class="element actinide"><div class="symbol">Pa</div></div>
-            <div class="element actinide"><div class="symbol">U</div></div>
-            <div class="element actinide"><div class="symbol">Np</div></div>
-            <div class="element actinide"><div class="symbol">Pu</div></div>
-            <div class="element actinide"><div class="symbol">Am</div></div>
-            <div class="element actinide"><div class="symbol">Cm</div></div>
-            <div class="element actinide"><div class="symbol">Bk</div></div>
-            <div class="element actinide"><div class="symbol">Cf</div></div>
-            <div class="element actinide"><div class="symbol">Es</div></div>
-            <div class="element actinide"><div class="symbol">Fm</div></div>
-            <div class="element actinide"><div class="symbol">Md</div></div>
-            <div class="element actinide"><div class="symbol">No</div></div>
-            <div class="element actinide"><div class="symbol">Lr</div></div>
+            <div class="element actinide"><div class="symbol">Th</div><div class="name">Thorium</div></div>
+            <div class="element actinide"><div class="symbol">Pa</div><div class="name">Protactinium</div></div>
+            <div class="element actinide"><div class="symbol">U</div><div class="name">Uranium</div></div>
+            <div class="element actinide"><div class="symbol">Np</div><div class="name">Neptunium</div></div>
+            <div class="element actinide"><div class="symbol">Pu</div><div class="name">Plutonium</div></div>
+            <div class="element actinide"><div class="symbol">Am</div><div class="name">Americium</div></div>
+            <div class="element actinide"><div class="symbol">Cm</div><div class="name">Curium</div></div>
+            <div class="element actinide"><div class="symbol">Bk</div><div class="name">Berkelium</div></div>
+            <div class="element actinide"><div class="symbol">Cf</div><div class="name">Californium</div></div>
+            <div class="element actinide"><div class="symbol">Es</div><div class="name">Einsteinium</div></div>
+            <div class="element actinide"><div class="symbol">Fm</div><div class="name">Fermium</div></div>
+            <div class="element actinide"><div class="symbol">Md</div><div class="name">Mendelevium</div></div>
+            <div class="element actinide"><div class="symbol">No</div><div class="name">Nobelium</div></div>
+            <div class="element actinide"><div class="symbol">Lr</div><div class="name">Lawrencium</div></div>
 
         </div>
 
     </main>
+
+
+    <!-- =========================
+         البحث والتحديد
+    ========================= -->
+
+    <script>
+
+        const searchInput = document.getElementById("searchInput");
+        const elements = document.querySelectorAll(".element");
+
+        searchInput.addEventListener("input", function () {
+
+            const searchValue = this.value.trim().toLowerCase();
+
+            elements.forEach(element => {
+                element.classList.remove("search-match");
+            });
+
+            if (!searchValue) {
+                return;
+            }
+
+            let foundElement = null;
+
+            elements.forEach(element => {
+
+                const symbol = element.querySelector(".symbol");
+                const name = element.querySelector(".name");
+
+                if (!symbol || !name) return;
+
+                const symbolText = symbol.textContent.trim().toLowerCase();
+                const nameText = name.textContent.trim().toLowerCase();
+
+                if (
+                    symbolText === searchValue ||
+                    nameText === searchValue
+                ) {
+                    foundElement = element;
+                }
+
+            });
+
+            if (foundElement) {
+
+                foundElement.classList.add("search-match");
+
+                setTimeout(() => {
+                    foundElement.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center",
+                        inline: "center"
+                    });
+                }, 50);
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
