@@ -578,6 +578,480 @@ body{
 }
 
 
+/* =========================================================
+   ELECTRONIC DISTRIBUTION SECTION
+========================================================= */
+
+.electron-section{
+    width:min(1100px,100%);
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.electron-title{
+    background:linear-gradient(135deg,#fff,#f6f0ff);
+    border:1px solid #e4d9f4;
+    border-radius:22px;
+    padding:20px 22px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+}
+
+.electron-title h3{
+    color:#7056a8;
+    font-size:24px;
+    margin-bottom:6px;
+}
+
+.electron-title p{
+    color:#81798e;
+    font-size:13px;
+}
+
+
+/* الملخص */
+
+.electron-summary{
+    display:grid;
+    grid-template-columns:minmax(0,2fr) minmax(190px,1fr) minmax(190px,1fr);
+    gap:14px;
+}
+
+.electron-card{
+    background:white;
+    border:1px solid rgba(100,80,130,.08);
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+}
+
+.electron-card h4{
+    color:#7056a8;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.configuration{
+    direction:ltr;
+    text-align:center;
+    font-family:"Arial",sans-serif;
+    color:#4d455b;
+    font-size:clamp(18px,3vw,25px);
+    font-weight:800;
+    line-height:1.8;
+    word-spacing:7px;
+}
+
+.last-level{
+    text-align:center;
+}
+
+.last-level-number{
+    font-size:38px;
+    font-weight:900;
+    color:#55aef7;
+    margin:5px 0;
+}
+
+.last-level-text{
+    color:#777084;
+    font-size:13px;
+}
+
+.valence-big{
+    text-align:center;
+}
+
+.valence-number{
+    font-size:38px;
+    font-weight:900;
+    color:#e3a62d;
+    margin:5px 0;
+}
+
+.valence-note{
+    color:#777084;
+    font-size:12px;
+    line-height:1.7;
+}
+
+
+/* السحابة */
+
+.cloud-card{
+    background:
+        linear-gradient(135deg,rgba(255,255,255,.98),rgba(248,244,255,.98));
+    border:1px solid rgba(112,86,168,.12);
+    border-radius:24px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(90,70,120,.08);
+}
+
+.cloud-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.cloud-heading h4{
+    color:#7056a8;
+    font-size:17px;
+}
+
+.cloud-heading span{
+    color:#8a8297;
+    font-size:12px;
+}
+
+.cloud-stage{
+    min-height:350px;
+    border-radius:25px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 50%,rgba(180,154,245,.22),transparent 24%),
+        radial-gradient(circle at 25% 30%,rgba(91,190,235,.16),transparent 28%),
+        radial-gradient(circle at 75% 70%,rgba(236,143,184,.13),transparent 28%),
+        #fbfaff;
+    border:2px solid rgba(181,157,221,.25);
+}
+
+.cloud-stage::before,
+.cloud-stage::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    pointer-events:none;
+}
+
+.cloud-stage::before{
+    width:260px;
+    height:260px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(181,157,221,.16),transparent 68%);
+    filter:blur(8px);
+}
+
+.cloud-stage::after{
+    inset:20px;
+    border:1px dashed rgba(112,86,168,.12);
+    border-radius:50%;
+}
+
+.cloud-core{
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:90px;
+    height:90px;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+        radial-gradient(circle at 35% 30%,#fff5b8,#f7ca35 58%,#e5a900);
+    border:4px solid #f0bd20;
+    box-shadow:
+        0 0 22px rgba(241,189,24,.32),
+        0 0 55px rgba(181,157,221,.22);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-weight:900;
+    font-size:19px;
+    z-index:5;
+}
+
+.cloud-electron{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#4fa9ed;
+    box-shadow:0 0 7px rgba(79,169,237,.55);
+    z-index:4;
+    animation:
+        cloudFloat var(--dur) ease-in-out infinite alternate;
+    animation-delay:var(--delay);
+}
+
+.cloud-electron::after{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:50%;
+    background:rgba(79,169,237,.08);
+}
+
+@keyframes cloudFloat{
+    0%{
+        transform:
+            translate3d(
+                calc(var(--dx) * -1),
+                calc(var(--dy) * -1),
+                0
+            )
+            scale(.75);
+        opacity:.55;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translate3d(
+                var(--dx),
+                var(--dy),
+                0
+            )
+            scale(1.25);
+        opacity:.9;
+    }
+}
+
+.cloud-controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.cloud-count{
+    padding:10px 16px;
+    background:#f5efff;
+    border-radius:14px;
+    color:#7056a8;
+    font-size:13px;
+    font-weight:800;
+}
+
+.run-cloud{
+    border:none;
+    border-radius:14px;
+    padding:11px 19px;
+    background:linear-gradient(135deg,#8c70c5,#7056a8);
+    color:white;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 7px 18px rgba(112,86,168,.22);
+    transition:.2s;
+}
+
+.run-cloud:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 23px rgba(112,86,168,.28);
+}
+
+
+/* الجزء السفلي */
+
+.electron-lower-grid{
+    display:grid;
+    grid-template-columns:minmax(260px,.8fr) minmax(0,1.8fr);
+    gap:18px;
+}
+
+
+/* لويس */
+
+.lewis-card{
+    background:white;
+    border:1px solid rgba(100,80,130,.08);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+}
+
+.lewis-card h4,
+.orbital-card h4,
+.filling-card h4{
+    color:#7056a8;
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.lewis-card p,
+.orbital-card p{
+    color:#81798e;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.lewis-symbol{
+    position:relative;
+    width:150px;
+    height:150px;
+    margin:25px auto 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    font-weight:900;
+    color:#7056a8;
+}
+
+.lewis-dot{
+    position:absolute;
+    color:#55aef7;
+    font-size:26px;
+    font-weight:900;
+    line-height:1;
+}
+
+.lewis-dot.top{
+    top:2px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.lewis-dot.bottom{
+    bottom:2px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.lewis-dot.left{
+    left:3px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.lewis-dot.right{
+    right:3px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.lewis-note{
+    text-align:center;
+    background:#f8f4ff;
+    border-radius:13px;
+    padding:9px;
+    color:#776d87;
+    font-size:11px;
+    line-height:1.6;
+}
+
+
+/* مخطط المدارات */
+
+.orbital-card{
+    background:white;
+    border:1px solid rgba(100,80,130,.08);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+    overflow:hidden;
+}
+
+.orbital-diagram{
+    margin-top:17px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:flex-start;
+    justify-content:center;
+    direction:ltr;
+}
+
+.subshell{
+    background:#faf8ff;
+    border:1px solid #e4daf3;
+    border-radius:16px;
+    padding:11px;
+    min-width:100px;
+}
+
+.subshell-title{
+    text-align:center;
+    color:#7056a8;
+    font-family:Arial,sans-serif;
+    font-weight:900;
+    font-size:14px;
+    margin-bottom:9px;
+    direction:ltr;
+}
+
+.orbital-boxes{
+    display:flex;
+    gap:5px;
+    justify-content:center;
+}
+
+.orbital-box{
+    width:25px;
+    height:31px;
+    border:2px solid #b9a4dc;
+    border-radius:6px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+    color:#55aef7;
+    font-family:Arial,sans-serif;
+    font-weight:700;
+}
+
+
+/* ترتيب الامتلاء */
+
+.filling-card{
+    background:
+        linear-gradient(135deg,#fff,#f8f3ff);
+    border:1px solid rgba(100,80,130,.08);
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 8px 25px rgba(90,70,120,.07);
+}
+
+.filling-order{
+    direction:ltr;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin-top:13px;
+}
+
+.fill-item{
+    background:white;
+    border:1px solid #ddd2ef;
+    color:#5b4e70;
+    border-radius:10px;
+    padding:8px 10px;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    font-weight:800;
+}
+
+.fill-arrow{
+    color:#a48bcf;
+    font-size:15px;
+    font-weight:900;
+}
+
+.distribution-note{
+    margin-top:12px;
+    text-align:center;
+    color:#81798e;
+    font-size:11px;
+    line-height:1.7;
+}
+
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -602,6 +1076,18 @@ body{
 
     .element-sections{
         grid-template-columns:repeat(3,1fr);
+    }
+
+    .electron-summary{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .electron-summary .electron-card:first-child{
+        grid-column:1/-1;
+    }
+
+    .electron-lower-grid{
+        grid-template-columns:1fr;
     }
 }
 
@@ -650,6 +1136,44 @@ body{
     .section-tab strong{
         font-size:11px;
     }
+
+    .electron-summary{
+        grid-template-columns:1fr;
+    }
+
+    .electron-summary .electron-card:first-child{
+        grid-column:auto;
+    }
+
+    .cloud-stage{
+        min-height:300px;
+    }
+
+    .cloud-core{
+        width:72px;
+        height:72px;
+        font-size:15px;
+    }
+
+    .configuration{
+        font-size:17px;
+        word-spacing:3px;
+    }
+
+    .subshell{
+        min-width:85px;
+    }
+
+    .orbital-box{
+        width:22px;
+        height:29px;
+        font-size:17px;
+    }
+
+    .fill-item{
+        padding:7px 8px;
+        font-size:12px;
+    }
 }
 </style>
 </head>
@@ -678,6 +1202,7 @@ body{
     </div>
 
     <div class="color-key">
+
         <div class="color-key-title">مفتاح الألوان</div>
 
         <div class="color-key-items">
@@ -755,10 +1280,6 @@ body{
     </div>
 
 
-    <!-- =========================
-         الأيقونات الست
-    ========================== -->
-
     <div class="element-sections">
 
         <button
@@ -817,11 +1338,6 @@ body{
 
     </div>
 
-
-    <!-- =========================
-         الذرة
-         المحتوى الأصلي كما هو
-    ========================== -->
 
     <div
         id="atomSection"
@@ -973,14 +1489,13 @@ body{
     </div>
 
 
-    <!-- =========================
-         الأقسام الجديدة — فارغة
-    ========================== -->
+    <!-- قسم التوزيع الإلكتروني -->
 
     <div
         id="electronSection"
         class="element-section-content"
     ></div>
+
 
     <div
         id="propertiesSection"
@@ -1336,9 +1851,11 @@ const atomPage =
 const backButton =
     document.getElementById("backButton");
 
+let currentElement = null;
+
 
 /* =========================
-   تبديل الأيقونات
+   تبديل الأقسام
 ========================= */
 
 function showElementSection(sectionId){
@@ -1346,30 +1863,21 @@ function showElementSection(sectionId){
     document
         .querySelectorAll(".element-section-content")
         .forEach(section => {
-
             section.classList.remove("active");
-
         });
-
 
     document
         .querySelectorAll(".section-tab")
         .forEach(tab => {
-
             tab.classList.remove("active");
-
         });
-
 
     const selectedSection =
         document.getElementById(sectionId);
 
     if(selectedSection){
-
         selectedSection.classList.add("active");
-
     }
-
 
     const selectedTab =
         document.querySelector(
@@ -1377,9 +1885,14 @@ function showElementSection(sectionId){
         );
 
     if(selectedTab){
-
         selectedTab.classList.add("active");
+    }
 
+    if(
+        sectionId === "electronSection" &&
+        currentElement
+    ){
+        runCloudAnimation();
     }
 }
 
@@ -1390,6 +1903,8 @@ function showElementSection(sectionId){
 
 function openAtom(element){
 
+    currentElement = element;
+
     mainPage.style.display = "none";
 
     atomPage.classList.add("active");
@@ -1399,13 +1914,11 @@ function openAtom(element){
         behavior:"instant"
     });
 
-    /*
-       كل عنصر يفتح تلقائيًا على أيقونة الذرة
-    */
-
     showElementSection("atomSection");
 
     renderAtom(element);
+
+    renderElectronSection(element);
 }
 
 
@@ -1418,6 +1931,8 @@ backButton.addEventListener("click",() => {
     atomPage.classList.remove("active");
 
     mainPage.style.display = "block";
+
+    currentElement = null;
 
     window.scrollTo({
         top:0,
@@ -1450,12 +1965,6 @@ function renderAtom(element){
 
     document.getElementById("protons").textContent =
         element.z;
-
-    /*
-       العدد الكتلي لم يعد معروضًا.
-       عدد النيوترونات هنا قيمة تقريبية محسوبة
-       من الكتلة الذرية بعد تقريبها لأقرب عدد صحيح.
-    */
 
     const approximateMass =
         Math.round(parseFloat(element.m));
@@ -1490,18 +1999,14 @@ function renderAtom(element){
 
     if(element.z === 1){
 
-        valence =
-            "1";
+        valence = "1";
 
         behavior =
             "يمكنه فقد أو اكتساب إلكترون حسب التفاعل، لذلك يختلف عن الفلزات القلوية رغم وجوده في المجموعة الأولى.";
 
-    }else if(
-        element.z === 2
-    ){
+    }else if(element.z === 2){
 
-        valence =
-            "2";
+        valence = "2";
 
         behavior =
             "غلاف التكافؤ مكتمل، لذلك يكون قليل التفاعل.";
@@ -1642,6 +2147,877 @@ function renderAtom(element){
         }
 
     });
+
+}<script>
+
+/* =========================================================
+   ELECTRONIC DISTRIBUTION
+========================================================= */
+
+
+/*
+   ترتيب امتلاء المدارات حسب قاعدة أوفباو
+*/
+
+const orbitalOrder = [
+    {n:1,type:"s",capacity:2},
+    {n:2,type:"s",capacity:2},
+    {n:2,type:"p",capacity:6},
+    {n:3,type:"s",capacity:2},
+    {n:3,type:"p",capacity:6},
+    {n:4,type:"s",capacity:2},
+    {n:3,type:"d",capacity:10},
+    {n:4,type:"p",capacity:6},
+    {n:5,type:"s",capacity:2},
+    {n:4,type:"d",capacity:10},
+    {n:5,type:"p",capacity:6},
+    {n:6,type:"s",capacity:2},
+    {n:4,type:"f",capacity:14},
+    {n:5,type:"d",capacity:10},
+    {n:6,type:"p",capacity:6},
+    {n:7,type:"s",capacity:2},
+    {n:5,type:"f",capacity:14},
+    {n:6,type:"d",capacity:10},
+    {n:7,type:"p",capacity:6}
+];
+
+
+/*
+   بعض الاستثناءات المعروفة في التوزيع الإلكتروني
+*/
+
+const configurationExceptions = {
+
+    24:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",1],["3d",5]
+    ],
+
+    29:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",1],["3d",10]
+    ],
+
+    41:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",2],
+        ["3d",10],["4p",6],["5s",1],["4d",4]
+    ],
+
+    42:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",1],
+        ["3d",10],["4p",6],["5s",1],["4d",5]
+    ],
+
+    44:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",1],
+        ["3d",10],["4p",6],["5s",1],["4d",7]
+    ],
+
+    45:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",1],
+        ["3d",10],["4p",6],["5s",1],["4d",8]
+    ],
+
+    46:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",2],
+        ["3d",10],["4p",6],["4d",10]
+    ],
+
+    78:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",2],
+        ["3d",10],["4p",6],["5s",2],
+        ["4d",10],["5p",6],["6s",1],["4f",14],["5d",9]
+    ],
+
+    79:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",2],
+        ["3d",10],["4p",6],["5s",2],
+        ["4d",10],["5p",6],["6s",1],["4f",14],["5d",10]
+    ],
+
+    103:[
+        ["1s",2],["2s",2],["2p",6],
+        ["3s",2],["3p",6],["4s",2],
+        ["3d",10],["4p",6],["5s",2],
+        ["4d",10],["5p",6],["6s",2],
+        ["4f",14],["5d",10],["6p",6],
+        ["7s",2],["5f",14],["6d",1]
+    ]
+
+};
+
+
+/* تحويل الرقم إلى أس */
+
+const superscriptMap = {
+    "0":"⁰",
+    "1":"¹",
+    "2":"²",
+    "3":"³",
+    "4":"⁴",
+    "5":"⁵",
+    "6":"⁶",
+    "7":"⁷",
+    "8":"⁸",
+    "9":"⁹"
+};
+
+function toSuperscript(number){
+
+    return String(number)
+        .split("")
+        .map(char => superscriptMap[char] || char)
+        .join("");
+
+}
+
+
+/* إنشاء التوزيع الإلكتروني */
+
+function getElectronConfiguration(z){
+
+    if(configurationExceptions[z]){
+        return configurationExceptions[z].map(item => ({
+            orbital:item[0],
+            electrons:item[1]
+        }));
+    }
+
+
+    let remaining = z;
+
+    const configuration = [];
+
+
+    for(const orbital of orbitalOrder){
+
+        if(remaining <= 0) break;
+
+        const electrons =
+            Math.min(
+                remaining,
+                orbital.capacity
+            );
+
+        configuration.push({
+            orbital:`${orbital.n}${orbital.type}`,
+            electrons
+        });
+
+        remaining -= electrons;
+    }
+
+
+    return configuration;
+}
+
+
+/* كتابة التوزيع الإلكتروني بشكل جميل */
+
+function configurationToText(configuration){
+
+    return configuration
+        .map(item =>
+            `${item.orbital}${toSuperscript(item.electrons)}`
+        )
+        .join(" ");
+
+}
+
+
+/* المستوى الأخير */
+
+function getLastLevel(element){
+
+    const lastLevel =
+        element.sh.length;
+
+    const arabicNumbers = [
+        "الأول",
+        "الثاني",
+        "الثالث",
+        "الرابع",
+        "الخامس",
+        "السادس",
+        "السابع"
+    ];
+
+    return {
+        number:lastLevel,
+        text:`المستوى ${arabicNumbers[lastLevel - 1]}`
+    };
+}
+
+
+/* إلكترونات التكافؤ */
+
+function getValenceElectrons(element){
+
+    if(element.z === 1){
+        return 1;
+    }
+
+    if(element.z === 2){
+        return 2;
+    }
+
+    if(
+        typeof element.g === "number" &&
+        groupBehavior[element.g]
+    ){
+        return Number(groupBehavior[element.g].valence);
+    }
+
+    /*
+       في العناصر الانتقالية والسلاسل الداخلية
+       نعرض عدد إلكترونات المستوى الخارجي
+       كتمثيل مبسط مناسب للمشروع.
+    */
+
+    return element.sh[element.sh.length - 1];
+
+}
+
+
+/* =========================================================
+   LEWIS
+========================================================= */
+
+function createLewisDots(element){
+
+    const valence =
+        Math.min(
+            8,
+            Math.max(
+                0,
+                getValenceElectrons(element)
+            )
+        );
+
+    let dots = "";
+
+    const positions = [
+        "top",
+        "right",
+        "bottom",
+        "left"
+    ];
+
+    /*
+       نضع إلكترونًا أو إلكترونين في كل جانب
+       وفق التمثيل النقطي المبسط.
+    */
+
+    positions.forEach((position,index) => {
+
+        const count =
+            valence > 4
+                ? 2
+                : index < valence
+                    ? 1
+                    : 0;
+
+        for(let i=0;i<count;i++){
+
+            dots += `
+                <span class="lewis-dot ${position}">
+                    •
+                </span>
+            `;
+        }
+
+    });
+
+    /*
+       تعديل خاص عندما يكون عدد التكافؤ أكبر من 4:
+       الجوانب الأربعة تحتوي على زوج إلكتروني،
+       ثم نزيل الأزواج الزائدة حسب العدد الحقيقي.
+    */
+
+    if(valence <= 4){
+
+        const allDots = [];
+
+        for(let i=0;i<valence;i++){
+
+            allDots.push(
+                `<span class="lewis-dot ${positions[i]}">•</span>`
+            );
+
+        }
+
+        dots = allDots.join("");
+
+    }else{
+
+        const dotHTML = [];
+
+        positions.forEach(position => {
+
+            dotHTML.push(
+                `<span class="lewis-dot ${position}">••</span>`
+            );
+
+        });
+
+        dots = dotHTML.join("");
+
+        if(valence === 5){
+
+            dots = `
+                <span class="lewis-dot top">••</span>
+                <span class="lewis-dot right">•</span>
+                <span class="lewis-dot bottom">•</span>
+                <span class="lewis-dot left">•</span>
+            `;
+
+        }
+
+        if(valence === 6){
+
+            dots = `
+                <span class="lewis-dot top">••</span>
+                <span class="lewis-dot right">••</span>
+                <span class="lewis-dot bottom">•</span>
+                <span class="lewis-dot left">•</span>
+            `;
+
+        }
+
+        if(valence === 7){
+
+            dots = `
+                <span class="lewis-dot top">••</span>
+                <span class="lewis-dot right">••</span>
+                <span class="lewis-dot bottom">••</span>
+                <span class="lewis-dot left">•</span>
+            `;
+
+        }
+
+        if(valence === 8){
+
+            dots = `
+                <span class="lewis-dot top">••</span>
+                <span class="lewis-dot right">••</span>
+                <span class="lewis-dot bottom">••</span>
+                <span class="lewis-dot left">••</span>
+            `;
+
+        }
+
+    }
+
+    return dots;
+}
+
+
+/* =========================================================
+   ORBITAL DIAGRAM
+========================================================= */
+
+function getOrbitalBoxCount(type){
+
+    if(type === "s") return 1;
+    if(type === "p") return 3;
+    if(type === "d") return 5;
+    if(type === "f") return 7;
+
+    return 1;
+}
+
+
+function getOrbitalArrows(type,electrons){
+
+    const boxCount =
+        getOrbitalBoxCount(type);
+
+    const boxes =
+        Array.from(
+            {length:boxCount},
+            () => []
+        );
+
+
+    let remaining =
+        electrons;
+
+
+    /*
+       قاعدة هوند:
+       نملأ المدارات بإلكترون واحد أولًا
+       ثم نبدأ الاقتران.
+    */
+
+    for(let i=0;i<boxCount && remaining>0;i++){
+
+        boxes[i].push("↑");
+
+        remaining--;
+
+    }
+
+
+    for(let i=0;i<boxCount && remaining>0;i++){
+
+        boxes[i].push("↓");
+
+        remaining--;
+
+    }
+
+
+    return boxes;
+}
+
+
+function renderOrbitalDiagram(configuration){
+
+    return configuration
+        .map(item => {
+
+            const match =
+                item.orbital.match(/^(\d)([spdf])$/);
+
+            if(!match) return "";
+
+            const n =
+                match[1];
+
+            const type =
+                match[2];
+
+            const boxes =
+                getOrbitalArrows(
+                    type,
+                    item.electrons
+                );
+
+            return `
+                <div class="subshell">
+
+                    <div class="subshell-title">
+                        ${n}${type}<sup>${item.electrons}</sup>
+                    </div>
+
+                    <div class="orbital-boxes">
+
+                        ${boxes.map(box => `
+                            <div class="orbital-box">
+                                ${box.join("")}
+                            </div>
+                        `).join("")}
+
+                    </div>
+
+                </div>
+            `;
+
+        })
+        .join("");
+}
+
+
+/* =========================================================
+   ELECTRON CLOUD
+========================================================= */
+
+function createElectronCloud(element){
+
+    const cloud =
+        document.getElementById("electronCloud");
+
+    if(!cloud) return;
+
+    cloud.innerHTML = `
+        <div class="cloud-core">
+            ${element.s}
+        </div>
+    `;
+
+
+    const total =
+        element.z;
+
+
+    /*
+       ننشئ إلكترونًا مرئيًا لكل إلكترون.
+       العدد 118 ما زال مناسبًا لأن العناصر صغيرة جدًا.
+    */
+
+    for(let i=0;i<total;i++){
+
+        const electron =
+            document.createElement("span");
+
+        electron.className =
+            "cloud-electron";
+
+
+        /*
+           توزيع عشوائي داخل السحابة
+           مع إبعاد الإلكترونات عن النواة.
+        */
+
+        let x;
+        let y;
+
+        do{
+
+            x =
+                8 + Math.random() * 84;
+
+            y =
+                8 + Math.random() * 84;
+
+        }while(
+            Math.hypot(
+                x - 50,
+                y - 50
+            ) < 17
+        );
+
+
+        const dx =
+            Math.round(
+                -35 + Math.random() * 70
+            );
+
+        const dy =
+            Math.round(
+                -35 + Math.random() * 70
+            );
+
+        const duration =
+            (1.05 + Math.random() * .75)
+            .toFixed(2);
+
+        const delay =
+            (-Math.random() * 1.8)
+            .toFixed(2);
+
+
+        electron.style.left =
+            `${x}%`;
+
+        electron.style.top =
+            `${y}%`;
+
+        electron.style.setProperty(
+            "--dx",
+            `${dx}px`
+        );
+
+        electron.style.setProperty(
+            "--dy",
+            `${dy}px`
+        );
+
+        electron.style.setProperty(
+            "--dur",
+            `${duration}s`
+        );
+
+        electron.style.setProperty(
+            "--delay",
+            `${delay}s`
+        );
+
+
+        cloud.appendChild(electron);
+
+    }
+
+}
+
+
+/* إعادة تشغيل الحركة */
+
+function runCloudAnimation(){
+
+    if(!currentElement) return;
+
+    createElectronCloud(currentElement);
+
+}
+
+
+/* =========================================================
+   RENDER ELECTRON SECTION
+========================================================= */
+
+function renderElectronSection(element){
+
+    const section =
+        document.getElementById("electronSection");
+
+    const configuration =
+        getElectronConfiguration(element.z);
+
+    const configurationText =
+        configurationToText(configuration);
+
+    const lastLevel =
+        getLastLevel(element);
+
+    const valence =
+        getValenceElectrons(element);
+
+    const lewisDots =
+        createLewisDots(element);
+
+    const orbitalDiagram =
+        renderOrbitalDiagram(configuration);
+
+
+    section.innerHTML = `
+
+        <div class="electron-section">
+
+
+            <div class="electron-title">
+
+                <h3>⚡ التوزيع الإلكتروني</h3>
+
+                <p>
+                    تعرّف على كيفية ترتيب إلكترونات
+                    ${element.ar} داخل المدارات الذرية
+                </p>
+
+            </div>
+
+
+            <div class="electron-summary">
+
+
+                <div class="electron-card">
+
+                    <h4>التوزيع الإلكتروني</h4>
+
+                    <div class="configuration">
+                        ${configurationText}
+                    </div>
+
+                </div>
+
+
+                <div class="electron-card last-level">
+
+                    <h4>تحديد المستوى الأخير</h4>
+
+                    <div class="last-level-number">
+                        ${lastLevel.number}
+                    </div>
+
+                    <div class="last-level-text">
+                        ${lastLevel.text}
+                    </div>
+
+                </div>
+
+
+                <div class="electron-card valence-big">
+
+                    <h4>عدد إلكترونات التكافؤ</h4>
+
+                    <div class="valence-number">
+                        ${valence}
+                    </div>
+
+                    <div class="valence-note">
+                        إلكترونات المستوى الخارجي
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="cloud-card">
+
+                <div class="cloud-heading">
+
+                    <h4>☁️ توزيع إلكترونات تفاعلي</h4>
+
+                    <span>
+                        حركة سريعة داخل سحابة إلكترونية
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="cloud-stage"
+                    id="electronCloud"
+                >
+
+                    <div class="cloud-core">
+                        ${element.s}
+                    </div>
+
+                </div>
+
+
+                <div class="cloud-controls">
+
+                    <div class="cloud-count">
+                        عدد الإلكترونات:
+                        ${element.z}
+                    </div>
+
+                    <button
+                        class="run-cloud"
+                        onclick="runCloudAnimation()"
+                    >
+                        ⚡ تشغيل الحركة
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="electron-lower-grid">
+
+
+                <div class="lewis-card">
+
+                    <h4>تمثيل لويس النقطي</h4>
+
+                    <p>
+                        يوضح إلكترونات التكافؤ حول رمز العنصر.
+                    </p>
+
+
+                    <div class="lewis-symbol">
+
+                        ${lewisDots}
+
+                        ${element.s}
+
+                    </div>
+
+
+                    <div class="lewis-note">
+                        عدد النقاط يمثل إلكترونات التكافؤ
+                    </div>
+
+                </div>
+
+
+                <div class="orbital-card">
+
+                    <h4>مخطط المدارات</h4>
+
+                    <p>
+                        توضح الأسهم الإلكترونات داخل
+                        المدارات الفرعية، وفق قاعدة هوند.
+                    </p>
+
+
+                    <div class="orbital-diagram">
+
+                        ${orbitalDiagram}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="filling-card">
+
+                <h4>قاعدة وترتيب الامتلاء الإلكتروني</h4>
+
+                <div class="filling-order">
+
+                    <span class="fill-item">1s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">2s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">2p</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">3s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">3p</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">4s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">3d</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">4p</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">5s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">4d</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">5p</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">6s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">4f</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">5d</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">6p</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">7s</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">5f</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">6d</span>
+                    <span class="fill-arrow">→</span>
+
+                    <span class="fill-item">7p</span>
+
+                </div>
+
+
+                <div class="distribution-note">
+                    يمتلئ المدار الأقل طاقة أولًا،
+                    مع مراعاة مبدأ باولي وقاعدة هوند.
+                </div>
+
+            </div>
+
+
+        </div>
+
+    `;
+
+
+    /*
+       بعد إنشاء المحتوى نشغّل السحابة
+    */
+
+    createElectronCloud(element);
 
 }
 
