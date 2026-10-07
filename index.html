@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>إشراقة العناصر</title>
+<title>الجدول الدوري للعناصر</title>
 
 <style>
 *{
@@ -68,6 +68,13 @@ body{
 .header p{
     color:#777084;
     font-size:16px;
+}
+
+.header .creator{
+    margin-top:7px;
+    color:#7056a8;
+    font-size:14px;
+    font-weight:700;
 }
 
 .search-box{
@@ -190,8 +197,6 @@ body{
             0 0 40px rgba(53,217,208,.4);
     }
 }
-
-/* مفتاح الألوان */
 
 .color-key{
     width:min(1100px,100%);
@@ -569,6 +574,7 @@ body{
     <div class="header">
         <h1>الجدول الدوري للعناصر</h1>
         <p>استكشف العناصر واكتشف خصائصها واستخداماتها</p>
+        <div class="creator">فكرة وتنفيذ: وجن منصور</div>
     </div>
 
     <div class="search-box">
@@ -592,7 +598,7 @@ body{
 
             <div class="key-item">
                 <span class="key-color alkaline"></span>
-                الفلزات القلوية الترابية
+                الفلزات القلوية الأرضية
             </div>
 
             <div class="key-item">
@@ -719,11 +725,6 @@ body{
                 </div>
 
                 <div class="info-card colorful">
-                    <h3>العدد الكتلي</h3>
-                    <div class="value" id="massNumber"></div>
-                </div>
-
-                <div class="info-card colorful">
                     <h3>الكتلة الذرية</h3>
                     <div class="value" id="atomicMass"></div>
                 </div>
@@ -789,139 +790,131 @@ body{
 
 const elements = [
 
-/* 1–10 */
-{z:1,s:"H",name:"Hydrogen",ar:"الهيدروجين",p:1,g:1,b:"s",m:"1.008",a:1,state:"غاز",sh:[1],cat:"nonmetal"},
-{z:2,s:"He",name:"Helium",ar:"الهيليوم",p:1,g:18,b:"s",m:"4.0026",a:4,state:"غاز",sh:[2],cat:"noble"},
-{z:3,s:"Li",name:"Lithium",ar:"الليثيوم",p:2,g:1,b:"s",m:"6.94",a:7,state:"صلب",sh:[2,1],cat:"alkali"},
-{z:4,s:"Be",name:"Beryllium",ar:"البيريليوم",p:2,g:2,b:"s",m:"9.0122",a:9,state:"صلب",sh:[2,2],cat:"alkaline"},
-{z:5,s:"B",name:"Boron",ar:"البورون",p:2,g:13,b:"p",m:"10.81",a:11,state:"صلب",sh:[2,3],cat:"metalloid"},
-{z:6,s:"C",name:"Carbon",ar:"الكربون",p:2,g:14,b:"p",m:"12.011",a:12,state:"صلب",sh:[2,4],cat:"nonmetal"},
-{z:7,s:"N",name:"Nitrogen",ar:"النيتروجين",p:2,g:15,b:"p",m:"14.007",a:14,state:"غاز",sh:[2,5],cat:"nonmetal"},
-{z:8,s:"O",name:"Oxygen",ar:"الأكسجين",p:2,g:16,b:"p",m:"15.999",a:16,state:"غاز",sh:[2,6],cat:"nonmetal"},
-{z:9,s:"F",name:"Fluorine",ar:"الفلور",p:2,g:17,b:"p",m:"18.998",a:19,state:"غاز",sh:[2,7],cat:"halogen"},
-{z:10,s:"Ne",name:"Neon",ar:"النيون",p:2,g:18,b:"p",m:"20.180",a:20,state:"غاز",sh:[2,8],cat:"noble"},
+{z:1,s:"H",name:"Hydrogen",ar:"الهيدروجين",p:1,g:1,b:"s",m:"1.008",state:"غاز",sh:[1],cat:"nonmetal"},
+{z:2,s:"He",name:"Helium",ar:"الهيليوم",p:1,g:18,b:"s",m:"4.0026",state:"غاز",sh:[2],cat:"noble"},
+{z:3,s:"Li",name:"Lithium",ar:"الليثيوم",p:2,g:1,b:"s",m:"6.94",state:"صلب",sh:[2,1],cat:"alkali"},
+{z:4,s:"Be",name:"Beryllium",ar:"البيريليوم",p:2,g:2,b:"s",m:"9.0122",state:"صلب",sh:[2,2],cat:"alkaline"},
+{z:5,s:"B",name:"Boron",ar:"البورون",p:2,g:13,b:"p",m:"10.81",state:"صلب",sh:[2,3],cat:"metalloid"},
+{z:6,s:"C",name:"Carbon",ar:"الكربون",p:2,g:14,b:"p",m:"12.011",state:"صلب",sh:[2,4],cat:"nonmetal"},
+{z:7,s:"N",name:"Nitrogen",ar:"النيتروجين",p:2,g:15,b:"p",m:"14.007",state:"غاز",sh:[2,5],cat:"nonmetal"},
+{z:8,s:"O",name:"Oxygen",ar:"الأكسجين",p:2,g:16,b:"p",m:"15.999",state:"غاز",sh:[2,6],cat:"nonmetal"},
+{z:9,s:"F",name:"Fluorine",ar:"الفلور",p:2,g:17,b:"p",m:"18.998",state:"غاز",sh:[2,7],cat:"halogen"},
+{z:10,s:"Ne",name:"Neon",ar:"النيون",p:2,g:18,b:"p",m:"20.180",state:"غاز",sh:[2,8],cat:"noble"},
 
-/* 11–20 */
-{z:11,s:"Na",name:"Sodium",ar:"الصوديوم",p:3,g:1,b:"s",m:"22.990",a:23,state:"صلب",sh:[2,8,1],cat:"alkali"},
-{z:12,s:"Mg",name:"Magnesium",ar:"المغنيسيوم",p:3,g:2,b:"s",m:"24.305",a:24,state:"صلب",sh:[2,8,2],cat:"alkaline"},
-{z:13,s:"Al",name:"Aluminium",ar:"الألومنيوم",p:3,g:13,b:"p",m:"26.982",a:27,state:"صلب",sh:[2,8,3],cat:"post-transition"},
-{z:14,s:"Si",name:"Silicon",ar:"السيليكون",p:3,g:14,b:"p",m:"28.085",a:28,state:"صلب",sh:[2,8,4],cat:"metalloid"},
-{z:15,s:"P",name:"Phosphorus",ar:"الفوسفور",p:3,g:15,b:"p",m:"30.974",a:31,state:"صلب",sh:[2,8,5],cat:"nonmetal"},
-{z:16,s:"S",name:"Sulfur",ar:"الكبريت",p:3,g:16,b:"p",m:"32.06",a:32,state:"صلب",sh:[2,8,6],cat:"nonmetal"},
-{z:17,s:"Cl",name:"Chlorine",ar:"الكلور",p:3,g:17,b:"p",m:"35.45",a:35,state:"غاز",sh:[2,8,7],cat:"halogen"},
-{z:18,s:"Ar",name:"Argon",ar:"الأرجون",p:3,g:18,b:"p",m:"39.948",a:40,state:"غاز",sh:[2,8,8],cat:"noble"},
-{z:19,s:"K",name:"Potassium",ar:"البوتاسيوم",p:4,g:1,b:"s",m:"39.098",a:39,state:"صلب",sh:[2,8,8,1],cat:"alkali"},
-{z:20,s:"Ca",name:"Calcium",ar:"الكالسيوم",p:4,g:2,b:"s",m:"40.078",a:40,state:"صلب",sh:[2,8,8,2],cat:"alkaline"},
+{z:11,s:"Na",name:"Sodium",ar:"الصوديوم",p:3,g:1,b:"s",m:"22.990",state:"صلب",sh:[2,8,1],cat:"alkali"},
+{z:12,s:"Mg",name:"Magnesium",ar:"المغنيسيوم",p:3,g:2,b:"s",m:"24.305",state:"صلب",sh:[2,8,2],cat:"alkaline"},
+{z:13,s:"Al",name:"Aluminium",ar:"الألومنيوم",p:3,g:13,b:"p",m:"26.982",state:"صلب",sh:[2,8,3],cat:"post-transition"},
+{z:14,s:"Si",name:"Silicon",ar:"السيليكون",p:3,g:14,b:"p",m:"28.085",state:"صلب",sh:[2,8,4],cat:"metalloid"},
+{z:15,s:"P",name:"Phosphorus",ar:"الفوسفور",p:3,g:15,b:"p",m:"30.974",state:"صلب",sh:[2,8,5],cat:"nonmetal"},
+{z:16,s:"S",name:"Sulfur",ar:"الكبريت",p:3,g:16,b:"p",m:"32.06",state:"صلب",sh:[2,8,6],cat:"nonmetal"},
+{z:17,s:"Cl",name:"Chlorine",ar:"الكلور",p:3,g:17,b:"p",m:"35.45",state:"غاز",sh:[2,8,7],cat:"halogen"},
+{z:18,s:"Ar",name:"Argon",ar:"الأرجون",p:3,g:18,b:"p",m:"39.948",state:"غاز",sh:[2,8,8],cat:"noble"},
+{z:19,s:"K",name:"Potassium",ar:"البوتاسيوم",p:4,g:1,b:"s",m:"39.098",state:"صلب",sh:[2,8,8,1],cat:"alkali"},
+{z:20,s:"Ca",name:"Calcium",ar:"الكالسيوم",p:4,g:2,b:"s",m:"40.078",state:"صلب",sh:[2,8,8,2],cat:"alkaline"},
 
-/* 21–36 */
-{z:21,s:"Sc",name:"Scandium",ar:"السكانديوم",p:4,g:3,b:"d",m:"44.956",a:45,state:"صلب",sh:[2,8,9,2],cat:"transition"},
-{z:22,s:"Ti",name:"Titanium",ar:"التيتانيوم",p:4,g:4,b:"d",m:"47.867",a:48,state:"صلب",sh:[2,8,10,2],cat:"transition"},
-{z:23,s:"V",name:"Vanadium",ar:"الفاناديوم",p:4,g:5,b:"d",m:"50.942",a:51,state:"صلب",sh:[2,8,11,2],cat:"transition"},
-{z:24,s:"Cr",name:"Chromium",ar:"الكروم",p:4,g:6,b:"d",m:"51.996",a:52,state:"صلب",sh:[2,8,13,1],cat:"transition"},
-{z:25,s:"Mn",name:"Manganese",ar:"المنغنيز",p:4,g:7,b:"d",m:"54.938",a:55,state:"صلب",sh:[2,8,13,2],cat:"transition"},
-{z:26,s:"Fe",name:"Iron",ar:"الحديد",p:4,g:8,b:"d",m:"55.845",a:56,state:"صلب",sh:[2,8,14,2],cat:"transition"},
-{z:27,s:"Co",name:"Cobalt",ar:"الكوبالت",p:4,g:9,b:"d",m:"58.933",a:59,state:"صلب",sh:[2,8,15,2],cat:"transition"},
-{z:28,s:"Ni",name:"Nickel",ar:"النيكل",p:4,g:10,b:"d",m:"58.693",a:58,state:"صلب",sh:[2,8,16,2],cat:"transition"},
-{z:29,s:"Cu",name:"Copper",ar:"النحاس",p:4,g:11,b:"d",m:"63.546",a:63,state:"صلب",sh:[2,8,18,1],cat:"transition"},
-{z:30,s:"Zn",name:"Zinc",ar:"الزنك",p:4,g:12,b:"d",m:"65.38",a:64,state:"صلب",sh:[2,8,18,2],cat:"transition"},
-{z:31,s:"Ga",name:"Gallium",ar:"الغاليوم",p:4,g:13,b:"p",m:"69.723",a:69,state:"صلب",sh:[2,8,18,3],cat:"post-transition"},
-{z:32,s:"Ge",name:"Germanium",ar:"الجرمانيوم",p:4,g:14,b:"p",m:"72.630",a:74,state:"صلب",sh:[2,8,18,4],cat:"metalloid"},
-{z:33,s:"As",name:"Arsenic",ar:"الزرنيخ",p:4,g:15,b:"p",m:"74.922",a:75,state:"صلب",sh:[2,8,18,5],cat:"metalloid"},
-{z:34,s:"Se",name:"Selenium",ar:"السيلينيوم",p:4,g:16,b:"p",m:"78.971",a:80,state:"صلب",sh:[2,8,18,6],cat:"nonmetal"},
-{z:35,s:"Br",name:"Bromine",ar:"البروم",p:4,g:17,b:"p",m:"79.904",a:79,state:"سائل",sh:[2,8,18,7],cat:"halogen"},
-{z:36,s:"Kr",name:"Krypton",ar:"الكريبتون",p:4,g:18,b:"p",m:"83.798",a:84,state:"غاز",sh:[2,8,18,8],cat:"noble"},
+{z:21,s:"Sc",name:"Scandium",ar:"السكانديوم",p:4,g:3,b:"d",m:"44.956",state:"صلب",sh:[2,8,9,2],cat:"transition"},
+{z:22,s:"Ti",name:"Titanium",ar:"التيتانيوم",p:4,g:4,b:"d",m:"47.867",state:"صلب",sh:[2,8,10,2],cat:"transition"},
+{z:23,s:"V",name:"Vanadium",ar:"الفاناديوم",p:4,g:5,b:"d",m:"50.942",state:"صلب",sh:[2,8,11,2],cat:"transition"},
+{z:24,s:"Cr",name:"Chromium",ar:"الكروم",p:4,g:6,b:"d",m:"51.996",state:"صلب",sh:[2,8,13,1],cat:"transition"},
+{z:25,s:"Mn",name:"Manganese",ar:"المنغنيز",p:4,g:7,b:"d",m:"54.938",state:"صلب",sh:[2,8,13,2],cat:"transition"},
+{z:26,s:"Fe",name:"Iron",ar:"الحديد",p:4,g:8,b:"d",m:"55.845",state:"صلب",sh:[2,8,14,2],cat:"transition"},
+{z:27,s:"Co",name:"Cobalt",ar:"الكوبالت",p:4,g:9,b:"d",m:"58.933",state:"صلب",sh:[2,8,15,2],cat:"transition"},
+{z:28,s:"Ni",name:"Nickel",ar:"النيكل",p:4,g:10,b:"d",m:"58.693",state:"صلب",sh:[2,8,16,2],cat:"transition"},
+{z:29,s:"Cu",name:"Copper",ar:"النحاس",p:4,g:11,b:"d",m:"63.546",state:"صلب",sh:[2,8,18,1],cat:"transition"},
+{z:30,s:"Zn",name:"Zinc",ar:"الزنك",p:4,g:12,b:"d",m:"65.38",state:"صلب",sh:[2,8,18,2],cat:"transition"},
+{z:31,s:"Ga",name:"Gallium",ar:"الغاليوم",p:4,g:13,b:"p",m:"69.723",state:"صلب",sh:[2,8,18,3],cat:"post-transition"},
+{z:32,s:"Ge",name:"Germanium",ar:"الجرمانيوم",p:4,g:14,b:"p",m:"72.630",state:"صلب",sh:[2,8,18,4],cat:"metalloid"},
+{z:33,s:"As",name:"Arsenic",ar:"الزرنيخ",p:4,g:15,b:"p",m:"74.922",state:"صلب",sh:[2,8,18,5],cat:"metalloid"},
+{z:34,s:"Se",name:"Selenium",ar:"السيلينيوم",p:4,g:16,b:"p",m:"78.971",state:"صلب",sh:[2,8,18,6],cat:"nonmetal"},
+{z:35,s:"Br",name:"Bromine",ar:"البروم",p:4,g:17,b:"p",m:"79.904",state:"سائل",sh:[2,8,18,7],cat:"halogen"},
+{z:36,s:"Kr",name:"Krypton",ar:"الكريبتون",p:4,g:18,b:"p",m:"83.798",state:"غاز",sh:[2,8,18,8],cat:"noble"},
 
-/* 37–54 */
-{z:37,s:"Rb",name:"Rubidium",ar:"الروبيديوم",p:5,g:1,b:"s",m:"85.468",a:85,state:"صلب",sh:[2,8,18,8,1],cat:"alkali"},
-{z:38,s:"Sr",name:"Strontium",ar:"السترونشيوم",p:5,g:2,b:"s",m:"87.62",a:88,state:"صلب",sh:[2,8,18,8,2],cat:"alkaline"},
-{z:39,s:"Y",name:"Yttrium",ar:"الإيتريوم",p:5,g:3,b:"d",m:"88.906",a:89,state:"صلب",sh:[2,8,18,9,2],cat:"transition"},
-{z:40,s:"Zr",name:"Zirconium",ar:"الزركونيوم",p:5,g:4,b:"d",m:"91.224",a:90,state:"صلب",sh:[2,8,18,10,2],cat:"transition"},
-{z:41,s:"Nb",name:"Niobium",ar:"النيوبيوم",p:5,g:5,b:"d",m:"92.906",a:93,state:"صلب",sh:[2,8,18,12,1],cat:"transition"},
-{z:42,s:"Mo",name:"Molybdenum",ar:"الموليبدينوم",p:5,g:6,b:"d",m:"95.95",a:98,state:"صلب",sh:[2,8,18,13,1],cat:"transition"},
-{z:43,s:"Tc",name:"Technetium",ar:"التكنيتيوم",p:5,g:7,b:"d",m:"[98]",a:98,state:"صلب",sh:[2,8,18,13,2],cat:"transition"},
-{z:44,s:"Ru",name:"Ruthenium",ar:"الروثينيوم",p:5,g:8,b:"d",m:"101.07",a:102,state:"صلب",sh:[2,8,18,15,1],cat:"transition"},
-{z:45,s:"Rh",name:"Rhodium",ar:"الروديوم",p:5,g:9,b:"d",m:"102.91",a:103,state:"صلب",sh:[2,8,18,16,1],cat:"transition"},
-{z:46,s:"Pd",name:"Palladium",ar:"البلاديوم",p:5,g:10,b:"d",m:"106.42",a:106,state:"صلب",sh:[2,8,18,18],cat:"transition"},
-{z:47,s:"Ag",name:"Silver",ar:"الفضة",p:5,g:11,b:"d",m:"107.87",a:107,state:"صلب",sh:[2,8,18,18,1],cat:"transition"},
-{z:48,s:"Cd",name:"Cadmium",ar:"الكادميوم",p:5,g:12,b:"d",m:"112.41",a:114,state:"صلب",sh:[2,8,18,18,2],cat:"transition"},
-{z:49,s:"In",name:"Indium",ar:"الإنديوم",p:5,g:13,b:"p",m:"114.82",a:115,state:"صلب",sh:[2,8,18,18,3],cat:"post-transition"},
-{z:50,s:"Sn",name:"Tin",ar:"القصدير",p:5,g:14,b:"p",m:"118.71",a:120,state:"صلب",sh:[2,8,18,18,4],cat:"post-transition"},
-{z:51,s:"Sb",name:"Antimony",ar:"الأنتيمون",p:5,g:15,b:"p",m:"121.76",a:121,state:"صلب",sh:[2,8,18,18,5],cat:"metalloid"},
-{z:52,s:"Te",name:"Tellurium",ar:"التيلوريوم",p:5,g:16,b:"p",m:"127.60",a:130,state:"صلب",sh:[2,8,18,18,6],cat:"metalloid"},
-{z:53,s:"I",name:"Iodine",ar:"اليود",p:5,g:17,b:"p",m:"126.90",a:127,state:"صلب",sh:[2,8,18,18,7],cat:"halogen"},
-{z:54,s:"Xe",name:"Xenon",ar:"الزينون",p:5,g:18,b:"p",m:"131.29",a:132,state:"غاز",sh:[2,8,18,18,8],cat:"noble"},
+{z:37,s:"Rb",name:"Rubidium",ar:"الروبيديوم",p:5,g:1,b:"s",m:"85.468",state:"صلب",sh:[2,8,18,8,1],cat:"alkali"},
+{z:38,s:"Sr",name:"Strontium",ar:"السترونشيوم",p:5,g:2,b:"s",m:"87.62",state:"صلب",sh:[2,8,18,8,2],cat:"alkaline"},
+{z:39,s:"Y",name:"Yttrium",ar:"الإيتريوم",p:5,g:3,b:"d",m:"88.906",state:"صلب",sh:[2,8,18,9,2],cat:"transition"},
+{z:40,s:"Zr",name:"Zirconium",ar:"الزركونيوم",p:5,g:4,b:"d",m:"91.224",state:"صلب",sh:[2,8,18,10,2],cat:"transition"},
+{z:41,s:"Nb",name:"Niobium",ar:"النيوبيوم",p:5,g:5,b:"d",m:"92.906",state:"صلب",sh:[2,8,18,12,1],cat:"transition"},
+{z:42,s:"Mo",name:"Molybdenum",ar:"الموليبدينوم",p:5,g:6,b:"d",m:"95.95",state:"صلب",sh:[2,8,18,13,1],cat:"transition"},
+{z:43,s:"Tc",name:"Technetium",ar:"التكنيتيوم",p:5,g:7,b:"d",m:"[98]",state:"صلب",sh:[2,8,18,13,2],cat:"transition"},
+{z:44,s:"Ru",name:"Ruthenium",ar:"الروثينيوم",p:5,g:8,b:"d",m:"101.07",state:"صلب",sh:[2,8,18,15,1],cat:"transition"},
+{z:45,s:"Rh",name:"Rhodium",ar:"الروديوم",p:5,g:9,b:"d",m:"102.91",state:"صلب",sh:[2,8,18,16,1],cat:"transition"},
+{z:46,s:"Pd",name:"Palladium",ar:"البلاديوم",p:5,g:10,b:"d",m:"106.42",state:"صلب",sh:[2,8,18,18],cat:"transition"},
+{z:47,s:"Ag",name:"Silver",ar:"الفضة",p:5,g:11,b:"d",m:"107.87",state:"صلب",sh:[2,8,18,18,1],cat:"transition"},
+{z:48,s:"Cd",name:"Cadmium",ar:"الكادميوم",p:5,g:12,b:"d",m:"112.41",state:"صلب",sh:[2,8,18,18,2],cat:"transition"},
+{z:49,s:"In",name:"Indium",ar:"الإنديوم",p:5,g:13,b:"p",m:"114.82",state:"صلب",sh:[2,8,18,18,3],cat:"post-transition"},
+{z:50,s:"Sn",name:"Tin",ar:"القصدير",p:5,g:14,b:"p",m:"118.71",state:"صلب",sh:[2,8,18,18,4],cat:"post-transition"},
+{z:51,s:"Sb",name:"Antimony",ar:"الأنتيمون",p:5,g:15,b:"p",m:"121.76",state:"صلب",sh:[2,8,18,18,5],cat:"metalloid"},
+{z:52,s:"Te",name:"Tellurium",ar:"التيلوريوم",p:5,g:16,b:"p",m:"127.60",state:"صلب",sh:[2,8,18,18,6],cat:"metalloid"},
+{z:53,s:"I",name:"Iodine",ar:"اليود",p:5,g:17,b:"p",m:"126.90",state:"صلب",sh:[2,8,18,18,7],cat:"halogen"},
+{z:54,s:"Xe",name:"Xenon",ar:"الزينون",p:5,g:18,b:"p",m:"131.29",state:"غاز",sh:[2,8,18,18,8],cat:"noble"},
 
-/* 55–71 */
-{z:55,s:"Cs",name:"Cesium",ar:"السيزيوم",p:6,g:1,b:"s",m:"132.91",a:133,state:"صلب",sh:[2,8,18,18,8,1],cat:"alkali"},
-{z:56,s:"Ba",name:"Barium",ar:"الباريوم",p:6,g:2,b:"s",m:"137.33",a:138,state:"صلب",sh:[2,8,18,18,8,2],cat:"alkaline"},
-{z:57,s:"La",name:"Lanthanum",ar:"اللانثانوم",p:6,g:3,b:"f",m:"138.905",a:139,state:"صلب",sh:[2,8,18,18,9,2],cat:"lanthanide"},
-{z:58,s:"Ce",name:"Cerium",ar:"السيريوم",p:6,g:"—",b:"f",m:"140.116",a:140,state:"صلب",sh:[2,8,18,19,8,2],cat:"lanthanide"},
-{z:59,s:"Pr",name:"Praseodymium",ar:"البراسيوديميوم",p:6,g:"—",b:"f",m:"140.908",a:141,state:"صلب",sh:[2,8,18,21,8,2],cat:"lanthanide"},
-{z:60,s:"Nd",name:"Neodymium",ar:"النيوديميوم",p:6,g:"—",b:"f",m:"144.242",a:144,state:"صلب",sh:[2,8,18,22,8,2],cat:"lanthanide"},
-{z:61,s:"Pm",name:"Promethium",ar:"البروميثيوم",p:6,g:"—",b:"f",m:"[145]",a:145,state:"صلب",sh:[2,8,18,23,8,2],cat:"lanthanide"},
-{z:62,s:"Sm",name:"Samarium",ar:"الساماريوم",p:6,g:"—",b:"f",m:"150.36",a:152,state:"صلب",sh:[2,8,18,24,8,2],cat:"lanthanide"},
-{z:63,s:"Eu",name:"Europium",ar:"اليوروبيوم",p:6,g:"—",b:"f",m:"151.964",a:153,state:"صلب",sh:[2,8,18,25,8,2],cat:"lanthanide"},
-{z:64,s:"Gd",name:"Gadolinium",ar:"الغادولينيوم",p:6,g:"—",b:"f",m:"157.25",a:158,state:"صلب",sh:[2,8,18,25,9,2],cat:"lanthanide"},
-{z:65,s:"Tb",name:"Terbium",ar:"التربيوم",p:6,g:"—",b:"f",m:"158.925",a:159,state:"صلب",sh:[2,8,18,27,8,2],cat:"lanthanide"},
-{z:66,s:"Dy",name:"Dysprosium",ar:"الديسبروسيوم",p:6,g:"—",b:"f",m:"162.500",a:163,state:"صلب",sh:[2,8,18,28,8,2],cat:"lanthanide"},
-{z:67,s:"Ho",name:"Holmium",ar:"الهولميوم",p:6,g:"—",b:"f",m:"164.930",a:165,state:"صلب",sh:[2,8,18,29,8,2],cat:"lanthanide"},
-{z:68,s:"Er",name:"Erbium",ar:"الإربيوم",p:6,g:"—",b:"f",m:"167.259",a:167,state:"صلب",sh:[2,8,18,30,8,2],cat:"lanthanide"},
-{z:69,s:"Tm",name:"Thulium",ar:"الثوليوم",p:6,g:"—",b:"f",m:"168.934",a:169,state:"صلب",sh:[2,8,18,31,8,2],cat:"lanthanide"},
-{z:70,s:"Yb",name:"Ytterbium",ar:"الإيتربيوم",p:6,g:"—",b:"f",m:"173.045",a:174,state:"صلب",sh:[2,8,18,32,8,2],cat:"lanthanide"},
-{z:71,s:"Lu",name:"Lutetium",ar:"اللوتيتيوم",p:6,g:"—",b:"f",m:"174.967",a:175,state:"صلب",sh:[2,8,18,32,9,2],cat:"lanthanide"},
+{z:55,s:"Cs",name:"Cesium",ar:"السيزيوم",p:6,g:1,b:"s",m:"132.91",state:"صلب",sh:[2,8,18,18,8,1],cat:"alkali"},
+{z:56,s:"Ba",name:"Barium",ar:"الباريوم",p:6,g:2,b:"s",m:"137.33",state:"صلب",sh:[2,8,18,18,8,2],cat:"alkaline"},
+{z:57,s:"La",name:"Lanthanum",ar:"اللانثانوم",p:6,g:3,b:"d",m:"138.905",state:"صلب",sh:[2,8,18,18,9,2],cat:"lanthanide"},
+{z:58,s:"Ce",name:"Cerium",ar:"السيريوم",p:6,g:"—",b:"f",m:"140.116",state:"صلب",sh:[2,8,18,19,9,2],cat:"lanthanide"},
+{z:59,s:"Pr",name:"Praseodymium",ar:"البراسيوديميوم",p:6,g:"—",b:"f",m:"140.908",state:"صلب",sh:[2,8,18,21,8,2],cat:"lanthanide"},
+{z:60,s:"Nd",name:"Neodymium",ar:"النيوديميوم",p:6,g:"—",b:"f",m:"144.242",state:"صلب",sh:[2,8,18,22,8,2],cat:"lanthanide"},
+{z:61,s:"Pm",name:"Promethium",ar:"البروميثيوم",p:6,g:"—",b:"f",m:"[145]",state:"صلب",sh:[2,8,18,23,8,2],cat:"lanthanide"},
+{z:62,s:"Sm",name:"Samarium",ar:"الساماريوم",p:6,g:"—",b:"f",m:"150.36",state:"صلب",sh:[2,8,18,24,8,2],cat:"lanthanide"},
+{z:63,s:"Eu",name:"Europium",ar:"اليوروبيوم",p:6,g:"—",b:"f",m:"151.964",state:"صلب",sh:[2,8,18,25,8,2],cat:"lanthanide"},
+{z:64,s:"Gd",name:"Gadolinium",ar:"الغادولينيوم",p:6,g:"—",b:"f",m:"157.25",state:"صلب",sh:[2,8,18,25,9,2],cat:"lanthanide"},
+{z:65,s:"Tb",name:"Terbium",ar:"التربيوم",p:6,g:"—",b:"f",m:"158.925",state:"صلب",sh:[2,8,18,27,8,2],cat:"lanthanide"},
+{z:66,s:"Dy",name:"Dysprosium",ar:"الديسبروسيوم",p:6,g:"—",b:"f",m:"162.500",state:"صلب",sh:[2,8,18,28,8,2],cat:"lanthanide"},
+{z:67,s:"Ho",name:"Holmium",ar:"الهولميوم",p:6,g:"—",b:"f",m:"164.930",state:"صلب",sh:[2,8,18,29,8,2],cat:"lanthanide"},
+{z:68,s:"Er",name:"Erbium",ar:"الإربيوم",p:6,g:"—",b:"f",m:"167.259",state:"صلب",sh:[2,8,18,30,8,2],cat:"lanthanide"},
+{z:69,s:"Tm",name:"Thulium",ar:"الثوليوم",p:6,g:"—",b:"f",m:"168.934",state:"صلب",sh:[2,8,18,31,8,2],cat:"lanthanide"},
+{z:70,s:"Yb",name:"Ytterbium",ar:"الإيتربيوم",p:6,g:"—",b:"f",m:"173.045",state:"صلب",sh:[2,8,18,32,8,2],cat:"lanthanide"},
+{z:71,s:"Lu",name:"Lutetium",ar:"اللوتيتيوم",p:6,g:"—",b:"f",m:"174.967",state:"صلب",sh:[2,8,18,32,9,2],cat:"lanthanide"},
 
-/* 72–86 */
-{z:72,s:"Hf",name:"Hafnium",ar:"الهافنيوم",p:6,g:4,b:"d",m:"178.49",a:178,state:"صلب",sh:[2,8,18,32,10,2],cat:"transition"},
-{z:73,s:"Ta",name:"Tantalum",ar:"التنتالوم",p:6,g:5,b:"d",m:"180.948",a:181,state:"صلب",sh:[2,8,18,32,11,2],cat:"transition"},
-{z:74,s:"W",name:"Tungsten",ar:"التنغستن",p:6,g:6,b:"d",m:"183.84",a:184,state:"صلب",sh:[2,8,18,32,12,2],cat:"transition"},
-{z:75,s:"Re",name:"Rhenium",ar:"الرينيوم",p:6,g:7,b:"d",m:"186.207",a:187,state:"صلب",sh:[2,8,18,32,13,2],cat:"transition"},
-{z:76,s:"Os",name:"Osmium",ar:"الأوزميوم",p:6,g:8,b:"d",m:"190.23",a:190,state:"صلب",sh:[2,8,18,32,14,2],cat:"transition"},
-{z:77,s:"Ir",name:"Iridium",ar:"الإيريديوم",p:6,g:9,b:"d",m:"192.217",a:193,state:"صلب",sh:[2,8,18,32,15,2],cat:"transition"},
-{z:78,s:"Pt",name:"Platinum",ar:"البلاتين",p:6,g:10,b:"d",m:"195.084",a:195,state:"صلب",sh:[2,8,18,32,17,1],cat:"transition"},
-{z:79,s:"Au",name:"Gold",ar:"الذهب",p:6,g:11,b:"d",m:"196.967",a:197,state:"صلب",sh:[2,8,18,32,18,1],cat:"transition"},
-{z:80,s:"Hg",name:"Mercury",ar:"الزئبق",p:6,g:12,b:"d",m:"200.592",a:202,state:"سائل",sh:[2,8,18,32,18,2],cat:"transition"},
-{z:81,s:"Tl",name:"Thallium",ar:"الثاليوم",p:6,g:13,b:"p",m:"204.38",a:205,state:"صلب",sh:[2,8,18,32,18,3],cat:"post-transition"},
-{z:82,s:"Pb",name:"Lead",ar:"الرصاص",p:6,g:14,b:"p",m:"207.2",a:208,state:"صلب",sh:[2,8,18,32,18,4],cat:"post-transition"},
-{z:83,s:"Bi",name:"Bismuth",ar:"البزموت",p:6,g:15,b:"p",m:"208.980",a:209,state:"صلب",sh:[2,8,18,32,18,5],cat:"post-transition"},
-{z:84,s:"Po",name:"Polonium",ar:"البولونيوم",p:6,g:16,b:"p",m:"[209]",a:209,state:"صلب",sh:[2,8,18,32,18,6],cat:"metalloid"},
-{z:85,s:"At",name:"Astatine",ar:"الأستاتين",p:6,g:17,b:"p",m:"[210]",a:210,state:"صلب",sh:[2,8,18,32,18,7],cat:"halogen"},
-{z:86,s:"Rn",name:"Radon",ar:"الرادون",p:6,g:18,b:"p",m:"[222]",a:222,state:"غاز",sh:[2,8,18,32,18,8],cat:"noble"},
+{z:72,s:"Hf",name:"Hafnium",ar:"الهافنيوم",p:6,g:4,b:"d",m:"178.49",state:"صلب",sh:[2,8,18,32,10,2],cat:"transition"},
+{z:73,s:"Ta",name:"Tantalum",ar:"التنتالوم",p:6,g:5,b:"d",m:"180.948",state:"صلب",sh:[2,8,18,32,11,2],cat:"transition"},
+{z:74,s:"W",name:"Tungsten",ar:"التنغستن",p:6,g:6,b:"d",m:"183.84",state:"صلب",sh:[2,8,18,32,12,2],cat:"transition"},
+{z:75,s:"Re",name:"Rhenium",ar:"الرينيوم",p:6,g:7,b:"d",m:"186.207",state:"صلب",sh:[2,8,18,32,13,2],cat:"transition"},
+{z:76,s:"Os",name:"Osmium",ar:"الأوزميوم",p:6,g:8,b:"d",m:"190.23",state:"صلب",sh:[2,8,18,32,14,2],cat:"transition"},
+{z:77,s:"Ir",name:"Iridium",ar:"الإيريديوم",p:6,g:9,b:"d",m:"192.217",state:"صلب",sh:[2,8,18,32,15,2],cat:"transition"},
+{z:78,s:"Pt",name:"Platinum",ar:"البلاتين",p:6,g:10,b:"d",m:"195.084",state:"صلب",sh:[2,8,18,32,17,1],cat:"transition"},
+{z:79,s:"Au",name:"Gold",ar:"الذهب",p:6,g:11,b:"d",m:"196.967",state:"صلب",sh:[2,8,18,32,18,1],cat:"transition"},
+{z:80,s:"Hg",name:"Mercury",ar:"الزئبق",p:6,g:12,b:"d",m:"200.592",state:"سائل",sh:[2,8,18,32,18,2],cat:"transition"},
+{z:81,s:"Tl",name:"Thallium",ar:"الثاليوم",p:6,g:13,b:"p",m:"204.38",state:"صلب",sh:[2,8,18,32,18,3],cat:"post-transition"},
+{z:82,s:"Pb",name:"Lead",ar:"الرصاص",p:6,g:14,b:"p",m:"207.2",state:"صلب",sh:[2,8,18,32,18,4],cat:"post-transition"},
+{z:83,s:"Bi",name:"Bismuth",ar:"البزموت",p:6,g:15,b:"p",m:"208.980",state:"صلب",sh:[2,8,18,32,18,5],cat:"post-transition"},
+{z:84,s:"Po",name:"Polonium",ar:"البولونيوم",p:6,g:16,b:"p",m:"[209]",state:"صلب",sh:[2,8,18,32,18,6],cat:"metalloid"},
+{z:85,s:"At",name:"Astatine",ar:"الأستاتين",p:6,g:17,b:"p",m:"[210]",state:"صلب",sh:[2,8,18,32,18,7],cat:"halogen"},
+{z:86,s:"Rn",name:"Radon",ar:"الرادون",p:6,g:18,b:"p",m:"[222]",state:"غاز",sh:[2,8,18,32,18,8],cat:"noble"},
 
-/* 87–103 */
-{z:87,s:"Fr",name:"Francium",ar:"الفرانسيوم",p:7,g:1,b:"s",m:"[223]",a:223,state:"صلب",sh:[2,8,18,32,18,8,1],cat:"alkali"},
-{z:88,s:"Ra",name:"Radium",ar:"الراديوم",p:7,g:2,b:"s",m:"[226]",a:226,state:"صلب",sh:[2,8,18,32,18,8,2],cat:"alkaline"},
-{z:89,s:"Ac",name:"Actinium",ar:"الأكتينيوم",p:7,g:3,b:"f",m:"[227]",a:227,state:"صلب",sh:[2,8,18,32,18,9,2],cat:"actinide"},
-{z:90,s:"Th",name:"Thorium",ar:"الثوريوم",p:7,g:"—",b:"f",m:"232.038",a:232,state:"صلب",sh:[2,8,18,32,18,10,2],cat:"actinide"},
-{z:91,s:"Pa",name:"Protactinium",ar:"البروتكتينيوم",p:7,g:"—",b:"f",m:"231.036",a:231,state:"صلب",sh:[2,8,18,32,20,9,2],cat:"actinide"},
-{z:92,s:"U",name:"Uranium",ar:"اليورانيوم",p:7,g:"—",b:"f",m:"238.029",a:238,state:"صلب",sh:[2,8,18,32,21,9,2],cat:"actinide"},
-{z:93,s:"Np",name:"Neptunium",ar:"النبتونيوم",p:7,g:"—",b:"f",m:"[237]",a:237,state:"صلب",sh:[2,8,18,32,22,9,2],cat:"actinide"},
-{z:94,s:"Pu",name:"Plutonium",ar:"البلوتونيوم",p:7,g:"—",b:"f",m:"[244]",a:244,state:"صلب",sh:[2,8,18,32,24,8,2],cat:"actinide"},
-{z:95,s:"Am",name:"Americium",ar:"الأمريسيوم",p:7,g:"—",b:"f",m:"[243]",a:243,state:"صلب",sh:[2,8,18,32,25,8,2],cat:"actinide"},
-{z:96,s:"Cm",name:"Curium",ar:"الكوريوم",p:7,g:"—",b:"f",m:"[247]",a:247,state:"صلب",sh:[2,8,18,32,25,9,2],cat:"actinide"},
-{z:97,s:"Bk",name:"Berkelium",ar:"البركيليوم",p:7,g:"—",b:"f",m:"[247]",a:247,state:"صلب",sh:[2,8,18,32,27,8,2],cat:"actinide"},
-{z:98,s:"Cf",name:"Californium",ar:"الكاليفورنيوم",p:7,g:"—",b:"f",m:"[251]",a:251,state:"صلب",sh:[2,8,18,32,28,8,2],cat:"actinide"},
-{z:99,s:"Es",name:"Einsteinium",ar:"الأينشتاينيوم",p:7,g:"—",b:"f",m:"[252]",a:252,state:"صلب",sh:[2,8,18,32,29,8,2],cat:"actinide"},
-{z:100,s:"Fm",name:"Fermium",ar:"الفرميوم",p:7,g:"—",b:"f",m:"[257]",a:257,state:"صلب",sh:[2,8,18,32,30,8,2],cat:"actinide"},
-{z:101,s:"Md",name:"Mendelevium",ar:"المندليفيوم",p:7,g:"—",b:"f",m:"[258]",a:258,state:"صلب",sh:[2,8,18,32,31,8,2],cat:"actinide"},
-{z:102,s:"No",name:"Nobelium",ar:"النوبليوم",p:7,g:"—",b:"f",m:"[259]",a:259,state:"صلب",sh:[2,8,18,32,32,8,2],cat:"actinide"},
-{z:103,s:"Lr",name:"Lawrencium",ar:"اللورنسيوم",p:7,g:"—",b:"f",m:"[262]",a:262,state:"صلب",sh:[2,8,18,32,32,8,3],cat:"actinide"},
+{z:87,s:"Fr",name:"Francium",ar:"الفرانسيوم",p:7,g:1,b:"s",m:"[223]",state:"صلب",sh:[2,8,18,32,18,8,1],cat:"alkali"},
+{z:88,s:"Ra",name:"Radium",ar:"الراديوم",p:7,g:2,b:"s",m:"[226]",state:"صلب",sh:[2,8,18,32,18,8,2],cat:"alkaline"},
+{z:89,s:"Ac",name:"Actinium",ar:"الأكتينيوم",p:7,g:3,b:"f",m:"[227]",state:"صلب",sh:[2,8,18,32,18,9,2],cat:"actinide"},
+{z:90,s:"Th",name:"Thorium",ar:"الثوريوم",p:7,g:"—",b:"f",m:"232.038",state:"صلب",sh:[2,8,18,32,18,10,2],cat:"actinide"},
+{z:91,s:"Pa",name:"Protactinium",ar:"البروتكتينيوم",p:7,g:"—",b:"f",m:"231.036",state:"صلب",sh:[2,8,18,32,20,9,2],cat:"actinide"},
+{z:92,s:"U",name:"Uranium",ar:"اليورانيوم",p:7,g:"—",b:"f",m:"238.029",state:"صلب",sh:[2,8,18,32,21,9,2],cat:"actinide"},
+{z:93,s:"Np",name:"Neptunium",ar:"النبتونيوم",p:7,g:"—",b:"f",m:"[237]",state:"صلب",sh:[2,8,18,32,22,9,2],cat:"actinide"},
+{z:94,s:"Pu",name:"Plutonium",ar:"البلوتونيوم",p:7,g:"—",b:"f",m:"[244]",state:"صلب",sh:[2,8,18,32,24,8,2],cat:"actinide"},
+{z:95,s:"Am",name:"Americium",ar:"الأمريسيوم",p:7,g:"—",b:"f",m:"[243]",state:"صلب",sh:[2,8,18,32,25,8,2],cat:"actinide"},
+{z:96,s:"Cm",name:"Curium",ar:"الكوريوم",p:7,g:"—",b:"f",m:"[247]",state:"صلب",sh:[2,8,18,32,25,9,2],cat:"actinide"},
+{z:97,s:"Bk",name:"Berkelium",ar:"البركيليوم",p:7,g:"—",b:"f",m:"[247]",state:"صلب",sh:[2,8,18,32,27,8,2],cat:"actinide"},
+{z:98,s:"Cf",name:"Californium",ar:"الكاليفورنيوم",p:7,g:"—",b:"f",m:"[251]",state:"صلب",sh:[2,8,18,32,28,8,2],cat:"actinide"},
+{z:99,s:"Es",name:"Einsteinium",ar:"الأينشتاينيوم",p:7,g:"—",b:"f",m:"[252]",state:"صلب",sh:[2,8,18,32,29,8,2],cat:"actinide"},
+{z:100,s:"Fm",name:"Fermium",ar:"الفرميوم",p:7,g:"—",b:"f",m:"[257]",state:"صلب",sh:[2,8,18,32,30,8,2],cat:"actinide"},
+{z:101,s:"Md",name:"Mendelevium",ar:"المندليفيوم",p:7,g:"—",b:"f",m:"[258]",state:"صلب",sh:[2,8,18,32,31,8,2],cat:"actinide"},
+{z:102,s:"No",name:"Nobelium",ar:"النوبليوم",p:7,g:"—",b:"f",m:"[259]",state:"صلب",sh:[2,8,18,32,32,8,2],cat:"actinide"},
+{z:103,s:"Lr",name:"Lawrencium",ar:"اللورنسيوم",p:7,g:"—",b:"f",m:"[262]",state:"صلب",sh:[2,8,18,32,32,8,3],cat:"actinide"},
 
-/* 104–118 */
-{z:104,s:"Rf",name:"Rutherfordium",ar:"الرذرفورديوم",p:7,g:4,b:"d",m:"[267]",a:267,state:"صلب",sh:[2,8,18,32,32,10,2],cat:"transition"},
-{z:105,s:"Db",name:"Dubnium",ar:"الدوبنيوم",p:7,g:5,b:"d",m:"[268]",a:268,state:"صلب",sh:[2,8,18,32,32,11,2],cat:"transition"},
-{z:106,s:"Sg",name:"Seaborgium",ar:"السيبورغيوم",p:7,g:6,b:"d",m:"[269]",a:269,state:"صلب",sh:[2,8,18,32,32,12,2],cat:"transition"},
-{z:107,s:"Bh",name:"Bohrium",ar:"البوهريوم",p:7,g:7,b:"d",m:"[270]",a:270,state:"صلب",sh:[2,8,18,32,32,13,2],cat:"transition"},
-{z:108,s:"Hs",name:"Hassium",ar:"الهاسيوم",p:7,g:8,b:"d",m:"[277]",a:277,state:"صلب",sh:[2,8,18,32,32,14,2],cat:"transition"},
-{z:109,s:"Mt",name:"Meitnerium",ar:"الميتنريوم",p:7,g:9,b:"d",m:"[278]",a:278,state:"صلب",sh:[2,8,18,32,32,15,2],cat:"transition"},
-{z:110,s:"Ds",name:"Darmstadtium",ar:"الدارمشتاتيوم",p:7,g:10,b:"d",m:"[281]",a:281,state:"صلب",sh:[2,8,18,32,32,16,2],cat:"transition"},
-{z:111,s:"Rg",name:"Roentgenium",ar:"الرونتجينيوم",p:7,g:11,b:"d",m:"[282]",a:282,state:"صلب",sh:[2,8,18,32,32,17,2],cat:"transition"},
-{z:112,s:"Cn",name:"Copernicium",ar:"الكوبرنيسيوم",p:7,g:12,b:"d",m:"[285]",a:285,state:"صلب",sh:[2,8,18,32,32,18,2],cat:"transition"},
-{z:113,s:"Nh",name:"Nihonium",ar:"النيهونيوم",p:7,g:13,b:"p",m:"[286]",a:286,state:"صلب",sh:[2,8,18,32,32,18,3],cat:"post-transition"},
-{z:114,s:"Fl",name:"Flerovium",ar:"الفليروفيوم",p:7,g:14,b:"p",m:"[289]",a:289,state:"صلب",sh:[2,8,18,32,32,18,4],cat:"post-transition"},
-{z:115,s:"Mc",name:"Moscovium",ar:"الموسكوفيوم",p:7,g:15,b:"p",m:"[290]",a:290,state:"صلب",sh:[2,8,18,32,32,18,5],cat:"post-transition"},
-{z:116,s:"Lv",name:"Livermorium",ar:"الليفرموريوم",p:7,g:16,b:"p",m:"[293]",a:293,state:"صلب",sh:[2,8,18,32,32,18,6],cat:"post-transition"},
-{z:117,s:"Ts",name:"Tennessine",ar:"التينيسين",p:7,g:17,b:"p",m:"[294]",a:294,state:"صلب",sh:[2,8,18,32,32,18,7],cat:"halogen"},
-{z:118,s:"Og",name:"Oganesson",ar:"الأوغانيسون",p:7,g:18,b:"p",m:"[294]",a:294,state:"صلب",sh:[2,8,18,32,32,18,8],cat:"noble"}
+{z:104,s:"Rf",name:"Rutherfordium",ar:"الرذرفورديوم",p:7,g:4,b:"d",m:"[267]",state:"صلب",sh:[2,8,18,32,32,10,2],cat:"transition"},
+{z:105,s:"Db",name:"Dubnium",ar:"الدوبنيوم",p:7,g:5,b:"d",m:"[268]",state:"صلب",sh:[2,8,18,32,32,11,2],cat:"transition"},
+{z:106,s:"Sg",name:"Seaborgium",ar:"السيبورغيوم",p:7,g:6,b:"d",m:"[269]",state:"صلب",sh:[2,8,18,32,32,12,2],cat:"transition"},
+{z:107,s:"Bh",name:"Bohrium",ar:"البوهريوم",p:7,g:7,b:"d",m:"[270]",state:"صلب",sh:[2,8,18,32,32,13,2],cat:"transition"},
+{z:108,s:"Hs",name:"Hassium",ar:"الهاسيوم",p:7,g:8,b:"d",m:"[277]",state:"صلب",sh:[2,8,18,32,32,14,2],cat:"transition"},
+{z:109,s:"Mt",name:"Meitnerium",ar:"الميتنريوم",p:7,g:9,b:"d",m:"[278]",state:"صلب",sh:[2,8,18,32,32,15,2],cat:"transition"},
+{z:110,s:"Ds",name:"Darmstadtium",ar:"الدارمشتاتيوم",p:7,g:10,b:"d",m:"[281]",state:"صلب",sh:[2,8,18,32,32,16,2],cat:"transition"},
+{z:111,s:"Rg",name:"Roentgenium",ar:"الرونتجينيوم",p:7,g:11,b:"d",m:"[282]",state:"صلب",sh:[2,8,18,32,32,17,2],cat:"transition"},
+{z:112,s:"Cn",name:"Copernicium",ar:"الكوبرنيسيوم",p:7,g:12,b:"d",m:"[285]",state:"صلب",sh:[2,8,18,32,32,18,2],cat:"transition"},
+{z:113,s:"Nh",name:"Nihonium",ar:"النيهونيوم",p:7,g:13,b:"p",m:"[286]",state:"صلب",sh:[2,8,18,32,32,18,3],cat:"post-transition"},
+{z:114,s:"Fl",name:"Flerovium",ar:"الفليروفيوم",p:7,g:14,b:"p",m:"[289]",state:"صلب",sh:[2,8,18,32,32,18,4],cat:"post-transition"},
+{z:115,s:"Mc",name:"Moscovium",ar:"الموسكوفيوم",p:7,g:15,b:"p",m:"[290]",state:"صلب",sh:[2,8,18,32,32,18,5],cat:"post-transition"},
+{z:116,s:"Lv",name:"Livermorium",ar:"الليفرموريوم",p:7,g:16,b:"p",m:"[293]",state:"صلب",sh:[2,8,18,32,32,18,6],cat:"post-transition"},
+{z:117,s:"Ts",name:"Tennessine",ar:"التينيسين",p:7,g:17,b:"p",m:"[294]",state:"صلب",sh:[2,8,18,32,32,18,7],cat:"halogen"},
+{z:118,s:"Og",name:"Oganesson",ar:"الأوغانيسون",p:7,g:18,b:"p",m:"[294]",state:"صلب",sh:[2,8,18,32,32,18,8],cat:"noble"}
 
 ];
 
@@ -1169,17 +1162,25 @@ function renderAtom(element){
     document.getElementById("atomicNumber").textContent =
         element.z;
 
-    document.getElementById("massNumber").textContent =
-        element.a;
-
     document.getElementById("atomicMass").textContent =
         element.m;
 
     document.getElementById("protons").textContent =
         element.z;
 
+    /*
+       العدد الكتلي لم يعد معروضًا.
+       عدد النيوترونات هنا قيمة تقريبية محسوبة
+       من الكتلة الذرية بعد تقريبها لأقرب عدد صحيح.
+    */
+    const approximateMass =
+        Math.round(parseFloat(element.m));
+
+    const approximateNeutrons =
+        approximateMass - element.z;
+
     document.getElementById("neutrons").textContent =
-        element.a - element.z;
+        approximateNeutrons;
 
     document.getElementById("electronCount").textContent =
         element.z;
@@ -1211,6 +1212,16 @@ function renderAtom(element){
             "يمكنه فقد أو اكتساب إلكترون حسب التفاعل، لذلك يختلف عن الفلزات القلوية رغم وجوده في المجموعة الأولى.";
 
     }else if(
+        element.z === 2
+    ){
+
+        valence =
+            "2";
+
+        behavior =
+            "غلاف التكافؤ مكتمل، لذلك يكون قليل التفاعل.";
+
+    }else if(
         typeof element.g === "number" &&
         groupBehavior[element.g]
     ){
@@ -1220,10 +1231,6 @@ function renderAtom(element){
 
         behavior =
             groupBehavior[element.g].behavior;
-
-        if(element.g === 18 && element.z === 2){
-            valence = "2";
-        }
 
     }else{
 
