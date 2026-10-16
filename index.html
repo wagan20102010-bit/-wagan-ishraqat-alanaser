@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="استكشفي العناصر الكيميائية في الجدول الدوري وتوزيعها الإلكتروني واختبري نفسك">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛️%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <title>الجدول الدوري للعناصر</title>
 
 <style>
@@ -12,20 +17,22 @@ body{font-family:"Tajawal","Arial",sans-serif;background:radial-gradient(circle 
 #intro.hide{opacity:0;visibility:hidden;pointer-events:none;}
 .intro-title{font-size:clamp(40px,8vw,82px);font-weight:800;color:#7056a8;letter-spacing:1px;text-shadow:0 5px 20px rgba(112,86,168,.18);}
 #mainPage{width:100%;padding:38px 18px 50px;}
-.header{text-align:center;margin-bottom:30px;}
-.header h1{color:#7056a8;font-size:clamp(28px,5vw,46px);margin-bottom:8px;}
+.header{text-align:center;margin-bottom:24px;}
+.header h1{color:#7056a8;font-size:clamp(32px,5.5vw,54px);margin-bottom:8px;}
 .header p{color:#777084;font-size:16px;}
 .header .creator{margin-top:7px;color:#7056a8;font-size:14px;font-weight:700;}
 .search-box{width:min(650px,100%);margin:0 auto 30px;position:relative;}
 .search-box input{width:100%;padding:16px 22px;border-radius:18px;border:2px solid #ddd4ef;outline:none;background:white;color:#4c435d;font-size:16px;box-shadow:0 8px 25px rgba(99,74,130,.08);transition:.25s;}
 .search-box input:focus{border-color:#9a7bd0;box-shadow:0 8px 28px rgba(112,86,168,.16);}
+.table-hint{display:none;text-align:center;color:#8a8297;font-size:12px;margin-bottom:6px;}
 .table-wrapper{width:100%;overflow-x:auto;padding:8px 2px 20px;}
-.periodic-table{width:max-content;min-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(18,58px);grid-auto-rows:72px;gap:7px;direction:ltr;}
-.element{position:relative;border-radius:14px;border:1px solid rgba(80,65,100,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;direction:rtl;user-select:none;}
+.periodic-table{width:max-content;min-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(18,58px);grid-template-rows:repeat(7,72px) 22px repeat(2,72px);grid-auto-rows:72px;gap:7px;direction:ltr;}
+.element{position:relative;border-radius:14px;border:1px solid rgba(80,65,100,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;direction:rtl;user-select:none;color:#7056a8;font-weight:700;}
 .element:hover{transform:translateY(-4px);filter:brightness(1.04);box-shadow:0 10px 25px rgba(70,50,90,.15);z-index:10;}
 .element .number{position:absolute;top:6px;left:7px;font-size:9px;opacity:.7;}
 .element .symbol{font-size:21px;font-weight:800;}
-.element .name{font-size:8px;margin-top:3px;text-align:center;}
+.element .name{font-size:10px;margin-top:2px;text-align:center;line-height:1.15;padding:0 2px;word-break:break-word;}
+.series-label{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#8a8297;direction:ltr;}
 .alkali{background:#ffd9df}
 .alkaline{background:#ffe8b7}
 .transition{background:#d9e8ff}
@@ -71,6 +78,7 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 /* قسم الذرة */
 .atom-section{width:min(1100px,100%);margin:auto;display:grid;grid-template-columns:minmax(300px,1fr) minmax(300px,1fr);gap:30px;align-items:center;}
 .atom-visual{min-height:520px;display:flex;justify-content:center;align-items:center;position:relative;}
+.atom-note{position:absolute;left:8px;bottom:4px;font-size:11px;color:#8a8297;}
 .atom{width:460px;height:460px;position:relative;max-width:95vw;max-height:95vw;}
 .orbit{position:absolute;border:2px solid rgba(112,86,168,.25);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);}
 .orbit.o1{width:110px;height:110px}
@@ -145,11 +153,26 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 .valence-note{color:#777084;font-size:12px;line-height:1.7;}
 
 /* بطاقة طريقة حفظ التوزيع */
-.electron-top{display:grid;grid-template-columns:minmax(0,2fr) minmax(220px,1fr);gap:14px;}
+.electron-top{display:grid;grid-template-columns:minmax(0,2fr) minmax(190px,1fr) minmax(190px,1fr);gap:14px;}
+.capacity-card .memory-line{font-size:19px;}
 .electron-bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .memory-card{background:#f5efff;border:3px solid #7056a8;border-radius:24px;padding:22px 18px;text-align:center;box-shadow:0 8px 25px rgba(90,70,120,.1);}
 .memory-card h4{color:#7056a8;font-size:18px;font-weight:800;line-height:1.7;padding-bottom:14px;border-bottom:2px solid #d3c3ec;margin-bottom:14px;}
 .memory-line{color:#5b4592;font-size:21px;font-weight:800;padding:8px 0;}
+
+/* بطاقات الاستقرار (الممتلئ ونصف الممتلئ) */
+.stability-card{background:#fff;border:1px solid rgba(100,80,130,.08);border-radius:22px;padding:20px;box-shadow:0 8px 25px rgba(90,70,120,.07);}
+.stability-card.special{border:2px solid #b59bdd;background:linear-gradient(135deg,#fff,#f5efff);}
+.stability-card h4{color:#7056a8;font-size:16px;margin-bottom:10px;text-align:center;}
+.stability-row{direction:ltr;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin:14px 0;}
+.stability-chip{background:#faf8ff;border:2px solid #e2d8f2;border-radius:16px;padding:10px 16px;text-align:center;font-family:Arial,sans-serif;font-size:20px;font-weight:800;color:#4d455b;}
+.stability-chip.real{background:#f5efff;border-color:#b59bdd;color:#7056a8;}
+.stability-chip small{display:block;font-family:"Tajawal","Arial",sans-serif;font-size:11px;font-weight:600;color:#81798e;margin-bottom:4px;}
+.stability-arrow{font-size:26px;color:#a48bcf;font-weight:900;}
+.stability-text{color:#6f6779;font-size:14px;line-height:1.9;text-align:center;}
+.stability-pair{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:12px 0;}
+.stability-pair .subshell{text-align:center;}
+.stability-label{color:#7056a8;font-size:13px;font-weight:800;margin-bottom:8px;}
 
 /* سحابة الإلكترونات */
 .cloud-card{background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(248,244,255,.98));border:1px solid rgba(112,86,168,.12);border-radius:24px;padding:20px;box-shadow:0 10px 30px rgba(90,70,120,.08);}
@@ -199,6 +222,9 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 .distribution-note{margin-top:12px;text-align:center;color:#81798e;font-size:11px;line-height:1.7;}
 
 /* Responsive */
+@media(max-width:1150px){
+.table-hint{display:block;}
+}
 @media(max-width:850px){
 .atom-section{grid-template-columns:1fr;}
 .atom-visual{min-height:480px;}
@@ -211,8 +237,9 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 }
 @media(max-width:520px){
 #mainPage{padding:25px 10px 40px;}
-.periodic-table{grid-template-columns:repeat(18,51px);grid-auto-rows:64px;gap:5px;min-width:1000px;}
+.periodic-table{grid-template-columns:repeat(18,51px);grid-template-rows:repeat(7,64px) 20px repeat(2,64px);grid-auto-rows:64px;gap:5px;min-width:1000px;}
 .element .symbol{font-size:18px;}
+.element .name{font-size:9px;}
 .atom-visual{min-height:390px;overflow:hidden;}
 .atom{transform:scale(.68);}
 .atom.heavy-atom{transform:scale(.64);}
@@ -231,553 +258,174 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 .electron-bottom{grid-template-columns:1fr;}
 }
 
-
-/* اختبار التوزيع الإلكتروني - تجربة الكلور */
-.quiz-section{
-    width:min(900px,100%);
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-.quiz-card{
-    background:white;
-    border:1px solid #e4d9f4;
-    border-radius:22px;
-    padding:22px;
-    box-shadow:0 8px 25px rgba(90,70,120,.07);
-}
-.quiz-heading{
-    text-align:center;
-    background:linear-gradient(135deg,#fff,#f6f0ff);
-}
-.quiz-heading h3{
-    color:#7056a8;
-    font-size:23px;
-    margin-bottom:9px;
-}
-.quiz-heading p{
-    color:#81798e;
-    font-size:14px;
-    line-height:1.9;
-}
-.quiz-question{
-    color:#4d455b;
-    font-size:17px;
-    font-weight:800;
-    line-height:1.9;
-    margin-bottom:14px;
-}
-.quiz-instruction{
-    color:#81798e;
-    font-size:13px;
-    line-height:1.9;
-    margin-bottom:18px;
-}
-.quiz-configuration{
-    direction:ltr;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px;
-    padding:18px 10px;
-    background:#faf8ff;
-    border:1px solid #e4d9f4;
-    border-radius:18px;
-}
-.quiz-orbital{
-    display:inline-flex;
-    direction:ltr;
-    align-items:flex-start;
-    gap:2px;
-    padding:7px 5px;
-    background:white;
-    border:1px solid #e2d8f2;
-    border-radius:10px;
-}
-.quiz-orbital input{
-    font-family:Arial,sans-serif;
-    text-align:center;
-    color:#4d455b;
-    background:#fff;
-    border:1px solid #cdbce7;
-    border-radius:6px;
-    outline:none;
-    padding:5px 1px;
-    font-size:18px;
-    font-weight:800;
-    direction:ltr;
-}
-.quiz-orbital input:focus{
-    border-color:#8c70c5;
-    box-shadow:0 0 0 2px rgba(140,112,197,.13);
-}
-.quiz-level{
-    width:27px;
-    height:36px;
-}
-.quiz-type{
-    width:27px;
-    height:36px;
-    text-transform:lowercase;
-}
-.quiz-exponent{
-    width:25px;
-    height:26px;
-    margin-top:-9px;
-    font-size:14px!important;
-    align-self:flex-start;
-}
-.quiz-space{
-    color:#a48bcf;
-    font-size:18px;
-    font-weight:900;
-}
-.quiz-actions{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
-}
-.quiz-button{
-    border:none;
-    border-radius:14px;
-    padding:12px 24px;
-    font-family:inherit;
-    font-size:14px;
-    font-weight:800;
-    cursor:pointer;
-    transition:.2s;
-}
-.quiz-button:hover{
-    transform:translateY(-2px);
-}
-.quiz-check{
-    background:linear-gradient(135deg,#8c70c5,#7056a8);
-    color:white;
-    box-shadow:0 7px 18px rgba(112,86,168,.22);
-}
-.quiz-reset{
-    background:#f3eefb;
-    color:#7056a8;
-    border:1px solid #e2d8f2;
-}
-.quiz-feedback{
-    display:none;
-    margin-top:18px;
-    padding:14px 16px;
-    border-radius:14px;
-    font-size:14px;
-    font-weight:700;
-    line-height:1.9;
-    text-align:center;
-}
-.quiz-feedback.show{
-    display:block;
-}
-.quiz-feedback.success{
-    background:#e8f8ee;
-    color:#267448;
-    border:1px solid #b9e5c8;
-}
-.quiz-feedback.error{
-    background:#fff0f1;
-    color:#a83c4a;
-    border:1px solid #f0c5cb;
-}
-.quiz-feedback.hint{
-    background:#f5efff;
-    color:#7056a8;
-    border:1px solid #e2d8f2;
-}
-.quiz-note{
-    color:#81798e;
-    font-size:12px;
-    line-height:1.8;
-    text-align:center;
-}
+/* اختبار التوزيع الإلكتروني */
+.quiz-section{width:min(900px,100%);margin:auto;display:flex;flex-direction:column;gap:18px;}
+.quiz-card{background:white;border:1px solid #e4d9f4;border-radius:22px;padding:22px;box-shadow:0 8px 25px rgba(90,70,120,.07);}
+.quiz-heading{text-align:center;background:linear-gradient(135deg,#fff,#f6f0ff);}
+.quiz-heading h3{color:#7056a8;font-size:23px;margin-bottom:9px;}
+.quiz-heading p{color:#81798e;font-size:14px;line-height:1.9;}
+.quiz-question{color:#4d455b;font-size:17px;font-weight:800;line-height:1.9;margin-bottom:14px;}
+.quiz-instruction{color:#81798e;font-size:13px;line-height:1.9;margin-bottom:18px;}
+.quiz-configuration{direction:ltr;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;padding:18px 10px;background:#faf8ff;border:1px solid #e4d9f4;border-radius:18px;}
+.quiz-orbital{display:inline-flex;direction:ltr;align-items:flex-start;gap:2px;padding:7px 5px;background:white;border:1px solid #e2d8f2;border-radius:10px;}
+.quiz-orbital input{font-family:Arial,sans-serif;text-align:center;color:#4d455b;background:#fff;border:1px solid #cdbce7;border-radius:6px;outline:none;padding:5px 1px;font-size:18px;font-weight:800;direction:ltr;}
+.quiz-orbital input:focus{border-color:#8c70c5;box-shadow:0 0 0 2px rgba(140,112,197,.13);}
+.quiz-level{width:27px;height:36px;}
+.quiz-type{width:27px;height:36px;text-transform:lowercase;}
+.quiz-exponent{width:25px;height:26px;margin-top:-9px;font-size:14px!important;align-self:flex-start;}
+.quiz-space{color:#a48bcf;font-size:18px;font-weight:900;}
+.quiz-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px;}
+.quiz-button{border:none;border-radius:14px;padding:12px 24px;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;transition:.2s;}
+.quiz-button:hover{transform:translateY(-2px);}
+.quiz-check{background:linear-gradient(135deg,#8c70c5,#7056a8);color:white;box-shadow:0 7px 18px rgba(112,86,168,.22);}
+.quiz-reset{background:#f3eefb;color:#7056a8;border:1px solid #e2d8f2;}
+.quiz-feedback{display:none;margin-top:18px;padding:14px 16px;border-radius:14px;font-size:14px;font-weight:700;line-height:1.9;text-align:center;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.success{background:#e8f8ee;color:#267448;border:1px solid #b9e5c8;}
+.quiz-feedback.error{background:#fff0f1;color:#a83c4a;border:1px solid #f0c5cb;}
+.quiz-feedback.hint{background:#f5efff;color:#7056a8;border:1px solid #e2d8f2;}
+.quiz-note{color:#81798e;font-size:12px;line-height:1.8;text-align:center;}
 @media(max-width:520px){
-    .quiz-card{padding:16px 12px;}
-    .quiz-configuration{gap:6px;padding:13px 5px;}
-    .quiz-orbital{padding:6px 3px;}
-    .quiz-level,.quiz-type{width:24px;}
-    .quiz-exponent{width:23px;}
-    .quiz-question{font-size:15px;}
+.quiz-card{padding:16px 12px;}
+.quiz-configuration{gap:6px;padding:13px 5px;}
+.quiz-orbital{padding:6px 3px;}
+.quiz-level,.quiz-type{width:24px;}
+.quiz-exponent{width:23px;}
+.quiz-question{font-size:15px;}
 }
+
 /* الأيقونات الفرعية داخل الاختبار القصير */
-.quiz-subtabs{
-    width:min(900px,100%);
-    margin:0 auto 18px;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
-}
-.quiz-subtab{
-    border:1px solid rgba(100,80,130,.08);
-    background:white;
-    border-radius:18px;
-    padding:14px 8px;
-    color:#6f6779;
-    cursor:pointer;
-    box-shadow:0 8px 25px rgba(90,70,120,.07);
-    transition:.22s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    font-family:inherit;
-}
+.quiz-subtabs{width:min(900px,100%);margin:0 auto 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.quiz-subtab{border:1px solid rgba(100,80,130,.08);background:white;border-radius:18px;padding:14px 8px;color:#6f6779;cursor:pointer;box-shadow:0 8px 25px rgba(90,70,120,.07);transition:.22s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:inherit;}
 .quiz-subtab span{font-size:24px;}
 .quiz-subtab strong{font-size:12px;}
-.quiz-subtab:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(90,70,120,.12);
-}
-.quiz-subtab.active{
-    border:2px solid #b59bdd;
-    color:#7056a8;
-    background:linear-gradient(135deg,#fff,#f5efff);
-    box-shadow:0 10px 25px rgba(112,86,168,.12);
-}
+.quiz-subtab:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(90,70,120,.12);}
+.quiz-subtab.active{border:2px solid #b59bdd;color:#7056a8;background:linear-gradient(135deg,#fff,#f5efff);box-shadow:0 10px 25px rgba(112,86,168,.12);}
 .quiz-subpanel{display:none;}
 .quiz-subpanel.active{display:block;}
 @media(max-width:520px){
-    .quiz-subtab{padding:13px 6px;}
-    .quiz-subtab strong{font-size:11px;}
+.quiz-subtab{padding:13px 6px;}
+.quiz-subtab strong{font-size:11px;}
 }
 
-/* السؤال الثاني: التوزيع النقطي (تمثيل لويس) - كل الأصناف تبدأ بـ lq- */
-.lq-title{
-    color:#7056a8;
-    font-size:23px;
-    font-weight:800;
-    text-align:center;
-    margin-bottom:9px;
-}
-.lq-stage-wrap{
-    display:flex;
-    justify-content:center;
-    margin:18px 0 6px;
-}
-.lq-stage{
-    direction:ltr;
-    position:relative;
-    width:260px;
-    height:260px;
-    max-width:100%;
-    background:#faf8ff;
-    border:1px solid #e4d9f4;
-    border-radius:22px;
-    touch-action:manipulation;
-    -webkit-tap-highlight-color:transparent;
-    user-select:none;
-}
-.lq-symbol{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    font-family:Arial,sans-serif;
-    font-size:56px;
-    font-weight:900;
-    color:#7056a8;
-    pointer-events:none;
-}
-.lq-zone{
-    position:absolute;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:4px;
-    border:2px dashed rgba(181,157,221,.5);
-    border-radius:16px;
-    background:rgba(255,255,255,.75);
-    cursor:pointer;
-    transition:.2s;
-    outline:none;
-}
-.lq-zone:hover,
-.lq-zone:focus-visible{
-    border-color:#8c70c5;
-    background:#f5efff;
-}
+/* السؤال الثاني: التوزيع النقطي (تمثيل لويس) */
+.lq-title{color:#7056a8;font-size:23px;font-weight:800;text-align:center;margin-bottom:9px;}
+.lq-stage-wrap{display:flex;justify-content:center;margin:18px 0 6px;}
+.lq-stage{direction:ltr;position:relative;width:260px;height:260px;max-width:100%;background:#faf8ff;border:1px solid #e4d9f4;border-radius:22px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;}
+.lq-symbol{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:Arial,sans-serif;font-size:56px;font-weight:900;color:#7056a8;pointer-events:none;}
+.lq-zone{position:absolute;display:flex;align-items:center;justify-content:center;gap:4px;border:2px dashed rgba(181,157,221,.5);border-radius:16px;background:rgba(255,255,255,.75);cursor:pointer;transition:.2s;outline:none;}
+.lq-zone:hover,.lq-zone:focus-visible{border-color:#8c70c5;background:#f5efff;}
 .lq-zone.top{top:10px;left:50%;transform:translateX(-50%);width:104px;height:58px;flex-direction:row;}
 .lq-zone.bottom{bottom:10px;left:50%;transform:translateX(-50%);width:104px;height:58px;flex-direction:row;}
 .lq-zone.left{left:10px;top:50%;transform:translateY(-50%);width:58px;height:104px;flex-direction:column;}
 .lq-zone.right{right:10px;top:50%;transform:translateY(-50%);width:58px;height:104px;flex-direction:column;}
-.lq-slot{
-    width:38px;
-    height:38px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-}
-.lq-slot.empty::after{
-    content:"";
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    border:2px dashed rgba(181,157,221,.55);
-}
+.lq-slot{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.lq-slot.empty::after{content:"";width:12px;height:12px;border-radius:50%;border:2px dashed rgba(181,157,221,.55);}
 .lq-slot.filled{cursor:pointer;}
-.lq-dot{
-    display:block;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    background:#55aef7;
-    border:2px solid #318bd3;
-    box-shadow:0 3px 8px rgba(49,139,211,.3);
-    transition:.15s;
-}
+.lq-dot{display:block;width:22px;height:22px;border-radius:50%;background:#55aef7;border:2px solid #318bd3;box-shadow:0 3px 8px rgba(49,139,211,.3);transition:.15s;}
 .lq-dot.pop{animation:lqPop .22s ease-out;}
 @keyframes lqPop{
-    from{transform:scale(.3);opacity:.4;}
-    to{transform:scale(1);opacity:1;}
+from{transform:scale(.3);opacity:.4;}
+to{transform:scale(1);opacity:1;}
 }
-.lq-slot.filled:hover .lq-dot{
-    background:#e97691;
-    border-color:#cc3d46;
-}
-.lq-static .lq-zone{
-    cursor:default;
-    pointer-events:none;
-    border-color:transparent;
-    background:transparent;
-}
+.lq-slot.filled:hover .lq-dot{background:#e97691;border-color:#cc3d46;}
+.lq-static .lq-zone{cursor:default;pointer-events:none;border-color:transparent;background:transparent;}
 .lq-static .lq-slot.empty{display:none;}
-.lq-static .lq-slot.filled:hover .lq-dot{
-    background:#55aef7;
-    border-color:#318bd3;
-}
-.lq-counter{
-    text-align:center;
-    color:#7056a8;
-    font-size:13px;
-    font-weight:800;
-    margin-top:8px;
-}
-.lq-solution{
-    margin-top:18px;
-    padding:16px;
-    background:#f8f4ff;
-    border:1px solid #e4d9f4;
-    border-radius:18px;
-    text-align:center;
-}
-.lq-solution h4{
-    color:#7056a8;
-    font-size:15px;
-    margin-bottom:6px;
-}
-.lq-solution p{
-    color:#6f6779;
-    font-size:13px;
-    line-height:1.9;
-}
-.lq-solution-wrap{
-    position:relative;
-    height:190px;
-}
-.lq-solution-wrap .lq-stage{
-    position:absolute;
-    left:50%;
-    top:0;
-    margin-left:-130px;
-    transform:scale(.72);
-    transform-origin:top center;
-}
-.lq-note-box{
-    background:#f5efff;
-    border:1px solid #e2d8f2;
-    border-radius:16px;
-    padding:18px 16px;
-    color:#6f6779;
-    font-size:14px;
-    line-height:2;
-    text-align:center;
-}
-.lq-note-symbol{
-    font-family:Arial,sans-serif;
-    font-size:46px;
-    font-weight:900;
-    color:#7056a8;
-    margin-bottom:6px;
-}
+.lq-static .lq-slot.filled:hover .lq-dot{background:#55aef7;border-color:#318bd3;}
+.lq-counter{text-align:center;color:#7056a8;font-size:13px;font-weight:800;margin-top:8px;}
+.lq-solution{margin-top:18px;padding:16px;background:#f8f4ff;border:1px solid #e4d9f4;border-radius:18px;text-align:center;}
+.lq-solution h4{color:#7056a8;font-size:15px;margin-bottom:6px;}
+.lq-solution p{color:#6f6779;font-size:13px;line-height:1.9;}
+.lq-solution-wrap{position:relative;height:190px;}
+.lq-solution-wrap .lq-stage{position:absolute;left:50%;top:0;margin-left:-130px;transform:scale(.72);transform-origin:top center;}
+.lq-note-box{background:#f5efff;border:1px solid #e2d8f2;border-radius:16px;padding:18px 16px;color:#6f6779;font-size:14px;line-height:2;text-align:center;}
+.lq-note-symbol{font-family:Arial,sans-serif;font-size:46px;font-weight:900;color:#7056a8;margin-bottom:6px;}
 
-/* السؤال الثالث: قاعدة هوند - كل الأصناف تبدأ بـ hq- */
-.hq-subshell{
-    text-align:center;
-    color:#7056a8;
-    font-size:20px;
-    font-weight:800;
-    margin:6px 0 4px;
-}
-.hq-subshell small{
-    display:block;
-    color:#81798e;
-    font-size:12px;
-    font-weight:600;
-    margin-top:2px;
-}
-.hq-required{
-    color:#7056a8;
-    font-weight:900;
-}
-.hq-tools{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin:14px 0 6px;
-}
-.hq-tool{
-    border:2px solid #e2d8f2;
-    background:white;
-    color:#7056a8;
-    border-radius:14px;
-    padding:10px 20px;
-    font-family:inherit;
-    font-size:15px;
-    font-weight:800;
-    cursor:pointer;
-    transition:.2s;
-    touch-action:manipulation;
-    -webkit-tap-highlight-color:transparent;
-}
+/* السؤال الثالث: قاعدة هوند */
+.hq-subshell{text-align:center;color:#7056a8;font-size:20px;font-weight:800;margin:6px 0 4px;}
+.hq-subshell small{display:block;color:#81798e;font-size:12px;font-weight:600;margin-top:2px;}
+.hq-required{color:#7056a8;font-weight:900;}
+.hq-tools{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:14px 0 6px;}
+.hq-tool{border:2px solid #e2d8f2;background:white;color:#7056a8;border-radius:14px;padding:10px 20px;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;transition:.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .hq-tool:hover{transform:translateY(-2px);}
-.hq-tool.active{
-    border-color:#b59bdd;
-    background:linear-gradient(135deg,#fff,#f5efff);
-    box-shadow:0 8px 20px rgba(112,86,168,.14);
-}
-.hq-tool .hq-tool-arrow{
-    font-family:Arial,sans-serif;
-    font-size:22px;
-    margin-inline-end:6px;
-    vertical-align:middle;
-}
-.hq-boxes-wrap{
-    display:flex;
-    justify-content:center;
-    padding:14px 6px 10px;
-    background:#faf8ff;
-    border:1px solid #e4d9f4;
-    border-radius:18px;
-    margin-top:10px;
-}
-.hq-boxes{
-    direction:ltr;
-    display:flex;
-    gap:6px;
-    justify-content:center;
-    align-items:flex-start;
-    width:100%;
-    touch-action:manipulation;
-    -webkit-tap-highlight-color:transparent;
-    user-select:none;
-}
-.hq-box-col{
-    flex:1 1 0;
-    max-width:64px;
-    min-width:0;
-    display:flex;
-    flex-direction:column;
-    align-items:stretch;
-}
-.hq-box{
-    min-height:104px;
-    border:2px solid #b9a4dc;
-    border-radius:10px;
-    background:white;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:6px 0;
-    cursor:pointer;
-    transition:.2s;
-    outline:none;
-}
-.hq-box:hover,
-.hq-box:focus-visible{
-    border-color:#8c70c5;
-    background:#fbf9ff;
-}
-.hq-box.flag{
-    border-color:#e97691;
-    background:#fff5f7;
-}
-.hq-arrow{
-    font-family:Arial,sans-serif;
-    font-size:30px;
-    line-height:34px;
-    font-weight:700;
-    color:#318bd3;
-    padding:0 6px;
-    cursor:pointer;
-    border-radius:8px;
-}
+.hq-tool.active{border-color:#b59bdd;background:linear-gradient(135deg,#fff,#f5efff);box-shadow:0 8px 20px rgba(112,86,168,.14);}
+.hq-tool .hq-tool-arrow{font-family:Arial,sans-serif;font-size:22px;margin-inline-end:6px;vertical-align:middle;}
+.hq-boxes-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 6px 10px;background:#faf8ff;border:1px solid #e4d9f4;border-radius:18px;margin-top:10px;}
+.hq-boxes{direction:ltr;display:flex;gap:6px;justify-content:center;align-items:flex-start;width:100%;touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;}
+.hq-box-col{flex:1 1 0;max-width:64px;min-width:0;display:flex;flex-direction:column;align-items:stretch;}
+.hq-box{min-height:104px;border:2px solid #b9a4dc;border-radius:10px;background:white;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:center;align-items:center;align-content:center;padding:6px 2px;cursor:pointer;transition:.2s;outline:none;}
+.hq-box:hover,.hq-box:focus-visible{border-color:#8c70c5;background:#fbf9ff;}
+.hq-box.flag{border-color:#e97691;background:#fff5f7;}
+.hq-arrow{font-family:Arial,sans-serif;font-size:30px;line-height:34px;font-weight:700;color:#318bd3;padding:0 3px;cursor:pointer;border-radius:8px;}
 .hq-arrow:hover{color:#e97691;}
 .hq-arrow.pop{animation:lqPop .22s ease-out;}
-.hq-box-num{
-    text-align:center;
-    color:#a39bb0;
-    font-family:Arial,sans-serif;
-    font-size:11px;
-    margin-top:5px;
-}
-.hq-static .hq-box{
-    cursor:default;
-    pointer-events:none;
-}
+.hq-many .hq-arrow{font-size:20px;line-height:24px;padding:0 1px;}
+.hq-box-num{text-align:center;color:#a39bb0;font-family:Arial,sans-serif;font-size:10px;margin-top:4px;}
+.hq-sub-label{direction:ltr;text-align:center;font-family:Arial,sans-serif;font-size:28px;font-weight:800;color:#4d455b;margin-top:10px;}
+.hq-static .hq-box{cursor:default;pointer-events:none;}
 .hq-static .hq-arrow:hover{color:#318bd3;}
-.hq-counter{
-    text-align:center;
-    color:#7056a8;
-    font-size:13px;
-    font-weight:800;
-    margin-top:8px;
-}
-.hq-errors{
-    margin:8px 0 0;
-    padding-inline-start:22px;
-    text-align:right;
-}
+.hq-counter{text-align:center;color:#7056a8;font-size:13px;font-weight:800;margin-top:8px;}
+.hq-errors{margin:8px 0 0;padding-inline-start:22px;text-align:right;}
 .hq-errors li{margin-bottom:8px;}
-.hq-footer{
-    margin-top:8px;
-    font-size:13px;
-}
-.hq-solution{
-    margin-top:18px;
-    padding:16px;
-    background:#f8f4ff;
-    border:1px solid #e4d9f4;
-    border-radius:18px;
-    text-align:center;
-}
-.hq-solution h4{
-    color:#7056a8;
-    font-size:15px;
-    margin-bottom:10px;
-}
-.hq-solution p{
-    color:#6f6779;
-    font-size:13px;
-    line-height:1.9;
-    margin-top:10px;
-}
+.hq-footer{margin-top:8px;font-size:13px;}
+.hq-solution{margin-top:18px;padding:16px;background:#f8f4ff;border:1px solid #e4d9f4;border-radius:18px;text-align:center;}
+.hq-solution h4{color:#7056a8;font-size:15px;margin-bottom:10px;}
+.hq-solution p{color:#6f6779;font-size:13px;line-height:1.9;margin-top:10px;}
 @media(max-width:520px){
-    .hq-arrow{font-size:26px;padding:0 3px;}
-    .hq-boxes{gap:4px;}
+.hq-arrow{font-size:26px;padding:0 2px;}
+.hq-many .hq-arrow{font-size:18px;padding:0 1px;}
+.hq-boxes{gap:4px;}
 }
+/* ===== إضافات ===== */
+.color-key-title{cursor:pointer;user-select:none;}
+.key-switch{font-size:13px;opacity:.6;}
+.key-item{cursor:pointer;padding:3px 8px;border-radius:10px;border:1px solid transparent;transition:.2s;}
+.key-item:hover{background:#f5efff;}
+.key-item.active{background:#f5efff;border-color:#b59bdd;}
+.element.dim{opacity:.18;filter:grayscale(.5);}
+.element.dim:hover{transform:none;box-shadow:none;filter:grayscale(.5);}
+.element.search-match.dim{opacity:1;filter:none;}
+.element:focus-visible{outline:3px solid #8c70c5;outline-offset:2px;}
+.top-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+.nav-buttons{display:flex;gap:8px;}
+.nav-btn{padding:11px 14px;font-size:14px;}
+.back-button:disabled{opacity:.4;cursor:default;transform:none;box-shadow:none;}
+.orbit-spin{position:absolute;left:50%;top:50%;pointer-events:none;border-radius:50%;animation:orbitSpin var(--dur,20s) linear infinite;}
+.orbit-spin.rev{animation-direction:reverse;}
+.orbit-spin .electron{animation:counterSpin var(--dur,20s) linear infinite;}
+.orbit-spin.rev .electron{animation-direction:reverse;}
+@keyframes orbitSpin{to{transform:rotate(360deg);}}
+@keyframes counterSpin{from{transform:translate(-50%,-50%) rotate(0deg);}to{transform:translate(-50%,-50%) rotate(-360deg);}}
+@media (prefers-reduced-motion:reduce){.orbit-spin,.orbit-spin .electron{animation:none;}}
+
+/* السؤال الثالث: كل الغرف معًا */
+.hq-groups{direction:ltr;display:flex;flex-wrap:wrap;justify-content:center;gap:18px;width:100%;}
+.hq-group{display:flex;flex-direction:column;align-items:center;}
+.hq-group .hq-boxes{width:auto;gap:4px;justify-content:center;}
+.hq-group .hq-box-col{flex:0 0 auto;width:44px;max-width:none;}
+.hq-group .hq-box{min-height:92px;}
+.hq-group .hq-arrow{font-size:24px;line-height:28px;padding:0 2px;}
+.hq-group .hq-sub-label{font-size:22px;margin-top:6px;}
+@media(max-width:520px){
+.hq-groups{gap:14px 10px;}
+.hq-group .hq-box-col{width:36px;}
+.hq-group .hq-box{min-height:80px;}
+.hq-group .hq-arrow{font-size:20px;line-height:24px;padding:0 1px;}
+.hq-group .hq-boxes{gap:3px;}
+}
+
+/* عبارة الترحيب */
+.tagline{display:flex;align-items:center;justify-content:center;gap:14px;margin:6px auto 4px;animation:taglineIn 1.2s ease both;}
+.tagline::before,.tagline::after{content:"";width:48px;height:2px;border-radius:2px;flex:0 0 auto;}
+.tagline::before{background:linear-gradient(90deg,transparent,#b59bdd);}
+.tagline::after{background:linear-gradient(270deg,transparent,#55aef7);}
+.tagline-text{font-size:clamp(16px,3vw,22px);font-weight:800;line-height:1.9;color:#7056a8;background:linear-gradient(90deg,#55aef7,#7056a8 50%,#e97691);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 4px 12px rgba(112,86,168,.18));}
+@keyframes taglineIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@media(max-width:520px){.tagline{gap:8px;}.tagline::before,.tagline::after{width:22px;}}
+@media (prefers-reduced-motion:reduce){.tagline{animation:none;}}
+.header h1{background:linear-gradient(90deg,#7056a8 20%,#d9587a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
 </style>
 </head>
-
 <body>
 
 <!-- شاشة البداية -->
@@ -809,20 +457,23 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 
         <h1>الجدول الدوري للعناصر</h1>
 
-        <p>استكشف العناصر واكتشف خصائصها واستخداماتها</p>
+        <div class="tagline"><span class="tagline-text">في صمتِ الذرّات .. تُكتَبُ حكايةُ الكون</span></div>
 
-<div class="creator">
-    <div>فكرة وتنفيذ: وجن منصور</div>
-    <div style="margin-top: 7px;">
-        معلمة المادة : أ / شروق الحسني
+        <div class="creator">
+            <div>فكرة وتنفيذ: وجن منصور</div>
+            <div style="margin-top: 7px;">
+                معلمة المادة : أ / شروق الحسني
+            </div>
+        </div>
+
     </div>
 
     <div class="search-box">
-        <input id="searchInput" type="text" placeholder="ابحث عن رمز أو اسم العنصر بالإنجليزي..." autocomplete="off">
+        <input id="searchInput" type="text" placeholder="ابحثي عن العنصر بالعربي أو الإنجليزي أو بالرمز" autocomplete="off">
     </div>
 
     <div class="color-key">
-        <div class="color-key-title">مفتاح الألوان</div>
+        <div class="color-key-title" id="colorKeyTitle" role="button" tabindex="0">مفتاح الألوان</div>
         <div class="color-key-items">
             <div class="key-item"><span class="key-color alkali"></span>الفلزات القلوية</div>
             <div class="key-item"><span class="key-color alkaline"></span>الفلزات القلوية الأرضية</div>
@@ -837,6 +488,8 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
         </div>
     </div>
 
+    <div class="table-hint">اسحبي الجدول يمينًا ويسارًا لرؤية كل العناصر</div>
+
     <div class="table-wrapper">
         <div class="periodic-table" id="periodicTable"></div>
     </div>
@@ -846,7 +499,13 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 <!-- صفحة العنصر -->
 <section id="atomPage">
 
-    <button class="back-button" id="backButton">← العودة إلى الجدول الدوري</button>
+    <div class="top-bar">
+        <button class="back-button" id="backButton">← العودة إلى الجدول الدوري</button>
+        <div class="nav-buttons">
+            <button class="back-button nav-btn" id="prevElement" onclick="navigateElement(-1)">→ السابق</button>
+            <button class="back-button nav-btn" id="nextElement" onclick="navigateElement(1)">التالي ←</button>
+        </div>
+    </div>
 
     <div class="atom-header">
         <div class="symbol" id="atomSymbol"></div>
@@ -902,6 +561,7 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 
                     <div id="electrons"></div>
                 </div>
+                <div class="atom-note">رسم تقريبي</div>
             </div>
 
             <div class="info-area">
@@ -910,7 +570,7 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
                     <div class="info-card colorful"><h3>العدد الذري</h3><div class="value" id="atomicNumber"></div></div>
                     <div class="info-card colorful"><h3>الكتلة الذرية</h3><div class="value" id="atomicMass"></div></div>
                     <div class="info-card colorful"><h3>البروتونات</h3><div class="value" id="protons"></div></div>
-                    <div class="info-card colorful"><h3>النيترونات</h3><div class="value" id="neutrons"></div></div>
+                    <div class="info-card colorful"><h3>النيترونات تقريبًا</h3><div class="value" id="neutrons"></div></div>
                     <div class="info-card colorful"><h3>الإلكترونات</h3><div class="value" id="electronCount"></div></div>
                     <div class="info-card colorful"><h3>حالة العنصر</h3><div class="value" id="state"></div></div>
                 </div>
@@ -956,13 +616,8 @@ to{box-shadow:0 0 0 4px rgba(53,217,208,.28),0 0 25px rgba(53,217,208,.9),0 0 40
 
         </div>
 
-        <!-- السؤال الأول: اختبار التوزيع الإلكتروني -->
         <div id="quizQuestion1" class="quiz-subpanel active"></div>
-
-        <!-- السؤال الثاني (فارغ مؤقتًا) -->
         <div id="quizQuestion2" class="quiz-subpanel"></div>
-
-        <!-- السؤال الثالث (فارغ مؤقتًا) -->
         <div id="quizQuestion3" class="quiz-subpanel"></div>
 
     </div>
@@ -1067,7 +722,7 @@ const elements = [
 
 {z:87,s:"Fr",name:"Francium",ar:"الفرانسيوم",p:7,g:1,b:"s",m:"[223]",state:"صلب",sh:[2,8,18,32,18,8,1],cat:"alkali"},
 {z:88,s:"Ra",name:"Radium",ar:"الراديوم",p:7,g:2,b:"s",m:"[226]",state:"صلب",sh:[2,8,18,32,18,8,2],cat:"alkaline"},
-{z:89,s:"Ac",name:"Actinium",ar:"الأكتينيوم",p:7,g:3,b:"f",m:"[227]",state:"صلب",sh:[2,8,18,32,18,9,2],cat:"actinide"},
+{z:89,s:"Ac",name:"Actinium",ar:"الأكتينيوم",p:7,g:3,b:"d",m:"[227]",state:"صلب",sh:[2,8,18,32,18,9,2],cat:"actinide"},
 {z:90,s:"Th",name:"Thorium",ar:"الثوريوم",p:7,g:"—",b:"f",m:"232.038",state:"صلب",sh:[2,8,18,32,18,10,2],cat:"actinide"},
 {z:91,s:"Pa",name:"Protactinium",ar:"البروتكتينيوم",p:7,g:"—",b:"f",m:"231.036",state:"صلب",sh:[2,8,18,32,20,9,2],cat:"actinide"},
 {z:92,s:"U",name:"Uranium",ar:"اليورانيوم",p:7,g:"—",b:"f",m:"238.029",state:"صلب",sh:[2,8,18,32,21,9,2],cat:"actinide"},
@@ -1100,27 +755,30 @@ const elements = [
 {z:118,s:"Og",name:"Oganesson",ar:"الأوغانيسون",p:7,g:18,b:"p",m:"[294]",state:"صلب",sh:[2,8,18,32,32,18,8],cat:"noble"}
 ];
 
+/* العناصر من 104 إلى 118 حالتها غير معروفة */
+elements.forEach(e => { if(e.z >= 104 || e.z === 85 || e.z === 87) e.state = "غير معروفة"; });
+
 
 /* سلوك المجموعات */
 const groupBehavior = {
-1:{valence:"1",behavior:"تميل لفقد إلكترون واحد لتكوين أيون موجب +1"},
-2:{valence:"2",behavior:"تميل لفقد إلكترونين لتكوين أيون موجب +2"},
-13:{valence:"3",behavior:"تميل لفقد 3 إلكترونات لتكوين أيون موجب +3"},
-14:{valence:"4",behavior:"تميل للمشاركة بالإلكترونات، وقد تفقد أو تكتسب إلكترونات حسب العنصر"},
-15:{valence:"5",behavior:"تميل لاكتساب 3 إلكترونات لتكوين أيون سالب −3"},
-16:{valence:"6",behavior:"تميل لاكتساب إلكترونين لتكوين أيون سالب −2"},
-17:{valence:"7",behavior:"تميل لاكتساب إلكترون واحد لتكوين أيون سالب −1"},
-18:{valence:"8",behavior:"غلاف التكافؤ مكتمل، لذلك تكون قليلة التفاعل"}
+1:{valence:"1",behavior:"تفقد إلكترونًا واحدًا وتكوّن أيونًا موجبًا شحنته +1"},
+2:{valence:"2",behavior:"تفقد إلكترونين وتكوّن أيونًا موجبًا شحنته +2"},
+13:{valence:"3",behavior:"تفقد ثلاثة إلكترونات وتكوّن أيونًا موجبًا شحنته +3"},
+14:{valence:"4",behavior:"تميل لمشاركة إلكتروناتها مع ذرات أخرى"},
+15:{valence:"5",behavior:"تكتسب ثلاثة إلكترونات وتكوّن أيونًا سالبًا شحنته −3"},
+16:{valence:"6",behavior:"تكتسب إلكترونين وتكوّن أيونًا سالبًا شحنته −2"},
+17:{valence:"7",behavior:"تكتسب إلكترونًا واحدًا وتكوّن أيونًا سالبًا شحنته −1"},
+18:{valence:"8",behavior:"غلاف التكافؤ مكتمل لذلك تكون قليلة التفاعل"}
 };
 
 
 /* ترتيب الجدول */
 function positionForElement(element){
     if(element.z >= 58 && element.z <= 71){
-        return {row:8,col:element.z - 54};
+        return {row:9,col:element.z - 54};
     }
     if(element.z >= 90 && element.z <= 103){
-        return {row:9,col:element.z - 86};
+        return {row:10,col:element.z - 86};
     }
     let col = element.g;
     if(element.z === 57 || element.z === 89){
@@ -1135,6 +793,7 @@ const table = document.getElementById("periodicTable");
 
 elements.forEach(element => {
     const position = positionForElement(element);
+    const star = element.z === 57 ? "*" : (element.z === 89 ? "**" : "");
     const card = document.createElement("div");
     card.className = `element ${element.cat}`;
     card.dataset.symbol = element.s.toLowerCase();
@@ -1144,19 +803,47 @@ elements.forEach(element => {
     card.style.gridColumn = position.col;
     card.innerHTML = `
         <span class="number">${element.z}</span>
+        ${star ? `<span style="position:absolute;top:5px;right:7px;font-size:11px;">${star}</span>` : ""}
         <span class="symbol">${element.s}</span>
         <span class="name">${element.ar}</span>
     `;
+    card.setAttribute("tabindex","0");
+    card.setAttribute("role","button");
+    card.setAttribute("aria-label", element.ar + " " + element.s);
+    card.addEventListener("keydown", ev => {
+        if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); openAtom(element); }
+    });
     card.addEventListener("click", () => openAtom(element));
     table.appendChild(card);
+});
+
+/* علامات صفوف اللانثانيدات والأكتينيدات */
+[["*",9],["**",10]].forEach(item => {
+    const label = document.createElement("div");
+    label.className = "series-label";
+    label.textContent = item[0];
+    label.style.gridRow = item[1];
+    label.style.gridColumn = 3;
+    table.appendChild(label);
 });
 
 
 /* البحث */
 const searchInput = document.getElementById("searchInput");
 
+function normalizeSearch(text){
+    return String(text)
+        .trim()
+        .toLowerCase()
+        .replace(/[\u064B-\u065F\u0640]/g,"")
+        .replace(/[أإآ]/g,"ا")
+        .replace(/ى/g,"ي")
+        .replace(/ة/g,"ه");
+}
+
 searchInput.addEventListener("input", () => {
     const query = searchInput.value.trim().toLowerCase();
+    const queryAr = normalizeSearch(searchInput.value);
 
     document.querySelectorAll(".element").forEach(el => {
         el.classList.remove("search-match");
@@ -1164,18 +851,24 @@ searchInput.addEventListener("input", () => {
 
     if(!query) return;
 
-    const found = elements.find(element =>
-        element.s.toLowerCase() === query ||
-        element.name.toLowerCase() === query
-    );
+    let matches = elements.filter(element => element.s.toLowerCase() === query);
 
-    if(found){
+    if(!matches.length && query.length >= 2){
+        matches = elements.filter(element =>
+            element.name.toLowerCase().includes(query) ||
+            normalizeSearch(element.ar).includes(queryAr)
+        );
+    }
+
+    matches.forEach((found,index) => {
         const card = document.querySelector(`.element[data-z="${found.z}"]`);
         if(card){
             card.classList.add("search-match");
-            card.scrollIntoView({behavior:"smooth",block:"center",inline:"center"});
+            if(index === 0){
+                card.scrollIntoView({behavior:"smooth",block:"center",inline:"center"});
+            }
         }
-    }
+    });
 });
 
 
@@ -1187,7 +880,9 @@ let currentElement = null;
 
 
 /* تغيير القسم */
+let lastSection = "atomSection";
 function showElementSection(sectionId){
+    lastSection = sectionId;
     document.querySelectorAll(".element-section-content").forEach(section => {
         section.classList.remove("active");
     });
@@ -1205,31 +900,40 @@ function showElementSection(sectionId){
         selectedTab.classList.add("active");
     }
 
-    if (sectionId === "electronSection" && currentElement) {
-    runCloudAnimation();
-}
+    if(sectionId === "electronSection" && currentElement){
+        runCloudAnimation();
+    }
 
-if (sectionId === "quizSection" && currentElement) {
-    renderQuizSection();
-}
+    if(sectionId === "quizSection" && currentElement){
+        renderQuizSection(false);
+    }
 }
 
 
 /* فتح العنصر */
-function openAtom(element){
+function openAtom(element, mode){
     currentElement = element;
     mainPage.style.display = "none";
     atomPage.classList.add("active");
     window.scrollTo(0,0);
-    showElementSection("atomSection");
+    /* يُعرض القسم المحفوظ بعد الرسم */
     renderAtom(element);
     renderElectronSection(element);
-    renderQuizSection();
+    renderQuizSection(true);
     lqRenderQuestion(element);
     hqRenderQuestion(element);
+    showElementSection(lastSection);
+    if(mode !== "none"){
+        const st = {atom: element.z};
+        if(mode === "replace") history.replaceState(st, "");
+        else history.pushState(st, "");
+    }
+    if(typeof syncNavButtons === "function") syncNavButtons();
 }
+
 /* العودة */
 backButton.addEventListener("click", () => {
+    if(history.state && history.state.atom){ history.back(); return; }
     atomPage.classList.remove("active");
     mainPage.style.display = "block";
     currentElement = null;
@@ -1247,7 +951,7 @@ function renderAtom(element){
     document.getElementById("atomicMass").textContent = element.m;
     document.getElementById("protons").textContent = element.z;
 
-    const approximateMass = Math.round(parseFloat(element.m));
+    const approximateMass = Math.round(parseFloat(String(element.m).replace(/[\[\]]/g,"")));
     const approximateNeutrons = approximateMass - element.z;
 
     document.getElementById("neutrons").textContent = approximateNeutrons;
@@ -1262,19 +966,23 @@ function renderAtom(element){
 
     if(element.z === 1){
         valence = "1";
-        behavior = "يمكنه فقد أو اكتساب إلكترون حسب التفاعل، لذلك يختلف عن الفلزات القلوية رغم وجوده في المجموعة الأولى.";
+        behavior = "يمكنه فقد إلكترونه أو اكتسابه لذلك يختلف عن الفلزات القلوية رغم وجوده في المجموعة الأولى";
     }
     else if(element.z === 2){
         valence = "2";
-        behavior = "غلاف التكافؤ مكتمل، لذلك يكون قليل التفاعل.";
+        behavior = "غلاف التكافؤ مكتمل لذلك يكون قليل التفاعل";
     }
     else if(typeof element.g === "number" && groupBehavior[element.g]){
         valence = groupBehavior[element.g].valence;
         behavior = groupBehavior[element.g].behavior;
     }
+    else if(element.cat === "lanthanide" || element.cat === "actinide"){
+        valence = "تختلف حسب العنصر";
+        behavior = "تفقد إلكترونات من المستوى الخارجي وأحيانًا من المستوى الفرعي f لذلك لها أكثر من شحنة";
+    }
     else{
         valence = "تختلف حسب العنصر";
-        behavior = "قد تفقد إلكترونات من المستويين الخارجي والفرعي d، وتتميز بتعدد حالات التأكسد.";
+        behavior = "تفقد إلكترونات من المستوى الخارجي وأحيانًا من المستوى الفرعي d لذلك لها أكثر من شحنة";
     }
 
     document.getElementById("valence").textContent = valence;
@@ -1316,11 +1024,28 @@ function renderAtom(element){
         const radiusX = width / 2;
         const radiusY = height / 2;
 
+        /* مجموعة تدور حول النواة */
+        const spin = document.createElement("div");
+        spin.className = "orbit-spin" + (shellIndex % 2 ? " rev" : "");
+        spin.style.width = width + "px";
+        spin.style.height = height + "px";
+        spin.style.marginLeft = (-radiusX) + "px";
+        spin.style.marginTop = (-radiusY) + "px";
+        spin.style.setProperty("--dur", (14 + shellIndex * 6) + "s");
+        electronsContainer.appendChild(spin);
+
         for(let i=0; i<count; i++){
 
             const electron = document.createElement("div");
             electron.className = "electron";
             electron.textContent = "e⁻";
+
+            /* تصغير الإلكترونات فقط عند الازدحام */
+            const size = count >= 28 ? 11 : (count >= 18 ? 14 : (element.z >= 54 ? 14 : 22));
+            electron.style.width = size + "px";
+            electron.style.height = size + "px";
+            electron.style.fontSize = Math.max(4, Math.round(size * 0.38)) + "px";
+            if(size < 14) electron.textContent = "";
 
             const angle = (360 / count) * i - 90;
             const rad = angle * Math.PI / 180;
@@ -1330,7 +1055,7 @@ function renderAtom(element){
             electron.style.left = `calc(50% + ${x}px)`;
             electron.style.top = `calc(50% + ${y}px)`;
 
-            atomVisual.appendChild(electron);
+            spin.appendChild(electron);
         }
     });
 }
@@ -1461,6 +1186,11 @@ function getValenceElectrons(element){
         return 2;
     }
 
+    /* البلاديوم: لا يوجد عدد ثابت */
+    if(element.z === 46){
+        return "—";
+    }
+
     if(typeof element.g === "number" && groupBehavior[element.g]){
         return Number(groupBehavior[element.g].valence);
     }
@@ -1472,7 +1202,13 @@ function getValenceElectrons(element){
 /* لويس */
 function createLewisDots(element){
 
+    if(typeof getValenceElectrons(element) !== "number") return "";
+
     const valence = Math.min(8,Math.max(0,getValenceElectrons(element)));
+
+    if(valence === 2 && (element.z === 2 || element.g === 2)){
+        return `<span class="lewis-dot top">••</span>`;
+    }
 
     if(valence <= 4){
         const positions = ["top","right","bottom","left"];
@@ -1621,6 +1357,112 @@ function runCloudAnimation(){
 }
 
 
+/* بطاقات الاستقرار: الممتلئ ونصف الممتلئ */
+const stabilityTexts = {
+    half:[
+        "الذرة تحب الاستقرار",
+        "فنقلت إلكترون من s إلى d",
+        "عشان d يصير نصف ممتلئ",
+        "ونصف الممتلئ أثبت"
+    ],
+    halfF:[
+        "الذرة تحب الاستقرار",
+        "فنقلت إلكترون من f إلى d",
+        "عشان f يصير نصف ممتلئ",
+        "ونصف الممتلئ أثبت"
+    ],
+    full:[
+        "الذرة تحب الاستقرار",
+        "فنقلت إلكترون من s إلى d",
+        "عشان d يصير ممتلئ",
+        "والممتلئ أثبت"
+    ],
+    pd:[
+        "الذرة تحب الاستقرار",
+        "فنقلت إلكترونين من 5s إلى 4d",
+        "عشان 4d يصير ممتلئ",
+        "والممتلئ أثبت",
+        "وحتى 5s صار فاضي تمامًا",
+        "عشان كذا ما نعطي البلاديوم رقم ثابت لإلكترونات التكافؤ"
+    ],
+    close:[
+        "طاقة المستويات هنا قريبة من بعض",
+        "فالإلكترون ينتقل بينها بسهولة",
+        "ويصير الترتيب أثبت"
+    ]
+};
+
+const stabilityNotes = {
+    24:{kind:"half",normal:"4s² 3d⁴",real:"4s¹ 3d⁵"},
+    42:{kind:"half",normal:"5s² 4d⁴",real:"5s¹ 4d⁵"},
+    64:{kind:"halfF",normal:"4f⁸",real:"4f⁷ 5d¹"},
+    96:{kind:"halfF",normal:"5f⁸",real:"5f⁷ 6d¹"},
+    29:{kind:"full",normal:"4s² 3d⁹",real:"4s¹ 3d¹⁰"},
+    47:{kind:"full",normal:"5s² 4d⁹",real:"5s¹ 4d¹⁰"},
+    79:{kind:"full",normal:"6s² 5d⁹",real:"6s¹ 5d¹⁰"},
+    46:{kind:"pd",normal:"5s² 4d⁸",real:"5s⁰ 4d¹⁰"},
+    41:{kind:"close",normal:"5s² 4d³",real:"5s¹ 4d⁴"},
+    44:{kind:"close",normal:"5s² 4d⁶",real:"5s¹ 4d⁷"},
+    45:{kind:"close",normal:"5s² 4d⁷",real:"5s¹ 4d⁸"},
+    78:{kind:"close",normal:"6s² 5d⁸",real:"6s¹ 5d⁹"},
+    57:{kind:"close",normal:"4f¹",real:"5d¹"},
+    58:{kind:"close",normal:"4f²",real:"4f¹ 5d¹"},
+    89:{kind:"close",normal:"5f¹",real:"6d¹"},
+    90:{kind:"close",normal:"5f²",real:"6d²"},
+    91:{kind:"close",normal:"5f³",real:"5f² 6d¹"},
+    92:{kind:"close",normal:"5f⁴",real:"5f³ 6d¹"},
+    93:{kind:"close",normal:"5f⁵",real:"5f⁴ 6d¹"},
+    103:{kind:"close",normal:"6d¹",real:"7p¹"}
+};
+
+function renderStabilityNotes(element){
+
+    const note = stabilityNotes[element.z];
+    let special = "";
+
+    if(note){
+        special = `
+            <div class="stability-card special">
+                <h4>توزيع ${element.ar} مميز</h4>
+                <div class="stability-row">
+                    <div class="stability-chip"><small>المتوقع</small>${note.normal}</div>
+                    <span class="stability-arrow">←</span>
+                    <div class="stability-chip real"><small>الحقيقي</small>${note.real}</div>
+                </div>
+                <p class="stability-text">${stabilityTexts[note.kind].join("<br>")}</p>
+            </div>
+        `;
+    }
+
+    const half = Array.from({length:5},() => `<div class="orbital-box">↑</div>`).join("");
+    const full = Array.from({length:5},() => `<div class="orbital-box">↑↓</div>`).join("");
+
+    const general = `
+        <div class="stability-card">
+            <h4>ليش الذرة تفضّل الممتلئ ونصف الممتلئ</h4>
+            <div class="stability-pair">
+                <div class="subshell">
+                    <div class="stability-label">نصف ممتلئ</div>
+                    <div class="orbital-boxes">${half}</div>
+                </div>
+                <div class="subshell">
+                    <div class="stability-label">ممتلئ</div>
+                    <div class="orbital-boxes">${full}</div>
+                </div>
+            </div>
+            <p class="stability-text">
+                نصف ممتلئ يعني كل مدار فيه إلكترون واحد<br>
+                ممتلئ يعني كل مدار فيه إلكترونان<br>
+                وفي الحالتين الذرة تكون أثبت<br>
+                ولهذا بعض العناصر تنقل إلكترونات
+            </p>
+        </div>
+    `;
+
+    return special + general;
+}
+
+
 /* إنشاء قسم التوزيع الإلكتروني */
 function renderElectronSection(element){
 
@@ -1631,6 +1473,9 @@ function renderElectronSection(element){
     const lastLevel = getLastLevel(element);
     const valence = getValenceElectrons(element);
     const lewisDots = createLewisDots(element);
+    const lewisNote = typeof valence === "number"
+        ? "عدد النقاط يمثل إلكترونات التكافؤ"
+        : "لا يُرسم له تمثيل لويس لأن عدد إلكترونات تكافؤه غير ثابت";
     const orbitalDiagram = renderOrbitalDiagram(configuration);
 
     section.innerHTML = `
@@ -1640,9 +1485,9 @@ function renderElectronSection(element){
             <div class="electron-title">
                 <h3>⚡ التوزيع الإلكتروني</h3>
                 <p>
-                    تعرّف على كيفية ترتيب إلكترونات
+                    تعرّفي على ترتيب إلكترونات
                     ${element.ar}
-                    داخل المدارات الذرية
+                    في المستويات الفرعية
                 </p>
             </div>
 
@@ -1667,6 +1512,17 @@ function renderElectronSection(element){
                     <div class="memory-line">فدبس فدب</div>
                 </div>
 
+                <div class="memory-card capacity-card">
+                    <h4>
+                        سعة المستويات<br>
+                        الفرعية
+                    </h4>
+                    <div class="memory-line"><span dir="ltr">s</span> يتسع لـ 2</div>
+                    <div class="memory-line"><span dir="ltr">p</span> يتسع لـ 6</div>
+                    <div class="memory-line"><span dir="ltr">d</span> يتسع لـ 10</div>
+                    <div class="memory-line"><span dir="ltr">f</span> يتسع لـ 14</div>
+                </div>
+
             </div>
 
 
@@ -1685,6 +1541,9 @@ function renderElectronSection(element){
                 </div>
 
             </div>
+
+
+            ${renderStabilityNotes(element)}
 
 
             <div class="cloud-card">
@@ -1715,19 +1574,19 @@ function renderElectronSection(element){
 
                 <div class="lewis-card">
                     <h4>تمثيل لويس النقطي</h4>
-                    <p>يوضح إلكترونات التكافؤ حول رمز العنصر.</p>
+                    <p>يوضح إلكترونات التكافؤ حول رمز العنصر</p>
                     <div class="lewis-symbol">
                         ${lewisDots}
                         ${element.s}
                     </div>
-                    <div class="lewis-note">عدد النقاط يمثل إلكترونات التكافؤ</div>
+                    <div class="lewis-note">${lewisNote}</div>
                 </div>
 
                 <div class="orbital-card">
                     <h4>مخطط المدارات</h4>
                     <p>
                         توضح الأسهم الإلكترونات داخل
-                        المدارات الفرعية وفق قاعدة هوند.
+                        المدارات وفق قاعدة هوند
                     </p>
                     <div class="orbital-diagram">
                         ${orbitalDiagram}
@@ -1764,8 +1623,8 @@ function renderElectronSection(element){
                 </div>
 
                 <div class="distribution-note">
-                    يمتلئ المدار الأقل طاقة أولًا،
-                    مع مراعاة مبدأ باولي وقاعدة هوند.
+                    يمتلئ المستوى الفرعي الأقل طاقة أولًا
+                    مع مراعاة مبدأ باولي وقاعدة هوند
                 </div>
 
             </div>
@@ -1778,15 +1637,17 @@ function renderElectronSection(element){
 }
 
 
-/* ====== اختبار التوزيع الإلكتروني (لجميع العناصر الـ118) ====== */
+/* ====== اختبار التوزيع الإلكتروني لجميع العناصر الـ118 ====== */
 
 const quizFieldNames = ["level", "type", "exponent"];
 
 const quizCapacity = { s: 2, p: 6, d: 10, f: 14 };
 
+const quizMinLevel = { s: 1, p: 2, d: 3, f: 4 };
+
 const quizErrorWords = { 3: "الثلاثة", 4: "الأربعة", 5: "الخمسة" };
 
-/* سؤال الكلور الأصلي يبقى كما هو بالضبط (3 أخطاء) */
+/* سؤال الكلور الأصلي يظهر أول مرة فقط وفيه ثلاثة أخطاء */
 const customQuizWrongAnswers = {
     17: [
         { level: "1", type: "s", exponent: "2" },
@@ -1797,10 +1658,15 @@ const customQuizWrongAnswers = {
     ]
 };
 
-/* السؤال الحالي (يُبنى عند فتح تبويب الاختبار) */
+/* السؤال الحالي */
 let currentQuizQuestion = null;
 
-/* التوزيع الصحيح على شكل حقول: رقم المستوى + نوع المدار + الأس */
+/* عند العودة للجدول يُمسح السؤال ليبدأ سؤال جديد عند فتح عنصر */
+backButton.addEventListener("click", () => {
+    currentQuizQuestion = null;
+});
+
+/* التوزيع الصحيح على شكل حقول */
 function getQuizCorrectAnswer(element) {
     return getElectronConfiguration(element.z).map(item => {
         const match = item.orbital.match(/^(\d)([spdf])$/);
@@ -1812,74 +1678,84 @@ function getQuizCorrectAnswer(element) {
     });
 }
 
-/* عدد الأخطاء المطلوب للعنصر: 3 أو 4 أو 5 (يتنوع من عنصر لآخر) */
-function getQuizErrorTarget(z) {
-    return 3 + ((z + Math.floor(z / 4)) % 3);
+function quizRandomItem(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+function quizShuffle(list) {
+    const copy = list.slice();
+
+    for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = copy[i];
+        copy[i] = copy[j];
+        copy[j] = temp;
+    }
+
+    return copy;
 }
 
 /* قيمة خاطئة مناسبة لكل حقل */
-function getWrongQuizValue(field, orbital, order) {
+function getWrongQuizValue(field, orbital) {
 
     const level = Number(orbital.level);
     const exponent = Number(orbital.exponent);
     const capacity = quizCapacity[orbital.type];
 
     if (field === "exponent") {
-        const up = exponent + 1;
-        const down = exponent - 1;
-
-        if (exponent <= 1) return String(up);
-        if (exponent >= capacity) return String(order % 2 === 0 ? up : down);
-        return String(order % 2 === 0 ? down : up);
+        const options = [exponent + 1, exponent - 1].filter(v => v >= 1 && v <= capacity);
+        return String(quizRandomItem(options.length ? options : [exponent + 1]));
     }
 
     if (field === "type") {
-        if (orbital.type === "s") return "p";
-        if (orbital.type === "p") return "d";
-        if (orbital.type === "d") return level >= 4 ? "f" : "p";
-        return "d";
+        const others = ["s", "p", "d", "f"].filter(t => t !== orbital.type);
+        const fitting = others.filter(t => quizMinLevel[t] <= level);
+        return quizRandomItem(fitting.length ? fitting : others);
     }
 
-    return String(level < 7 ? level + 1 : level - 1);
+    const options = [level + 1, level - 1].filter(v => v >= 1 && v <= 7);
+    return String(quizRandomItem(options));
 }
 
-/* بناء التوزيع الخاطئ من التوزيع الصحيح */
-function createWrongQuizAnswer(element, correct) {
+/* بناء التوزيع الخاطئ بأخطاء عشوائية من ثلاثة إلى خمسة */
+function createWrongQuizAnswer(element, correct, useCustom) {
 
-    if (customQuizWrongAnswers[element.z]) {
+    if (useCustom && customQuizWrongAnswers[element.z]) {
         return customQuizWrongAnswers[element.z].map(orbital => ({ ...orbital }));
     }
 
     const wrong = correct.map(orbital => ({ ...orbital }));
-    const count = correct.length;
-    const target = Math.min(getQuizErrorTarget(element.z), count * 3);
-    const slots = [];
+    const pairs = [];
 
-    if (count >= target) {
-        /* خطأ واحد في كل مدار، يبدأ من المدارات الخارجية */
-        const step = Math.max(1, Math.floor(count / target));
+    correct.forEach((orbital, i) => {
+        quizFieldNames.forEach(field => {
+            pairs.push({ index: i, field: field });
+        });
+    });
 
-        for (let j = 0; j < target; j++) {
-            slots.push({
-                index: count - 1 - j * step,
-                field: quizFieldNames[(j + element.z) % 3]
-            });
+    const target = Math.min(3 + Math.floor(Math.random() * 3), pairs.length);
+    const shuffled = quizShuffle(pairs);
+    const perOrbital = {};
+    const chosen = [];
+
+    /* خطآن كحد أقصى في المدار الواحد قدر الإمكان */
+    shuffled.forEach(slot => {
+        const used = perOrbital[slot.index] || 0;
+
+        if (chosen.length < target && used < 2) {
+            chosen.push(slot);
+            perOrbital[slot.index] = used + 1;
         }
-    }
-    else {
-        /* عناصر قليلة المدارات (H, He, Li, Be): أكثر من خطأ في المدار */
-        for (let f = 0; f < 3 && slots.length < target; f++) {
-            for (let k = count - 1; k >= 0 && slots.length < target; k--) {
-                slots.push({
-                    index: k,
-                    field: quizFieldNames[(f + element.z) % 3]
-                });
-            }
-        }
+    });
+
+    if (chosen.length < target) {
+        shuffled.forEach(slot => {
+            if (chosen.length < target && !chosen.includes(slot)) chosen.push(slot);
+        });
     }
 
-    slots.forEach((slot, order) => {
-        wrong[slot.index][slot.field] = getWrongQuizValue(slot.field, correct[slot.index], order);
+    chosen.forEach(slot => {
+        wrong[slot.index][slot.field] = getWrongQuizValue(slot.field, correct[slot.index]);
     });
 
     return wrong;
@@ -1899,9 +1775,9 @@ function countQuizErrors(correct, wrong) {
 }
 
 /* بناء السؤال كاملًا للعنصر المحدد */
-function buildQuizQuestion(element) {
+function buildQuizQuestion(element, useCustom) {
     const correct = getQuizCorrectAnswer(element);
-    const wrong = createWrongQuizAnswer(element, correct);
+    const wrong = createWrongQuizAnswer(element, correct, useCustom);
 
     return {
         z: element.z,
@@ -1911,14 +1787,14 @@ function buildQuizQuestion(element) {
     };
 }
 
-/* التوزيع الصحيح كنص، مثل: 1s² 2s² 2p⁶ */
+/* التوزيع الصحيح كنص مثل 1s² 2s² 2p⁶ */
 function quizAnswerToText(answer) {
     return answer
         .map(orbital => `${orbital.level}${orbital.type}${toSuperscript(orbital.exponent)}`)
         .join(" ");
 }
 
-/* التنقل بين الأسئلة الفرعية داخل الاختبار القصير */
+/* التنقل بين الأسئلة داخل الاختبار القصير */
 function showQuizSubSection(panelId) {
     document.querySelectorAll(".quiz-subpanel").forEach(panel => {
         panel.classList.remove("active");
@@ -1938,26 +1814,34 @@ function showQuizSubSection(panelId) {
     }
 }
 
-function renderQuizSection() {
-    /* السؤال الأول هو الذي يحتوي اختبار التوزيع الإلكتروني */
+/* rebuild بقيمة true يبني سؤالًا جديدًا وبقيمة false يحافظ على تقدمك */
+function renderQuizSection(rebuild) {
+
     const quizSection = document.getElementById("quizQuestion1");
 
     if (!quizSection) return;
-
-    showQuizSubSection("quizQuestion1");
 
     if (!currentElement) {
         currentQuizQuestion = null;
         quizSection.innerHTML = `
             <div class="quiz-card">
-                <h3 class="quiz-heading">اختبار قصير</h3>
-                <p>اختاري عنصرًا من الجدول الدوري لتجربة السؤال.</p>
+                <h3 class="lq-title">اختبار قصير</h3>
+                <p class="quiz-question">اختاري عنصرًا من الجدول الدوري لتجربة السؤال.</p>
             </div>
         `;
         return;
     }
 
-    const question = buildQuizQuestion(currentElement);
+    if (rebuild === false && currentQuizQuestion && currentQuizQuestion.z === currentElement.z) {
+        return;
+    }
+
+    if (rebuild !== false) {
+        showQuizSubSection("quizQuestion1");
+    }
+
+    const useCustom = !currentQuizQuestion;
+    const question = buildQuizQuestion(currentElement, useCustom);
     currentQuizQuestion = question;
 
     const wrongAnswer = question.wrong;
@@ -1965,9 +1849,9 @@ function renderQuizSection() {
 
     quizSection.innerHTML = `
         <div class="quiz-card">
-            <h3 class="quiz-heading">اختبار قصير | ${currentElement.ar} ${currentElement.s}</h3>
-            <p>العدد الذري: ${currentElement.z}</p>
-            <p>اكتشفي الأخطاء ${errorWord} في التوزيع الإلكتروني الآتي، ثم صححيها:</p>
+            <h3 class="lq-title">اختبار قصير | ${currentElement.ar} ${currentElement.s}</h3>
+            <p class="quiz-instruction">العدد الذري ${currentElement.z}</p>
+            <p class="quiz-question">اكتشفي الأخطاء ${errorWord} في التوزيع الإلكتروني الآتي ثم صححيها</p>
 
             <div class="quiz-configuration" dir="ltr">
                 ${wrongAnswer.map((orbital, i) => `
@@ -1975,16 +1859,16 @@ function renderQuizSection() {
                         <input class="quiz-level" id="quiz-level-${i}"
                             value="${orbital.level}" aria-label="رقم المستوى ${i + 1}">
                         <input class="quiz-type" id="quiz-type-${i}"
-                            value="${orbital.type}" aria-label="نوع المدار ${i + 1}">
+                            value="${orbital.type}" aria-label="نوع المستوى الفرعي ${i + 1}">
                         <input class="quiz-exponent" id="quiz-exponent-${i}"
-                            value="${orbital.exponent}" aria-label="الأس ${i + 1}">
+                            value="${orbital.exponent}" aria-label="عدد الإلكترونات ${i + 1}">
                     </span>
                 `).join("")}
             </div>
 
             <div class="quiz-actions">
-               <button type="button" onclick="checkElementQuiz()">تحققي من الإجابة</button>
-                <button type="button" onclick="renderQuizSection()">إعادة السؤال</button>
+                <button type="button" class="quiz-button quiz-check" onclick="checkElementQuiz()">تحققي من الإجابة</button>
+                <button type="button" class="quiz-button quiz-reset" onclick="renderQuizSection(true)">إعادة السؤال</button>
             </div>
 
             <p id="quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
@@ -1992,7 +1876,7 @@ function renderQuizSection() {
     `;
 }
 
-/* عرض رسالة التغذية الراجعة (الصنف show هو الذي يُظهر العنصر) */
+/* عرض رسالة التغذية الراجعة */
 function showQuizFeedback(kind, message) {
     const feedback = document.getElementById("quiz-feedback");
 
@@ -2003,7 +1887,7 @@ function showQuizFeedback(kind, message) {
     feedback.textContent = message;
 }
 
-/* توحيد القيم المدخلة (أرقام عربية/أسية → أرقام عادية) */
+/* توحيد القيم المدخلة */
 function normalizeQuizValue(value) {
     return String(value)
         .trim()
@@ -2012,7 +1896,7 @@ function normalizeQuizValue(value) {
         .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, d => "⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(d));
 }
 
-/* تقييم إجابة الطالبة (دالة نقية بدون DOM) */
+/* تقييم إجابة الطالبة */
 function evaluateQuizAnswer(question, values) {
 
     let total = 0;
@@ -2049,6 +1933,16 @@ function evaluateQuizAnswer(question, values) {
     return { state: state, total: total, fixed: fixed, broken: broken };
 }
 
+const quizFixedWords = {
+    0: "لم تصححي أي خطأ",
+    1: "صححتِ خطأً واحدًا",
+    2: "صححتِ خطأين",
+    3: "صححتِ ثلاثة أخطاء",
+    4: "صححتِ أربعة أخطاء"
+};
+
+const quizTotalWords = { 3: "ثلاثة", 4: "أربعة", 5: "خمسة" };
+
 function checkElementQuiz() {
 
     if (!currentElement || !currentQuizQuestion || currentQuizQuestion.z !== currentElement.z) {
@@ -2073,22 +1967,32 @@ function checkElementQuiz() {
     const result = evaluateQuizAnswer(question, values);
 
     if (result.state === "empty") {
-        showQuizFeedback("hint", "يوجد حقل فارغ، تأكدي من تعبئة جميع الحقول ثم حاولي مرة أخرى.");
+        showQuizFeedback("hint", "يوجد حقل فارغ، املئي كل الحقول ثم حاولي مرة أخرى.");
     }
     else if (result.state === "success") {
-        showQuizFeedback("success", `أحسنتِ! اكتشفتِ الأخطاء ${result.total} وصححتِها جميعًا. التوزيع الإلكتروني الصحيح لعنصر ${currentElement.ar}: ${quizAnswerToText(question.correct)}، ومجموع الإلكترونات ${currentElement.z}.`);
+        showQuizFeedback("success", `أحسنتِ، صححتِ جميع الأخطاء. التوزيع الصحيح لعنصر ${currentElement.ar} هو ${quizAnswerToText(question.correct)} ومجموع إلكتروناته ${currentElement.z}.`);
     }
     else if (result.state === "unchanged") {
-        showQuizFeedback("hint", "لم تغيّري أي شيء بعد. اكتشفي الأخطاء في التوزيع وصححيها، ثم اضغطي على تحققي من الإجابة.");
+        showQuizFeedback("hint", "لم تغيّري شيئًا بعد، ابحثي عن الأخطاء وصححيها ثم اضغطي تحققي من الإجابة.");
     }
     else {
-        let message = `إجابة غير صحيحة بعد، صححتِ ${result.fixed} من أصل ${result.total} أخطاء.`;
+        let message;
 
-        if (result.broken > 0) {
-            message += ` وغيّرتِ ${result.broken} من القيم التي كانت صحيحة، راجعيها وحاولي مرة أخرى.`;
+        if (result.fixed === result.total) {
+            message = "صححتِ جميع الأخطاء لكنكِ غيّرتِ قيمًا كانت صحيحة، راجعي إجابتك.";
         }
         else {
-            message += ` ما زال هناك ${result.total - result.fixed} من الأخطاء، راجعي رقم المستوى ونوع المدار وعدد الإلكترونات ثم حاولي مرة أخرى.`;
+            const fixedText = quizFixedWords[result.fixed] || "صححتِ بعض الأخطاء";
+            const totalWord = quizTotalWords[result.total] || result.total;
+
+            message = `${fixedText} من أصل ${totalWord} أخطاء`;
+
+            if (result.broken > 0) {
+                message += " لكنكِ غيّرتِ قيمًا كانت صحيحة، راجعي إجابتك.";
+            }
+            else {
+                message += " وما زالت هناك أخطاء، تأكدي من رقم المستوى والمستوى الفرعي وعدد الإلكترونات.";
+            }
         }
 
         showQuizFeedback("error", message);
@@ -2096,21 +2000,24 @@ function checkElementQuiz() {
 }
 
 
-/* ====== السؤال الثاني: التوزيع النقطي (تمثيل لويس) ====== */
-/* كل الدوال والمتغيرات هنا تبدأ بـ lq لتجنب أي تعارض مع بقية الكود */
+/* ====== السؤال الثاني: التوزيع النقطي تمثيل لويس ====== */
+/* كل الدوال والمتغيرات هنا تبدأ بـ lq */
 
-/* المجموعة الثانية والهيليوم: true = زوج واحد متجاور، false = نقطتان منفصلتان */
+/* المجموعة الثانية والهيليوم: true يعني زوج واحد متجاور */
 const LQ_PAIR_FOR_TWO = true;
 
 const lqSides = ["top", "right", "bottom", "left"];
 const lqSideNames = { top: "أعلى", right: "يمين", bottom: "أسفل", left: "يسار" };
 
-/* إلكترونات التكافؤ حسب المجموعة (للعناصر الممثلة فقط) */
+/* إلكترونات التكافؤ حسب المجموعة للعناصر الممثلة */
 const lqValenceByGroup = { 1: 1, 2: 2, 13: 3, 14: 4, 15: 5, 16: 6, 17: 7, 18: 8 };
+
+const lqDotWords = { 3: "ثلاث", 4: "أربع", 5: "خمس", 6: "ست", 7: "سبع", 8: "ثماني" };
+const lqPairWords = { 3: "ثلاثة", 4: "أربعة" };
 
 let lqState = null;
 
-/* هل يناسب العنصر تمثيل لويس المدرسي المبسط؟ */
+/* هل يناسب العنصر تمثيل لويس المدرسي المبسط */
 function lqGetSupport(element) {
 
     if (element.z === 1) return { ok: true, valence: 1 };
@@ -2124,7 +2031,7 @@ function lqGetSupport(element) {
     return { ok: false, reason: inner ? "inner" : "transition" };
 }
 
-/* النمط الصحيح: عدد النقاط في كل جهة (الترتيب غير مهم لأن الدوران مقبول) */
+/* النمط الصحيح: عدد النقاط في كل جهة */
 function lqPattern(valence, element) {
 
     const twoAsPair = LQ_PAIR_FOR_TWO && (element.z === 2 || element.g === 2);
@@ -2135,7 +2042,7 @@ function lqPattern(valence, element) {
         return [0, 1, 2, 3].map(i => (i < valence ? 1 : 0));
     }
 
-    /* نقطة على كل جهة أولًا، ثم نكوّن الأزواج */
+    /* نقطة على كل جهة أولًا ثم نكوّن الأزواج */
     const pairs = valence - 4;
     return [0, 1, 2, 3].map(i => (i < pairs ? 2 : 1));
 }
@@ -2149,7 +2056,7 @@ function lqPatternToCounts(pattern) {
 function lqCountWord(n) {
     if (n === 1) return "نقطة واحدة";
     if (n === 2) return "نقطتان";
-    return `${n} نقاط`;
+    return `${lqDotWords[n] || n} نقاط`;
 }
 
 function lqDescribePattern(pattern) {
@@ -2160,22 +2067,22 @@ function lqDescribePattern(pattern) {
 
     if (pairs === 1) parts.push("زوج واحد");
     else if (pairs === 2) parts.push("زوجان");
-    else if (pairs > 2) parts.push(`${pairs} أزواج`);
+    else if (pairs > 2) parts.push(`${lqPairWords[pairs] || pairs} أزواج`);
 
     if (singles === 1) parts.push("نقطة مفردة واحدة");
     else if (singles === 2) parts.push("نقطتان مفردتان");
-    else if (singles > 2) parts.push(`${singles} نقاط مفردة`);
+    else if (singles > 2) parts.push(`${lqDotWords[singles] || singles} نقاط مفردة`);
 
     return parts.join(" و");
 }
 
 function lqValenceRule(element, valence) {
-    if (element.z === 1) return "الهيدروجين له إلكترون واحد فقط، وهو إلكترون التكافؤ.";
-    if (element.z === 2) return "الهيليوم له إلكترونان في مستواه الأول (الأخير)، وهما إلكترونا التكافؤ.";
-    return `إلكترونات التكافؤ هي إلكترونات المستوى الأخير، وعنصر ${element.ar} في المجموعة ${element.g} فعدد إلكترونات تكافؤه ${valence}.`;
+    if (element.z === 1) return "الهيدروجين له إلكترون واحد فقط وهو إلكترون التكافؤ.";
+    if (element.z === 2) return "الهيليوم له إلكترونان في مستواه الأول وهما إلكترونا التكافؤ.";
+    return `إلكترونات التكافؤ هي إلكترونات المستوى الأخير وعنصر ${element.ar} في المجموعة ${element.g} فعدد إلكترونات تكافؤه ${valence}.`;
 }
 
-/* تقييم إجابة الطالبة (دالة نقية بدون DOM) */
+/* تقييم إجابة الطالبة */
 function lqEvaluate(counts, pattern, valence) {
 
     const mine = lqSides.map(side => counts[side]);
@@ -2200,7 +2107,7 @@ function lqEvaluate(counts, pattern, valence) {
     return { state: "layout", reason: reason, total: total };
 }
 
-/* رسم المنطقة التفاعلية: الرمز + أربع جهات (كل جهة فيها مكانان كحد أقصى) */
+/* رسم المنطقة التفاعلية */
 function lqStageInner(counts, interactive, element) {
 
     const zones = lqSides.map(side => {
@@ -2211,7 +2118,7 @@ function lqStageInner(counts, interactive, element) {
             if (i < counts[side]) {
                 const isNew = interactive && lqState && lqState.pop === `${side}-${i}`;
                 slots += `<span class="lq-slot filled"${interactive
-                    ? ` data-lq-dot="${side}" role="button" tabindex="0" aria-label="احذفي النقطة (${lqSideNames[side]})"`
+                    ? ` data-lq-dot="${side}" role="button" tabindex="0" aria-label="احذفي النقطة ${lqSideNames[side]}"`
                     : ""}><i class="lq-dot${isNew ? " pop" : ""}"></i></span>`;
             }
             else {
@@ -2238,7 +2145,7 @@ function lqRefreshStage() {
 
     if (counter) {
         const total = lqSides.reduce((sum, side) => sum + lqState.counts[side], 0);
-        counter.textContent = `عدد النقاط التي وضعتِها: ${total}`;
+        counter.textContent = `عدد النقاط التي وضعتِها ${total}`;
     }
 }
 
@@ -2281,7 +2188,7 @@ function lqAddDot(side) {
     if (!lqState || lqState.counts[side] === undefined) return false;
 
     if (lqState.counts[side] >= 2) {
-        lqShowFeedback("hint", "هذه الجهة ممتلئة: أقصى عدد للنقاط في كل جهة نقطتان.");
+        lqShowFeedback("hint", "هذه الجهة ممتلئة، الحد الأقصى نقطتان.");
         return false;
     }
 
@@ -2316,11 +2223,17 @@ function lqUndo() {
     lqAfterEdit();
 }
 
-/* إعادة المحاولة: تمسح كل النقاط وترجع الرمز فارغًا */
+/* إعادة المحاولة تمسح كل النقاط */
 function lqReset() {
     if (!lqState) return;
     lqRenderQuestion(lqState.element);
 }
+
+const lqLayoutMessages = {
+    pairNeeded: "العدد صحيح لكن إلكتروني التكافؤ يُمثَّلان كزوج في جهة واحدة.",
+    pairTooEarly: "العدد صحيح لكن لا نكوّن زوجًا قبل أن تأخذ الجهات الأربع نقطة.",
+    emptySide: "العدد صحيح لكن توجد جهة فارغة، ضعي نقطة في كل جهة أولًا ثم كوّني الأزواج."
+};
 
 function lqCheck() {
 
@@ -2330,14 +2243,13 @@ function lqCheck() {
     const result = lqEvaluate(lqState.counts, lqState.pattern, lqState.valence);
 
     if (result.state === "empty") {
-        lqShowFeedback("hint", "لم تضعي أي نقطة بعد. ضعي نقاط إلكترونات التكافؤ حول الرمز، ثم اضغطي على تحققي من الإجابة.");
+        lqShowFeedback("hint", "لم تضعي أي نقطة بعد، ضعي نقاط إلكترونات التكافؤ حول الرمز ثم اضغطي تحققي من الإجابة.");
         return;
     }
 
     if (result.state === "correct") {
         lqState.solved = true;
-        lqShowFeedback("success",
-            `أحسنتِ! 🌟 تمثيل لويس لعنصر ${element.ar} (${element.s}) صحيح: ${lqCountWord(lqState.valence)} (${lqDescribePattern(lqState.pattern)}). يمكنك الآن تجربة عنصر آخر من الجدول الدوري.`);
+        lqShowFeedback("success", `أحسنتِ، تمثيل لويس لعنصر ${element.ar} صحيح ويمكنكِ تجربة عنصر آخر من الجدول الدوري.`);
         const next = document.getElementById("lq-next");
         if (next) next.hidden = false;
         return;
@@ -2350,34 +2262,21 @@ function lqCheck() {
     if (result.state === "count") {
 
         message = result.diff === "less"
-            ? "عدد النقاط غير صحيح: ما زال ينقصك نقاط. راجعي عدد إلكترونات التكافؤ للعنصر."
-            : "عدد النقاط غير صحيح: وضعتِ نقاطًا أكثر من اللازم. راجعي عدد إلكترونات التكافؤ للعنصر.";
+            ? "تنقصكِ نقاط، عدد النقاط يساوي عدد إلكترونات التكافؤ."
+            : "وضعتِ نقاطًا زائدة، عدد النقاط يساوي عدد إلكترونات التكافؤ.";
 
         if (deep) message += ` ${lqValenceRule(element, lqState.valence)}`;
     }
     else {
-
-        message = "عدد النقاط صحيح ✓ لكن توزيعها يحتاج تعديلًا.";
-
-        if (deep) {
-            if (result.reason === "pairNeeded") {
-                message += " إلكترونا التكافؤ لهذا العنصر يُمثَّلان كزوج واحد متجاور في جهة واحدة، وليس نقطتين في جهتين مختلفتين.";
-            }
-            else if (result.reason === "pairTooEarly") {
-                message += " قاعدة لويس: نضع نقطة واحدة على كل جهة أولًا، ولا نكوّن زوجًا إلا بعد أن تأخذ الجهات الأربع نقطة. عندك زوج تكوّن مبكرًا.";
-            }
-            else {
-                message += " نضع أولًا نقطة واحدة على كل جهة من الجهات الأربع، ثم نكمل الإلكترونات المتبقية بتكوين أزواج. عندك جهة فارغة بينما جهة أخرى فيها زوج.";
-            }
-        }
+        message = lqLayoutMessages[result.reason];
     }
 
-    if (deep) message += " وإذا احتجتِ، يمكنك الضغط على «عرض الحل».";
+    if (deep) message += " يمكنكِ الضغط على عرض الحل.";
 
     lqShowFeedback("error", message);
 }
 
-/* عرض الحل (زر مستقل، ولا يغيّر نقاط الطالبة) */
+/* عرض الحل بزر مستقل ولا يغيّر نقاط الطالبة */
 function lqShowSolution() {
 
     if (!lqState) return;
@@ -2391,11 +2290,11 @@ function lqShowSolution() {
 
     box.hidden = false;
     box.innerHTML = `
-        <h4>الحل: تمثيل لويس لعنصر ${element.ar} (${element.s})</h4>
+        <h4>الحل تمثيل لويس لعنصر ${element.ar} ${element.s}</h4>
         <div class="lq-solution-wrap">
             <div class="lq-stage lq-static">${lqStageInner(counts, false, element)}</div>
         </div>
-        <p>${lqValenceRule(element, lqState.valence)} فيُمثَّل بـ ${lqCountWord(lqState.valence)}: ${lqDescribePattern(lqState.pattern)}.</p>
+        <p>${lqValenceRule(element, lqState.valence)} لذلك نضع ${lqCountWord(lqState.valence)} على شكل ${lqDescribePattern(lqState.pattern)}.</p>
     `;
 }
 
@@ -2424,17 +2323,17 @@ function lqRenderQuestion(element) {
         lqState = null;
 
         const why = support.reason === "inner"
-            ? `${element.ar} (${element.s}) من عناصر السلاسل الداخلية، وإلكترونات تكافؤه لا تُحدَّد بعدد ثابت من رقم المجموعة، فقد تشارك فيها إلكترونات المستوى الفرعي f.`
-            : `${element.ar} (${element.s}) عنصر انتقالي، وإلكترونات تكافؤه لا تُحدَّد بعدد ثابت من رقم المجموعة، فقد تشارك فيها إلكترونات المستوى الفرعي d.`;
+            ? `${element.ar} من عناصر السلاسل الداخلية وعدد إلكترونات تكافؤه غير ثابت لأن إلكترونات المستوى الفرعي f قد تشارك فيها.`
+            : `${element.ar} عنصر انتقالي وعدد إلكترونات تكافؤه غير ثابت لأن إلكترونات المستوى الفرعي d قد تشارك فيها.`;
 
         panel.innerHTML = `
             <div class="quiz-card">
-                <h3 class="lq-title">اختبار قصير | التوزيع النقطي (تمثيل لويس)</h3>
+                <h3 class="lq-title">اختبار قصير | تمثيل لويس النقطي</h3>
                 <div class="lq-note-box">
                     <div class="lq-note-symbol">${element.s}</div>
                     <div>${why}</div>
-                    <div>لذلك لا يناسبه تمثيل لويس المدرسي المبسط، ولن نعرض له تمثيلًا قد يكون مضللًا.</div>
-                    <div>جرّبي عنصرًا من المجموعات 1 و2 و13–18، مثل Na أو C أو O أو Cl.</div>
+                    <div>لذلك لا نمثّله بلويس.</div>
+                    <div>جرّبي عنصرًا من المجموعات 1 و2 و13 إلى 18 مثل Na أو C أو O أو Cl.</div>
                 </div>
                 <div class="quiz-actions">
                     <button type="button" class="quiz-button quiz-check" onclick="lqNext()">العودة إلى الجدول الدوري</button>
@@ -2457,11 +2356,12 @@ function lqRenderQuestion(element) {
 
     panel.innerHTML = `
         <div class="quiz-card">
-            <h3 class="lq-title">اختبار قصير | التوزيع النقطي (تمثيل لويس)</h3>
-            <p class="quiz-question">ضعي نقاط إلكترونات التكافؤ حول رمز عنصر ${element.ar} (${element.s}) لتمثيل لويس النقطي.</p>
+            <h3 class="lq-title">اختبار قصير | تمثيل لويس النقطي</h3>
+            <p class="quiz-instruction">العدد الذري ${element.z}</p>
+            <p class="quiz-question">ضعي نقاط إلكترونات التكافؤ حول رمز عنصر ${element.ar} ${element.s} لتمثيل لويس النقطي.</p>
             <p class="quiz-instruction">
                 اضغطي على أحد الأماكن الأربعة حول الرمز لإضافة نقطة، واضغطي على المكان نفسه مرة أخرى لإضافة نقطة ثانية بجانبها لتكوين زوج.
-                واضغطي على النقطة لحذفها، ثم اضغطي على «تحققي من الإجابة».
+                واضغطي على النقطة لحذفها ثم اضغطي تحققي من الإجابة.
             </p>
 
             <div class="lq-stage-wrap">
@@ -2522,13 +2422,23 @@ function lqRenderQuestion(element) {
 }
 
 
-/* ====== السؤال الثالث: قاعدة هوند وتوزيع الإلكترونات في الأفلاك ====== */
-/* كل الدوال والمتغيرات هنا تبدأ بـ hq لتجنب أي تعارض مع بقية الكود */
+/* ====== السؤال الثالث: قاعدة هوند وتوزيع الإلكترونات في المدارات ====== */
+/* كل الدوال والمتغيرات هنا تبدأ بـ hq */
 
 const hqArrowChar = { u: "↑", d: "↓" };
 
-/* حد أعلى لعدد الأسهم في المربع الواحد حتى لا يخرج الرسم عن الشاشة (أكبر بكثير من الحد العلمي = 2) */
+/* حد أعلى لعدد الأسهم في المدار الواحد حتى لا يخرج الرسم عن الشاشة */
 const hqMaxArrows = 6;
+
+const hqOrbitalWords = { 3: "ثلاثة", 5: "خمسة", 7: "سبعة" };
+
+const hqErrorIntro = {
+    1: "وجدتُ خطأً واحدًا في إجابتك",
+    2: "وجدتُ خطأين في إجابتك",
+    3: "وجدتُ ثلاثة أخطاء في إجابتك",
+    4: "وجدتُ أربعة أخطاء في إجابتك",
+    5: "وجدتُ خمسة أخطاء في إجابتك"
+};
 
 let hqState = null;
 
@@ -2540,7 +2450,7 @@ function hqElectronsNom(n) {
 }
 
 function hqElectronsGen(n) {
-    if (n === 1) return "إلكترون واحد";
+    if (n === 1) return "إلكترونًا واحدًا";
     if (n === 2) return "إلكترونين";
     if (n <= 10) return `${n} إلكترونات`;
     return `${n} إلكترونًا`;
@@ -2548,11 +2458,11 @@ function hqElectronsGen(n) {
 
 function hqBoxNames(numbers) {
     return numbers.length === 1
-        ? `الفلك رقم ${numbers[0]}`
-        : `الأفلاك رقم ${numbers.join(" و")}`;
+        ? `المدار رقم ${numbers[0]}`
+        : `المدارات رقم ${numbers.join(" و")}`;
 }
 
-/* تقييم إجابة الطالبة (دالة نقية بدون DOM): تعيد كل الأخطاء وليس خطأً واحدًا */
+/* تقييم إجابة الطالبة ويعيد كل الأخطاء */
 function hqEvaluate(boxes, required) {
 
     const errors = [];
@@ -2563,38 +2473,37 @@ function hqEvaluate(boxes, required) {
 
     const allIndexes = boxes.map((box, i) => i);
 
-    /* 1) عدد الإلكترونات */
+    /* 1 عدد الإلكترونات */
     if (total !== required) {
         errors.push({
             type: "count",
-            text: `عدد الإلكترونات غير صحيح. المطلوب ${hqElectronsNom(required)}، وإجابتك تحتوي على ${hqElectronsGen(total)} (${total < required ? "أقل" : "أكثر"} من المطلوب بمقدار ${Math.abs(total - required)}).`
+            text: `المطلوب ${hqElectronsNom(required)} وأنتِ وضعتِ ${hqElectronsGen(total)}.`
         });
     }
 
-    /* 2) أكثر من إلكترونين في الفلك الواحد */
+    /* 2 أكثر من إلكترونين في المدار الواحد */
     const over = allIndexes.filter(i => boxes[i].length > 2);
 
     if (over.length) {
         over.forEach(i => flagged.add(i));
         errors.push({
             type: "overfull",
-            text: `${over.map(i => `الفلك رقم ${i + 1} يحتوي على ${boxes[i].length} أسهم`).join("، ")}. الفلك الواحد يستوعب إلكترونين كحد أقصى.`
+            text: `${over.map(i => `المدار رقم ${i + 1} فيه ${hqElectronsNom(boxes[i].length)}`).join(" و")} والمدار الواحد يتسع لإلكترونين فقط.`
         });
     }
 
-    /* 3) مبدأ استبعاد باولي: إلكترونان بالاتجاه نفسه في فلك واحد */
+    /* 3 مبدأ باولي: إلكترونان بالاتجاه نفسه في مدار واحد */
     const sameSpin = allIndexes.filter(i => boxes[i].length === 2 && boxes[i][0] === boxes[i][1]);
 
     if (sameSpin.length) {
         sameSpin.forEach(i => flagged.add(i));
-        const glyphs = Array.from(new Set(sameSpin.map(i => hqArrowChar[boxes[i][0]].repeat(2)))).join(" أو ");
         errors.push({
             type: "pauli",
-            text: `وضعتِ إلكترونين بالاتجاه نفسه (${glyphs}) داخل ${hqBoxNames(sameSpin.map(i => i + 1))}. يجب أن يكون اتجاه اللف المغزلي للإلكترونين في الفلك الواحد متعاكسًا وفق مبدأ استبعاد باولي.`
+            text: `في المدار الواحد يجب أن يكون السهمان متعاكسين وقد وضعتِ سهمين بالاتجاه نفسه في ${hqBoxNames(sameSpin.map(i => i + 1))}.`
         });
     }
 
-    /* 4) قاعدة هوند: بدء الازدواج قبل شغل الأفلاك المتساوية في الطاقة فرادى */
+    /* 4 قاعدة هوند: بدء الازدواج قبل شغل المدارات فرادى */
     const paired = allIndexes.filter(i => boxes[i].length >= 2);
     const empty = allIndexes.filter(i => boxes[i].length === 0);
 
@@ -2602,11 +2511,11 @@ function hqEvaluate(boxes, required) {
         paired.forEach(i => flagged.add(i));
         errors.push({
             type: "hund-pairing",
-            text: `بدأتِ ازدواج الإلكترونات في ${hqBoxNames(paired.map(i => i + 1))} قبل شغل الأفلاك المتساوية في الطاقة فرادى (${hqBoxNames(empty.map(i => i + 1))} ${empty.length === 1 ? "ما زال فارغًا" : "ما زالت فارغة"}). راجعي قاعدة هوند: تشغل الإلكترونات الأفلاك المتساوية في الطاقة فرادى أولًا وباتجاه لف مغزلي متوازٍ، ثم يبدأ الازدواج.`
+            text: `لا نبدأ الازدواج قبل أن يأخذ كل مدار إلكترونًا واحدًا. ${hqBoxNames(empty.map(i => i + 1))} ${empty.length === 1 ? "ما زال فارغًا" : "ما زالت فارغة"}.`
         });
     }
 
-    /* 5) قاعدة هوند: الإلكترونات المفردة يجب أن يكون لفّها متوازيًا */
+    /* 5 قاعدة هوند: الإلكترونات المفردة بنفس الاتجاه */
     const singles = allIndexes.filter(i => boxes[i].length === 1);
     const directions = new Set(singles.map(i => boxes[i][0]));
 
@@ -2614,14 +2523,14 @@ function hqEvaluate(boxes, required) {
         singles.forEach(i => flagged.add(i));
         errors.push({
             type: "hund-spin",
-            text: `الإلكترونات المفردة في ${hqBoxNames(singles.map(i => i + 1))} لها اتجاهات لف مغزلي مختلفة (↑ و↓). وفق قاعدة هوند يجب أن يكون لفّها المغزلي متوازيًا، أي بالاتجاه نفسه.`
+            text: "الإلكترونات المفردة يجب أن تكون بنفس الاتجاه وهي الآن في اتجاهين مختلفين."
         });
     }
 
     let note = "";
 
     if (!errors.length && singles.length && singles.every(i => boxes[i][0] === "d")) {
-        note = "ملاحظة: الأسهم المفردة المتوازية صحيحة بأي اتجاه، لكن المتعارف عليه رسمها لأعلى ↑.";
+        note = "الأسهم المفردة المتوازية صحيحة بأي اتجاه لكن المتعارف عليه رسمها لأعلى.";
     }
 
     return {
@@ -2652,50 +2561,180 @@ function hqSolutionBoxes(boxCount, electrons) {
     return boxes;
 }
 
+function hqEvaluateSub(boxes, required, sub) {
+
+    const label = "\u2066" + sub + "\u2069";
+    const base = hqEvaluate(boxes, required);
+
+    if (base.state === "empty") {
+        return {
+            errors: required > 0 ? [`لم تضعي أي إلكترون في المستوى الفرعي ${label}.`] : [],
+            flagged: new Set(boxes.map((box, i) => i)),
+            note: "",
+            total: 0
+        };
+    }
+
+    return {
+        errors: base.errors.map(error => `في ${label}: ${error.text}`),
+        flagged: base.flagged,
+        note: base.note,
+        total: base.total
+    };
+}
+
+/* تقييم كل الغرف معًا */
+function hqEvaluateAll(state) {
+
+    const errors = [];
+    const flagged = new Set();
+    let total = 0;
+    let note = "";
+
+    state.subs.forEach((sb, si) => {
+        const result = hqEvaluateSub(sb.boxes, sb.required, sb.sub);
+        total += result.total;
+        result.errors.forEach(text => errors.push(text));
+        result.flagged.forEach(bi => flagged.add(`${si}:${bi}`));
+        if (result.note && !note) note = result.note;
+    });
+
+    return {
+        state: total === 0 ? "empty" : (errors.length ? "wrong" : "correct"),
+        errors: errors,
+        flagged: flagged,
+        note: note,
+        total: total
+    };
+}
+
 function hqExplain(state) {
 
-    const n = state.n;
-    const e = state.required;
-    const parts = [];
-
-    if (n === 1) {
-        parts.push(e === 1
-            ? "الفلك الواحد فيه إلكترون واحد، فيُرسم بسهم واحد ↑."
-            : "الفلك الواحد يستوعب إلكترونين كحد أقصى، ويكون لفّهما المغزلي متعاكسًا (↑↓) وفق مبدأ باولي.");
-    }
-    else if (e <= n) {
-        parts.push(`تُشغل الأفلاك فرادى أولًا وباتجاه لف متوازٍ (↑) وفق قاعدة هوند؛ وبما أن عدد الإلكترونات (${e}) لا يتجاوز عدد الأفلاك (${n}) فلا يبدأ الازدواج.`);
-    }
-    else {
-        parts.push(`تُشغل الأفلاك الـ${n} فرادى أولًا بسهم ↑ وفق قاعدة هوند، ثم تُزدوج الإلكترونات المتبقية (${e - n}) بسهم ↓ معاكس في اللف المغزلي داخل الفلك نفسه وفق مبدأ باولي.`);
-    }
+    const parts = ["في كل مدار نضع إلكترونًا واحدًا بسهم لأعلى أولًا وفق قاعدة هوند ثم نكمل الباقي بسهم لأسفل في المدارات نفسها وفق مبدأ باولي."];
 
     if (configurationExceptions[state.element.z]) {
-        parts.push(`ملاحظة: توزيع ${state.element.ar} استثنائي، وتوزيعه الصحيح هو ${configurationToText(getElectronConfiguration(state.element.z))}، لذلك عدد إلكترونات ${state.sub} هو ${e}.`);
+        parts.push(`توزيع ${state.element.ar} استثنائي وتوزيعه الصحيح هو ${configurationToText(getElectronConfiguration(state.element.z))}.`);
     }
 
     return parts.join(" ");
 }
 
-/* بناء حالة سؤال: المستوى الفرعي من التوزيع الصحيح للعنصر (يبدأ بالأخير ثم نرجع للداخل) */
-function hqMakeState(element, qIndex) {
+/* كل المستويات الفرعية للعنصر مع غرفها */
+function hqMakeSubs(element) {
 
-    const list = getElectronConfiguration(element.z).slice().reverse();
-    const index = qIndex % list.length;
-    const item = list[index];
-    const match = item.orbital.match(/^(\d)([spdf])$/);
-    const type = match[2];
-    const n = getOrbitalBoxCount(type);
+    return getElectronConfiguration(element.z).map(item => {
+        const match = item.orbital.match(/^(\d)([spdf])$/);
+        const type = match[2];
+        const n = getOrbitalBoxCount(type);
+
+        return {
+            sub: item.orbital,
+            type: type,
+            n: n,
+            required: item.electrons,
+            boxes: Array.from({ length: n }, () => [])
+        };
+    });
+}
+
+/* يكسر توزيع مستوى فرعي واحد بخطأ واحد على الأقل */
+function hqBreakSub(sb, solved) {
+
+    const n = sb.n;
+    const e = sb.required;
+    const copy = () => solved.map(box => box.slice());
+    const options = [];
+
+    /* ازدواج مبكر: مخالفة قاعدة هوند */
+    if (n >= 2 && e >= 2 && e <= n) {
+        const b = Array.from({ length: n }, () => []);
+        b[0] = ["u", "d"];
+        for (let k = 1; k <= e - 2; k++) b[k] = ["u"];
+        options.push(b);
+    }
+
+    /* سهم مفرد باتجاه مختلف: مخالفة قاعدة هوند */
+    const singles = solved.map((box, i) => i).filter(i => solved[i].length === 1);
+
+    if (singles.length >= 2) {
+        const b = copy();
+        b[singles[0]] = ["d"];
+        options.push(b);
+    }
+
+    /* سهمان بالاتجاه نفسه: مخالفة مبدأ باولي */
+    const pairs = solved.map((box, i) => i).filter(i => solved[i].length === 2);
+
+    if (pairs.length) {
+        const b = copy();
+        b[pairs[pairs.length - 1]] = ["u", "u"];
+        options.push(b);
+    }
+
+    /* نقص إلكترون */
+    {
+        const b = copy();
+        const filled = b.map((box, i) => i).filter(i => b[i].length > 0);
+        b[filled[filled.length - 1]].pop();
+        options.push(b);
+    }
+
+    /* زيادة إلكترون */
+    {
+        const b = copy();
+        const room = b.findIndex(box => box.length < 2);
+        const target = room === -1 ? 0 : room;
+        b[target].push(b[target].length === 1 && b[target][0] === "u" ? "d" : "u");
+        options.push(b);
+    }
+
+    const shuffled = quizShuffle(options);
+
+    for (const candidate of shuffled) {
+        if (candidate.some(box => box.length > 0) && hqEvaluateSub(candidate, e, sb.sub).errors.length > 0) return candidate;
+    }
+
+    return null;
+}
+
+/* توزيع جاهز فيه أخطاء في اثنين أو ثلاثة مستويات فرعية */
+function hqMakeWrongDiagram(subs) {
+
+    const solved = subs.map(sb => hqSolutionBoxes(sb.n, sb.required));
+    const boxes = solved.map(list => list.map(box => box.slice()));
+    const order = quizShuffle(subs.map((sb, i) => i));
+    const want = Math.min(subs.length, 2 + Math.floor(Math.random() * 2));
+    let changed = 0;
+
+    order.forEach(i => {
+        if (changed >= want) return;
+        const candidate = hqBreakSub(subs[i], solved[i]);
+        if (candidate) {
+            boxes[i] = candidate;
+            changed++;
+        }
+    });
+
+    return boxes;
+}
+
+/* بناء حالة سؤال: fill توزيع من الصفر وfix توزيع جاهز فيه أخطاء */
+function hqMakeState(element, mode) {
+
+    const subs = hqMakeSubs(element);
+    let initial = null;
+
+    if (mode === "fix") {
+        const wrong = hqMakeWrongDiagram(subs);
+        subs.forEach((sb, i) => { sb.boxes = wrong[i]; });
+        initial = JSON.stringify(wrong);
+    }
 
     return {
         element: element,
-        questionCount: list.length,
-        qIndex: index,
-        sub: item.orbital,
-        type: type,
-        n: n,
-        required: item.electrons,
-        boxes: Array.from({ length: n }, () => []),
+        mode: mode,
+        subs: subs,
+        initial: initial,
         tool: "u",
         history: [],
         flagged: new Set(),
@@ -2705,18 +2744,20 @@ function hqMakeState(element, qIndex) {
     };
 }
 
-function hqBoxesHTML(boxes, interactive, flagged, pop) {
+function hqBoxesHTML(boxes, interactive, flagged, pop, si, sub) {
 
     return boxes.map((arrows, i) => {
 
-        const arrowsHTML = arrows.map((direction, j) => `<span class="hq-arrow${interactive && pop === `${i}:${j}` ? " pop" : ""}"${interactive
-            ? ` data-hq-arrow="${i}:${j}" role="button" tabindex="0" aria-label="احذفي السهم ${hqArrowChar[direction]} من الفلك رقم ${i + 1}"`
+        const key = `${si}:${i}`;
+
+        const arrowsHTML = arrows.map((direction, j) => `<span class="hq-arrow${interactive && pop === `${key}:${j}` ? " pop" : ""}"${interactive
+            ? ` data-hq-arrow="${key}:${j}" role="button" tabindex="0" aria-label="احذفي السهم ${hqArrowChar[direction]} من المدار رقم ${i + 1}"`
             : ""}>${hqArrowChar[direction]}</span>`).join("");
 
         return `
             <div class="hq-box-col">
-                <div class="hq-box${flagged && flagged.has(i) ? " flag" : ""}"${interactive
-                    ? ` data-hq-box="${i}" tabindex="0" role="group" aria-label="الفلك رقم ${i + 1}: اضغطي لإضافة سهم"`
+                <div class="hq-box${flagged && flagged.has(key) ? " flag" : ""}"${interactive
+                    ? ` data-hq-box="${key}" tabindex="0" role="group" aria-label="المدار رقم ${i + 1} في ${sub} اضغطي لإضافة إلكترون"`
                     : ""}>${arrowsHTML}</div>
                 <div class="hq-box-num">${i + 1}</div>
             </div>
@@ -2724,21 +2765,34 @@ function hqBoxesHTML(boxes, interactive, flagged, pop) {
     }).join("");
 }
 
+/* كل المجموعات: غرف المستوى الفرعي واسمه تحتها */
+function hqGroupsHTML(list, interactive) {
+
+    const state = hqState;
+
+    return state.subs.map((sb, si) => `
+        <div class="hq-group">
+            <div class="hq-boxes${interactive ? "" : " hq-static"}">${hqBoxesHTML(list[si], interactive, interactive ? state.flagged : null, interactive ? state.pop : null, si, sb.sub)}</div>
+            <div class="hq-sub-label">${sb.sub}</div>
+        </div>
+    `).join("");
+}
+
 function hqRefresh() {
 
     if (!hqState) return;
 
-    const container = document.getElementById("hq-boxes");
+    const container = document.getElementById("hq-groups");
     const counter = document.getElementById("hq-counter");
 
-    if (container) container.innerHTML = hqBoxesHTML(hqState.boxes, true, hqState.flagged, hqState.pop);
+    if (container) container.innerHTML = hqGroupsHTML(hqState.subs.map(sb => sb.boxes), true);
 
     /* حركة الظهور تعمل مرة واحدة فقط للسهم المضاف حديثًا */
     hqState.pop = null;
 
-    if (counter) {
-        const total = hqState.boxes.reduce((sum, box) => sum + box.length, 0);
-        counter.textContent = `عدد الإلكترونات (الأسهم) التي وضعتِها: ${total}`;
+    if (counter && hqState.mode === "fill") {
+        const total = hqState.subs.reduce((sum, sb) => sum + sb.boxes.reduce((s2, box) => s2 + box.length, 0), 0);
+        counter.textContent = `عدد الإلكترونات التي وضعتِها ${total}`;
     }
 
     ["u", "d"].forEach(direction => {
@@ -2750,7 +2804,7 @@ function hqRefresh() {
     });
 }
 
-/* رسالة التغذية الراجعة: نص واحد أو قائمة أخطاء (تُبنى بعناصر DOM وليس innerHTML) */
+/* رسالة التغذية الراجعة: نص واحد أو قائمة أخطاء تُبنى بعناصر DOM */
 function hqShowFeedback(kind, intro, lines, footer) {
 
     const feedback = document.getElementById("hq-feedback");
@@ -2815,29 +2869,33 @@ function hqSetTool(direction) {
     hqRefresh();
 }
 
-/* الإدخال حر تمامًا: لا نمنع ↑↑ ولا ↓↓ ولا أي توزيع خاطئ علميًا */
-function hqAddArrow(boxIndex) {
+/* الإدخال حر تمامًا ولا نمنع أي توزيع خاطئ علميًا */
+function hqAddArrow(si, boxIndex) {
 
-    if (!hqState || !hqState.boxes[boxIndex]) return false;
+    const sb = hqState && hqState.subs[si];
 
-    if (hqState.boxes[boxIndex].length >= hqMaxArrows) {
-        hqShowFeedback("hint", `وصلتِ إلى الحد الأقصى لعدد الأسهم المعروضة في المربع الواحد (${hqMaxArrows} أسهم). احذفي سهمًا بالضغط عليه إذا أردتِ التعديل.`);
+    if (!sb || !sb.boxes[boxIndex]) return false;
+
+    if (sb.boxes[boxIndex].length >= hqMaxArrows) {
+        hqShowFeedback("hint", "وصلتِ إلى الحد الأقصى في هذا المدار. احذفي سهمًا بالضغط عليه.");
         return false;
     }
 
-    hqState.boxes[boxIndex].push(hqState.tool);
-    hqState.history.push({ type: "add", box: boxIndex });
-    hqState.pop = `${boxIndex}:${hqState.boxes[boxIndex].length - 1}`;
+    sb.boxes[boxIndex].push(hqState.tool);
+    hqState.history.push({ type: "add", sub: si, box: boxIndex });
+    hqState.pop = `${si}:${boxIndex}:${sb.boxes[boxIndex].length - 1}`;
     hqAfterEdit();
     return true;
 }
 
-function hqRemoveArrow(boxIndex, arrowIndex) {
+function hqRemoveArrow(si, boxIndex, arrowIndex) {
 
-    if (!hqState || !hqState.boxes[boxIndex] || hqState.boxes[boxIndex][arrowIndex] === undefined) return false;
+    const sb = hqState && hqState.subs[si];
 
-    const direction = hqState.boxes[boxIndex].splice(arrowIndex, 1)[0];
-    hqState.history.push({ type: "remove", box: boxIndex, index: arrowIndex, direction: direction });
+    if (!sb || !sb.boxes[boxIndex] || sb.boxes[boxIndex][arrowIndex] === undefined) return false;
+
+    const direction = sb.boxes[boxIndex].splice(arrowIndex, 1)[0];
+    hqState.history.push({ type: "remove", sub: si, box: boxIndex, index: arrowIndex, direction: direction });
     hqState.pop = null;
     hqAfterEdit();
     return true;
@@ -2848,33 +2906,54 @@ function hqUndo() {
     if (!hqState || hqState.history.length === 0) return;
 
     const action = hqState.history.pop();
+    const sb = hqState.subs[action.sub];
 
     if (action.type === "add") {
-        hqState.boxes[action.box].pop();
+        sb.boxes[action.box].pop();
     }
     else {
-        hqState.boxes[action.box].splice(action.index, 0, action.direction);
+        sb.boxes[action.box].splice(action.index, 0, action.direction);
     }
 
     hqState.pop = null;
     hqAfterEdit();
 }
 
-/* إعادة المحاولة: تمسح كل الأسهم وتبقي السؤال الحالي */
+/* إعادة المحاولة: في سؤال التوزيع تمسح الأسهم وفي سؤال الأخطاء ترجع التوزيع الجاهز كما كان */
 function hqReset() {
 
     if (!hqState) return;
 
-    hqState = hqMakeState(hqState.element, hqState.qIndex);
+    if (hqState.mode === "fix") {
+        const initial = JSON.parse(hqState.initial);
+        hqState.subs.forEach((sb, i) => { sb.boxes = initial[i]; });
+        hqState.history = [];
+        hqState.flagged = new Set();
+        hqState.attempts = 0;
+        hqState.solved = false;
+    }
+    else {
+        hqState = hqMakeState(hqState.element, "fill");
+    }
+
     hqRenderPanel();
 }
 
-/* سؤال آخر لنفس العنصر (مستوى فرعي آخر) */
+/* سؤال آخر: توزيع جاهز فيه أخطاء */
 function hqNextQuestion() {
 
     if (!hqState) return;
 
-    hqState = hqMakeState(hqState.element, hqState.qIndex + 1);
+    hqState = hqMakeState(hqState.element, "fix");
+    hqRenderPanel();
+}
+
+/* الرجوع لسؤال التوزيع من الصفر */
+function hqBackToFill() {
+
+    if (!hqState) return;
+
+    hqState = hqMakeState(hqState.element, "fill");
     hqRenderPanel();
 }
 
@@ -2882,10 +2961,11 @@ function hqCheck() {
 
     if (!hqState) return;
 
-    const result = hqEvaluate(hqState.boxes, hqState.required);
+    const fix = hqState.mode === "fix";
+    const result = hqEvaluateAll(hqState);
 
     if (result.state === "empty") {
-        hqShowFeedback("hint", "لم تضعي أي أسهم بعد. اختاري ↑ أو ↓ ثم اضغطي على الأفلاك لتوزيع الإلكترونات، وبعدها اضغطي على تحققي من الإجابة.");
+        hqShowFeedback("hint", "لم تضعي أي إلكترونات بعد، اختاري اتجاه السهم ثم اضغطي على المدارات.");
         return;
     }
 
@@ -2893,7 +2973,12 @@ function hqCheck() {
         hqState.solved = true;
         hqState.flagged = new Set();
         hqRefresh();
-        hqShowFeedback("success", "إجابتك صحيحة! أحسنتِ في توزيع الإلكترونات وفق القواعد المطلوبة. 🌟", [], result.note);
+        hqShowFeedback("success", fix ? "أحسنتِ، صححتِ جميع الأخطاء." : "أحسنتِ، توزيعك صحيح.", [], result.note);
+        return;
+    }
+
+    if (fix && JSON.stringify(hqState.subs.map(sb => sb.boxes)) === hqState.initial) {
+        hqShowFeedback("hint", "لم تغيّري شيئًا بعد، ابحثي عن الأخطاء وصححيها ثم اضغطي تحققي من الإجابة.");
         return;
     }
 
@@ -2902,13 +2987,13 @@ function hqCheck() {
     hqRefresh();
 
     const count = result.errors.length;
-    const intro = count === 1 ? "وجدتُ خطأً واحدًا في إجابتك:" : `وجدتُ ${count} أخطاء في إجابتك:`;
-    const footer = hqState.attempts >= 2 ? "وإذا احتجتِ، يمكنك الضغط على «عرض الحل الصحيح»." : "";
+    const intro = fix ? "ما زالت هناك أخطاء في التوزيع" : (hqErrorIntro[count] || "وجدتُ أخطاء في إجابتك");
+    const footer = hqState.attempts >= 2 ? "يمكنكِ الضغط على عرض الحل الصحيح." : "";
 
-    hqShowFeedback("error", intro, result.errors.map(error => error.text), footer);
+    hqShowFeedback("error", intro, result.errors, footer);
 }
 
-/* عرض الحل الصحيح (زر مستقل، ولا يغيّر أسهم الطالبة) */
+/* عرض الحل الصحيح بزر مستقل ولا يغيّر أسهم الطالبة */
 function hqShowSolution() {
 
     if (!hqState) return;
@@ -2917,13 +3002,13 @@ function hqShowSolution() {
 
     if (!box) return;
 
-    const solution = hqSolutionBoxes(hqState.n, hqState.required);
+    const list = hqState.subs.map(sb => hqSolutionBoxes(sb.n, sb.required));
 
     box.hidden = false;
     box.innerHTML = `
-        <h4>الحل الصحيح: <span dir="ltr">${hqState.sub}</span> لعنصر ${hqState.element.ar} (${hqState.element.s})</h4>
+        <h4>الحل الصحيح لعنصر ${hqState.element.ar} ${hqState.element.s}</h4>
         <div class="hq-boxes-wrap">
-            <div class="hq-boxes hq-static">${hqBoxesHTML(solution, false, null, null)}</div>
+            <div class="hq-groups">${hqGroupsHTML(list, false)}</div>
         </div>
         <p>${hqExplain(hqState)}</p>
     `;
@@ -2938,25 +3023,27 @@ function hqRenderPanel() {
 
     const state = hqState;
     const element = state.element;
-    const orbitalsText = state.n === 1 ? "فلك واحد" : `${state.n} أفلاك متساوية في الطاقة`;
+    const fix = state.mode === "fix";
+
+    const questionText = fix
+        ? `اكتشفي الأخطاء في توزيع إلكترونات عنصر ${element.ar} ${element.s} على المدارات الآتية ثم صححيها.`
+        : `وزّعي إلكترونات عنصر ${element.ar} ${element.s} على المدارات الآتية باستخدام الأسهم.`;
+
+    const instructionText = fix
+        ? `اضغطي على السهم لحذفه، أو اختاري اتجاه السهم ثم اضغطي على المدار لإضافة سهم.
+           التصحيح يتم عند الضغط على تحققي من الإجابة.`
+        : `عدد الإلكترونات المطلوب توزيعها <span class="hq-required">${element.z}</span>.
+           اختاري اتجاه السهم ثم اضغطي على المدار لإضافة إلكترون.
+           ويمكنكِ إضافة إلكترون ثانٍ في المدار نفسه.
+           اضغطي على السهم لحذفه.
+           التصحيح يتم عند الضغط على تحققي من الإجابة.`;
 
     panel.innerHTML = `
         <div class="quiz-card">
             <h3 class="lq-title">اختبار قصير | قاعدة هوند</h3>
-            <p class="quiz-question">
-                وزّعي إلكترونات المستوى الفرعي <span dir="ltr">${state.sub}</span>
-                لعنصر ${element.ar} (${element.s}) على الأفلاك الآتية باستخدام الأسهم.
-            </p>
-            <p class="quiz-instruction">
-                عدد الإلكترونات المطلوب توزيعها: <span class="hq-required">${state.required}</span>.
-                اختاري اتجاه السهم (↑ أو ↓) ثم اضغطي على الفلك لإضافته، ويمكنك إضافة سهم ثانٍ في الفلك نفسه.
-                اضغطي على السهم لحذفه. يمكنك وضع أي أسهم تريدينها، والتصحيح يتم عند الضغط على «تحققي من الإجابة».
-            </p>
-
-            <div class="hq-subshell">
-                المستوى الفرعي <span dir="ltr">${state.sub}</span>
-                <small>${orbitalsText}</small>
-            </div>
+            <p class="quiz-instruction">العدد الذري ${element.z}</p>
+            <p class="quiz-question">${questionText}</p>
+            <p class="quiz-instruction">${instructionText}</p>
 
             <div class="hq-tools" role="group" aria-label="اتجاه السهم">
                 <button type="button" class="hq-tool" id="hq-tool-u" onclick="hqSetTool('u')"><span class="hq-tool-arrow">↑</span>سهم لأعلى</button>
@@ -2964,7 +3051,7 @@ function hqRenderPanel() {
             </div>
 
             <div class="hq-boxes-wrap">
-                <div class="hq-boxes" id="hq-boxes"></div>
+                <div class="hq-groups" id="hq-groups"></div>
             </div>
             <div class="hq-counter" id="hq-counter"></div>
 
@@ -2973,7 +3060,8 @@ function hqRenderPanel() {
                 <button type="button" class="quiz-button quiz-reset" onclick="hqUndo()">↩ تراجع</button>
                 <button type="button" class="quiz-button quiz-reset" onclick="hqReset()">إعادة المحاولة</button>
                 <button type="button" class="quiz-button quiz-reset" onclick="hqShowSolution()">عرض الحل الصحيح</button>
-                <button type="button" class="quiz-button quiz-reset" id="hq-next" onclick="hqNextQuestion()"${state.questionCount > 1 ? "" : " hidden"}>سؤال آخر</button>
+                <button type="button" class="quiz-button quiz-reset" id="hq-next" onclick="hqNextQuestion()">سؤال آخر</button>
+                ${fix ? `<button type="button" class="quiz-button quiz-reset" onclick="hqBackToFill()">توزيع من الصفر</button>` : ""}
             </div>
 
             <div id="hq-feedback" class="quiz-feedback" aria-live="polite"></div>
@@ -2981,7 +3069,7 @@ function hqRenderPanel() {
         </div>
     `;
 
-    const container = document.getElementById("hq-boxes");
+    const container = document.getElementById("hq-groups");
 
     container.addEventListener("click", event => {
 
@@ -2989,13 +3077,16 @@ function hqRenderPanel() {
 
         if (arrow) {
             const parts = arrow.dataset.hqArrow.split(":");
-            hqRemoveArrow(Number(parts[0]), Number(parts[1]));
+            hqRemoveArrow(Number(parts[0]), Number(parts[1]), Number(parts[2]));
             return;
         }
 
         const box = event.target.closest("[data-hq-box]");
 
-        if (box) hqAddArrow(Number(box.dataset.hqBox));
+        if (box) {
+            const parts = box.dataset.hqBox.split(":");
+            hqAddArrow(Number(parts[0]), Number(parts[1]));
+        }
     });
 
     container.addEventListener("keydown", event => {
@@ -3009,26 +3100,27 @@ function hqRenderPanel() {
 
         event.preventDefault();
 
-        let boxIndex;
+        let key;
 
         if (arrow) {
             const parts = arrow.dataset.hqArrow.split(":");
-            boxIndex = Number(parts[0]);
-            hqRemoveArrow(boxIndex, Number(parts[1]));
+            key = `${parts[0]}:${parts[1]}`;
+            hqRemoveArrow(Number(parts[0]), Number(parts[1]), Number(parts[2]));
         }
         else {
-            boxIndex = Number(box.dataset.hqBox);
-            hqAddArrow(boxIndex);
+            const parts = box.dataset.hqBox.split(":");
+            key = box.dataset.hqBox;
+            hqAddArrow(Number(parts[0]), Number(parts[1]));
         }
 
-        const again = container.querySelector(`[data-hq-box="${boxIndex}"]`);
+        const again = container.querySelector(`[data-hq-box="${key}"]`);
         if (again) again.focus();
     });
 
     hqRefresh();
 }
 
-/* عند اختيار عنصر جديد: سؤال جديد وإجابة فارغة */
+/* عند اختيار عنصر جديد: سؤال توزيع جديد وإجابة فارغة */
 function hqRenderQuestion(element) {
 
     const panel = document.getElementById("quizQuestion3");
@@ -3041,17 +3133,116 @@ function hqRenderQuestion(element) {
         return;
     }
 
-    hqState = hqMakeState(element, 0);
+    hqState = hqMakeState(element, "fill");
     hqRenderPanel();
 }
 
-
-/* شاشة البداية */
-setTimeout(() => {
-    document.getElementById("intro").classList.add("hide");
-}, 3000);
-
 </script>
 
+<script>/* ===== إضافات: التنقل والرجوع والفلترة ===== */
+function navigateElement(d){
+    if(!currentElement) return;
+    const next = elements[currentElement.z - 1 + d];
+    if(!next) return;
+    currentQuizQuestion = null;
+    openAtom(next, "replace");
+}
+
+function syncNavButtons(){
+    if(!currentElement) return;
+    document.getElementById("prevElement").disabled = currentElement.z <= 1;
+    document.getElementById("nextElement").disabled = currentElement.z >= elements.length;
+}
+
+window.addEventListener("popstate", function(e){
+    const st = e.state;
+    if(st && st.atom){
+        openAtom(elements[st.atom - 1], "none");
+    }
+    else if(atomPage.classList.contains("active")){
+        atomPage.classList.remove("active");
+        mainPage.style.display = "block";
+        currentElement = null;
+        currentQuizQuestion = null;
+        window.scrollTo(0,0);
+    }
+});
+
+(function(){
+    const title = document.getElementById("colorKeyTitle");
+    const box = document.querySelector(".color-key-items");
+    const catHTML = box.innerHTML;
+    const modes = [
+        {k:"cat"},
+        {k:"state",label:"حسب حالة المادة",prop:"state",items:[["صلب","#d9e8ff"],["سائل","#d9f4ef"],["غاز","#ffe8b7"],["غير معروفة","#e8e8ed"]]},
+        {k:"block",label:"حسب المستوى الفرعي",prop:"b",items:[["s","#ffd9df","الفئة s"],["p","#d9f4ef","الفئة p"],["d","#d9e8ff","الفئة d"],["f","#e9ddff","الفئة f"]]}
+    ];
+    let mi = 0;
+    let active = null;
+
+    function tagCat(){
+        box.querySelectorAll(".key-item").forEach(function(it){
+            const sw = it.querySelector(".key-color");
+            it.dataset.filter = sw.classList[1];
+            it.tabIndex = 0;
+            it.setAttribute("role","button");
+        });
+    }
+
+    function apply(){
+        const m = modes[mi];
+        title.innerHTML = "مفتاح الألوان" + (m.label ? " · " + m.label : "") + ' <span class="key-switch">⇄</span>';
+
+        if(m.k === "cat"){
+            box.innerHTML = catHTML;
+            tagCat();
+        }
+        else{
+            box.innerHTML = m.items.map(function(i){
+                return '<div class="key-item" role="button" tabindex="0" data-filter="' + i[0] + '"><span class="key-color" style="background:' + i[1] + '"></span>' + (i[2] || i[0]) + '</div>';
+            }).join("");
+        }
+
+        box.querySelectorAll(".key-item").forEach(function(it){
+            it.classList.toggle("active", it.dataset.filter === active);
+        });
+
+        document.querySelectorAll(".element").forEach(function(card){
+            const e = elements[Number(card.dataset.z) - 1];
+            if(m.k === "cat"){
+                card.style.background = "";
+            }
+            else{
+                const hit = m.items.find(function(i){ return i[0] === e[m.prop]; });
+                card.style.background = hit ? hit[1] : "";
+            }
+            const val = m.k === "cat" ? e.cat : e[m.prop];
+            card.classList.toggle("dim", !!active && val !== active);
+        });
+    }
+
+    function nextMode(){
+        mi = (mi + 1) % modes.length;
+        active = null;
+        apply();
+    }
+
+    function pick(it){
+        if(!it) return;
+        active = active === it.dataset.filter ? null : it.dataset.filter;
+        apply();
+    }
+
+    title.addEventListener("click", nextMode);
+    title.addEventListener("keydown", function(ev){
+        if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); nextMode(); }
+    });
+    box.addEventListener("click", function(ev){ pick(ev.target.closest(".key-item")); });
+    box.addEventListener("keydown", function(ev){
+        if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); pick(ev.target.closest(".key-item")); }
+    });
+
+    apply();
+})();</script>
 </body>
 </html>
