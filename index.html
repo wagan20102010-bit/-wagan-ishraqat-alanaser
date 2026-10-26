@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="استكشفي العناصر الكيميائية في الجدول الدوري وتوزيعها الإلكتروني واختبري نفسك">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚛️%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke=%22%237056a8%22%20stroke-width=%221.8%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%3E%3Ccircle%20cx=%2212%22%20cy=%2212%22%20r=%221%22%20/%3E%3Cpath%20d=%22M20.2%2020.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04%202.03-.02%207.36%204.5%2011.9%204.54%204.52%209.87%206.54%2011.9%204.5Z%22%20/%3E%3Cpath%20d=%22M15.7%2015.7c4.52-4.54%206.54-9.87%204.5-11.9-2.03-2.04-7.36-.02-11.9%204.5-4.52%204.54-6.54%209.87-4.5%2011.9%202.03%202.04%207.36.02%2011.9-4.5Z%22%20/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -672,9 +672,61 @@ to{transform:scale(1);opacity:1;}
             #ionicPage .ionic-nav{bottom:66px;padding-bottom:10px;}
             #ionicPage{padding-bottom:84px;}
         }
+
+/* ===== الأيقونات ===== */
+.ic{width:1.15em;height:1.15em;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-.2em;display:inline-block}
+.section-tab .ic{width:30px;height:30px;stroke-width:1.7}
+.ei-tab .ic{width:28px;height:28px;stroke-width:1.7}
+.ei-badge .ic{width:15px;height:15px;vertical-align:-.15em;margin-inline-end:3px}
+.ei-big{display:flex;justify-content:center}
+.ei-big .ic{width:46px;height:46px;padding:16px;box-sizing:content-box;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 8px 20px rgba(90,70,120,.12);stroke-width:1.7}
+.ei-c4 .ei-big .ic{background:rgba(255,255,255,.14)}
+.ei-big .ic{color:var(--ei-i,#7056a8)}
+#electra-float-btn .ic{width:20px;height:20px}
+.electra-avatar .ic{width:20px;height:20px}
+.electra-btn-icon .ic{width:18px;height:18px}
+.electra-attach-btn .ic{width:20px;height:20px}
+#electraSendBtn .ic{width:18px;height:18px;transform:scaleX(-1)}
+.electra-msg .ic{width:16px;height:16px;vertical-align:-.25em}
+.electra-copy-btn .ic{width:12px;height:12px;vertical-align:-.15em;margin-inline-end:3px}
+#electra-float-btn .ic,.electra-avatar .ic,#electraSendBtn .ic{stroke:#fff!important;fill:none!important}
+.electra-preview-container .ic{width:14px;height:14px}
 </style>
 </head>
 <body>
+<script>
+/* مكتبة الأيقونات (مرسومة بخطوط موحّدة) تحلّ محل الإيموجي في كل الموقع. الأيقونات من مجموعة Lucide المفتوحة (ISC). */
+(function(){
+var P={"atom":"<circle cx=\"12\" cy=\"12\" r=\"1\" /><path d=\"M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z\" /><path d=\"M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z\" />","zap":"<path d=\"M15.914 4a1.5 1.5 0 00-2.474-1.561l-9 9A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l9-9A1.5 1.5 0 0018.5 10h-3.997a.5.5 0 01-.472-.667z\" />","globe":"<circle cx=\"12\" cy=\"12\" r=\"10\" /><path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" /><path d=\"M2 12h20\" />","clipboard-list":"<rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\" /><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\" /><path d=\"M12 11h4\" /><path d=\"M12 16h4\" /><path d=\"M8 11h.01\" /><path d=\"M8 16h.01\" />","cloud":"<path d=\"M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z\" />","trash":"<path d=\"M10 11v6\" /><path d=\"M14 11v6\" /><path d=\"M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6\" /><path d=\"M3 6h18\" /><path d=\"M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2\" />","paperclip":"<path d=\"m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551\" />","send":"<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\" /><path d=\"m21.854 2.147-10.94 10.939\" />","x":"<path d=\"M18 6 6 18\" /><path d=\"m6 6 12 12\" />","image":"<rect width=\"18\" height=\"18\" x=\"3\" y=\"3\" rx=\"2\" ry=\"2\" /><circle cx=\"9\" cy=\"9\" r=\"2\" /><path d=\"m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21\" />","copy":"<rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\" /><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\" />","check":"<path d=\"M20 6 9 17l-5-5\" />","flower-2":"<path d=\"M12 5a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1M9 8a3 3 0 1 0 3 3M9 8h1m5 0a3 3 0 1 1-3 3m3-3h-1m-2 3v-1\" /><circle cx=\"12\" cy=\"8\" r=\"2\" /><path d=\"M12 10v12\" /><path d=\"M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z\" /><path d=\"M12 22c-4.2 0-7-1.667-7-5 4.2 0 7 1.667 7 5Z\" />","wrench":"<path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z\" />","triangle-alert":"<path d=\"m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3\" /><path d=\"M12 9v4\" /><path d=\"M12 17h.01\" />","book-open":"<path d=\"M12 5v16\" /><path d=\"M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z\" />","sparkles":"<path d=\"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z\" /><path d=\"M20 2v4\" /><path d=\"M22 4h-4\" /><circle cx=\"4\" cy=\"20\" r=\"2\" />","house":"<path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\" /><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\" />","ban":"<circle cx=\"12\" cy=\"12\" r=\"10\" /><path d=\"M4.929 4.929 19.07 19.071\" />","scroll-text":"<path d=\"M15 12h-5\" /><path d=\"M15 8h-5\" /><path d=\"M19 17V5a2 2 0 0 0-2-2H4\" /><path d=\"M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3\" />","orbit":"<path d=\"M20.341 6.484A10 10 0 0 1 10.266 21.85\" /><path d=\"M3.659 17.516A10 10 0 0 1 13.74 2.152\" /><circle cx=\"12\" cy=\"12\" r=\"3\" /><circle cx=\"19\" cy=\"5\" r=\"2\" /><circle cx=\"5\" cy=\"19\" r=\"2\" />","sprout":"<path d=\"M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3\" /><path d=\"M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4\" /><path d=\"M5 21h14\" />","wind":"<path d=\"M12.8 19.6A2 2 0 1 0 14 16H2\" /><path d=\"M17.5 8a2.5 2.5 0 1 1 2 4H2\" /><path d=\"M9.8 4.4A2 2 0 1 1 11 8H2\" />","circle-dot":"<circle cx=\"12\" cy=\"12\" r=\"1\" /><circle cx=\"12\" cy=\"12\" r=\"10\" />","utensils":"<path d=\"M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2\" /><path d=\"M7 2v20\" /><path d=\"M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7\" />","waves-horizontal":"<path d=\"M2 12q2.5 2 5 0t5 0 5 0 5 0\" /><path d=\"M2 19q2.5 2 5 0t5 0 5 0 5 0\" /><path d=\"M2 5q2.5 2 5 0t5 0 5 0 5 0\" />","star":"<path d=\"M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z\" />","coins":"<path d=\"M13.744 17.736a6 6 0 1 1-7.48-7.48\" /><path d=\"M15 6h1v4\" /><path d=\"m6.134 14.768.866-.5 2 3.464\" /><circle cx=\"16\" cy=\"8\" r=\"6\" />","mountain":"<path d=\"m8 3 4 8 5-5 5 15H2L8 3z\" />","flask-conical":"<path d=\"M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2\" /><path d=\"M6.453 15h11.094\" /><path d=\"M8.5 2h7\" />","gem":"<path d=\"M10.5 3 8 9l4 13 4-13-2.5-6\" /><path d=\"M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z\" /><path d=\"M2 9h20\" />","flame":"<path d=\"M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4\" />","bomb":"<circle cx=\"11\" cy=\"13\" r=\"9\" /><path d=\"M14.35 4.65 16.3 2.7a2.41 2.41 0 0 1 3.4 0l1.6 1.6a2.4 2.4 0 0 1 0 3.4l-1.95 1.95\" /><path d=\"m22 2-1.5 1.5\" />","biohazard":"<circle cx=\"12\" cy=\"11.9\" r=\"2\" /><path d=\"M6.7 3.4c-.9 2.5 0 5.2 2.2 6.7C6.5 9 3.7 9.6 2 11.6\" /><path d=\"m8.9 10.1 1.4.8\" /><path d=\"M17.3 3.4c.9 2.5 0 5.2-2.2 6.7 2.4-1.2 5.2-.6 6.9 1.5\" /><path d=\"m15.1 10.1-1.4.8\" /><path d=\"M16.7 20.8c-2.6-.4-4.6-2.6-4.7-5.3-.2 2.6-2.1 4.8-4.7 5.2\" /><path d=\"M12 13.9v1.6\" /><path d=\"M13.5 5.4c-1-.2-2-.2-3 0\" /><path d=\"M17 16.4c.7-.7 1.2-1.6 1.5-2.5\" /><path d=\"M5.5 13.9c.3.9.8 1.8 1.5 2.5\" />","magnet":"<path d=\"m12 15 4 4\" /><path d=\"M2.352 10.648a1.205 1.205 0 0 0 0 1.704l2.296 2.296a1.205 1.205 0 0 0 1.704 0l6.029-6.029a1 1 0 1 1 3 3l-6.029 6.029a1.205 1.205 0 0 0 0 1.704l2.296 2.296a1.205 1.205 0 0 0 1.704 0l6.365-6.367A1 1 0 0 0 8.716 4.282z\" /><path d=\"m5 8 4 4\" />","shield":"<path d=\"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z\" />","scale":"<path d=\"M12 3v18\" /><path d=\"m19 8 3 8a5 5 0 0 1-6 0zV7\" /><path d=\"M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1\" /><path d=\"m5 8 3 8a5 5 0 0 1-6 0zV7\" /><path d=\"M7 21h10\" />","battery-charging":"<path d=\"m11 7-3 5h4l-3 5\" /><path d=\"M14.856 6H16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.935\" /><path d=\"M22 14v-4\" /><path d=\"M5.14 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2.936\" />","pencil":"<path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\" /><path d=\"m15 5 4 4\" />","heart-pulse":"<path d=\"M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5\" /><path d=\"M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27\" />","signpost":"<path d=\"M12 13v8\" /><path d=\"M12 3v3\" /><path d=\"M2.354 10.354a1.207 1.207 0 0 1 0-1.708l2.06-2.06A2 2 0 0 1 5.828 6h12.344a2 2 0 0 1 1.414.586l2.06 2.06a1.207 1.207 0 0 1 0 1.708l-2.06 2.06a2 2 0 0 1-1.414.586H5.828a2 2 0 0 1-1.414-.586z\" />","brain":"<path d=\"M12 18V5\" /><path d=\"M15 13a4.17 4.17 0 01-3-4 4.17 4.17 0 01-3 4\" /><path d=\"M17.707 6.294A3 3 0 1012 5a3 3 0 10-5.707 1.294\" /><path d=\"M17.996 5.125a4 4 0 012.526 5.77\" /><path d=\"M18 18a4 4 0 002-7.465\" /><path d=\"M19.967 17.482a4 4 0 11-7.967.517 4 4 0 11-7.967-.517\" /><path d=\"M6 18a4 4 0 01-2-7.465\" /><path d=\"M6.004 5.125a4 4 0 00-2.526 5.77\" />","droplets":"<path d=\"M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z\" /><path d=\"M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97\" />","construction":"<rect x=\"2\" y=\"6\" width=\"20\" height=\"8\" rx=\"1\" /><path d=\"M17 14v7\" /><path d=\"M7 14v7\" /><path d=\"M17 3v3\" /><path d=\"M7 3v3\" /><path d=\"M10 14 2.3 6.3\" /><path d=\"m14 6 7.7 7.7\" /><path d=\"m8 6 8 8\" />","plug":"<path d=\"M12 22v-5\" /><path d=\"M15 8V2\" /><path d=\"M17 8a1 1 0 0 1 1 1v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1z\" /><path d=\"M9 8V2\" />","hospital":"<path d=\"M12 7v4\" /><path d=\"M14 21v-3a2 2 0 0 0-4 0v3\" /><path d=\"M14 9h-4\" /><path d=\"M18 11h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2h2\" /><path d=\"M18 21V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16\" />","microscope":"<path d=\"M6 18h8\" /><path d=\"M3 22h18\" /><path d=\"M14 22a7 7 0 1 0 0-14h-1\" /><path d=\"M9 14h2\" /><path d=\"M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z\" /><path d=\"M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3\" />","droplet":"<path d=\"M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z\" />","dna":"<path d=\"m10 16 1.5 1.5\" /><path d=\"m14 8-1.5-1.5\" /><path d=\"M15 2c-1.798 1.998-2.518 3.995-2.807 5.993\" /><path d=\"m16.5 10.5 1 1\" /><path d=\"m17 6-2.891-2.891\" /><path d=\"M2 15c6.667-6 13.333 0 20-6\" /><path d=\"m20 9 .891.891\" /><path d=\"M3.109 14.109 4 15\" /><path d=\"m6.5 12.5 1 1\" /><path d=\"m7 18 2.891 2.891\" /><path d=\"M9 22c1.798-1.998 2.518-3.995 2.807-5.993\" />","bug":"<path d=\"M12 20v-9\" /><path d=\"M14 7a4 4 0 0 1 4 4v3a6 6 0 0 1-12 0v-3a4 4 0 0 1 4-4z\" /><path d=\"M14.12 3.88 16 2\" /><path d=\"M21 21a4 4 0 0 0-3.81-4\" /><path d=\"M21 5a4 4 0 0 1-3.55 3.97\" /><path d=\"M22 13h-4\" /><path d=\"M3 21a4 4 0 0 1 3.81-4\" /><path d=\"M3 5a4 4 0 0 0 3.55 3.97\" /><path d=\"M6 13H2\" /><path d=\"m8 2 1.88 1.88\" /><path d=\"M9 7.13V6a3 3 0 1 1 6 0v1.13\" />","building":"<path d=\"M12 10h.01\" /><path d=\"M12 14h.01\" /><path d=\"M12 6h.01\" /><path d=\"M16 10h.01\" /><path d=\"M16 14h.01\" /><path d=\"M16 6h.01\" /><path d=\"M8 10h.01\" /><path d=\"M8 14h.01\" /><path d=\"M8 6h.01\" /><path d=\"M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3\" /><rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" />","maximize-2":"<path d=\"M15 3h6v6\" /><path d=\"m21 3-7 7\" /><path d=\"m3 21 7-7\" /><path d=\"M9 21H3v-6\" />","lightbulb":"<path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5\" /><path d=\"M9 18h6\" /><path d=\"M10 22h4\" />","sun":"<circle cx=\"12\" cy=\"12\" r=\"4\" /><path d=\"M12 2v2\" /><path d=\"M12 20v2\" /><path d=\"m4.93 4.93 1.41 1.41\" /><path d=\"m17.66 17.66 1.41 1.41\" /><path d=\"M2 12h2\" /><path d=\"M20 12h2\" /><path d=\"m6.34 17.66-1.41 1.41\" /><path d=\"m19.07 4.93-1.41 1.41\" />"};
+var EMO={"🌍":"globe","✨":"sparkles","🏠":"house","🚫":"ban","📜":"scroll-text","🌌":"orbit","🌱":"sprout","🌬":"wind","🔴":"lightbulb","🧂":"utensils","🌊":"waves-horizontal","☄":"star","🪙":"coins","⛰":"mountain","🧪":"flask-conical","⚛":"atom","💎":"gem","🔥":"flame","🟠":"sun","💥":"bomb","☣":"biohazard","🧲":"magnet","⚡":"zap","🛡":"shield","⚖":"scale","🔋":"battery-charging","✏":"pencil","🫁":"heart-pulse","🪧":"signpost","🧠":"brain","🚰":"droplets","🏗":"construction","🔌":"plug","🏥":"hospital","🔬":"microscope","💧":"droplet","🧬":"dna","💨":"wind","🦠":"bug","🏙":"building"};
+var G={purple:['#7056a8','#e9578b'],sunny:['#f7b500','#ff7a45'],ocean:['#19b5c6','#4f7cff'],mint:['#34c38f','#12a4a0'],rose:['#ff6b9a','#c14bd8'],fire:['#ff8a3d','#e8364b'],indigo:['#4f7cff','#8a5cf0'],sky:['#38bdf8','#6366f1'],lime:['#7bd34b','#2fb36b']};
+var COL={'atom':'purple','zap':'sunny','globe':'ocean','clipboard-list':'indigo','cloud':'sky','trash':'fire','paperclip':'indigo','send':'rose','x':'purple','image':'mint','copy':'ocean','check':'lime','flower-2':'rose','wrench':'sunny','triangle-alert':'fire','book-open':'indigo','sparkles':'rose','house':'fire','ban':'fire','scroll-text':'sunny','orbit':'indigo','sprout':'lime','wind':'sky','circle-dot':'rose','utensils':'sunny','waves-horizontal':'ocean','star':'sunny','coins':'sunny','mountain':'mint','flask-conical':'mint','gem':'sky','flame':'fire','bomb':'fire','biohazard':'lime','magnet':'rose','shield':'ocean','scale':'indigo','battery-charging':'lime','pencil':'sunny','heart-pulse':'rose','signpost':'sunny','brain':'rose','droplets':'ocean','construction':'sunny','plug':'indigo','hospital':'rose','microscope':'indigo','droplet':'ocean','dna':'purple','bug':'lime','building':'indigo','maximize-2':'indigo','lightbulb':'sunny','sun':'sunny'};
+var FILLED={'globe':1,'gem':1,'flask-conical':1,'shield':1,'house':1,'zap':1,'flame':1,'droplet':1,'droplets':1,'bomb':1,'star':1,'cloud':1,'coins':1,'mountain':1,'lightbulb':1,'sun':1,'hospital':1,'building':1,'brain':1,'bug':1,'magnet':1,'battery-charging':1,'triangle-alert':1,'sparkles':1,'flower-2':1};
+/* تدرجات الألوان المشتركة بين كل الأيقونات */
+var defs='<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>';
+Object.keys(G).forEach(function(k){defs+='<linearGradient id="ig-'+k+'" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="'+G[k][0]+'"/><stop offset="1" stop-color="'+G[k][1]+'"/></linearGradient>';});
+defs+='</defs></svg>';
+if(document.body) document.body.insertAdjacentHTML('afterbegin',defs);
+window.ICO=function(name){
+  var p=P[name]; if(!p) return '';
+  var g='url(#ig-'+(COL[name]||'purple')+')';
+  return '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="stroke:'+g+';fill:'+(FILLED[name]?g:'none')+';fill-opacity:'+(FILLED[name]?'.24':'0')+'">'+p+'</svg>';
+};
+/* يقبل اسم أيقونة أو إيموجي قديم ويرجع الأيقونة المناسبة */
+/* يحوّل الأيقونات الثابتة في الصفحة إلى النسخة الملوّنة */
+window.ICO_UPGRADE=function(root){
+  var els=(root||document).querySelectorAll('[data-ico]');
+  for(var i=0;i<els.length;i++){ var e=els[i]; e.outerHTML=window.ICO(e.getAttribute('data-ico')); }
+};
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){window.ICO_UPGRADE();});
+else window.ICO_UPGRADE();
+window.EIC=function(k){
+  var s=String(k).replace(/\uFE0F/g,'');
+  if(P[s]) return window.ICO(s);
+  return EMO[s]?window.ICO(EMO[s]):k;
+};
+})();
+</script>
 
 <!-- شاشة البداية -->
 <div id="intro">
@@ -1203,17 +1255,17 @@ $('ionic-stage').addEventListener('click',function(ev){
     <div class="element-sections">
 
         <button class="section-tab active" data-section="atomSection" onclick="showElementSection('atomSection')">
-            <span>⚛️</span>
+            <span><span data-ico="atom"></span></span>
             <strong>الذرة</strong>
         </button>
 
         <button class="section-tab" data-section="electronSection" onclick="showElementSection('electronSection')">
-            <span>⚡</span>
+            <span><span data-ico="zap"></span></span>
             <strong>التوزيع الإلكتروني</strong>
         </button>
 
         <button class="section-tab" data-section="quizSection" onclick="showElementSection('quizSection')">
-            <span>📝</span>
+            <span><span data-ico="clipboard-list"></span></span>
             <strong>اختبار قصير</strong>
         </button>
 
@@ -2170,7 +2222,7 @@ function renderElectronSection(element){
         <div class="electron-section">
 
             <div class="electron-title">
-                <h3>⚡ التوزيع الإلكتروني</h3>
+                <h3>${ICO("zap")} التوزيع الإلكتروني</h3>
                 <p>
                     تعرّفي على ترتيب إلكترونات
                     ${element.ar}
@@ -2236,7 +2288,7 @@ function renderElectronSection(element){
             <div class="cloud-card">
 
                 <div class="cloud-heading">
-                    <h4>☁️ توزيع إلكترونات تفاعلي</h4>
+                    <h4>${ICO("cloud")} توزيع إلكترونات تفاعلي</h4>
                     <span>حركة سريعة داخل سحابة إلكترونية</span>
                 </div>
 
@@ -2250,7 +2302,7 @@ function renderElectronSection(element){
                         ${element.z}
                     </div>
                     <button class="run-cloud" onclick="runCloudAnimation()">
-                        ⚡ تشغيل الحركة
+                        ${ICO("zap")} تشغيل الحركة
                     </button>
                 </div>
 
@@ -4026,7 +4078,7 @@ window.addEventListener("popstate", function(e){
   tab.type = 'button';
   tab.className = 'section-tab';
   tab.setAttribute('data-section', 'impactSection');
-  tab.innerHTML = '<span>🌍</span><strong>أثر العنصر</strong>';
+  tab.innerHTML = '<span>' + ICO('globe') + '</span><strong>أثر العنصر</strong>';
   tab.addEventListener('click', function () {
     if (typeof window.showElementSection === 'function') { window.showElementSection('impactSection'); return; }
     var all = document.querySelectorAll('.element-section-content');
@@ -4076,7 +4128,7 @@ window.addEventListener("popstate", function(e){
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
   function defaultCards(name) {
-    return [['🌍', 'أين وُجد؟'], ['✨', 'ما الذي يميّزه؟'], ['🏠', 'أثره في حياتنا'], ['🚫', 'اجعلي ' + name + ' يختفي']];
+    return [['globe', 'أين وُجد؟'], ['sparkles', 'ما الذي يميّزه؟'], ['house', 'أثره في حياتنا'], ['ban', 'اجعلي ' + name + ' يختفي']];
   }
 
   function mediaHTML(el, d) {
@@ -4095,20 +4147,20 @@ window.addEventListener("popstate", function(e){
   function cardEl(el, d, i) {
     var cards = d.cards || defaultCards(el.ar);
     var cd = cards[i];
-    var q = [['🌍', 'أين وُجد؟', d.where], ['✨', 'ما الذي يميّزه؟', d.special], ['🏠', 'أثره في حياتنا', d.uses], ['🚫', 'ماذا لو لم يوجد؟', d.whatif]][i];
+    var q = [['globe', 'أين وُجد؟', d.where], ['sparkles', 'ما الذي يميّزه؟', d.special], ['house', 'أثره في حياتنا', d.uses], ['ban', 'ماذا لو لم يوجد؟', d.whatif]][i];
     var c = document.createElement('section');
     c.className = 'ei-card ei-c' + (i + 1);
     var title, body;
     if (i < 3) {
       title = esc(cd[1]);
-      body = '<p>' + esc(q[2]) + '</p>' + (i === 0 && d.story ? '<p class="ei-story">📜 ' + esc(d.story) + '</p>' : '');
+      body = '<p>' + esc(q[2]) + '</p>' + (i === 0 && d.story ? '<p class="ei-story">' + ICO('scroll-text') + ' ' + esc(d.story) + '</p>' : '');
     } else {
       title = '<span class="ei-before">جرّبي بنفسك</span><span class="ei-out">اختفى ' + esc(el.ar) + '!</span>';
       body = '<p class="ei-before">اضغطي الزر وشوفي وش يصير لو اختفى ' + esc(el.ar) + ' من العالم.</p>' +
         '<p class="ei-out">' + esc(q[2]) + '</p>' +
         '<button type="button" class="ei-btn">' + esc(cd[1]) + '</button>';
     }
-    c.innerHTML = '<span class="ei-badge">' + q[0] + ' ' + q[1] + '</span><div class="ei-big">' + cd[0] + '</div><h4>' + title + '</h4>' + body;
+    c.innerHTML = '<span class="ei-badge">' + EIC(q[0]) + ' ' + q[1] + '</span><div class="ei-big">' + EIC(cd[0]) + '</div><h4>' + title + '</h4>' + body;
     var b = c.querySelector('.ei-btn');
     if (b) {
       if (vanished[el.z]) { b.textContent = 'أرجعي ' + el.ar; }
@@ -4191,7 +4243,7 @@ window.addEventListener("popstate", function(e){
       tabs.setAttribute('role', 'tablist');
       var panel = document.createElement('div');
       panel.className = 'ei-panel';
-      var labels = [['🌍', 'أين وُجد؟'], ['✨', 'ما يميّزه'], ['🏠', 'أثره'], ['🚫', 'لو لم يوجد']];
+      var labels = [['globe', 'أين وُجد؟'], ['sparkles', 'ما يميّزه'], ['house', 'أثره'], ['ban', 'لو لم يوجد']];
       var show = function (n) {
         curTab = n;
         Array.prototype.forEach.call(tabs.children, function (b, j) {
@@ -4209,7 +4261,7 @@ window.addEventListener("popstate", function(e){
         b.type = 'button';
         b.className = 'ei-tab';
         b.setAttribute('role', 'tab');
-        b.innerHTML = '<span>' + l[0] + '</span>' + l[1];
+        b.innerHTML = '<span>' + EIC(l[0]) + '</span>' + l[1];
         b.addEventListener('click', function () { show(n); });
         tabs.appendChild(b);
       });
@@ -4243,51 +4295,51 @@ window.addEventListener("popstate", function(e){
 <!-- إلكترا -->
 <!-- زر إلكترا العائم -->
     <button id="electra-float-btn" onclick="toggleElectraChat()">
-        <span>⚡️</span> اسألي إلكترا
+        <span><span data-ico="zap"></span></span> اسألي إلكترا
     </button>
 
     <!-- نافذة المحادثة -->
     <div id="electra-chat-window">
         <div class="electra-header">
             <div class="electra-profile">
-                <div class="electra-avatar">⚡️</div>
+                <div class="electra-avatar"><span data-ico="zap"></span></div>
                 <div class="electra-info">
                     <h4>إلكترا</h4>
                     <span>● متصلة الآن</span>
                 </div>
             </div>
             <div class="electra-controls">
-                <button class="electra-btn-icon" onclick="toggleElectraMaximize()" title="تكبير/تصغير">⤢</button>
-                <button class="electra-btn-icon" onclick="clearElectraHistory(this)" title="محادثة جديدة">🗑️</button>
-                <button class="electra-btn-icon" onclick="toggleElectraChat()" title="إغلاق">×</button>
+                <button class="electra-btn-icon" onclick="toggleElectraMaximize()" title="تكبير/تصغير"><span data-ico="maximize-2"></span></button>
+                <button class="electra-btn-icon" onclick="clearElectraHistory(this)" title="محادثة جديدة"><span data-ico="trash"></span></button>
+                <button class="electra-btn-icon" onclick="toggleElectraChat()" title="إغلاق"><span data-ico="x"></span></button>
             </div>
         </div>
 
         <div class="electra-body" id="electraMessages">
             <div class="electra-msg bot">
-                أهلًا بكِ أنا إلكترا ⚡️<br>
-                مساعدتكِ الذكية في اكتشاف عالم العناصر وفهم أسرار الكيمياء! كيف أقدر أساعدك اليوم؟ 🌸
+                أهلًا بكِ، أنا إلكترا<br>
+                مساعدتكِ الذكية في اكتشاف عالم العناصر وفهم أسرار الكيمياء! كيف أقدر أساعدك اليوم؟
             </div>
         </div>
 
         <div class="electra-footer">
-            <label for="electraImageInput" class="electra-attach-btn" title="إرفاق صورة مسألة">📎</label>
+            <label for="electraImageInput" class="electra-attach-btn" title="إرفاق صورة مسألة"><span data-ico="paperclip"></span></label>
             <input type="file" id="electraImageInput" accept="image/*" style="display:none;" onchange="handleImageSelect(event)">
             <input type="text" id="electraUserInput" placeholder="اكتبي سؤالك الكيميائي هنا..." onkeypress="handleKeyPress(event)">
-            <button id="electraSendBtn" onclick="sendElectraMessage()">➤</button>
+            <button id="electraSendBtn" onclick="sendElectraMessage()" aria-label="إرسال"><span data-ico="send"></span></button>
         </div>
         
         <div id="electraImagePreviewContainer" class="electra-preview-container" style="display:none;">
             <span id="electraImageName">صورة مرفقة</span>
-            <button onclick="removeSelectedImage()">✕</button>
+            <button onclick="removeSelectedImage()" aria-label="إزالة الصورة"><span data-ico="x"></span></button>
         </div>
     </div>
 
     <!-- كود الجافا سكريبت للتحكم والذكاء الاصطناعي -->
     <script>
         const GEMINI_API_KEY = "AQ.Ab8RN6KUpNTnffta6n398hj2zkrJPHviiUUutJ6UN3LXWigGiw";
-        const ELECTRA_FIRST_TOKEN_TIMEOUT = 12000;  /* مهلة بدء ظهور الرد بالمللي ثانية */
-        const ELECTRA_TOTAL_TIMEOUT = 40000;        /* أقصى مدة للرد كاملًا */
+        const ELECTRA_FIRST_TOKEN_TIMEOUT = 30000;  /* مهلة بدء ظهور الرد بالمللي ثانية */
+        const ELECTRA_TOTAL_TIMEOUT = 75000;        /* أقصى مدة للرد كاملًا */
         let electraThinkingIndex = {};  /* نتذكر الإعداد الذي نجح حتى لا نكرر المحاولات الفاشلة */
         let selectedBase64Image = null;
         let selectedImageType = null;
@@ -4327,7 +4379,7 @@ window.addEventListener("popstate", function(e){
             reader.onload = function(e) {
                 selectedBase64Image = e.target.result.split(',')[1];
                 selectedImageType = file.type || 'image/jpeg';
-                document.getElementById('electraImageName').innerText = "📷 " + file.name;
+                document.getElementById('electraImageName').innerHTML = ICO("image") + " " + String(file.name).replace(/&/g, "&amp;").replace(/</g, "&lt;");
                 document.getElementById('electraImagePreviewContainer').style.display = 'flex';
             };
             reader.readAsDataURL(file);
@@ -4342,8 +4394,8 @@ window.addEventListener("popstate", function(e){
         function copyMessageText(btn) {
             const msgText = btn.parentElement.dataset.fulltext;
             navigator.clipboard.writeText(msgText).then(() => {
-                btn.innerText = "تم النسخ! ✓";
-                setTimeout(() => btn.innerText = "نسخ الإجابة 📋", 2000);
+                btn.innerHTML = ICO("check") + "تم النسخ!";
+                setTimeout(() => btn.innerHTML = ICO("copy") + "نسخ الإجابة", 2000);
             });
         }
 
@@ -4366,7 +4418,7 @@ window.addEventListener("popstate", function(e){
 
             const userDiv = document.createElement('div');
             userDiv.className = 'electra-msg user';
-            userDiv.innerText = text || "📷 [تم إرسال صورة مسألة كيميائية]";
+            if (text) { userDiv.innerText = text; } else { userDiv.innerHTML = ICO("image") + " [تم إرسال صورة مسألة كيميائية]"; }
             messagesContainer.appendChild(userDiv);
 
             input.value = '';
@@ -4377,22 +4429,23 @@ window.addEventListener("popstate", function(e){
 
             const loadingDiv = document.createElement('div');
             loadingDiv.className = 'electra-msg bot';
-            loadingDiv.innerText = "إلكترا تفكر... ⚡️";
+            loadingDiv.innerHTML = "إلكترا تفكر... " + ICO("zap");
             messagesContainer.appendChild(loadingDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
             const systemPrompt = `أنتِ "إلكترا" (Electra)، المساعدة الذكية المخصصة لموقع الجدول الدوري للكيمياء، وتتحدثين مع طالبات.
-- المصممة والمطورة: وجن منصور (Wagan Mansour). إذا سُئلتِ "من صممكِ؟" أو "من طوركِ؟" أو "وش اسمك؟", أجيبي دائماً بفخر: "أنا إلكترا، تصميم وتطوير المبدعة وجن منصور! 🌸✨".
+- المصممة والمطورة: وجن منصور (Wagan Mansour). إذا سُئلتِ "من صممكِ؟" أو "من طوركِ؟" أو "وش اسمك؟", أجيبي دائماً بفخر: "أنا إلكترا، تصميم وتطوير المبدعة وجن منصور!".
 - اشرحي دائماً شرحاً وافياً ومفصّلاً مع خطوات مرتبة وأمثلة، لكن ابقي ضمن حوالي 250 إلى 350 كلمة حتى لا يطول الرد، وابدئي بالإجابة المباشرة مباشرةً دون مقدمات طويلة ودون تكرار السؤال. وإذا كان السؤال كبيراً جداً فقسّمي الشرح إلى أجزاء وقولي للطالبة أنكِ ستكملين إذا أرادت.
 - افهمي سؤال الطالبة وأجيبي عليه مباشرة، وراعي سياق المحادثة السابقة. وإذا كان السؤال غامضاً اسأليها سؤالاً توضيحياً واحداً قصيراً.
 - أسلوبكِ الأساسي: الشرح بالعامية اللطيفة والمبسطة مع ضرب أمثلة من الحياة اليومية، وبفقرات قصيرة ونقاط مرتبة عند الحاجة.
 - مرونة اللغة: إذا طلبت منكِ الطالبة الشرح باللغة العربية الفصحى, تحولي فوراً للشرح بالفصحى المنظمة. وإذا كتبت بالإنجليزية أجيبي بالإنجليزية.
 - التوزيع الإلكتروني: اكتبي التوزيع الإلكتروني دائماً بأسس علوية مرفوعة مثل: 1s² 2s² 2p⁶ وتجنبي استخدام علامة ^.
-- المصادر الموثوقة: عند الإجابة عن حقائق علمية هامة, اذكري المصدر في النهاية مثل: 📚 المرجع العلمي: IUPAC أو PubChem.
+- المصادر الموثوقة: عند الإجابة عن حقائق علمية هامة, اذكري المصدر في النهاية مثل: المرجع العلمي: IUPAC أو PubChem.
 - موقع الجدول الدوري فيه: الجدول الدوري، صفحة لكل عنصر (الذرة، التوزيع الإلكتروني، أثر العنصر، اختبار قصير)، وأيقونة «فلز + لافلز = ؟» لشرح الأيونات والرابطة الأيونية. وجّهي الطالبة إليها عند المناسبة.
+- لا تستخدمي الإيموجي أو الرموز التعبيرية نهائياً في أي رد، واكتفي بالنص.
 - الأيون الموجب اسمه كاتيون والأيون السالب اسمه أنيون.
 - تحليلي الصور والواجبات بدقة ووضوح إن وُجدت، وإذا لم تكن الصورة واضحة اطلبي منها إعادة تصويرها.
-- إذا استخدمت الطالبة ألفاظاً نابية أو غير لائقة أو أسلوباً مسيئاً، لا ترددي الألفاظ ولا تردّي بالمثل، وردّي بلطف وحزم بجملة قصيرة مثل: «خلينا نتكلم بأسلوب لطيف 🌸» ثم اعرضي مساعدتها في الكيمياء. وإذا طلبت محتوى غير لائق أو غير مناسب لطالبة، اعتذري بلطف وأعيديها لموضوع الدراسة.
+- إذا استخدمت الطالبة ألفاظاً نابية أو غير لائقة أو أسلوباً مسيئاً، لا ترددي الألفاظ ولا تردّي بالمثل، وردّي بلطف وحزم بجملة قصيرة مثل: «خلينا نتكلم بأسلوب لطيف» ثم اعرضي مساعدتها في الكيمياء. وإذا طلبت محتوى غير لائق أو غير مناسب لطالبة، اعتذري بلطف وأعيديها لموضوع الدراسة.
 - إذا كان السؤال بعيداً جداً عن العلوم، أجيبي بإيجاز ولطف ثم أعيدي الحديث للكيمياء.`;
 
             try {
@@ -4412,8 +4465,8 @@ window.addEventListener("popstate", function(e){
 
                 /* نجرّب النماذج بالترتيب: إذا انتهى الحد المجاني لنموذج ننتقل للذي بعده تلقائياً */
                 const models = ["gemini-flash-latest", "gemini-flash-lite-latest"];
-                /* نجرّب تقليل وقت "التفكير" لتسريع الرد، وإن لم يدعمه النموذج نجرّب بدونه */
-                const thinkingTries = [{ thinkingConfig: { thinkingLevel: "minimal" } }, { thinkingConfig: { thinkingBudget: 0 } }, {}];
+                /* نترك النموذج يفكر بشكل طبيعي للحصول على إجابات أدق */
+                const thinkingTries = [{}];
                 let response = null;
                 let errMsg = "";
                 try {
@@ -4491,25 +4544,25 @@ window.addEventListener("popstate", function(e){
                 const shown = electraFormat(rawReply);
 
                 loadingDiv.setAttribute('data-fulltext', rawReply);
-                loadingDiv.innerHTML = shown + '<br><button class="electra-copy-btn" onclick="copyMessageText(this)">نسخ الإجابة 📋</button>';
+                loadingDiv.innerHTML = shown + '<br><button class="electra-copy-btn" onclick="copyMessageText(this)">'+ICO("copy")+'نسخ الإجابة</button>';
                 saveElectraHistory();
 
             } catch (error) {
                 console.error("Electra error:", error);
                 let msg;
                 if (error.message === "NO_KEY") {
-                    msg = "⚠️ لم يتم إضافة مفتاح الـAPI في كود الموقع بعد، لذلك لا أستطيع الرد حالياً.";
+                    msg = ICO("triangle-alert") + " لم يتم إضافة مفتاح الـAPI في كود الموقع بعد، لذلك لا أستطيع الرد حالياً.";
                 } else if (error.message === "BLOCKED") {
-                    msg = "عذراً، ما أقدر أرد على هذا الكلام 🌸 خلينا نتكلم بأسلوب لطيف ونرجع للكيمياء، وش تبغين تعرفين؟";
+                    msg = "عذراً، ما أقدر أرد على هذا الكلام. خلينا نتكلم بأسلوب لطيف ونرجع للكيمياء، وش تبغين تعرفين؟";
                 } else if (error.message === "TIMEOUT") {
-                    msg = "الرد تأخر أكثر من المعتاد 😔 جربي ترسلين سؤالك مرة ثانية.";
+                    msg = "الرد تأخر أكثر من المعتاد، جربي ترسلين سؤالك مرة ثانية.";
                 } else if (/\b429\b|quota|exceeded|RESOURCE_EXHAUSTED/i.test(String(error.message))) {
-                    msg = "إلكترا في وضع الصيانة حالياً 🛠️ تعبت من كثرة الأسئلة اليوم وتحتاج ترتاح شوي، ارجعي لها لاحقاً أو بكرة وبتلقينها جاهزة 🌸";
+                    msg = ICO("wrench") + " إلكترا في وضع الصيانة حالياً. تعبت من كثرة الأسئلة اليوم وتحتاج ترتاح شوي، ارجعي لها لاحقاً أو بكرة وبتلقينها جاهزة.";
                 } else {
-                    msg = "عذراً، ما قدرت أرد الحين 😔 جربي مرة ثانية بعد شوي.";
+                    msg = "عذراً، ما قدرت أرد الحين، جربي مرة ثانية بعد شوي.";
                 }
                 loadingDiv.removeAttribute('data-fulltext');
-                loadingDiv.innerText = msg;
+                loadingDiv.innerHTML = msg;
                 saveElectraHistory();
             }
 
@@ -4538,19 +4591,19 @@ window.addEventListener("popstate", function(e){
             if (!electraClearArmed) {
                 electraClearArmed = true;
                 if (btn) {
-                    const old = btn.innerText;
+                    const old = btn.innerHTML;
                     btn.innerText = "تأكيد المسح؟";
                     btn.style.fontSize = "12px";
                     setTimeout(() => {
                         electraClearArmed = false;
-                        btn.innerText = old;
+                        btn.innerHTML = old;
                         btn.style.fontSize = "";
                     }, 3000);
                 }
                 return;
             }
             electraClearArmed = false;
-            if (btn) { btn.innerText = "🗑️"; btn.style.fontSize = ""; }
+            if (btn) { btn.innerHTML = ICO("trash"); btn.style.fontSize = ""; }
             try {
                 localStorage.removeItem('electra_chat_history');
                 localStorage.removeItem('electra_convo');
@@ -4558,8 +4611,8 @@ window.addEventListener("popstate", function(e){
             electraConvo = [];
             document.getElementById('electraMessages').innerHTML = `
                 <div class="electra-msg bot">
-                    أهلًا بكِ من جديد! أنا إلكترا ⚡️<br>
-                    بدأنا محادثة جديدة، كيف أقدر أساعدك اليوم في الكيمياء؟ 🌸
+                    أهلًا بكِ من جديد! أنا إلكترا<br>
+                    بدأنا محادثة جديدة، كيف أقدر أساعدك اليوم في الكيمياء؟
                 </div>
             `;
         }
