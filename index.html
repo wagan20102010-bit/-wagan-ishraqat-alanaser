@@ -4337,9 +4337,9 @@ window.addEventListener("popstate", function(e){
 
     <!-- كود الجافا سكريبت للتحكم والذكاء الاصطناعي -->
     <script>
-        const GEMINI_API_KEY = "AQ.Ab8RN6KUpNTnffta6n398hj2zkrJPHviiUUutJ6UN3LXWigGiw";
+        const GEMINI_API_KEY = "AQ.Ab8RN6KhAciMki16d_8KvloRs8JtAMXARzNZ34MGvEs-lUKIXA";
         const ELECTRA_FIRST_TOKEN_TIMEOUT = 30000;  /* مهلة بدء ظهور الرد بالمللي ثانية */
-        const ELECTRA_TOTAL_TIMEOUT = 75000;        /* أقصى مدة للرد كاملًا */
+        const ELECTRA_TOTAL_TIMEOUT = 90000;        /* أقصى مدة للرد كاملًا */
         let electraThinkingIndex = {};  /* نتذكر الإعداد الذي نجح حتى لا نكرر المحاولات الفاشلة */
         let selectedBase64Image = null;
         let selectedImageType = null;
@@ -4464,7 +4464,7 @@ window.addEventListener("popstate", function(e){
                 const stopTimers = () => { clearTimeout(firstTimer); clearTimeout(totalTimer); };
 
                 /* نجرّب النماذج بالترتيب: إذا انتهى الحد المجاني لنموذج ننتقل للذي بعده تلقائياً */
-                const models = ["gemini-flash-latest", "gemini-flash-lite-latest"];
+                const models = ["gemini-flash-lite-latest", "gemini-flash-latest"];
                 /* نترك النموذج يفكر بشكل طبيعي للحصول على إجابات أدق */
                 const thinkingTries = [{}];
                 let response = null;
@@ -4489,7 +4489,7 @@ window.addEventListener("popstate", function(e){
                             try { errData = await response.json(); } catch (e) {}
                             errMsg = "[" + model + "] " + ((errData.error && errData.error.message) || ("HTTP " + response.status));
                             if (response.status === 400 && /think/i.test(errMsg)) { electraThinkingIndex[model] = ti + 1; continue; }
-                            if (response.status === 429 || response.status === 404) continue modelLoop;
+                            if (response.status === 429 || response.status === 404 || response.status === 503 || response.status === 500) continue modelLoop;
                             throw new Error(errMsg);
                         }
                     }
@@ -4558,9 +4558,11 @@ window.addEventListener("popstate", function(e){
                     msg = "الرد تأخر أكثر من المعتاد، جربي ترسلين سؤالك مرة ثانية.";
                 } else if (/\b429\b|quota|exceeded|RESOURCE_EXHAUSTED/i.test(String(error.message))) {
                     msg = ICO("wrench") + " إلكترا في وضع الصيانة حالياً. تعبت من كثرة الأسئلة اليوم وتحتاج ترتاح شوي، ارجعي لها لاحقاً أو بكرة وبتلقينها جاهزة.";
-                } else {
-                    msg = "عذراً، ما قدرت أرد الحين، جربي مرة ثانية بعد شوي.";
-                }
+                 } else {
+    msg = "عذراً، ما قدرت أرد الحين، جربي مرة ثانية بعد شوي.";
+;
+}
+
                 loadingDiv.removeAttribute('data-fulltext');
                 loadingDiv.innerHTML = msg;
                 saveElectraHistory();
