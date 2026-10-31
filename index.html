@@ -4671,6 +4671,30 @@ body.lab-open #electra-float-btn,body.lab-open #electra-chat-window{display:none
 #labPage #lab-3d.bld{background:#1f2b38}
 #bld-side{position:absolute;top:calc(58px + env(safe-area-inset-top,0px));left:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:clamp(240px,33vw,340px);z-index:3;display:flex;flex-direction:column;gap:8px;overflow-y:auto;overflow-x:hidden;pointer-events:none;scrollbar-width:thin}
 #bld-side>*{pointer-events:auto;flex:none}
+#bld-tabs,#bld-mini{display:none}
+#b-more{display:none}
+@media(max-width:640px){
+#bld-tabs,#bld-mini{display:none!important}
+#b-more{display:inline-block}
+#bld-top{position:fixed;top:calc(58px + env(safe-area-inset-top,0px));left:8px;right:8px;max-height:30vh;max-height:30dvh;overflow-y:auto;padding:5px 10px;border-radius:14px}
+#bld-top .f{font-size:17px;text-align:right;direction:rtl}
+#bld-top .hy{font-size:12px}
+#bld-top .d{font-size:11px;line-height:1.5}
+#bld-top .d.st{display:none}
+#bld-stp{margin:2px 0}
+#bld-stp .ins{font-size:12.5px;line-height:1.6}
+#bld-top .btns{position:fixed;left:8px;right:8px;bottom:calc(66px + env(safe-area-inset-bottom,0px));margin:0;flex-wrap:nowrap;overflow-x:auto;background:rgba(255,255,255,.97);padding:5px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+#bld-top .btns .lab-btn{flex:none;min-height:32px}
+#bld-side #bld-tray{display:contents;background:none;padding:0;box-shadow:none}
+#bld-tray>.tools{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);border-radius:14px;padding:5px;box-shadow:0 6px 18px rgba(0,0,0,.3);gap:6px}
+#bld-tray>.tools .bt{flex-direction:row;justify-content:center;gap:5px;padding:7px 4px;font-size:11.5px}
+.ic-atom{width:18px;height:18px}.ic-lp{width:12px;height:20px}.ic-bond{width:22px;height:6px;margin:6px 0}
+#bld-side{top:auto;left:8px;right:8px;width:auto;bottom:calc(116px + env(safe-area-inset-bottom,0px));max-height:34vh;max-height:34dvh;gap:6px;overflow-y:auto;border-radius:14px;pointer-events:none}
+#bld-side.sel,#bld-side.more{background:rgba(255,255,255,.97);padding:8px;box-shadow:0 6px 18px rgba(0,0,0,.3);pointer-events:auto}
+#bld-tray>.bld-sec,#bld-tray>.bld-row:not(.tools){display:none}
+#bld-side.sel #bld-tray>.bld-sec,#bld-side.more #bld-tray>.bld-sec{display:block}
+#bld-side.sel #bld-tray>.bld-row:not(.tools),#bld-side.more #bld-tray>.bld-row:not(.tools){display:flex}
+}
 #bld-top{background:rgba(255,255,255,.96);border-radius:16px;padding:8px 10px;text-align:right;box-shadow:0 8px 24px rgba(0,0,0,.28)}
 #bld-top .f{font-size:24px;font-weight:900;color:#7056a8;direction:ltr;text-align:center;line-height:1.3}
 #bld-top .hy{display:inline-block;font-size:14px;font-weight:800;color:#b45309;background:#fff1d6;border-radius:8px;padding:0 8px;margin-left:8px;vertical-align:middle}
@@ -4758,7 +4782,7 @@ function build(){
  $('lab-lback').onclick=function(){show('lab-menu')};
  $('lab-exit').onclick=function(){stop3D();show('lab-list')};
  $('lab-help-b').onclick=function(){$('lab-help').hidden=false}; $('lab-hx').onclick=function(){$('lab-help').hidden=true};
- $('lab-hide').onclick=function(){var p=$('lab-3d'),c=p.classList.toggle('clean');this.textContent=c?'إظهار اللوحات':'إخفاء اللوحات';if(MG&&mmode==='bld'){if(c)MG.position.x=0;else bShift()}};
+ $('lab-hide').onclick=function(){var p=$('lab-3d'),c=p.classList.toggle('clean');this.textContent=c?'إظهار اللوحات':'إخفاء اللوحات';if(MG&&mmode==='bld'){if(c){MG.position.x=0;MG.position.y=0}else bShift()}};
  $('lab-gt').onclick=function(){if(!busy)toTable()}; $('lab-ge').onclick=function(){if(!busy)toEntrance()};
  window.addEventListener('popstate',function(e){if(page.classList.contains('active')&&!(e.state&&e.state.lab))closeLab()});
 }
@@ -5118,11 +5142,11 @@ function bMat(c,o){return M(c,Object.assign({roughness:.3,metalness:.15},o||{}))
 function bRepick(){bPick=bAt.map(function(a){return a.m}).concat(bBd.map(function(b){return b.m}),bLp.map(function(l){return l.m}))}
 function bRay(e){var r=MR.domElement.getBoundingClientRect(),rc=new T.Raycaster();rc.setFromCamera(new T.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1),MC);return rc}
 function bPickAt(e){var rc=bRay(e),labs=bArcP.filter(function(x){return x.g.visible}).map(function(x){return x.lb}),h0=labs.length?rc.intersectObjects(labs,false):[];if(h0.length)return h0[0].object.userData.p;var h=rc.intersectObjects(bPick,false);return h.length?h[0].object.userData.p:null}
-function bMsg(t){var e=$('bld-msg');if(e)e.innerHTML=t||''}
+function bMsg(t){var e=$('bld-msg');if(e)e.innerHTML=t||'';var m=$('bld-mini-m');if(m)m.innerHTML=t||''}
 function bdeg(a){return bBd.filter(function(b){return b.a===a||b.b===a}).length}
 function bCenter(){var c=null,d=0;bAt.forEach(function(a){var k=bdeg(a);if(k>d){d=k;c=a}});return c}
 function bGlow(o,c){if(o&&o.m)o.m.material.emissive.set(c)}
-function bSelect(o){if(bSel&&bSel!==bFirst)bGlow(bSel,0x000000);bSel=o||null;if(bSel)bGlow(bSel,0x2a4aa0);bBtns()}
+function bSelect(o){if(bSel&&bSel!==bFirst)bGlow(bSel,0x000000);bSel=o||null;if(bSel)bGlow(bSel,0x2a4aa0);var sd=$('bld-side');if(sd)sd.classList.toggle('sel',!!bSel);bBtns()}
 function bUpdBond(bd){var A=bd.a.m.position,B=bd.b.m.position,dx=B.x-A.x,dy=B.y-A.y,dz=B.z-A.z,l=Math.sqrt(dx*dx+dy*dy+dz*dz);if(l<1e-4)return;
  bd.m.position.set(A.x+dx/2,A.y+dy/2,A.z+dz/2);bd.m.scale.set(1,l/1.1,1);orient(bd.m,[dx/l,dy/l,dz/l])}
 function bUpdLp(lp){var h=lp.h,R=h.r+.36,d=lp.dir,P=h.m.position;lp.m.position.set(P.x+d[0]*R,P.y+d[1]*R,P.z+d[2]*R);orient(lp.m,d)}
@@ -5235,7 +5259,13 @@ function bPaint(c){if(!bSel)return;bSnap();bSel.m.material.color.set(c)}
 function bSize(dl){if(!bSel||bSel.k!=='a')return bMsg('اختاري ذرة أولًا (اضغطي عليها).');bSnap();bSel.r=Math.max(.14,Math.min(.45,bSel.r+dl));bUpdAtom(bSel)}
 function bElem(){var m=MOL[bT],s=MSYM[bT],c=bCenter();if(!c)return bMsg('وصلي الذرات بعصي أولًا، ثم اضغطي «ألوان العناصر».');bSnap();bHold++;
  bAt.forEach(function(a){var ctr=a===c;a.m.material.color.set(ctr?m.c[0]:m.o[0]);a.r=ctr?.3:m.o[1]+.04;bSym(a,ctr?s[0]:s[1])});bHold--}
-function bShift(){if(!MG)return;var s=$('bld-side'),e=$('lab-cv');if(!s||!e||!e.clientHeight)return;var ppu=e.clientHeight/(2*5.2*Math.tan(22.5*Math.PI/180));MG.position.x=Math.min(1.3,((s.offsetWidth+10)/2)/ppu)}
+var bTab='steps',bPrevTab='steps',bLastStep=0;
+function bMob(){try{return window.matchMedia('(max-width:640px)').matches}catch(e){return false}}
+function bSetTab(t){var s=$('bld-side');if(!s)return;bTab=t;s.classList.remove('t-steps','t-tools');s.classList.toggle('min',t==='min');if(t!=='min')s.classList.add('t-'+t);
+ var a=$('bld-t1'),b=$('bld-t2'),g=$('bld-tg');if(a)a.classList.toggle('on',t==='steps');if(b)b.classList.toggle('on',t==='tools');if(g)g.textContent=t==='min'?'▲':'▼';setTimeout(bShift,30)}
+function bShift(){if(!MG)return;var s=$('bld-side'),e=$('lab-cv');if(!s||!e||!e.clientHeight)return;var ppu=e.clientHeight/(2*5.2*Math.tan(22.5*Math.PI/180));
+ if(bMob()){var tp=$('bld-top'),bt=document.querySelector('#bld-tray>.tools'),bn=document.querySelector('#bld-top .btns'),er=e.getBoundingClientRect(),a=tp?tp.getBoundingClientRect().bottom:58,z=Math.min(bt?bt.getBoundingClientRect().top:er.bottom,bn?bn.getBoundingClientRect().top:er.bottom),cy=(a+z)/2,c0=er.top+er.height/2;MG.position.x=0;MG.position.y=Math.max(-2,Math.min(2.2,(c0-cy)/ppu));return}
+ MG.position.y=0;MG.position.x=Math.min(1.3,((s.offsetWidth+10)/2)/ppu)}
 var MTIP=['ضعي الذرتين على جهتين متقابلتين تمامًا حول الذرة المركزية، مثل خط مستقيم.','ضعي الذرات الثلاث حول الذرة المركزية على شكل مثلث متساوي، كلها في مستوى واحد.','ضعي الذرات الأربع كأنها أركان هرم: ثلاث تحت وواحدة فوق، وابعديها عن بعض بالتساوي.','ضعي الذرات الثلاث تحت الذرة المركزية كالهرم، والزوج غير الرابط (البيضاوي) فوقها.','ضعي الذرتين تحت على شكل حرف V، والبيضاويين فوق (واحد قدام وواحد خلف).','ضعي ثلاث ذرات في مستوى واحد حول الوسط، وذرة فوق الوسط وذرة تحته.','ضعي ذرة فوق وذرة تحت، وأربع ذرات حول الوسط: أمام وخلف ويمين ويسار.'];
 function bHint(){var m=MOL[bT];bMsg('<b>تلميح:</b> الشكل المطلوب <b>'+m.n+'</b> والزاوية <b>'+m.ang+'</b>.<br>'+MTIP[bT])}
 function bStep(){var el=$('bld-stp');if(!el)return;var m=MOL[bT],s=MSYM[bT],N=m.d.length,L=m.lp.length,A=bAt.length,c=bCenter(),
@@ -5251,8 +5281,10 @@ function bStep(){var el=$('bld-stp');if(!el)return;var m=MOL[bT],s=MSYM[bT],N=m.
  if(A>N+1&&!bDone)txt+='<div class="wn">عندك دوائر زيادة. اضغطي على الزائدة ثم «حذف المحدد».</div>';
  var pct=bDone?100:Math.round((step-1)/total*100);
  el.innerHTML='<div class="stn">الخطوة <b>'+step+'</b> من '+total+'</div><div class="pb"><span style="width:'+pct+'%"></span></div><div class="ins">'+txt+'</div>';
+ var ms=$('bld-mini-s');if(ms)ms.innerHTML='<div class="stn">الخطوة <b>'+step+'</b> من '+total+'</div>'+txt;
+ if(bMob()&&bTab!=='min'&&(step!==bLastStep||bDone)){bLastStep=step;bSetTab(bDone||step>=total?'steps':'tools')}
  var tr=$('bld-tray');if(tr)[].forEach.call(tr.querySelectorAll('[data-tool]'),function(b){b.classList.toggle('hl',b.getAttribute('data-tool')===hl)});
- var ck=$('b-chk'),ht=$('b-hint'),on=!bDone&&hl==='chk';if(ck){ck.hidden=!on;ck.classList.toggle('hl',on)}if(ht)ht.hidden=!on}
+ var ck=$('b-chk'),ht=$('b-hint'),on=!bDone&&hl==='chk';if(ck){ck.hidden=!on;ck.classList.toggle('hl',on)}if(ht)ht.hidden=!on;if(bMob())bShift()}
 function bTarget(i){bT=i;bfail=0;var f=$('bld-f'),d=$('bld-d'),m=MOL[i],s=MSYM[i];if(f)f.innerHTML=m.f+'<span class="hy" title="التهجين">'+m.h+'</span>';
  if(d)d.innerHTML='المطلوب: ذرة مركزية <b>'+s[0]+'</b> و<b>'+m.d.length+'</b> ذرة <b>'+s[1]+'</b>'+(m.lp.length?' و'+(m.lp.length===2?'<b>زوجان</b>':'<b>'+m.lp.length+'</b> '+(m.lp.length>2?'أزواج':'زوج'))+' غير رابطين':'');bDone=0;bStep()}
 function bNext(){var i;do{i=Math.floor(Math.random()*MOL.length)}while(i===bT);bTarget(i);bClear();bHist=[];bUndoBtn()}
@@ -5283,7 +5315,7 @@ function bldStart(){
  var side=document.createElement('div');side.id='bld-side';lab.appendChild(side);
  var top=document.createElement('div');top.id='bld-top';
  top.innerHTML='<div class="f" id="bld-f"></div><div class="d" id="bld-d"></div><div id="bld-stp"></div><div class="d" id="bld-msg"></div><div class="d st" id="bld-st"></div>'+
-  '<div class="btns"><button class="lab-btn sm" id="b-chk" hidden>تحقق</button><button class="lab-btn alt sm" id="b-hint" hidden>تلميح</button><button class="lab-btn alt sm" id="b-undo" disabled>تراجع</button><button class="lab-btn alt sm" id="b-sol">أرني الحل</button><button class="lab-btn alt sm" id="b-clr">مسح الكل</button><button class="lab-btn alt sm" id="b-nxt">جزيء آخر</button></div>';
+  '<div class="btns"><button class="lab-btn sm" id="b-chk" hidden>تحقق</button><button class="lab-btn alt sm" id="b-hint" hidden>تلميح</button><button class="lab-btn alt sm" id="b-more">أدوات ⚙</button><button class="lab-btn alt sm" id="b-undo" disabled>تراجع</button><button class="lab-btn alt sm" id="b-sol">أرني الحل</button><button class="lab-btn alt sm" id="b-clr">مسح الكل</button><button class="lab-btn alt sm" id="b-nxt">جزيء آخر</button></div>';
  side.appendChild(top);
  var tr=document.createElement('div');tr.id='bld-tray';
  tr.innerHTML='<div class="bld-row tools"><button class="bt" data-tool="atom"><i class="ic-atom"></i>ذرة</button><button class="bt" data-tool="lp"><i class="ic-lp"></i>زوج غير رابط</button><button class="bt" data-tool="bond"><i class="ic-bond"></i>رابطة (عصا)</button></div>'+
@@ -5292,6 +5324,10 @@ function bldStart(){
   '<div class="bld-row"><button class="lab-btn alt sm" data-sel="1" id="b-big">+ تكبير</button><button class="lab-btn alt sm" data-sel="1" id="b-sml">− تصغير</button><button class="lab-btn alt sm" id="b-elm">ألوان العناصر</button><button class="lab-btn alt sm" data-sel="1" id="b-del">حذف المحدد</button></div>'+
   '<div class="bld-sec"><div class="lbl">للشرح:</div><div class="bld-row"><button class="lab-btn alt sm on" id="b-ang">الزوايا</button><button class="lab-btn alt sm" id="b-hull">الهيكل</button><button class="lab-btn alt sm" id="b-rot">تدوير تلقائي</button></div></div>';
  side.appendChild(tr);
+ tr.insertAdjacentHTML('afterbegin','<div id="bld-mini"><div id="bld-mini-s"></div><div class="d" id="bld-mini-m"></div></div>');
+ var tabs=document.createElement('div');tabs.id='bld-tabs';tabs.innerHTML='<button class="lab-btn alt sm" id="bld-t1">الخطوات</button><button class="lab-btn alt sm" id="bld-t2">الأدوات</button><button class="lab-btn alt sm" id="bld-tg" aria-label="طي اللوحة">▼</button>';side.insertBefore(tabs,top);
+ $('b-more').onclick=function(){var sd=$('bld-side');sd.classList.toggle('more');setTimeout(bShift,10)};$('bld-t1').onclick=function(){bSetTab('steps')};$('bld-t2').onclick=function(){bSetTab('tools')};$('bld-tg').onclick=function(){if(bTab==='min')bSetTab(bPrevTab||'tools');else{bPrevTab=bTab;bSetTab('min')}};
+ bTab='tools';bLastStep=0;bSetTab('tools');
  var sy=$('bld-sy');SYMS.forEach(function(s){var b=document.createElement('button');b.className='lab-btn alt sm sy';b.setAttribute('data-sel','1');b.textContent=s;b.onclick=function(){bName(s)};sy.appendChild(b)});
  var sw=$('bld-sw');[0xf4f6fa,0xe5484d,0x3ecf6a,0x4f7cff,0xf7b500].forEach(function(c){var b=document.createElement('button');b.className='sw';b.style.background='#'+('000000'+c.toString(16)).slice(-6);b.setAttribute('aria-label','لون');b.onclick=function(){if(!bSel)return bMsg('اختاري قطعة أولًا (اضغطي عليها) ثم اختاري لونها.');bPaint(c)};sw.appendChild(b)});
  [].forEach.call(tr.querySelectorAll('[data-tool]'),function(b){b.onclick=function(){var t=b.getAttribute('data-tool');if(t==='atom'){bSetTool(null);bAddAtom();bMsg('تمت إضافة ذرة. تقدرين تسحبينها لأي مكان وتسمينها.')}else bSetTool(bTool===t?null:t)}});
