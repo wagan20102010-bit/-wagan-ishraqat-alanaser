@@ -4628,6 +4628,10 @@ window.addEventListener("popstate", function(e){
 #homeRow{display:flex;flex-wrap:wrap;gap:18px;width:min(1100px,100%);margin:46px auto 10px;align-items:stretch}
 #homeRow>section{flex:1 1 320px;width:auto!important;margin:0!important;min-width:0}
 #homeRow .ionic-hero{height:100%}
+.lab-hero.mol-hero{border-color:#c9ebdd!important;background:linear-gradient(135deg,#fff,#eafaf3 60%,#d9f4e8)!important}
+.lab-hero.mol-hero:hover{box-shadow:0 16px 36px rgba(31,143,107,.2)!important}
+.lab-hero.mol-hero h2{color:#1f8f6b!important;font-size:clamp(24px,3.2vw,32px)}
+.lab-hero.mol-hero .lab-ic,.lab-hero.mol-hero .lab-go{background:linear-gradient(135deg,#3ccf9c,#1f8f6b)!important;box-shadow:0 10px 24px rgba(31,143,107,.3)!important}
 #homeRow .lab-hero{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .lab-hero{border-color:#cfe2f7!important;background:linear-gradient(135deg,#fff,#eaf4ff 60%,#dcecff)!important}
 .lab-hero:hover{box-shadow:0 16px 36px rgba(43,108,176,.2)!important}
@@ -4671,6 +4675,41 @@ body.lab-open #electra-float-btn,body.lab-open #electra-chat-window{display:none
 #labPage #lab-3d.bld{background:#1f2b38}
 #bld-side{position:absolute;top:calc(58px + env(safe-area-inset-top,0px));left:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));width:clamp(240px,33vw,340px);z-index:3;display:flex;flex-direction:column;gap:8px;overflow-y:auto;overflow-x:hidden;pointer-events:none;scrollbar-width:thin}
 #bld-side>*{pointer-events:auto;flex:none}
+
+.lab-grp{font-weight:800;color:#7056a8;text-align:right;margin:22px 4px 8px;font-size:15px}
+.lab-grp:first-of-type{margin-top:8px}
+.lab-card{background:#fff;border:2px solid #e4d9f4;border-radius:18px;padding:12px 14px;text-align:right;margin-bottom:10px;line-height:1.9;font-size:15px;color:#39334b}
+.lab-card b{color:#7056a8}
+.lab-card small{display:block;color:#6f6779;font-size:13px}
+.lab-card.use{border-color:#bfe3d4;background:#f3fbf7}
+.lab-card.warn{border-color:#ffd9a8;background:#fff8ee}
+.lab-ol{counter-reset:s;list-style:none;padding:0;margin:0;text-align:right}
+.lab-ol li{counter-increment:s;position:relative;background:#fff;border:2px solid #e4d9f4;border-radius:16px;padding:10px 52px 10px 12px;margin-bottom:9px;line-height:1.9;font-size:15px}
+.lab-ol li::before{content:counter(s);position:absolute;right:12px;top:10px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#8c70c5,#7056a8);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.fbfl{width:64px;height:100px;margin:0 auto;border-radius:50% 50% 45% 45%/65% 65% 35% 35%;background:radial-gradient(circle at 50% 70%,#fff,var(--c) 55%);box-shadow:0 0 40px 10px var(--c)}
+#lab-paper{position:absolute;inset:0;z-index:7;background:rgba(30,25,45,.62);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:14px 10px 40px;-webkit-overflow-scrolling:touch}
+#lab-paper.kb{padding-bottom:55vh}
+#lab-paper .pp{width:min(560px,100%);position:relative;background:#fffdf4;border-radius:6px 16px 16px 6px;border-right:4px solid #ffb3b3;box-shadow:0 18px 50px rgba(0,0,0,.45);padding:16px 16px 18px 12px;font-family:Tajawal,Arial,sans-serif;color:#39334b;text-align:right;animation:ppIn .45s ease-out both}
+@keyframes ppIn{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
+#lab-paper h3{font-size:22px;font-weight:900;color:#1a3d8f;margin:2px 36px 4px 0}
+#lab-paper .pp-x{position:absolute;left:10px;top:8px;width:38px;height:38px;border-radius:50%;border:none;background:#eef1f8;font-size:24px;line-height:1;cursor:pointer;color:#555}
+#lab-paper .pp-s{font-size:13px;color:#6f6779;margin-bottom:6px}
+#lab-paper .pp-h{font-size:14px;margin:12px 0 4px;color:#2f2a3d}
+#lab-paper .pr{display:grid;grid-template-columns:1fr 1.1fr;gap:4px 10px;align-items:center;min-height:56px;border-bottom:1.5px solid #cfe0f5;padding:4px 0}
+#lab-paper .pr.good{background:rgba(52,195,143,.1)}#lab-paper .pr.bad{background:rgba(229,72,77,.08)}
+#lab-paper .pl b{font-size:16px}
+#lab-paper .pl .en{direction:ltr;display:inline-block;color:#7056a8;font-weight:800;margin-right:4px}
+#lab-paper .bd{display:block;font-style:normal;font-size:11.5px;color:#9a93a8}
+#lab-paper .bd.ok{color:#1f8f6b;font-weight:700}
+#lab-paper .dot{display:inline-block;width:14px;height:14px;border-radius:50%;margin-left:6px;vertical-align:middle;box-shadow:0 0 0 2px #fff,0 0 0 3px #cbd5e8}
+#lab-paper .pin{width:100%;font-size:18px;font-family:inherit;border:none;border-bottom:2px dashed #9db8e0;background:transparent;padding:8px 4px;color:#1a3d8f;outline:none;-webkit-user-select:text;user-select:text;border-radius:0}
+#lab-paper .pin:focus{border-bottom-color:#7056a8;background:rgba(112,86,168,.05)}
+#lab-paper .ink{display:block;font-family:'Aref Ruqaa','Segoe Script','Bradley Hand',cursive;font-size:25px;color:#1b3f9a;line-height:1.5;min-height:42px;transform:rotate(-1.2deg);cursor:text;word-break:break-word}
+#lab-paper .ink.wr{animation:inkIn .8s ease-out both}
+@keyframes inkIn{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+#lab-paper .ans{grid-column:1/-1;font-size:12.5px;font-weight:700;color:#a8305e;min-height:0}
+#lab-paper .pr.good .ans{color:#1f8f6b}
+#lab-paper .lab-btn:disabled{opacity:.45;cursor:default} #lab-paper .pp-b{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 #bld-tabs,#bld-mini{display:none}
 @media(max-width:640px){
 #bld-side{top:auto;left:8px;right:8px;width:auto;bottom:calc(8px + env(safe-area-inset-bottom,0px));max-height:46vh;max-height:46dvh;overflow:hidden;gap:0;background:rgba(255,255,255,.97);border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.4)}
@@ -4747,20 +4786,29 @@ var $=function(i){return document.getElementById(i)};
 var ico=function(n){return window.ICO?window.ICO(n):''};
 var wait=function(ms){return new Promise(function(r){setTimeout(r,ms)})};
 var SEC={
- react:{t:'التفاعلات الكيميائية',i:'zap',d:'تجارب محددة بخطوات ونتائج موثقة.',ex:[{id:'fizz',t:'الخل + بيكربونات الصوديوم',d:'فقاعات وغاز CO₂ ينفخ البالون.',ok:1},{id:'eleph',t:'انفجار الرغوة: تحلّل H₂O₂',d:'تفاعل سريع ينتج الأكسجين ورغوة ساخنة. تنبيه: يجب الابتعاد.',ok:1},{id:'disp',t:'الحديد + كبريتات النحاس',d:'تغيّر لون المحلول وظهور النحاس على المسمار.',ok:1},{t:'تفاعلات أخرى (قريبًا)',d:'سنضيف تجارب مختارة بنتائج مدروسة.',ok:0}]},
  mol:{t:'الروابط وأشكال الجزيئات',i:'atom',d:'شاهدي الجزيئات ثلاثية الأبعاد وتعلّمي كيف تتحدد أشكالها.',ex:[{id:'mol',t:'الأشكال الفراغية للجزيئات',d:'BeCl₂ وAlCl₃ وCH₄ وPH₃ وH₂O وNbBr₅ وSF₆، مع الزوايا والأزواج غير الرابطة.',ok:1},{id:'build',t:'ابنِ الجزيء',d:'ابدئي من الصفر: دوائر للذرات وبيضاويات للأزواج غير الرابطة وعصي للروابط، وغيّري الألوان.',ok:1}]}
 };
+
+var GUIDE=[{id:'ins',i:'book-open',t:'تعليمات المختبر',d:'ادخلي المختبر وشاهدي لوحة التعليمات الكبيرة.'},{id:'safe',i:'shield',t:'سلامة المختبر',d:'لوحة قواعد الأمان داخل المختبر.'},{id:'tools',i:'wrench',t:'أدوات المختبر',d:'كل الأدوات على الطاولة؛ اضغطي على أي أداة لتعرفي اسمها واستخدامها.'}];
+var EXPS=[{id:'fizz',i:'droplets',t:'الخل + بيكربونات الصوديوم',d:'فقاعات وغاز CO₂ ينفخ البالون.',ok:1},{id:'eleph',i:'bomb',t:'انفجار الرغوة: تحلّل H₂O₂',d:'تفاعل سريع ينتج الأكسجين ورغوة ساخنة. تنبيه: يجب الابتعاد.',ok:1},{id:'disp',i:'coins',t:'الحديد + كبريتات النحاس',d:'تغيّر لون المحلول وظهور النحاس على المسمار.',ok:1},{id:'precip',i:'gem',t:'المطر الذهبي: ترسيب يوديد الرصاص',d:'محلولان شفافان بلا لون يتحولان إلى مطر من بلورات صفراء تتساقط وتستقر في القاع.',ok:1},{id:'filter',i:'waves-horizontal',t:'الترشيح: فصل الصلب عن السائل',d:'ضعي ورقة الترشيح في القمع، وصبّي الخليط، وشاهدي الماء الصافي ينزل ويبقى الصلب على الورقة.',ok:1},{id:'flame',i:'flame',t:'اختبار اللهب',d:'احرقي أملاح فلزات مختلفة، لاحظي لون اللهب، ودوّني النتائج في التقرير بالكيبورد.',ok:1},{i:'zap',t:'تجارب أخرى (قريبًا)',d:'سنضيف تجارب مختارة بنتائج مدروسة.',ok:0}];
+var INFO={
+ ins:{t:'تعليمات المختبر',h:'<ol class="lab-ol"><li><b>اختاري تجربة</b> من قائمة التجارب.</li><li><b>اقتربي من الطاولة:</b> حرّكي العصا على الشاشة (أو W A S D في الكمبيوتر)، أو اضغطي زر «الطاولة».</li><li><b>انظري حولك:</b> اسحبي بإصبعك على المشهد لتدوير النظرة.</li><li><b>اقرئي الرسالة</b> التي تظهر في الأعلى، فهي تخبرك بالخطوة التالية.</li><li><b>اضغطي على الأداة المطلوبة</b> (وعاء أو عينة)، وستتحرك اليد وتنفّذ الخطوة عنكِ.</li><li><b>لاحظي ثم دوّني:</b> في اختبار اللهب تكتبين ملاحظاتك في «التقرير»، وتضغطين على الورقة لتفتحيها.</li><li><b>للأمان:</b> زر «المدخل» يبعدكِ عن الطاولة، و«إخفاء اللوحات» يعطيكِ مساحة أكبر للمشاهدة.</li></ol><div class="lab-card" style="margin-top:12px"><b>طريقة العمل العلمية:</b> لاحظي ← دوّني ← استنتجي.<small>لا تكتفي بالمشاهدة؛ اكتبي ما رأيتِه ثم فسّريه.</small></div>'},
+ safe:{t:'سلامة المختبر',h:'<div class="lab-card warn"><b>🥽 النظارة والمعطف:</b> نلبس نظارة واقية ومعطفًا وقفازات قبل أي تجربة، حتى لو كانت افتراضية، لنتعوّد.</div><div class="lab-card warn"><b>🔥 اللهب:</b> لا نميل فوقه، ونبعد عنه الأوراق والمواد القابلة للاشتعال، ونربط الشعر الطويل.</div><div class="lab-card warn"><b>🚫 لا نتذوق ولا نأكل:</b> لا نتذوق أي مادة ولا نأكل أو نشرب داخل المختبر.</div><div class="lab-card warn"><b>👃 الشم:</b> لا نشمّ المادة مباشرة؛ نلوّح بيدنا نحو أنفنا لنقرّب الرائحة بأمان.</div><div class="lab-card warn"><b>⚗️ لا نخلط من عندنا:</b> نتبع الخطوات كما هي، ولا نخلط مواد دون إذن المعلمة.</div><div class="lab-card warn"><b>📢 نبلّغ فورًا:</b> أي انسكاب أو كسر أو إصابة نخبر المعلمة عنه في الحال.</div><div class="lab-card warn"><b>🧼 بعد التجربة:</b> نغسل أيدينا، ونتخلص من المواد في الأماكن المخصصة.</div><div class="lab-card"><b>📍 تعرّفي على:</b> مكان طفاية الحريق، وغسّالة العيون، ومخرج الطوارئ في مختبر مدرستكِ.</div>'},
+ tools:{t:'أدوات المختبر',h:'<div class="lab-card use"><b>الدورق المخروطي</b> (يُستخدم في تجاربنا)<small>لخلط المحاليل وإجراء التفاعلات؛ عنقه الضيق يقلل التطاير والانسكاب.</small></div><div class="lab-card use"><b>موقد بنسن</b> (يُستخدم في اختبار اللهب)<small>يعطي لهبًا نظيفًا للتسخين ولاختبار لون اللهب. لهبه الأزرق هو الأسخن.</small></div><div class="lab-card use"><b>زجاجة الساعة</b> (تُستخدم في اختبار اللهب)<small>طبق زجاجي صغير يحمل عينة صلبة قليلة.</small></div><div class="lab-card"><b>الكأس الزجاجي</b><small>لخلط السوائل وحفظها وتسخينها بكميات متوسطة.</small></div><div class="lab-card"><b>المخبار المدرّج</b><small>لقياس حجم السائل بدقة؛ اقرئي التدريج عند أسفل سطح السائل المقعّر.</small></div><div class="lab-card"><b>أنبوب الاختبار</b><small>للتفاعلات الصغيرة، ويُمسك بماسك أو يوضع في حامل.</small></div><div class="lab-card"><b>الماصة</b><small>لنقل كمية صغيرة محددة من السائل.</small></div><div class="lab-card"><b>القمع وورق الترشيح</b><small>لفصل المادة الصلبة عن السائل.</small></div><div class="lab-card"><b>الميزان</b><small>لقياس كتلة المواد قبل استخدامها.</small></div>'}};
 
 /* ---------- الواجهة ---------- */
 function build(){
  var home=$('mainPage'); if(!home||$('labCard'))return;
  var c=document.createElement('section'); c.id='labCard'; c.className='lab-hero'; c.tabIndex=0; c.setAttribute('role','button');
- c.innerHTML='<div class="lab-ic">'+ico('flask-conical')+'</div><h2>المختبر</h2><p>مختبر كيميائي افتراضي ثلاثي الأبعاد: نفّذي التفاعلات وشاهدي أشكال الجزيئات.</p><span class="lab-go">ادخلي المختبر</span>';
+ c.innerHTML='<div class="lab-ic">'+ico('flask-conical')+'</div><h2>المختبر</h2><p>مختبر كيميائي افتراضي ثلاثي الأبعاد: نفّذي التفاعلات الكيميائية بنفسك وشاهدي نتائجها.</p><span class="lab-go">ادخلي المختبر</span>';
  var ir=$('ionic-root'),row;
- if(ir&&ir.parentNode){row=document.createElement('div');row.id='homeRow';ir.parentNode.insertBefore(row,ir);row.appendChild(ir);row.appendChild(c)}
- else{var a=home.querySelector('[data-ionic-block]'); if(a)a.insertAdjacentElement('afterend',c); else home.appendChild(c)}
+ var mc=document.createElement('section'); mc.id='molCard'; mc.className='lab-hero mol-hero'; mc.tabIndex=0; mc.setAttribute('role','button');
+ mc.innerHTML='<div class="lab-ic">'+ico('atom')+'</div><h2>الروابط وأشكال الجزيئات</h2><p>شاهدي الجزيئات ثلاثية الأبعاد، ثم ابني الجزيء بنفسك وتعلّمي كيف تتحدد أشكاله وزواياه.</p><span class="lab-go">ابدئي الاستكشاف</span>';
+ if(ir&&ir.parentNode){row=document.createElement('div');row.id='homeRow';ir.parentNode.insertBefore(row,ir);row.appendChild(ir);row.appendChild(c);row.appendChild(mc)}
+ else{var a=home.querySelector('[data-ionic-block]'); if(a){a.insertAdjacentElement('afterend',mc);a.insertAdjacentElement('afterend',c)} else{home.appendChild(c);home.appendChild(mc)}}
  page=document.createElement('section'); page.id='labPage'; page.dir='rtl'; page.lang='ar';
- page.innerHTML='<div id="lab-menu"><div class="lab-top"><button class="lab-btn alt" id="lab-home">← العودة إلى الجدول الدوري</button></div><div class="lab-wrap"><h2 class="lab-title">المختبر</h2><p class="lab-sub">أهلًا بكِ في المختبر الافتراضي. اختاري ما تريدين استكشافه.</p><div class="lab-opts" id="lab-opts"></div></div></div>'+
+ page.innerHTML='<div id="lab-menu"><div class="lab-top"><button class="lab-btn alt" id="lab-home">← العودة إلى الجدول الدوري</button></div><div class="lab-wrap"><h2 class="lab-title">المختبر</h2><p class="lab-sub">أهلًا بكِ في المختبر الافتراضي. اختاري ما تريدين استكشافه.</p><div class="lab-grp">قبل أن تبدئي</div><div class="lab-opts" id="lab-guide"></div><div class="lab-grp">التجارب</div><div class="lab-opts" id="lab-opts"></div></div></div>'+
+ '<div id="lab-info" hidden><div class="lab-top"><button class="lab-btn alt" id="lab-iback">← العودة إلى المختبر</button></div><div class="lab-wrap" id="lab-ibody"></div></div>'+
  '<div id="lab-list" hidden><div class="lab-top"><button class="lab-btn alt" id="lab-lback">← العودة إلى المختبر</button></div><div class="lab-wrap"><h2 class="lab-title" id="lab-lt"></h2><div class="lab-opts" id="lab-lopts"></div></div></div>'+
  '<div id="lab-3d" hidden><div id="lab-cv"></div><div id="lab-fbv"></div>'+
  '<div class="lab-bar"><button class="lab-btn alt sm" id="lab-exit">← التجارب</button><button class="lab-btn alt sm" id="lab-help-b">التحكم</button><button class="lab-btn alt sm" id="lab-hide">إخفاء اللوحات</button></div>'+
@@ -4768,23 +4816,44 @@ function build(){
  '<div class="lab-st"><button class="lab-btn sm" id="lab-gt">الطاولة</button><button class="lab-btn alt sm" id="lab-ge">المدخل</button></div>'+
  '<div id="lab-joy"><i></i></div>'+
  '<div id="lab-help" hidden><div><b>التحكم</b><br>اللمس: العصا لتحريك المكان، واسحبي على المشهد للنظر، واضغطي على الأداة لتتفاعلي معها.<br>الكمبيوتر: W A S D أو الأسهم للحركة، والفأرة للنظر والنقر.<br>أزرار «الطاولة» و«المدخل» تنقلكِ مباشرة.<br><button class="lab-btn sm" id="lab-hx">حسنًا</button></div></div>'+
- '<div id="lab-load">جارٍ تحميل المختبر…</div></div>';
+ '<div id="lab-paper" hidden></div><div id="lab-load">جارٍ تحميل المختبر…</div></div>';
  document.body.appendChild(page);
- var o=$('lab-opts'); Object.keys(SEC).forEach(function(k){var s=SEC[k],b=document.createElement('button');b.className='lab-opt';b.innerHTML=ico(s.i)+'<div><b>'+s.t+'</b><span>'+s.d+'</span></div>';b.onclick=function(){openList(k)};o.appendChild(b)});
+ function item(x,fn){var b=document.createElement('button');b.className='lab-opt'+(x.ok===0?' off':'');b.innerHTML=ico(x.i)+'<div><b>'+x.t+'</b><span>'+x.d+'</span></div>';if(x.ok!==0)b.onclick=fn;return b}
+ GUIDE.forEach(function(x){$('lab-guide').appendChild(item(x,function(){startExp(x.id)}))});
+ EXPS.forEach(function(x){$('lab-opts').appendChild(item(x,function(){startExp(x.id)}))});
+ $('lab-iback').onclick=function(){show('lab-menu')};
+ try{if(!document.getElementById('lab-font')){var lk=document.createElement('link');lk.id='lab-font';lk.rel='stylesheet';lk.href='https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap';document.head.appendChild(lk)}}catch(e){}
  c.onclick=openLab; c.onkeydown=function(e){if(e.key==='Enter'||e.key===' ')openLab()};
  $('lab-home').onclick=function(){if(history.state&&history.state.lab)history.back();else closeLab()};
- $('lab-lback').onclick=function(){show('lab-menu')};
- $('lab-exit').onclick=function(){stop3D();show('lab-list')};
+ $('lab-lback').onclick=function(){if(entry==='mol'){if(history.state&&history.state.lab)history.back();else closeLab()}else show('lab-menu')};
+ mc.onclick=openMol; mc.onkeydown=function(e){if(e.key==='Enter'||e.key===' ')openMol()};
+ $('lab-exit').onclick=function(){stop3D();backList()};
  $('lab-help-b').onclick=function(){$('lab-help').hidden=false}; $('lab-hx').onclick=function(){$('lab-help').hidden=true};
  $('lab-hide').onclick=function(){var p=$('lab-3d'),c=p.classList.toggle('clean');this.textContent=c?'إظهار اللوحات':'إخفاء اللوحات';if(MG&&mmode==='bld'){if(c){MG.position.x=0;MG.position.y=0}else bShift()}};
  $('lab-gt').onclick=function(){if(!busy)toTable()}; $('lab-ge').onclick=function(){if(!busy)toEntrance()};
  window.addEventListener('popstate',function(e){if(page.classList.contains('active')&&!(e.state&&e.state.lab))closeLab()});
 }
-function show(id){['lab-menu','lab-list','lab-3d'].forEach(function(v){$(v).hidden=(v!==id)});page.scrollTop=0}
-function openLab(){page.classList.add('active');document.body.classList.add('lab-open');show('lab-menu');try{history.pushState({lab:1},'')}catch(e){}}
+function backList(){show(entry==='mol'?'lab-list':'lab-menu')}
+function openInfo(k){var i=INFO[k];$('lab-ibody').innerHTML='<h2 class="lab-title">'+i.t+'</h2>'+i.h;show('lab-info')}
+function show(id){['lab-menu','lab-list','lab-info','lab-3d'].forEach(function(v){$(v).hidden=(v!==id)});page.scrollTop=0}
+var entry='lab';
+function openLab(){entry='lab';$('lab-lback').textContent='← العودة إلى المختبر';page.classList.add('active');document.body.classList.add('lab-open');show('lab-menu');try{history.pushState({lab:1},'')}catch(e){}}
+function openMol(){entry='mol';page.classList.add('active');document.body.classList.add('lab-open');openList('mol');$('lab-lback').textContent='← العودة إلى الجدول الدوري';try{history.pushState({lab:1},'')}catch(e){}}
 function closeLab(){stop3D();page.classList.remove('active');document.body.classList.remove('lab-open')}
 function openList(k){var s=SEC[k];$('lab-lt').textContent=s.t;var l=$('lab-lopts');l.innerHTML='';
+ if(k==='mol'){molLanding(l);show('lab-list');return}
  s.ex.forEach(function(x){var b=document.createElement('button');b.className='lab-opt'+(x.ok?'':' off');b.innerHTML=ico(s.i)+'<div><b>'+x.t+'</b><span>'+x.d+'</span></div>';if(x.ok)b.onclick=function(){startExp(x.id)};l.appendChild(b)});show('lab-list')}
+function molLanding(l){
+ var old=document.getElementById('mol-land-style');if(old)old.remove();
+ var st=document.createElement('style');st.id='mol-land-style';
+ st.textContent='.ml-card{display:flex;flex-direction:column;align-items:center;text-align:center;border-radius:28px;padding:14px 16px 22px;cursor:pointer;font-family:inherit;border:2px solid;overflow:hidden;animation:mlUp .55s both;transition:transform .25s,box-shadow .25s}#ml-b{animation-delay:.14s}@keyframes mlUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}.ml-card:hover{transform:translateY(-3px)}.ml-card:active{transform:scale(.98)}.ml-card.g{border-color:#c9ebdd;background:linear-gradient(135deg,#fff,#eafaf3 60%,#d9f4e8);box-shadow:0 12px 30px rgba(31,143,107,.15)}.ml-card.p{border-color:#e2d8f2;background:linear-gradient(135deg,#fff,#f4eefc 60%,#e6dbf7);box-shadow:0 12px 30px rgba(112,86,168,.15)}.ml-art{width:100%;border-radius:20px;margin-bottom:12px;padding:6px 0}.g .ml-art{background:radial-gradient(circle at 50% 40%,#fff,#d4f3e5)}.p .ml-art{background:radial-gradient(circle at 50% 40%,#fff,#e3d7f6)}.ml-art svg{display:block;width:min(260px,86%);height:auto;margin:0 auto}.ml-card h3{font-size:24px;font-weight:900;margin-bottom:6px}.g h3{color:#1f8f6b}.p h3{color:#7056a8}.ml-card p{color:#6f6779;font-size:15px;line-height:1.9;max-width:440px;margin-bottom:14px}.ml-go{display:inline-block;color:#fff;border-radius:14px;padding:11px 24px;font-weight:800;font-size:15px}.g .ml-go{background:linear-gradient(135deg,#3ccf9c,#1f8f6b);box-shadow:0 8px 20px rgba(31,143,107,.28)}.p .ml-go{background:linear-gradient(135deg,#8c70c5,#7056a8);box-shadow:0 8px 20px rgba(112,86,168,.28)}.mw-f{animation:mwF 3.4s ease-in-out infinite alternate;transform-origin:110px 60px}@keyframes mwF{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}.mw-lp{animation:mwP 1.8s ease-in-out infinite alternate}@keyframes mwP{from{opacity:.35}to{opacity:.85}}.mw-ang{animation:mwP 1.8s ease-in-out infinite alternate}.mb-hl{animation:mbL 4.6s ease-in-out infinite}.mb-hr{animation:mbR 4.6s ease-in-out infinite}@keyframes mbL{0%{transform:translate(-70px,-26px);opacity:0}14%{opacity:1}50%,86%{transform:none;opacity:1}100%{transform:none;opacity:0}}@keyframes mbR{0%{transform:translate(70px,-26px);opacity:0}14%{opacity:1}50%,86%{transform:none;opacity:1}100%{transform:none;opacity:0}}.mb-b{animation:mbB 4.6s ease-in-out infinite}@keyframes mbB{0%,48%{opacity:0}58%,86%{opacity:1}100%{opacity:0}}.mb-o{animation:mbO 4.6s ease-in-out infinite;transform-origin:110px 52px}@keyframes mbO{0%,48%{transform:scale(1)}56%{transform:scale(1.18)}66%,100%{transform:scale(1)}}';
+ document.head.appendChild(st);
+ var wat='<svg viewBox="0 0 220 120" aria-hidden="true"><g class="mw-f"><g stroke="#b8aecb" stroke-width="6" stroke-linecap="round"><line x1="110" y1="52" x2="74" y2="92"/><line x1="110" y1="52" x2="146" y2="92"/></g><ellipse class="mw-lp" cx="92" cy="30" rx="15" ry="9" transform="rotate(-35 92 30)" fill="#a98be0"/><ellipse class="mw-lp" cx="128" cy="30" rx="15" ry="9" transform="rotate(35 128 30)" fill="#a98be0"/><path class="mw-ang" d="M92 74 Q110 84 128 74" fill="none" stroke="#1f8f6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 5"/><circle cx="110" cy="52" r="19" fill="#e5484d" stroke="#b83a3e"/><circle cx="74" cy="92" r="12" fill="#f4f6fa" stroke="#8b8497"/><circle cx="146" cy="92" r="12" fill="#f4f6fa" stroke="#8b8497"/></g><text class="mw-ang" x="110" y="112" text-anchor="middle" font-size="13" font-weight="800" fill="#1f8f6b" font-family="Arial">104.5°</text></svg>';
+ var bld='<svg viewBox="0 0 220 120" aria-hidden="true"><g class="mb-b" stroke="#b8aecb" stroke-width="6" stroke-linecap="round"><line x1="110" y1="52" x2="74" y2="92"/><line x1="110" y1="52" x2="146" y2="92"/></g><circle class="mb-o" cx="110" cy="52" r="19" fill="#e5484d" stroke="#b83a3e"/><circle class="mb-hl" cx="74" cy="92" r="12" fill="#f4f6fa" stroke="#8b8497"/><circle class="mb-hr" cx="146" cy="92" r="12" fill="#f4f6fa" stroke="#8b8497"/></svg>';
+ l.innerHTML='<button class="ml-card g" id="ml-v"><div class="ml-art">'+wat+'</div><h3>الأشكال الفراغية للجزيئات</h3><p>BeCl₂ وAlCl₃ وCH₄ وPH₃ وH₂O وNbBr₅ وSF₆، مع الزوايا والأزواج غير الرابطة.</p><span class="ml-go">شاهدي الأشكال</span></button>'+
+ '<button class="ml-card p" id="ml-b"><div class="ml-art">'+bld+'</div><h3>ابنِ الجزيء</h3><p>ابدئي من الصفر: دوائر للذرات وبيضاويات للأزواج غير الرابطة وعصي للروابط، وغيّري الألوان.</p><span class="ml-go">ابدئي البناء</span></button>';
+ $('ml-v').onclick=function(){startExp('mol')};
+ $('ml-b').onclick=function(){startExp('build')}}
 function say(m,a){$('lab-msg').innerHTML=m;var b=$('lab-acts');b.innerHTML='';(a||[]).forEach(function(x){var e=document.createElement('button');e.className='lab-btn sm'+(x.alt?' alt':'');e.textContent=x.t;e.onclick=x.f;b.appendChild(e)})}
 function hint(m){var o=$('lab-msg').querySelector('.lab-hint');if(o)o.remove();$('lab-msg').insertAdjacentHTML('beforeend','<div class="lab-hint">'+m+'</div>')}
 function fbv(h){if(FB)$('lab-fbv').innerHTML=h}
@@ -4795,8 +4864,8 @@ function loadThree(cb){if(window.THREE){T=window.THREE;return cb(true)}var s=doc
 function startExp(id){show('lab-3d');FB=0;$('lab-3d').classList.remove('fb','mol','clean');$('lab-hide').textContent='إخفاء اللوحات';$('lab-load').style.display='flex';say('');
  if(!webgl())return fb(id);
  loadThree(function(ok){if(!ok)return fb(id);try{if(id==='mol'||id==='build')molStart(id);else{if(!R)setup();run(id)}$('lab-load').style.display='none'}catch(e){console.error(e);stop3D();fb(id)}})}
-function fb(id){FB=1;stop3D();show('lab-3d');$('lab-3d').classList.add('fb');$('lab-load').style.display='none';run(id)}
-function run(id){if(id==='build')say('هذه التجربة تحتاج متصفحًا يدعم الرسم ثلاثي الأبعاد (WebGL). جرّبيها من متصفح آخر.');else if(id==='mol')molFB();else if(id==='fizz')fizz();else if(id==='eleph')eleph();else if(id==='disp')disp()}
+function fb(id){if(INFO[id]){FB=0;stop3D();openInfo(id);return}FB=1;stop3D();show('lab-3d');$('lab-3d').classList.add('fb');$('lab-load').style.display='none';run(id)}
+function run(id){if(id==='build')say('هذه التجربة تحتاج متصفحًا يدعم الرسم ثلاثي الأبعاد (WebGL). جرّبيها من متصفح آخر.');else if(id==='mol')molFB();else if(id==='fizz')fizz();else if(id==='eleph')eleph();else if(id==='disp')disp();else if(id==='flame')flame();else if(id==='ins'||id==='safe')labBoard(id);else if(id==='tools')labTools();else if(id==='precip')precip();else if(id==='filter')labFilter()}
 function M(c,o){return new T.MeshStandardMaterial(Object.assign({color:c,roughness:.6,metalness:.05},o||{}))}
 function B(w,h,d,c,x,y,z,p){var m=new T.Mesh(new T.BoxGeometry(w,h,d),M(c));m.position.set(x,y,z);(p||sc).add(m);return m}
 function glass(o){return M(0xffffff,Object.assign({transparent:true,opacity:.28,roughness:.1,side:T.DoubleSide},o||{}))}
@@ -4819,7 +4888,7 @@ function mkHand(){hand=new T.Group();pose=new T.Group();pose.rotation.x=-1.15;ha
  var th=new T.Group();th.position.set(.047,-.01,0);th.rotation.z=-.7;var tm=new T.Mesh(new T.BoxGeometry(.019,.06,.019),sk);tm.position.y=.03;th.add(tm);pose.add(th);fingers.push(th);
  cam.add(hand);hand.position.set(REST.x,REST.y,REST.z)}
 function curl(v){fingers.forEach(function(p){p.rotation.x=v*1.3})}
-function stop3D(){molStop();live=0;if(raf)cancelAnimationFrame(raf);if(R){window.removeEventListener('resize',fit);R.dispose();if(R.domElement.parentNode)R.domElement.parentNode.removeChild(R.domElement)}R=null;sc=null;X=null;atoms=[];pick=[];cont=[];lat=null;busy=0;J.x=J.y=0;K={}}
+function stop3D(){var pp=$('lab-paper');if(pp)pp.hidden=true;PAPCLOSE=null;molStop();live=0;if(raf)cancelAnimationFrame(raf);if(R){window.removeEventListener('resize',fit);R.dispose();if(R.domElement.parentNode)R.domElement.parentNode.removeChild(R.domElement)}R=null;sc=null;X=null;atoms=[];pick=[];cont=[];lat=null;busy=0;J.x=J.y=0;K={}}
 function reset3D(){if(!sc)return;if(expG)sc.remove(expG);expG=new T.Group();sc.add(expG);atoms=[];pick=[];cont=[];lat=null;holo=null;busy=0;
  cam.position.set(0,1.6,3.2);V.yaw=0;V.pitch=-.1;hand.position.set(REST.x,REST.y,REST.z);hand.rotation.set(0,0,0);curl(0)}
 
@@ -4846,6 +4915,7 @@ function loop(t){if(!live||!R)return;raf=requestAnimationFrame(loop);var dt=Math
  cam.rotation.set(V.pitch,V.yaw,0);
  atoms.forEach(function(g){g.els.forEach(function(a,i){g.ph[i]+=dt*1.4/(i+1);a.forEach(function(e){var q=e.userData.a+g.ph[i],r=e.userData.r;e.position.set(Math.cos(q)*r,0,Math.sin(q)*r)})})});
  if(lat&&lat.visible)lat.rotation.y+=dt*.6;
+ if(X&&X.tick)X.tick(t/1000,dt);
  if(X&&X.walk&&distT()<2.5){X.walk=0;X.go(X.first||'na')}
  R.render(sc,cam)}
 function tw(o,to,ms,cb){return new Promise(function(res){var f={},k,t0=performance.now();for(k in to)f[k]=o[k];(function st(n){var t=Math.min(1,Math.max(0,(n-t0)/ms)),e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;for(k in to)o[k]=f[k]+(to[k]-f[k])*e;if(cb)cb(e);if(t<1)requestAnimationFrame(st);else res()})(t0)})}
@@ -4904,6 +4974,278 @@ function spark(n,col,y0,rise,ms,spread,sz){for(var i=0;i<n;i++)(function(){
  s.position.set(-.0+(Math.random()-.5)*spread,TY+y0,-1.8+(Math.random()-.5)*spread);var e=expG;
  wait(Math.random()*ms*.7).then(function(){if(!sc||e!==expG)return;e.add(s);return Promise.all([tw(s.position,{y:s.position.y+rise,x:s.position.x+(Math.random()-.5)*.1},ms),tw(s.material,{opacity:0},ms)])}).then(function(){e.remove(s)})})()}
 
+/* ---------- لوحات التعليمات والسلامة + الأدوات داخل المختبر ---------- */
+var BOARDS={
+ ins:{t:'تعليمات المختبر',c1:'#7056a8',c2:'#e9578b',it:[
+  ['اختاري تجربة','من قائمة التجارب في المختبر.'],
+  ['اقتربي من الطاولة','حرّكي العصا على الشاشة (أو W A S D في الكمبيوتر)، أو اضغطي زر «الطاولة».'],
+  ['انظري حولك','اسحبي بإصبعك على المشهد لتدوير النظرة.'],
+  ['اقرئي الرسالة','التي تظهر في الأعلى، فهي تخبرك بالخطوة التالية.'],
+  ['اضغطي على الأداة المطلوبة','(وعاء أو عينة)، وستتحرك اليد وتنفّذ الخطوة عنكِ.'],
+  ['لاحظي ثم دوّني','في اختبار اللهب تكتبين ملاحظاتك في «التقرير»، وتضغطين على الورقة لتفتحيها.'],
+  ['للأمان','زر «المدخل» يبعدكِ عن الطاولة، و«إخفاء اللوحات» يعطيكِ مساحة أكبر للمشاهدة.']],
+  f:'طريقة العمل العلمية: لاحظي، ثم دوّني، ثم استنتجي.'},
+ safe:{t:'سلامة المختبر',c1:'#d9534f',c2:'#f7a21b',it:[
+  ['النظارة والمعطف','نلبس نظارة واقية ومعطفًا وقفازات قبل أي تجربة، حتى لو كانت افتراضية، لنتعوّد.'],
+  ['اللهب','لا نميل فوقه، ونبعد عنه الأوراق والمواد القابلة للاشتعال، ونربط الشعر الطويل.'],
+  ['لا نتذوق ولا نأكل','لا نتذوق أي مادة ولا نأكل أو نشرب داخل المختبر.'],
+  ['الشم','لا نشمّ المادة مباشرة؛ نلوّح بيدنا نحو أنفنا لنقرّب الرائحة بأمان.'],
+  ['لا نخلط من عندنا','نتبع الخطوات كما هي، ولا نخلط مواد دون إذن المعلمة.'],
+  ['نبلّغ فورًا','أي انسكاب أو كسر أو إصابة نخبر المعلمة عنه في الحال.'],
+  ['بعد التجربة','نغسل أيدينا، ونتخلص من المواد في الأماكن المخصصة.'],
+  ['تعرّفي على','مكان طفاية الحريق، وغسّالة العيون، ومخرج الطوارئ في مختبر مدرستكِ.']],
+  f:'سلامتكِ أولًا في كل تجربة.'}};
+function boardTex(b){
+ var W=1200,H=1800,FONT='Tajawal,Arial,sans-serif',c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+ try{x.direction='rtl'}catch(e){}
+ x.fillStyle='#fffdf4';x.fillRect(0,0,W,H);
+ var g=x.createLinearGradient(0,0,W,0);g.addColorStop(0,b.c1);g.addColorStop(1,b.c2);x.fillStyle=g;x.fillRect(0,0,W,200);
+ x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';x.font='900 92px '+FONT;x.fillText(b.t,W/2,104);
+ var R0=W-170,MW=W-250,top=240,bot=H-(b.f?230:80);
+ function wrap(t,sz,w){x.font='500 '+sz+'px '+FONT;var ws=t.split(' '),ls=[],l='';ws.forEach(function(q){var n=l?l+' '+q:q;if(l&&x.measureText(n).width>w){ls.push(l);l=q}else l=n});if(l)ls.push(l);return ls}
+ var sz=50,lay=[];
+ for(;sz>=24;sz-=2){var ds=Math.round(sz*.9);lay=b.it.map(function(i){return {h:i[0],d:wrap(i[1],ds,MW)}});var tot=0;lay.forEach(function(o){tot+=sz*1.35+o.d.length*sz*1.25+sz*.7});if(tot<=bot-top)break}
+ var y=top+10,ds2=Math.round(sz*.9);
+ lay.forEach(function(o,n){
+  x.fillStyle=b.c1;x.beginPath();x.arc(W-90,y+sz*.62,sz*.62,0,6.2832);x.fill();
+  x.fillStyle='#fff';x.textAlign='center';x.font='800 '+Math.round(sz*.8)+'px '+FONT;x.fillText(String(n+1),W-90,y+sz*.66);
+  x.textAlign='right';x.fillStyle=b.c1;x.font='800 '+sz+'px '+FONT;x.fillText(o.h,R0,y+sz*.62);y+=sz*1.35;
+  x.fillStyle='#39334b';x.font='500 '+ds2+'px '+FONT;o.d.forEach(function(l){x.fillText(l,R0,y+sz*.5);y+=sz*1.25});y+=sz*.7});
+ if(b.f){x.fillStyle='#f3eefb';x.fillRect(60,H-200,W-120,130);x.fillStyle=b.c1;x.textAlign='center';x.font='800 46px '+FONT;x.fillText(b.f,W/2,H-135)}
+ x.strokeStyle=b.c1;x.lineWidth=16;x.strokeRect(8,8,W-16,H-16);
+ var tx=new T.CanvasTexture(c);tx.minFilter=T.LinearFilter;tx.generateMipmaps=false;try{tx.anisotropy=Math.min(8,R.capabilities.getMaxAnisotropy())}catch(e){}return tx}
+function labBoard(id){var b=BOARDS[id];reset3D();S={s:'board'};X={walk:0,first:'',go:function(){},pick:function(){}};
+ var W=2.4,H=3.6,g=new T.Group();
+ var fr=new T.Mesh(new T.BoxGeometry(W+.16,H+.16,.06),M(0x5b4690,{roughness:.5}));fr.position.z=-.02;
+ var bd=new T.Mesh(new T.PlaneGeometry(W,H),new T.MeshBasicMaterial({map:boardTex(b),fog:false}));bd.position.z=.012;
+ g.add(fr,bd);g.position.set(0,1.9,-.6);expG.add(g);B(1.4,.1,.5,0x37474f,0,.05,-.62,expG);
+ var p=$('lab-3d');p.classList.add('clean');$('lab-hide').textContent='إظهار اللوحات';
+ var asp=cam.aspect||1,tv=Math.tan(31*Math.PI/180),d=Math.max(H/2/tv,W/2/(tv*asp))*1.06,zc=Math.min(3.9,-.6+d),e=expG;
+ busy=1;Promise.all([tw(cam.position,{x:0,y:1.9,z:zc},1100),tw(V,{yaw:0,pitch:0},1100)]).then(function(){if(e===expG)busy=0})}
+function lathe(p,m,s){return new T.Mesh(new T.LatheGeometry(p.map(function(q){return new T.Vector2(q[0],q[1])}),s||32),m)}
+function hitBox(g,w,h,d,y){var m=new T.Mesh(new T.BoxGeometry(w,h,d),new T.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false}));m.position.y=y;g.add(m)}
+function cyl(r1,r2,h,col,y,o,s){var m=new T.Mesh(new T.CylinderGeometry(r1,r2,h,s||24),M(col,o));m.position.y=y;return m}
+var TLS=[
+ {id:'flask',n:'الدورق المخروطي',u:'يُستخدم في تجاربنا',d:'لخلط المحاليل وإجراء التفاعلات؛ عنقه الضيق يقلل التطاير والانسكاب.',x:0,z:-2.15,h:.42,
+  mk:function(g){g.add(lathe([[0,0],[.17,0],[.165,.01],[.06,.25],[.06,.35],[.075,.37]],glass({opacity:.25})));g.add(lathe([[0,.012],[.15,.012],[.11,.09],[0,.09]],M(0x58b8f0,{transparent:true,opacity:.75})));hitBox(g,.36,.4,.36,.2)}},
+ {id:'bunsen',n:'موقد بنسن',u:'يُستخدم في اختبار اللهب',d:'يعطي لهبًا نظيفًا للتسخين ولاختبار لون اللهب. لهبه الأزرق هو الأسخن.',x:-.42,z:-1.45,h:.3,
+  mk:function(g){g.add(cyl(.075,.085,.025,0x2c3338,.0125,{metalness:.5,roughness:.4},28));g.add(cyl(.016,.016,.2,0xb8c0c6,.125,{metalness:.8,roughness:.25},14));g.add(cyl(.027,.027,.035,0x546e7a,.07,{metalness:.6},14));hitBox(g,.2,.28,.2,.14)}},
+ {id:'watch',n:'زجاجة الساعة',u:'تُستخدم في اختبار اللهب',d:'طبق زجاجي صغير يحمل عينة صلبة قليلة.',x:0,z:-1.45,h:.14,
+  mk:function(g){var m=new T.Mesh(new T.SphereGeometry(.21,32,10,0,6.2832,0,.45),glass({opacity:.35}));m.rotation.x=Math.PI;m.position.y=.21;g.add(m);var pw=new T.Mesh(new T.SphereGeometry(.03,14,8),M(0xf2f2ee,{roughness:1}));pw.scale.y=.4;pw.position.y=.01;g.add(pw);hitBox(g,.24,.1,.24,.05)}},
+ {id:'beaker',n:'الكأس الزجاجي',u:'',d:'لخلط السوائل وحفظها وتسخينها بكميات متوسطة.',x:-.5,z:-1.8,h:.3,
+  mk:function(g){g.add(lathe([[0,0],[.11,0],[.11,.26],[.12,.275]],glass({opacity:.25})));g.add(cyl(.1,.1,.14,0xf4d35e,.08,{transparent:true,opacity:.8},28));hitBox(g,.26,.3,.26,.15)}},
+ {id:'cylinder',n:'المخبار المدرّج',u:'',d:'لقياس حجم السائل بدقة؛ اقرئي التدريج عند أسفل سطح السائل المقعّر.',x:-.42,z:-2.15,h:.48,
+  mk:function(g){g.add(cyl(.075,.085,.02,0xdfe6ea,.01,{},28));g.add(lathe([[0,.02],[.036,.02],[.036,.44],[.042,.45]],glass({opacity:.25}),24));g.add(cyl(.032,.032,.2,0x7ad3a0,.12,{transparent:true,opacity:.8},20));
+   for(var k=0;k<8;k++){var t=new T.Mesh(new T.TorusGeometry(.038,.0015,6,24),M(0x2b2f35));t.rotation.x=Math.PI/2;t.position.y=.07+k*.05;g.add(t)}hitBox(g,.2,.46,.2,.23)}},
+ {id:'rack',n:'أنبوب الاختبار',u:'',d:'للتفاعلات الصغيرة، ويُمسك بماسك أو يوضع في حامل.',x:0,z:-1.8,h:.32,
+  mk:function(g){var sh=new T.Mesh(new T.BoxGeometry(.5,.012,.14),M(0xb08a5c));sh.position.y=.1;g.add(sh);[-.25,.25].forEach(function(px){var q=new T.Mesh(new T.BoxGeometry(.012,.1,.14),M(0xb08a5c));q.position.set(px,.05,0);g.add(q)});
+   [[-.12,0xe9578b],[0,0x34c38f],[.12,0x4f7cff]].forEach(function(t){var tb=new T.Mesh(new T.CylinderGeometry(.026,.026,.2,18,1,true),glass({opacity:.3}));tb.position.set(t[0],.206,0);g.add(tb);var bt=new T.Mesh(new T.SphereGeometry(.026,14,10,0,6.2832,Math.PI/2,Math.PI/2),glass({opacity:.3}));bt.position.set(t[0],.106,0);g.add(bt);var lq=cyl(.022,.022,.09,t[1],.16,{transparent:true,opacity:.85},16);lq.position.x=t[0];g.add(lq)});hitBox(g,.52,.3,.16,.15)}},
+ {id:'funnel',n:'القمع وورق الترشيح',u:'',d:'لفصل المادة الصلبة عن السائل.',x:.42,z:-2.15,h:.42,
+  mk:function(g){g.add(cyl(.11,.11,.02,0x546e7a,.01,{},4));var rd=cyl(.008,.008,.4,0xb8c0c6,.21,{metalness:.7},10);rd.position.x=-.08;g.add(rd);
+   var arm=new T.Mesh(new T.BoxGeometry(.12,.01,.01),M(0xb8c0c6,{metalness:.7}));arm.position.set(-.02,.3,0);g.add(arm);
+   var fu=new T.Mesh(new T.ConeGeometry(.09,.12,24,1,true),glass({opacity:.3}));fu.rotation.x=Math.PI;fu.position.set(.04,.33,0);g.add(fu);
+   var st=cyl(.01,.01,.1,0xffffff,.22,{transparent:true,opacity:.35},10);st.position.x=.04;g.add(st);
+   var pp=new T.Mesh(new T.ConeGeometry(.075,.1,24,1,true),M(0xffffff,{side:T.DoubleSide,roughness:1}));pp.rotation.x=Math.PI;pp.position.set(.04,.34,0);g.add(pp);hitBox(g,.28,.42,.2,.21)}},
+ {id:'pipette',n:'الماصة',u:'',d:'لنقل كمية صغيرة محددة من السائل.',x:.42,z:-1.45,h:.12,
+  mk:function(g){var tb=new T.Mesh(new T.CylinderGeometry(.008,.008,.26,10),glass({opacity:.4}));tb.rotation.z=Math.PI/2;tb.position.y=.026;g.add(tb);var bl=new T.Mesh(new T.SphereGeometry(.024,14,10),M(0xe9578b));bl.position.set(.15,.026,0);g.add(bl);var tp=new T.Mesh(new T.ConeGeometry(.008,.05,10),glass({opacity:.5}));tp.rotation.z=Math.PI/2;tp.position.set(-.155,.026,0);g.add(tp);var lq=new T.Mesh(new T.CylinderGeometry(.005,.005,.12,8),M(0x4aa3e8));lq.rotation.z=Math.PI/2;lq.position.set(-.06,.026,0);g.add(lq);hitBox(g,.4,.08,.1,.04)}},
+ {id:'scale',n:'الميزان',u:'',d:'لقياس كتلة المواد قبل استخدامها.',x:.5,z:-1.8,h:.2,
+  mk:function(g){var bs=new T.Mesh(new T.BoxGeometry(.34,.04,.26),M(0xd0d5d9,{metalness:.3}));bs.position.y=.02;g.add(bs);g.add(cyl(.02,.02,.04,0x8d99a3,.06,{metalness:.6},12));g.add(cyl(.1,.1,.012,0x8d99a3,.086,{metalness:.6},30));var ds=new T.Mesh(new T.BoxGeometry(.12,.02,.012),M(0x1d2b24));ds.position.set(0,.045,.133);g.add(ds);var dn=new T.Mesh(new T.BoxGeometry(.08,.012,.006),M(0x2fd18a,{emissive:0x2fd18a,emissiveIntensity:.6}));dn.position.set(0,.045,.14);g.add(dn);hitBox(g,.36,.12,.28,.06)}}];
+function labTools(){reset3D();S={s:'tools'};var lbS=null,e=expG,tools={};
+ TLS.forEach(function(t){var g=new T.Group();g.userData.key='t_'+t.id;g.position.set(t.x,TY,t.z);t.mk(g);expG.add(g);pick.push(g);tools[g.userData.key]=[t,g]});
+ say('<b>أدوات المختبر</b><br>هذه كل أدوات المختبر على الطاولة. <b>اضغطي على أي أداة</b> لتعرفي اسمها واستخدامها.');
+ X={walk:0,first:'',go:function(){},pick:function(k){var q=tools[k];if(!q||busy)return;var t=q[0],g=q[1];
+  say('<b>'+t.n+'</b><br>'+t.d+(t.u?'<div class="lab-hint" style="background:#eef6ff;color:#1b4a8a">'+t.u+'</div>':''));
+  if(!lbS){lbS=label(t.n,'#7056a8');lbS.scale.set(.5,.25,1);expG.add(lbS)}else setLab(lbS,t.n);
+  lbS.position.set(g.position.x,TY+t.h+.14,g.position.z);
+  tw(g.scale,{x:1.12,y:1.12,z:1.12},150).then(function(){return tw(g.scale,{x:1,y:1,z:1},200)})}};
+ busy=1;Promise.all([tw(cam.position,{x:0,y:1.5,z:.3},1000),tw(V,{yaw:0,pitch:-.28},1000)]).then(function(){if(e===expG)busy=0})}
+
+/* ---------- التجربة: المطر الذهبي (ترسيب PbI₂) ---------- */
+function precip(){
+ var pb,ki,fl,lq,K2,RP=null;S={s:'walk'};
+ if(!FB){reset3D();pb=jar('pb',0xe6f2ff,'Pb(NO₃)₂',-.75,-1.55,1);ki=jar('ki',0xf1f4f8,'KI',.75,-1.55,1);fl=flask();lq=mkLiq(fl);lq.material.opacity=.55}
+ else fbv('Pb(NO₃)₂ + 2KI → PbI₂↓ + 2KNO₃');
+ function go(s){S.s=s;seq[s]()}
+ K2=kit(fl,go);
+ var seq={
+  walk:function(){say(WALKMSG+'<br><small>محلولان شفافان بلا لون... انتظري لترَي ما سيحدث!</small>',[{t:'اذهبي إلى الطاولة',f:toTable}])},
+  pb:function(){say('<b>الخطوة 1 من 4:</b> اضغطي على وعاء محلول نترات الرصاص Pb(NO₃)₂، وهو شفاف بلا لون.',fa('pb','أمسكي وعاء نترات الرصاص'))},
+  pbP:function(){say('<b>الخطوة 2 من 4:</b> اضغطي على الدورق لتسكبيه فيه.',fa('flask','انقلي المحلول إلى الدورق'))},
+  ki:function(){say('<b>الخطوة 3 من 4:</b> اضغطي على وعاء محلول يوديد البوتاسيوم KI، وهو أيضًا شفاف بلا لون.',fa('ki','أمسكي وعاء يوديد البوتاسيوم'))},
+  kiP:function(){say('<div class="lab-warn">تنبيه: مركبات الرصاص سامة، ولذلك نجري هذه التجربة افتراضيًا أو بإشراف المعلمة.</div><b>الخطوة 4 من 4:</b> اضغطي على الدورق لتسكبي المحلول الثاني وراقبي ما يحدث.',fa('flask','اسكبي المحلول وراقبي'))},
+  react:function(){say('<b>راقبي الدورق…</b> ظهرت سحابة صفراء، ثم بدأت حبيبات صلبة تتساقط كأنها مطر ذهبي!',FB?[{t:'شاهدي النتيجة',f:function(){go('res')}}]:[]);
+   if(!FB)(RP||Promise.resolve()).then(function(){go('res')})},
+  res:function(){quiz()}};
+ X={first:'pb',walk:!FB,go:go,pick:function(k){if(busy)return;var s=S.s;
+  if(s==='walk')return hint('اقتربي من الطاولة أولًا.');
+  if(s==='pb')return k==='pb'?K2.carry(pb,'pbP'):hint('ابدئي بوعاء نترات الرصاص.');
+  if(s==='pbP')return k==='flask'?K2.pour(pb,-1,0xe6f2ff,'ki',function(){clearCont();showLiq(lq,0xe6f2ff,.5)}):hint('اضغطي على الدورق في منتصف الطاولة.');
+  if(s==='ki')return k==='ki'?K2.carry(ki,'kiP'):hint('الآن وعاء يوديد البوتاسيوم.');
+  if(s==='kiP')return k==='flask'?K2.pour(ki,1,0xf1f4f8,'react',function(){clearCont();if(!FB)RP=runReact()}):hint('اضغطي على الدورق.')}};
+ function runReact(){var e=expG,o={p:0},c0=new T.Color(0xe6f2ff),c1=new T.Color(0xffe96a),c2=new T.Color(0xf2f7ff);
+  function tint(v){var c=v<=1?c0.clone().lerp(c1,v):c1.clone().lerp(c2,v-1);lq.material.color.copy(c);lq.material.emissive.copy(c)}
+  var bg=new T.CylinderGeometry(.178,.186,.03,36);bg.translate(0,.015,0);
+  var bed=new T.Mesh(bg,M(0xf2c10d,{roughness:.9,emissive:0x7a5a00,emissiveIntensity:.25}));bed.position.set(0,TY+.021,-1.8);bed.scale.y=.001;e.add(bed);
+  var cl=new T.Mesh(new T.SphereGeometry(.06,16,12),new T.MeshBasicMaterial({color:0xffe14d,transparent:true,opacity:.6,depthWrite:false}));cl.position.set(0,TY+.13,-1.8);cl.renderOrder=3;e.add(cl);
+  tw(cl.scale,{x:2.1,y:1.2,z:2.1},1400);tw(cl.material,{opacity:0},2600).then(function(){e.remove(cl)});
+  for(var i=0;i<80;i++)(function(){var r=.007+Math.random()*.009,sp=new T.Mesh(new T.SphereGeometry(r,8,6),M(0xffd21f,{emissive:0xffb300,emissiveIntensity:.55,roughness:.3,metalness:.3}));
+   sp.position.set((Math.random()-.5)*.17,TY+.1+Math.random()*.05,-1.8+(Math.random()-.5)*.17);
+   wait(200+Math.random()*3200).then(function(){if(!sc||e!==expG)return;e.add(sp);return tw(sp.position,{x:sp.position.x*.8,y:TY+.04+Math.random()*.02,z:-1.8+(sp.position.z+1.8)*.8},1500+Math.random()*1300)}).then(function(){if(sp.parent)sp.parent.remove(sp)})})();
+  return Promise.all([tw(bed.scale,{y:1},5200),tw(o,{p:1},1500,function(){tint(o.p)}).then(function(){return tw(o,{p:2},3500,function(){tint(o.p)})})]).then(function(){return wait(600)})}
+ function quiz(){var ans=function(ok){if(!ok)return hint('ليست صحيحة. تذكّري: المحلولان كانا بلا لون، والمادة الصلبة الصفراء هي التي ترسّبت.');
+   say('<b>إجابة صحيحة!</b> الراسب الأصفر هو <b>يوديد الرصاص PbI₂</b>. تبادلت الأيونات أماكنها: اتحد Pb²⁺ مع I⁻ فتكوّن مركب لا يذوب في الماء فترسّب، أما KNO₃ فبقي ذائبًا.<br>المعادلة: Pb(NO₃)₂ + 2KI → PbI₂↓ + 2KNO₃. وهذا يسمى <b>تفاعل الترسيب</b> (إحلال مزدوج).',
+   [{t:'رشّحي الراسب',f:function(){window.__fp=1;labFilter()}},{t:'إعادة التجربة',alt:1,f:precip},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();backList()}}])};
+  fbv('Pb(NO₃)₂ + 2KI → PbI₂↓ + 2KNO₃');
+  say('<b>انتهى التفاعل!</b> استقرت طبقة صفراء في قاع الدورق.<br><b>سؤال:</b> ما المادة الصفراء التي ترسّبت؟',[{t:'يوديد الرصاص PbI₂',f:function(){ans(1)}},{t:'نترات البوتاسيوم KNO₃',f:function(){ans(0)}},{t:'فلز الرصاص Pb',f:function(){ans(0)}}])}
+ go(FB?'pb':'walk');if(!FB)toEntrance()}
+
+/* ---------- التجربة: الترشيح ---------- */
+var FMODES={
+ sand:{jc:0xb59a68,sym:'رمل + ماء',lq:0xb59a68,solid:0xc9a56b,fbv:'رمل + ماء → ماء صافٍ + رمل',opts:['الرمل','الماء','الملح'],
+  ok:'بقي <b>الرمل</b> على الورقة لأن حبيباته أكبر من ثقوبها الدقيقة، أما جزيئات الماء فصغيرة جدًا فمرّت.<br>ما يبقى على الورقة يسمى <b>الراسب (المتبقي)</b>، وما ينزل في الكأس يسمى <b>الراشح</b>. الترشيح يفصل <b>مادة صلبة غير ذائبة</b> عن السائل.'},
+ ppt:{jc:0xf3df72,sym:'PbI₂ + محلول',lq:0xf3df72,solid:0xf2c10d,fbv:'PbI₂ + KNO₃(aq) → PbI₂ على الورقة + راشح صافٍ',opts:['يوديد الرصاص PbI₂','نترات البوتاسيوم KNO₃','الماء'],
+  ok:'بقي <b>يوديد الرصاص PbI₂ الأصفر</b> على الورقة لأنه صلب لا يذوب في الماء، ونزل <b>الراشح</b> الصافي وفيه <b>KNO₃</b> الذائب. هكذا فصلنا الراسب الناتج عن التفاعل.'}};
+function labFilter(){
+ var mx=window.__fp?FMODES.ppt:FMODES.sand,again=(mx===FMODES.ppt);window.__fp=0;
+ var fn,pap,res,wet,fil,stack,mj,K2,discs=[];S={s:'walk'};
+ if(!FB){reset3D();
+  fn=new T.Group();fn.userData.key='funnel';fn.position.set(0,TY,-1.8);
+  fn.add(lathe([[0,0],[.11,0],[.11,.26],[.12,.275]],glass({opacity:.25})));
+  var fg=new T.CylinderGeometry(.1,.1,.2,28);fg.translate(0,.1,0);
+  fil=new T.Mesh(fg,M(0xcfe9ff,{transparent:true,opacity:.6,roughness:.1,emissive:0xcfe9ff,emissiveIntensity:.25,depthWrite:false}));fil.scale.y=.001;fil.visible=false;fil.renderOrder=1;fn.add(fil);
+  var fu=new T.Mesh(new T.ConeGeometry(.12,.14,28,1,true),glass({opacity:.3}));fu.rotation.x=Math.PI;fu.position.y=.43;fn.add(fu);
+  var st=cyl(.012,.012,.12,0xffffff,.30,{transparent:true,opacity:.35},12);fn.add(st);
+  var rg=new T.Mesh(new T.TorusGeometry(.09,.008,8,28),M(0xb8c0c6,{metalness:.7,roughness:.3}));rg.rotation.x=Math.PI/2;rg.position.y=.462;fn.add(rg);
+  var arm=new T.Mesh(new T.BoxGeometry(.22,.012,.012),M(0xb8c0c6,{metalness:.7}));arm.position.set(-.2,.462,0);fn.add(arm);
+  var rod=cyl(.01,.01,.62,0xb8c0c6,.33,{metalness:.7},10);rod.position.x=-.31;fn.add(rod);
+  var bs=new T.Mesh(new T.BoxGeometry(.3,.03,.2),M(0x546e7a));bs.position.set(-.31,.015,0);fn.add(bs);
+  function apex(r,h,col,y,o,open){var g=new T.ConeGeometry(r,h,26,1,!!open);g.rotateX(Math.PI);g.translate(0,h/2,0);var m=new T.Mesh(g,M(col,o||{}));m.position.set(0,y,0);m.visible=false;m.scale.set(.001,.001,.001);fn.add(m);return m}
+  pap=apex(.105,.12,0xffffff,.378,{side:T.DoubleSide,roughness:1},true);
+  wet=apex(.088,.1,mx.lq,.38,{transparent:true,opacity:.9,roughness:.3});
+  res=apex(.046,.05,mx.solid,.38,{roughness:1});
+  hitBox(fn,.34,.6,.3,.3);expG.add(fn);pick.push(fn);
+  stack=new T.Group();stack.userData.key='paper';stack.position.set(-.75,TY,-1.55);
+  for(var i=0;i<4;i++){var d=cyl(.1,.1,.01,0xffffff,.005+i*.011,{roughness:1},28);d.position.x=(i%2)*.004;stack.add(d);discs.push(d)}
+  var lb=label('ورق الترشيح','#7056a8');lb.position.set(0,.13,0);lb.scale.set(.24,.12,1);stack.add(lb);hitBox(stack,.24,.12,.24,.05);expG.add(stack);pick.push(stack);
+  mj=jar('mix',mx.jc,mx.sym,.75,-1.55,1)}
+ else fbv(mx.fbv);
+ function wl(o,v){var p=new T.Vector3(v[0],v[1],v[2]);o.localToWorld(p);return cam.worldToLocal(p)}
+ function go(s){S.s=s;seq[s]()}
+ K2=kit(fn,go);
+ var seq={
+  walk:function(){say(WALKMSG,[{t:'اذهبي إلى الطاولة',f:toTable}])},
+  paper:function(){say('<b>الخطوة 1 من 3:</b> اضغطي على ورق الترشيح لتضعيه في القمع.',fa('paper','ضعي ورقة الترشيح في القمع'))},
+  mix:function(){say('<b>الخطوة 2 من 3:</b> اضغطي على وعاء الخليط ('+mx.sym+').',fa('mix','أمسكي وعاء الخليط'))},
+  mixP:function(){say('<b>الخطوة 3 من 3:</b> اضغطي على القمع لتسكبي الخليط فيه.',fa('funnel','اسكبي الخليط في القمع'))},
+  filt:function(){say('<b>جارٍ الترشيح…</b> راقبي: ينزل السائل الصافي قطرة قطرة، وتبقى المادة الصلبة على الورقة.',FB?[{t:'شاهدي النتيجة',f:function(){go('res')}}]:[]);
+   if(!FB)runFilter().then(function(){go('res')})},
+  res:function(){quiz()}};
+ X={first:'paper',walk:!FB,go:go,pick:function(k){if(busy)return;var s=S.s;
+  if(s==='walk')return hint('اقتربي من الطاولة أولًا.');
+  if(s==='paper')return k==='paper'?putPaper():hint('ابدئي بورق الترشيح.');
+  if(s==='mix')return k==='mix'?K2.carry(mj,'mixP'):hint('الآن وعاء الخليط.');
+  if(s==='mixP')return k==='funnel'?K2.pour(mj,1,mx.jc,'filt',function(){clearCont();wet.visible=true;return tw(wet.scale,{x:1,y:1,z:1},900)}):hint('اضغطي على القمع.')}};
+ function putPaper(){busy=1;
+  AA(function(){var d=discs.pop(),p=wl(stack,[0,.05,0]);
+   return tw(hand.position,{x:p.x,y:p.y+.02,z:p.z+.06},800).then(function(){curl(1);hand.attach(d);var q=wl(fn,[0,.62,0]);return tw(hand.position,{x:q.x,y:q.y,z:q.z+.04},900)})
+   .then(function(){pap.visible=true;return Promise.all([tw(pap.scale,{x:1,y:1,z:1},650),tw(d.scale,{x:.001,y:.001,z:.001},500)])})
+   .then(function(){hand.remove(d);curl(0);return tw(hand.position,{x:REST.x,y:REST.y,z:REST.z},700)})}).then(function(){busy=0;go('mix')})}
+ function runFilter(){var e=expG,n=14;fil.visible=true;res.visible=true;
+  for(var i=0;i<n;i++)(function(i){wait(500+i*400).then(function(){if(!sc||e!==expG)return;
+   var dp=new T.Mesh(new T.SphereGeometry(.01,10,8),M(0xcfe9ff,{transparent:true,opacity:.85,roughness:.05,emissive:0xcfe9ff,emissiveIntensity:.3}));dp.position.set(0,TY+.25,-1.8);e.add(dp);
+   return tw(dp.position,{y:TY+.02+.1*(i/n)},380).then(function(){e.remove(dp)})})})(i);
+  return Promise.all([tw(fil.scale,{y:.5},6000),tw(wet.scale,{x:.001,y:.001,z:.001},6200),tw(res.scale,{x:1,y:1,z:1},6200)]).then(function(){return wait(500)})}
+ function quiz(){var ans=function(ok){if(!ok)return hint('ليست صحيحة. فكّري: ما الذي لا يستطيع المرور من ثقوب الورقة الدقيقة؟');
+   say('<b>إجابة صحيحة!</b> '+mx.ok,[{t:'إعادة التجربة',f:function(){window.__fp=again?1:0;labFilter()}},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();backList()}}])};
+  fbv(mx.fbv);
+  say('<b>انتهى الترشيح!</b> نزل سائل صافٍ في الكأس وبقيت مادة على الورقة.<br><b>سؤال:</b> ما الذي بقي على ورقة الترشيح؟',[{t:mx.opts[0],f:function(){ans(1)}},{t:mx.opts[1],f:function(){ans(0)}},{t:mx.opts[2],f:function(){ans(0)}}])}
+ go(FB?'paper':'walk');if(!FB)toEntrance()}
+
+/* ---------- التجربة: اختبار اللهب + التقرير ---------- */
+var FLM=[
+ {s:'Na',n:'الصوديوم',f:'NaCl',col:0xffb000,cn:'برتقالي مصفر',pw:0xf2f2ee,kw:['اصفر','برتقال','ذهب'],nm:['na','صوديوم','سوديوم','sodium']},
+ {s:'K',n:'البوتاسيوم',f:'KCl',col:0xb784ff,cn:'بنفسجي',pw:0xf2f2ee,kw:['بنفسج','ليلك','ارجوان'],nm:['k','بوتاسيوم','potassium']},
+ {s:'Cu',n:'النحاس',f:'CuCl₂',col:0x2bd68a,cn:'أخضر',pw:0x6fd3c3,kw:['اخضر','مخضر','فيروز'],nm:['cu','نحاس','copper']},
+ {s:'Li',n:'الليثيوم',f:'LiCl',col:0xff2d55,cn:'أحمر قرمزي',pw:0xf2f2ee,kw:['احمر','قرمز'],nm:['li','ليثيوم','ليتيوم','لثيوم','lithium']},
+ {s:'Ca',n:'الكالسيوم',f:'CaCl₂',col:0xff6a1f,cn:'أحمر برتقالي',pw:0xf2f2ee,kw:['برتقال','طوب','احمر'],nm:['ca','كالسيوم','كلسيوم','calcium']}];
+var FR=null,FD=[0,0,0,0,0],PAPCLOSE=null;
+function newFR(){var o=[0,1,2,3,4];for(var i=4;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=o[i];o[i]=o[j];o[j]=t}return {a:['','','','',''],b:['','','','',''],o:o,chk:0}}
+function nrm(s){return String(s||'').toLowerCase().replace(/[ً-ٰٟـ]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/ئ/g,'ي').replace(/ؤ/g,'و').replace(/[^a-z0-9ء-ي ]/g,' ').replace(/\s+/g,' ').trim()}
+function okColor(m,v){var t=nrm(v);return !!t&&m.kw.some(function(k){return t.indexOf(k)>=0})}
+function okElem(m,v){var t=nrm(v),w=t.split(' ');return !!t&&m.nm.some(function(k){return k.length<=2?w.indexOf(k)>=0||t===k:t.indexOf(k)>=0})}
+function hex6(c){return ('000000'+c.toString(16)).slice(-6)}
+function paperCell(g,i,label){return '<div class="pc" data-g="'+g+'" data-i="'+i+'"><input type="text" class="pin" enterkeyhint="done" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="اضغطي واكتبي" aria-label="'+label+'"><span class="ink" hidden></span></div>'}
+var FKEY='chemLabFlameReport';
+function allBurned(){return FD.every(Boolean)}
+function saveFR(){try{localStorage.setItem(FKEY,JSON.stringify({o:FR.o,b:FR.b,fd:FD}));return true}catch(e){return false}}
+function loadFR(){try{var j=JSON.parse(localStorage.getItem(FKEY)||'null');if(j&&j.o&&j.o.length===5&&j.b&&j.b.length===5){FR.o=j.o.map(Number);FR.b=j.b.map(String);if(j.fd&&j.fd.length===5)FD=j.fd.map(function(v){return v?1:0})}}catch(e){}}
+function renderPaper(){var p=$('lab-paper');if(!p)return;if(!FR)FR=newFR();
+ var nb=FD.filter(Boolean).length,ready=nb===5;
+ var h='<div class="pp"><button class="pp-x" id="pp-x" aria-label="إغلاق">×</button><h3>تقرير اختبار اللهب</h3><div class="pp-s" id="pp-score">اكتبي العنصر بجانب كل لون (بالعربي أو الإنجليزي أو الرمز). يمكنك الحفظ والإكمال لاحقًا.</div>'+
+ '<div class="pp-h"><b>السؤال:</b> اكتبي <b>العنصر</b> الذي استنتجتِه من لون اللهب:</div><div class="pp-t">';
+ FR.o.forEach(function(k,r){var m=FLM[k];h+='<div class="pr" id="rb'+r+'"><div class="pl"><span class="dot" style="background:#'+hex6(m.col)+'"></span><b>'+m.cn+'</b></div>'+paperCell('b',r,'العنصر صاحب اللهب '+m.cn)+'<div class="ans" id="ab'+r+'"></div></div>'});
+ h+='</div><div class="pp-s" id="pp-note" style="margin-top:8px">'+(ready?'أحسنتِ، حرقتِ كل العينات. اضغطي «راجعي إجابتي» عندما تنتهين.':'العينات المحروقة: '+nb+' من 5 — يُفتح التحقق بعد حرق كل العينات.')+'</div><div class="pp-b"><button class="lab-btn sm" id="pp-sv">حفظ التقرير</button><button class="lab-btn sm" id="pp-ck"'+(ready?'':' disabled')+'>راجعي إجابتي</button><button class="lab-btn alt sm" id="pp-rs">مسح التقرير</button><button class="lab-btn alt sm" id="pp-cl">إغلاق</button></div></div>';
+ p.innerHTML=h;
+ function commit(c){var inp=c.querySelector('input'),ink=c.querySelector('.ink'),v=inp.value.trim(),g=c.getAttribute('data-g'),i=+c.getAttribute('data-i');FR[g][i]=v;
+  if(v){ink.textContent=v;ink.hidden=false;ink.classList.remove('wr');void ink.offsetWidth;ink.classList.add('wr');inp.hidden=true}else{ink.hidden=true;inp.hidden=false}}
+ [].forEach.call(p.querySelectorAll('.pc'),function(c){var inp=c.querySelector('input'),ink=c.querySelector('.ink'),g=c.getAttribute('data-g'),i=+c.getAttribute('data-i');
+  inp.value=FR[g][i]||'';if(inp.value)commit(c);
+  inp.addEventListener('input',function(){FR[g][i]=inp.value.trim()});
+  inp.addEventListener('focus',function(){p.classList.add('kb');setTimeout(function(){try{inp.scrollIntoView({block:'center',behavior:'smooth'})}catch(e){}},320)});
+  inp.addEventListener('blur',function(){commit(c);setTimeout(function(){if(!p.querySelector('input:focus'))p.classList.remove('kb')},120)});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();inp.blur()}});
+  ink.addEventListener('click',function(){ink.hidden=true;inp.hidden=false;inp.focus()})});
+ $('pp-x').onclick=$('pp-cl').onclick=function(){if(PAPCLOSE)PAPCLOSE()};
+ $('pp-sv').onclick=function(){var ok=saveFR(),s=$('pp-score');if(s)s.innerHTML=ok?'تم حفظ التقرير ✓ يمكنك إكماله لاحقًا.':'تم حفظ التقرير لهذه الجلسة ✓'};
+ $('pp-rs').onclick=function(){FR=newFR();try{localStorage.removeItem(FKEY)}catch(e){}renderPaper()};
+ $('pp-ck').onclick=function(){if(allBurned())chkPaper()};
+ if(FR.chk&&ready)chkPaper()}
+function chkPaper(){var sc=0;FR.chk=1;
+ function mark(row,ans,ok,txt,v){var r=$(row),a=$(ans);if(!r||!a)return;r.classList.toggle('good',!!ok);r.classList.toggle('bad',!ok);a.textContent=ok?'✓ صحيح':(v?'✗ الصحيح: ':'اكتبي إجابتك. الصحيح: ')+txt}
+ FR.o.forEach(function(k,r){var m=FLM[k],v=FR.b[r],ok=okElem(m,v);if(ok)sc++;mark('rb'+r,'ab'+r,ok,m.n+' ('+m.s+')',v)});
+ var s=$('pp-score');if(s)s.innerHTML='نتيجتك: <b>'+sc+'</b> من 5 '+(sc===5?'— ممتازة!':sc>=4?'— رائعة، راجعي الخطأ.':'— جرّبي حرق العينات مرة ثانية ولاحظي الألوان.')}
+function flame(){
+ var dishes=[],bn,fo,fi,lg,pg,fv={v:0};S={s:'walk'};FR=newFR();FD=[0,0,0,0,0];loadFR();
+ function wl(o,v){var p=new T.Vector3(v[0],v[1],v[2]);o.localToWorld(p);return cam.worldToLocal(p)}
+ if(!FB){reset3D();
+  bn=new T.Group();bn.position.set(0,TY,-1.8);
+  var b0=new T.Mesh(new T.CylinderGeometry(.075,.085,.025,28),M(0x2c3338,{metalness:.5,roughness:.4}));b0.position.y=.0125;
+  var tb=new T.Mesh(new T.CylinderGeometry(.016,.016,.18,14),M(0xb8c0c6,{metalness:.8,roughness:.25}));tb.position.y=.115;
+  var cl=new T.Mesh(new T.CylinderGeometry(.027,.027,.035,14),M(0x546e7a,{metalness:.6}));cl.position.y=.07;
+  bn.add(b0,tb,cl);expG.add(bn);
+  var gf=new T.ConeGeometry(.04,.19,18);gf.translate(0,.095,0);fo=new T.Mesh(gf,new T.MeshBasicMaterial({color:0x4a9dff,transparent:true,opacity:.5,depthWrite:false}));fo.position.set(0,TY+.2,-1.8);fo.renderOrder=3;
+  var gi=new T.ConeGeometry(.022,.1,14);gi.translate(0,.05,0);fi=new T.Mesh(gi,new T.MeshBasicMaterial({color:0xaed6ff,transparent:true,opacity:.7,depthWrite:false}));fi.position.set(0,TY+.2,-1.8);fi.renderOrder=4;
+  lg=new T.PointLight(0x4a9dff,.15,1.4);lg.position.set(0,TY+.32,-1.8);expG.add(fo,fi,lg);
+  FLM.forEach(function(m,i){var g=new T.Group();g.userData.key='d'+i;g.position.set(-.48+i*.24,TY,-1.5);
+   var dsh=new T.Mesh(new T.CylinderGeometry(.09,.07,.018,28),glass({opacity:.45}));dsh.position.y=.009;
+   var pw=new T.Mesh(new T.SphereGeometry(.052,18,10),M(m.pw,{roughness:1}));pw.scale.y=.45;pw.position.y=.03;
+   var lb=label(m.n,'#7056a8');lb.position.set(0,.13,0);lb.scale.set(.2,.1,1);g.add(dsh,pw,lb);expG.add(g);pick.push(g);dishes.push(g)});
+  pg=new T.Group();pg.userData.key='paper';pg.position.set(0,TY,-1.26);
+  var sh=new T.Mesh(new T.BoxGeometry(.3,.008,.2),M(0xfffdf4,{roughness:.9}));sh.position.y=.004;pg.add(sh);
+  for(var k=0;k<4;k++){var ln=new T.Mesh(new T.BoxGeometry(.24,.002,.004),M(0x9fb6d8));ln.position.set(0,.009,-.07+k*.045);pg.add(ln)}
+  var tt=label('التقرير','#1a3d8f');tt.position.set(0,.09,0);tt.scale.set(.2,.1,1);pg.add(tt);expG.add(pg);pick.push(pg)}
+ else fbv('<div style="font-size:18px;color:#6f6779">اختبار اللهب</div>');
+ function go(s){S.s=s;seq[s]()}
+ function acts(){var a=[];if(FB)FLM.forEach(function(m,i){a.push({t:m.n,alt:1,f:function(){if(!busy)burn(i)}})});a.push({t:'افتحي التقرير',f:openPaper});return a}
+ var seq={
+  walk:function(){say(WALKMSG+'<br><small>في هذه التجربة لهب حقيقي: ابتعدي عنه ولا تقتربي بيدك.</small>',[{t:'اذهبي إلى الطاولة',f:toTable}])},
+  burn:function(){var n=FD.filter(Boolean).length;say(n===5?'<b>أحسنتِ! حرقتِ كل العينات.</b><br>اكتبي في <b>التقرير</b> العنصر بجانب كل لون، واحفظيه، ثم اضغطي «راجعي إجابتي».':'<b>اختاري عينة.</b> اضغطي على أي طبق ليدخله الموقد في اللهب، ثم <b>لاحظي لون اللهب</b>.<br><small>سجّلي العنصر المناسب لكل لون في <b>التقرير</b> (الورقة أمامك) واحفظيه، وتتحققين في النهاية.</small><div class="lab-hint" style="background:#eef6ff;color:#1b4a8a">العينات المحروقة: '+n+' من 5</div>',acts())}};
+ function flameOn(col){if(FB)return Promise.resolve();var c=new T.Color(col),w=c.clone().lerp(new T.Color(0xffffff),.45);fo.material.color.copy(c);fo.material.opacity=.72;fi.material.color.copy(w);fi.material.opacity=.88;lg.color.copy(c);return tw(fv,{v:1},450,function(){lg.intensity=.15+1.3*fv.v})}
+ function flameOff(){if(FB)return Promise.resolve();fo.material.color.set(0x4a9dff);fo.material.opacity=.5;fi.material.color.set(0xaed6ff);fi.material.opacity=.7;lg.color.set(0x4a9dff);return tw(fv,{v:0},500,function(){lg.intensity=.15+1.3*fv.v})}
+ function burn(i){var m=FLM[i],pin=null;busy=1;S.s='burning';say('<b>جارٍ إدخال عينة '+m.n+' في اللهب…</b><br>راقبي لون اللهب بتركيز.');
+  AA(function(){var p=wl(dishes[i],[0,.1,0]);return tw(hand.position,{x:p.x,y:p.y,z:p.z+.05},700).then(function(){curl(1);pin=new T.Mesh(new T.SphereGeometry(.02,10,8),M(m.pw,{roughness:1}));pin.position.set(dishes[i].position.x,TY+.06,dishes[i].position.z);expG.add(pin);
+    var q=wl(bn,[0,.3,0]);return Promise.all([tw(hand.position,{x:q.x+.1,y:q.y-.02,z:q.z+.1},750),tw(pin.position,{x:0,y:TY+.24,z:-1.8},750)])})})
+  .then(function(){if(FB){$('lab-fbv').innerHTML='<div class="fbfl" style="--c:#'+hex6(m.col)+'"></div><div style="margin-top:10px;font-size:16px;color:#6f6779">'+m.n+'</div>'}else spark(26,m.col,.24,.45,2400,.12,.014);return flameOn(m.col)})
+  .then(function(){return wait(FB?1200:3200)})
+  .then(function(){return flameOff()})
+  .then(function(){if(pin)expG.remove(pin);if(FB)$('lab-fbv').innerHTML='';return AA(function(){curl(0);return tw(hand.position,{x:REST.x,y:REST.y,z:REST.z},700)})})
+  .then(function(){FD[i]=1;busy=0;go('burn')})}
+ function openPaper(){if(busy)return;busy=1;AA(function(){var p=wl(pg,[0,.03,0]);curl(.5);return tw(hand.position,{x:p.x,y:p.y+.03,z:p.z+.05},800)}).then(function(){renderPaper();$('lab-paper').hidden=false})}
+ PAPCLOSE=function(){$('lab-paper').hidden=true;AA(function(){curl(0);return tw(hand.position,{x:REST.x,y:REST.y,z:REST.z},600)}).then(function(){busy=0;if(S.s==='burn')go('burn')})};
+ X={first:'burn',walk:!FB,go:go,tick:function(t){if(!fo)return;var f=fv.v,fl=1+.04*Math.sin(t*22)+.03*Math.sin(t*37);fo.scale.set(1+.4*f,(1+.5*f)*fl,1+.4*f);fi.scale.set(1+.3*f,(1+.4*f)*fl,1+.3*f)},
+  pick:function(k){if(busy)return;if(S.s==='walk')return hint('اقتربي من الطاولة أولًا.');if(k==='paper')return openPaper();var m=/^d(\d)$/.exec(k);if(m)burn(+m[1])}};
+ go(FB?'burn':'walk');if(!FB)toEntrance()}
+
 /* ---------- التجربة: الخل + بيكربونات الصوديوم ---------- */
 function fizz(){
  var sd,vn,fl,lq,bl;S={s:'walk'};
@@ -4944,7 +5286,7 @@ function fizz(){
   return wait(900)}
  function quiz(){var ans=function(ok){if(!ok)return hint('ليست صحيحة. تذكّري: الغاز الذي نفخ البالون يتكوّن في تفاعل الأحماض مع الكربونات.');
    say('<b>إجابة صحيحة!</b> الغاز هو <b>ثاني أكسيد الكربون CO₂</b>. تفاعلت البيكربونات (قاعدة ضعيفة) مع حمض الخل فتكوّن الماء وملح خلات الصوديوم وانطلق الغاز.<br>معادلة التفاعل: NaHCO₃ + CH₃COOH → CH₃COONa + H₂O + CO₂↑.<br>الفقاعات وانتفاخ البالون دليلان على تكوّن مادة غازية جديدة.',
-   [{t:'إعادة التجربة',f:fizz},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();show('lab-list')}}])};
+   [{t:'إعادة التجربة',f:fizz},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();backList()}}])};
   fbv('NaHCO₃ + CH₃COOH → CH₃COONa + H₂O + CO₂↑');
   say('<b>حدث التفاعل!</b> ظهرت فقاعات كثيرة وانتفخ البالون.<br><b>سؤال:</b> ما الغاز الذي ملأ البالون؟',
    [{t:'ثاني أكسيد الكربون CO₂',f:function(){ans(1)}},{t:'الأكسجين O₂',f:function(){ans(0)}},{t:'الهيدروجين H₂',f:function(){ans(0)}}])}
@@ -4999,7 +5341,7 @@ function eleph(){
     .then(function(){return tw(s.position,{x:(Math.random()-.5)*1.0,y:TY+.045+Math.random()*.1,z:-1.8+(Math.random()-.5)*.8},600+Math.random()*400)})})})(i)}
  function quiz(){var ans=function(ok){if(!ok)return hint('ليست صحيحة. تذكّري: الغاز الذي يحتاجه الإنسان للتنفس ويتكوّن من تحلّل الماء الأكسجيني.');
    say('<b>إجابة صحيحة!</b> الغاز هو <b>الأكسجين O₂</b>. يتحلل فوق أكسيد الهيدروجين بسرعة بوجود المحفّز KI.<br>معادلة التفاعل: 2H₂O₂ → 2H₂O + O₂↑. المحفّز يسرّع التفاعل ولا يُستهلك فيه.<br><small>في المختبر الحقيقي يُجرى هذا بإشراف المعلم وبأدوات الوقاية.</small>',
-   [{t:'إعادة التجربة',f:eleph},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();show('lab-list')}}])};
+   [{t:'إعادة التجربة',f:eleph},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();backList()}}])};
   fbv('2H₂O₂ → 2H₂O + O₂↑');
   say('<b>سؤال:</b> ما الغاز الذي انطلق فصنع الرغوة؟',[{t:'الأكسجين O₂',f:function(){ans(1)}},{t:'الهيدروجين H₂',f:function(){ans(0)}},{t:'ثاني أكسيد الكربون CO₂',f:function(){ans(0)}}])}
  go(FB?'hp':'walk');if(!FB)toEntrance()}
@@ -5034,7 +5376,7 @@ function disp(){
   return tw(o,{p:1},5000,function(){lq.material.color.copy(b0).lerp(b1,o.p);nail.material.color.copy(n0).lerp(n1,o.p)})}
  function quiz(){var ans=function(ok){if(!ok)return hint('ليست صحيحة. تذكّري: الحديد أنشط من النحاس فيحلّ محله، والنحاس هو الذي يترسّب.');
    say('<b>إجابة صحيحة!</b> الطبقة البنية المحمرّة هي <b>النحاس Cu</b>. الحديد أنشط من النحاس فحلّ محله في المحلول، فاختفى اللون الأزرق (أيونات Cu²⁺) وظهر لون أخضر باهت (أيونات Fe²⁺).<br>معادلة التفاعل: Fe + CuSO₄ → FeSO₄ + Cu. وهذا نوع من التفاعلات يسمى <b>الإحلال البسيط</b>.',
-   [{t:'إعادة التجربة',f:disp},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();show('lab-list')}}])};
+   [{t:'إعادة التجربة',f:disp},{t:'العودة إلى قائمة التجارب',alt:1,f:function(){stop3D();backList()}}])};
   fbv('Fe + CuSO₄ → FeSO₄ + Cu');
   say('<b>انتهى التفاعل!</b> تغيّر لون المحلول وظهرت طبقة بنية على المسمار.<br><b>سؤال:</b> ما المادة البنية المحمرّة التي ترسّبت؟',[{t:'نحاس Cu',f:function(){ans(1)}},{t:'صدأ الحديد',f:function(){ans(0)}},{t:'كبريت S',f:function(){ans(0)}}])}
  go(FB?'cu':'walk');if(!FB)toEntrance()}
@@ -5073,8 +5415,8 @@ var cv=MR.domElement;
  if(id==='build'){bldBind(cv);window.addEventListener('resize',molFit);molFit();bldStart()}
  else{var bar=document.createElement('div');bar.id='mol-bar';
   MOL.forEach(function(m,i){var b=document.createElement('button');b.className='lab-btn alt sm';b.innerHTML=m.f;b.onclick=function(){molSelect(i)};bar.appendChild(b)});
-  $('lab-3d').appendChild(bar);molBind(cv);window.addEventListener('resize',molFit);molFit();molBuild(0);mark(0);
-  say(CONCEPT,[{t:'ابدئي بـ BeCl₂',f:function(){molSelect(0)}}])}
+  $('lab-3d').appendChild(bar);molBind(cv);window.addEventListener('resize',molFit);molFit();var pm=window.__pm|0;window.__pm=0;molBuild(pm);mark(pm);
+  if(pm)molSelect(pm);else say(CONCEPT,[{t:'ابدئي بـ BeCl₂',f:function(){molSelect(0)}}])}
  mlast=performance.now();mraf=requestAnimationFrame(molLoop)}
 function molFit(){if(!MR)return;var e=$('lab-cv');if(!e.clientWidth)return;MR.setSize(e.clientWidth,e.clientHeight);MC.aspect=e.clientWidth/e.clientHeight;MC.updateProjectionMatrix();if(mmode==='bld')bShift()}
 function molLoop(t){if(!MR)return;mraf=requestAnimationFrame(molLoop);var dt=Math.min(.05,(t-mlast)/1000);mlast=t;if((mmode==='view'&&!mdrag)||(mmode==='bld'&&bAuto&&!bD))MG.rotation.y+=dt*.5;MR.render(MS,MC)}
