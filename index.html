@@ -4337,7 +4337,7 @@ window.addEventListener("popstate", function(e){
 
     <!-- كود الجافا سكريبت للتحكم والذكاء الاصطناعي -->
     <script>
-        const GEMINI_API_KEY = "AQ.Ab8RN6IzGIXAZ_aWe_P6T05Neu6MnC2EzJZIWkpsxYroNNs8qQ";
+        const GEMINI_API_KEY = "YOUR_API_KEY";
         const ELECTRA_FIRST_TOKEN_TIMEOUT = 30000;  /* مهلة بدء ظهور الرد بالمللي ثانية */
         const ELECTRA_TOTAL_TIMEOUT = 90000;        /* أقصى مدة للرد كاملًا */
         let electraThinkingIndex = {};  /* نتذكر الإعداد الذي نجح حتى لا نكرر المحاولات الفاشلة */
@@ -4474,10 +4474,10 @@ window.addEventListener("popstate", function(e){
                     for (const model of models) {
                         for (let ti = (electraThinkingIndex[model] || 0); ti < thinkingTries.length; ti++) {
                             const extra = thinkingTries[ti];
-                            response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":streamGenerateContent?alt=sse", {
+                            response = await fetch("https://elctra-api.wagan20101431.workers.dev/?model=" + encodeURIComponent(model), {
                                 method: 'POST',
                                 signal: ctrl.signal,
-                                headers: { 'Content-Type': 'application/json', 'x-goog-api-key': GEMINI_API_KEY },
+                                headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({
                                     systemInstruction: { parts: [{ text: systemPrompt }] },
                                     contents: electraConvo.concat([{ role: "user", parts: userParts }]),
